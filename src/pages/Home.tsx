@@ -12,18 +12,18 @@ export default function Home() {
   return (
     <div>
       {/* Hero Banner */}
-      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-navy">
+      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-gray-50">
         {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-[0.03]">
           <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a3a5c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/50 to-navy/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-gray-100" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
           <img src="/logo.png" alt="HVACR NET" className="animate-fade-in-up mx-auto max-w-xs sm:max-w-sm md:max-w-md" />
-          <p className="animate-fade-in-up animate-delay-200 mt-6 text-lg font-medium text-white/80 sm:text-xl lg:text-2xl">
+          <p className="animate-fade-in-up animate-delay-200 mt-6 text-lg font-medium text-gray-600 sm:text-xl lg:text-2xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
           <div className="animate-fade-in-up animate-delay-300 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -36,7 +36,7 @@ export default function Home() {
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-md border border-white/30 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:border-white/60 hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-md border border-navy/20 bg-white px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:border-navy/40 hover:shadow-md"
             >
               Send Inquiry
             </Link>
