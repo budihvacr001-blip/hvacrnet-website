@@ -84,7 +84,7 @@ export default function Home() {
                 </li>
               </ul>
               <p className="mt-4">
-                Beyond these, many buyers also struggle with unreliable suppliers, incomplete product ranges, forced overstocking, and opaque pricing.
+                Beyond these, many buyers also struggle with unreliable suppliers, incomplete product ranges, forced overstocking, and unclear pricing.
               </p>
               <p className="mt-4 font-semibold text-navy">
                 HVACR NET was created to solve these problems — systematically.
