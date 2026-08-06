@@ -310,6 +310,9 @@ export default function Contact() {
                   <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors hover:bg-navy hover:text-white">
                     <MessageCircle className="h-5 w-5" />
                   </a>
+                  <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors hover:bg-navy hover:text-white">
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.17V11.7a4.83 4.83 0 01-3.77-1.24V6.69h3.77z"/></svg>
+                  </a>
                 </div>
               </div>
             </div>
