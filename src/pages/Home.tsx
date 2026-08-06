@@ -120,7 +120,7 @@ export default function Home() {
             </div>
 
             <p className="text-center font-medium text-gray-700">
-              Choose HVACR NET — and gain not just a supplier, but a long-term strategic ally dedicated to winning your market together.
+              Choose HVACR NET — and gain not just a supplier, but a long-term dedicated teammate committed to winning your market together.
             </p>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function Home() {
       <section className="bg-navy py-20">
         <div className="mx-auto max-w-3xl px-4 text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Gain not just a supplier, but a strategic ally.
+            Gain not just a supplier, but a dedicated teammate.
           </h2>
           <p className="mt-4 text-lg text-white/70">
             Let's win your market together.
