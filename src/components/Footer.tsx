@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <img src="/logo.png" alt="HVACR NET" className="h-8 w-auto brightness-0 invert" />
+              <img src="/logo.svg" alt="HVACR NET" className="h-8 w-auto" />
             </div>
             <p className="text-sm leading-relaxed text-white/70">
               Your One-Stop HVACR Parts Supplier from China.
