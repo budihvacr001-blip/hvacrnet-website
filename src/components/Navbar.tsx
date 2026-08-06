@@ -21,20 +21,22 @@ export default function Navbar() {
           <img src="/logo.png" alt="HVACR NET" className="h-10 w-auto sm:h-12" />
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-8 md:flex">
+        {/* Desktop nav - horizontal blocks */}
+        <div className="hidden items-center gap-3 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`text-sm font-medium transition-colors hover:text-accent ${
-                isActive(link.to) ? 'text-accent' : 'text-gray-700'
+              className={`rounded-md px-5 py-2.5 text-sm font-semibold transition-all ${
+                isActive(link.to)
+                  ? 'bg-navy text-white shadow-md'
+                  : 'bg-gray-100 text-gray-700 hover:bg-navy/10 hover:text-navy'
               }`}
             >
               {link.label}
             </Link>
           ))}
-          <button className="flex items-center gap-1.5 rounded-md border border-gray-border px-3 py-1.5 text-xs font-medium text-gray-text transition-colors hover:border-navy hover:text-navy">
+          <button className="ml-2 flex items-center gap-1.5 rounded-md border border-gray-border px-3 py-2 text-xs font-medium text-gray-text transition-colors hover:border-navy hover:text-navy">
             <Globe className="h-3.5 w-3.5" />
             English
           </button>

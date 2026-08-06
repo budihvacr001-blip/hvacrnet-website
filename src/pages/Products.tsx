@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, MessageCircle, ChevronDown, ChevronRight, Package } from 'lucide-react'
+import { Search, MessageCircle, ChevronRight, Package } from 'lucide-react'
 import { categories, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -10,7 +10,6 @@ export default function Products() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<string>('all')
   const [activeSubCategory, setActiveSubCategory] = useState<string>('all')
-  const [expandedCats, setExpandedCats] = useState<Set<string>>(new Set())
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -39,19 +38,9 @@ export default function Products() {
     return products
   }, [allProducts, activeCategory, activeSubCategory, searchQuery])
 
-  const toggleExpand = (catId: string) => {
-    setExpandedCats((prev) => {
-      const next = new Set(prev)
-      if (next.has(catId)) next.delete(catId)
-      else next.add(catId)
-      return next
-    })
-  }
-
   const selectCategory = (catId: string) => {
     setActiveCategory(catId)
     setActiveSubCategory('all')
-    setExpandedCats((prev) => new Set(prev).add(catId))
     setSidebarOpen(false)
   }
 
@@ -154,36 +143,25 @@ export default function Products() {
                   All Products
                 </button>
 
-                {/* Category list */}
+                {/* Category list - hover to expand */}
                 {categories.map((cat) => {
-                  const isExpanded = expandedCats.has(cat.id)
                   const isActive = activeCategory === cat.id
                   const hasSubs = cat.subCategories.length > 0
 
                   return (
-                    <div key={cat.id}>
+                    <div key={cat.id} className="group relative">
                       <button
-                        onClick={() => {
-                          if (hasSubs) {
-                            toggleExpand(cat.id)
-                          }
-                          selectCategory(cat.id)
-                        }}
+                        onClick={() => selectCategory(cat.id)}
                         className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                           isActive && activeSubCategory === 'all'
                             ? 'bg-navy text-white'
                             : 'text-gray-700 hover:bg-navy/5'
                         }`}
                       >
-                        {hasSubs ? (
-                          isExpanded ? (
-                            <ChevronDown className="h-4 w-4 shrink-0" />
-                          ) : (
-                            <ChevronRight className="h-4 w-4 shrink-0" />
-                          )
-                        ) : (
-                          <span className="w-4 shrink-0" />
+                        {hasSubs && (
+                          <ChevronRight className="h-4 w-4 shrink-0 transition-transform group-hover:rotate-90" />
                         )}
+                        {!hasSubs && <span className="w-4 shrink-0" />}
                         <span className="flex-1">{cat.name}</span>
                         <span
                           className={`text-xs ${
@@ -196,15 +174,15 @@ export default function Products() {
                         </span>
                       </button>
 
-                      {/* Sub-categories */}
-                      {hasSubs && isExpanded && (
-                        <div className="ml-5 mt-1 space-y-0.5 border-l-2 border-gray-border pl-3">
+                      {/* Sub-categories - show on hover */}
+                      {hasSubs && (
+                        <div className="invisible absolute left-full top-0 z-30 ml-1 w-56 rounded-md border border-gray-border bg-white py-2 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
                           <button
                             onClick={() => selectSubCategory(cat.id, 'all')}
-                            className={`block w-full rounded px-3 py-1.5 text-left text-xs transition-colors ${
+                            className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
                               activeSubCategory === 'all' && isActive
                                 ? 'font-semibold text-accent'
-                                : 'text-gray-600 hover:text-navy'
+                                : 'text-gray-700 hover:bg-navy/5'
                             }`}
                           >
                             All {cat.name}
@@ -213,10 +191,10 @@ export default function Products() {
                             <button
                               key={sub.id}
                               onClick={() => selectSubCategory(cat.id, sub.id)}
-                              className={`block w-full rounded px-3 py-1.5 text-left text-xs transition-colors ${
+                              className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
                                 activeSubCategory === sub.id
                                   ? 'font-semibold text-accent'
-                                  : 'text-gray-600 hover:text-navy'
+                                  : 'text-gray-700 hover:bg-navy/5'
                               }`}
                             >
                               {sub.name}
