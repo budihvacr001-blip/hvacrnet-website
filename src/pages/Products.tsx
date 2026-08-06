@@ -8,7 +8,7 @@ import ProductModal from '../components/ProductModal'
 export default function Products() {
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
-  const [activeCategory, setActiveCategory] = useState<string>('all')
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [activeSubCategory, setActiveSubCategory] = useState<string>('all')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -18,11 +18,12 @@ export default function Products() {
   }, [])
 
   const filteredProducts = useMemo(() => {
+    if (!activeCategory) return []
+
     let products = allProducts
 
-    if (activeCategory !== 'all') {
-      products = products.filter((p) => p.categoryId === activeCategory)
-    }
+    products = products.filter((p) => p.categoryId === activeCategory)
+
     if (activeSubCategory !== 'all') {
       products = products.filter((p) => p.subCategoryId === activeSubCategory)
     }
@@ -51,7 +52,7 @@ export default function Products() {
   }
 
   const selectAll = () => {
-    setActiveCategory('all')
+    setActiveCategory(null)
     setActiveSubCategory('all')
     setSidebarOpen(false)
   }
@@ -60,7 +61,7 @@ export default function Products() {
     navigate('/contact', { state: { productInterest: productName } })
   }
 
-  const currentCategory = categories.find((c) => c.id === activeCategory)
+  const currentCategory = activeCategory ? categories.find((c) => c.id === activeCategory) : null
   const currentSubCategory = currentCategory?.subCategories.find((s) => s.id === activeSubCategory)
 
   return (
@@ -134,7 +135,7 @@ export default function Products() {
                 <button
                   onClick={selectAll}
                   className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors ${
-                    activeCategory === 'all'
+                    activeCategory === null
                       ? 'bg-navy text-white'
                       : 'text-gray-700 hover:bg-navy/5'
                   }`}
@@ -209,49 +210,62 @@ export default function Products() {
             </div>
           </aside>
 
-          {/* Main content - Product grid */}
+          {/* Main content */}
           <div className="min-w-0 flex-1">
             {/* Breadcrumb */}
-            <div className="mb-4 flex items-center gap-2 text-sm text-gray-text">
-              <button onClick={selectAll} className="hover:text-navy">
-                All Products
-              </button>
-              {currentCategory && (
-                <>
-                  <span>/</span>
-                  <button
-                    onClick={() => selectCategory(currentCategory.id)}
-                    className="hover:text-navy"
-                  >
-                    {currentCategory.name}
-                  </button>
-                </>
-              )}
-              {currentSubCategory && activeSubCategory !== 'all' && (
-                <>
-                  <span>/</span>
-                  <span className="text-navy">{currentSubCategory.name}</span>
-                </>
-              )}
-            </div>
-
-            {/* Results count */}
-            <p className="mb-6 text-sm text-gray-text">
-              {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
-            </p>
-
-            {/* Product grid */}
-            {filteredProducts.length > 0 ? (
-              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                {filteredProducts.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    onInquire={handleInquire}
-                    onViewDetail={setSelectedProduct}
-                  />
-                ))}
+            {activeCategory && (
+              <div className="mb-4 flex items-center gap-2 text-sm text-gray-text">
+                <button onClick={selectAll} className="hover:text-navy">
+                  All Products
+                </button>
+                {currentCategory && (
+                  <>
+                    <span>/</span>
+                    <button
+                      onClick={() => selectCategory(currentCategory.id)}
+                      className="hover:text-navy"
+                    >
+                      {currentCategory.name}
+                    </button>
+                  </>
+                )}
+                {currentSubCategory && activeSubCategory !== 'all' && (
+                  <>
+                    <span>/</span>
+                    <span className="text-navy">{currentSubCategory.name}</span>
+                  </>
+                )}
               </div>
+            )}
+
+            {/* No category selected - show prompt */}
+            {!activeCategory ? (
+              <div className="flex flex-col items-center justify-center py-32 text-center">
+                <Package className="mb-4 h-16 w-16 text-gray-border" />
+                <h2 className="text-xl font-semibold text-gray-700">Select a category</h2>
+                <p className="mt-2 text-gray-text">
+                  Choose a product category from the left menu to browse our products
+                </p>
+              </div>
+            ) : filteredProducts.length > 0 ? (
+              <>
+                {/* Results count */}
+                <p className="mb-6 text-sm text-gray-text">
+                  {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
+                </p>
+
+                {/* Product grid */}
+                <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                  {filteredProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      onInquire={handleInquire}
+                      onViewDetail={setSelectedProduct}
+                    />
+                  ))}
+                </div>
+              </>
             ) : (
               <div className="py-20 text-center">
                 <p className="text-lg text-gray-text">No products found matching your criteria.</p>
