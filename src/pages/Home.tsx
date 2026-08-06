@@ -22,9 +22,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/50 to-navy/80" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-          <h1 className="animate-fade-in-up text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            HVACR NET
-          </h1>
+          <img src="/logo.png" alt="HVACR NET" className="animate-fade-in-up mx-auto max-w-xs sm:max-w-sm md:max-w-md" />
           <p className="animate-fade-in-up animate-delay-200 mt-6 text-lg font-medium text-white/80 sm:text-xl lg:text-2xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
@@ -58,7 +56,7 @@ export default function Home() {
 
           <div className="space-y-6 text-base leading-relaxed text-gray-700">
             <p>
-              HVACR NET was founded by a 20-year veteran of international trade. We are not a traditional trading company — we are your professional sourcing partner for HVAC and refrigeration parts.
+              HVACR NET was founded by a 20-year expert of international trade. We are not a traditional trading company — we are your professional sourcing partner for HVAC and refrigeration parts.
             </p>
 
             <div className="rounded-lg border border-gray-border bg-gray-bg p-6">

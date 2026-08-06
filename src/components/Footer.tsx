@@ -8,11 +8,8 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           {/* Brand */}
           <div>
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded bg-white/10 text-sm font-bold">
-                HN
-              </div>
-              <span className="text-lg font-bold">HVACR NET</span>
+            <div className="mb-4">
+              <img src="/logo.png" alt="HVACR NET" className="h-8 w-auto brightness-0 invert" />
             </div>
             <p className="text-sm leading-relaxed text-white/70">
               Your One-Stop HVACR Parts Supplier from China.
