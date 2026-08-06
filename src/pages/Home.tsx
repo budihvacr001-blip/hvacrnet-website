@@ -26,7 +26,7 @@ export default function Home() {
           {/* Logo with light halo backdrop */}
           <div className="animate-fade-in-up relative mx-auto inline-block">
             <div className="absolute inset-0 -m-8 rounded-full bg-white/10 blur-3xl" />
-            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-xs sm:max-w-sm md:max-w-md drop-shadow-lg" />
+            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl drop-shadow-lg" />
           </div>
           <p className="animate-fade-in-up animate-delay-200 mt-8 text-lg font-medium text-white/80 sm:text-xl lg:text-2xl">
             Your One-Stop HVACR Parts Supplier from China
