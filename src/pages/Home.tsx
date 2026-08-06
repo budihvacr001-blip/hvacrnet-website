@@ -22,7 +22,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/50 to-navy/80" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-          <img src="/logo.svg" alt="HVACR NET" className="animate-fade-in-up mx-auto max-w-xs sm:max-w-sm md:max-w-md" />
+          <img src="/logo.png" alt="HVACR NET" className="animate-fade-in-up mx-auto max-w-xs sm:max-w-sm md:max-w-md" />
           <p className="animate-fade-in-up animate-delay-200 mt-6 text-lg font-medium text-white/80 sm:text-xl lg:text-2xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
