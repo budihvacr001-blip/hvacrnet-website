@@ -12,17 +12,17 @@ export default function Home() {
   return (
     <div>
       {/* Hero Banner */}
-      <section className="relative flex h-[55vh] min-h-[380px] items-center justify-center overflow-hidden bg-[#333333]">
+      <section className="relative flex h-[55vh] min-h-[380px] items-center justify-center overflow-hidden bg-white">
         {/* Subtle radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.06)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(26,58,92,0.06)_0%,_transparent_70%)]" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
           {/* Logo with light halo backdrop */}
           <div className="animate-fade-in-up relative mx-auto inline-block">
-            <div className="absolute inset-0 -m-6 rounded-full bg-white/8 blur-2xl" />
-            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto h-[12vh] min-h-[80px] max-h-[160px] w-auto drop-shadow-lg" />
+            <div className="absolute inset-0 -m-8 rounded-full bg-[#1a3a5c]/5 blur-3xl" />
+            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl drop-shadow-sm" />
           </div>
-          <p className="animate-fade-in-up animate-delay-200 mt-3 text-base font-medium text-white/80 sm:text-lg lg:text-xl">
+          <p className="animate-fade-in-up animate-delay-200 mt-3 text-base font-medium text-[#1a3a5c]/80 sm:text-lg lg:text-xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
           <div className="animate-fade-in-up animate-delay-300 mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -35,7 +35,7 @@ export default function Home() {
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-md"
+              className="inline-flex items-center gap-2 rounded-md border border-[#1a3a5c]/30 bg-[#1a3a5c]/5 px-8 py-3 text-sm font-semibold text-[#1a3a5c] transition-all hover:bg-[#1a3a5c]/10 hover:shadow-md"
             >
               Send Inquiry
             </Link>
