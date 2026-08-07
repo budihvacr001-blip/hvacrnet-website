@@ -62,23 +62,39 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-gray-bg">
       {/* Header Banner */}
-      <section className="bg-navy py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-white sm:text-4xl">Products</h1>
-          <p className="mt-2 text-white/70">
-            Browse our comprehensive range of HVACR parts and components
-          </p>
+      <section className="bg-navy py-10 relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            {/* Left: Text & Search */}
+            <div className="flex-1 max-w-2xl">
+              <h1 className="text-3xl font-bold text-white sm:text-4xl">Products</h1>
+              <p className="mt-2 text-white/70">
+                Browse our comprehensive range of HVACR parts and components
+              </p>
 
-          {/* Search */}
-          <div className="relative mt-6 max-w-xl">
-            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-text" />
-            <input
-              type="text"
-              placeholder="Search products by name..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-lg border-0 bg-white py-3 pl-11 pr-4 text-sm text-gray-900 placeholder:text-gray-text focus:outline-none focus:ring-2 focus:ring-accent"
-            />
+              {/* Search */}
+              <div className="relative mt-6 max-w-xl">
+                <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-text" />
+                <input
+                  type="text"
+                  placeholder="Search products by name..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full rounded-lg border-0 bg-white py-3 pl-11 pr-4 text-sm text-gray-900 placeholder:text-gray-text focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+              </div>
+            </div>
+
+            {/* Right: Product Group Image Placeholder */}
+            <div className="hidden lg:block w-80 h-48 relative">
+              <div className="absolute inset-0 flex items-center justify-center opacity-15">
+                {/* TODO: Replace with actual product group photo */}
+                <div className="text-white text-center">
+                  <Package className="w-24 h-24 mx-auto mb-2" />
+                  <p className="text-sm">Product Group Photo</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
