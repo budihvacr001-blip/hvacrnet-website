@@ -13,16 +13,12 @@ export default function Home() {
     <div>
       {/* Hero Banner */}
       <section className="relative flex h-[55vh] min-h-[380px] items-center justify-center overflow-hidden bg-white">
-        {/* Subtle radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(26,58,92,0.06)_0%,_transparent_70%)]" />
-
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-          {/* Logo with light halo backdrop */}
+          {/* Logo */}
           <div className="animate-fade-in-up relative mx-auto inline-block">
-            <div className="absolute inset-0 -m-8 rounded-full bg-[#1a3a5c]/5 blur-3xl" />
-            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl drop-shadow-sm" />
+            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl" />
           </div>
-          <p className="animate-fade-in-up animate-delay-200 mt-3 text-base font-medium text-[#1a3a5c]/80 sm:text-lg lg:text-xl">
+          <p className="animate-fade-in-up animate-delay-200 mt-1.5 text-base font-medium text-[#1a3a5c]/80 sm:text-lg lg:text-xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
           <div className="animate-fade-in-up animate-delay-300 mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
