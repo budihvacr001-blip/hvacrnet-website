@@ -12,23 +12,23 @@ export default function Home() {
   return (
     <div>
       {/* Hero Banner */}
-      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-[#E6EDF3]">
+      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-[#333333]">
         {/* Industrial grid pattern */}
         <div className="absolute inset-0 opacity-[0.06]">
           <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a3a5c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
         {/* Subtle radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.4)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
           {/* Logo with light halo backdrop */}
           <div className="animate-fade-in-up relative mx-auto inline-block">
-            <div className="absolute inset-0 -m-8 rounded-full bg-white/40 blur-3xl" />
+            <div className="absolute inset-0 -m-8 rounded-full bg-white/10 blur-3xl" />
             <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl drop-shadow-lg" />
           </div>
-          <p className="animate-fade-in-up animate-delay-200 mt-8 text-lg font-medium text-[#1a3a5c]/80 sm:text-xl lg:text-2xl">
+          <p className="animate-fade-in-up animate-delay-200 mt-8 text-lg font-medium text-white/80 sm:text-xl lg:text-2xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
           <div className="animate-fade-in-up animate-delay-300 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -41,7 +41,7 @@ export default function Home() {
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-md border border-[#1a3a5c]/30 bg-white/50 px-8 py-3.5 text-sm font-semibold text-[#1a3a5c] backdrop-blur-sm transition-all hover:bg-white/80 hover:shadow-md"
+              className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-md"
             >
               Send Inquiry
             </Link>
