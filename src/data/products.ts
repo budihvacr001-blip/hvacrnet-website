@@ -159,10 +159,13 @@ export const categories: Category[] = [
     id: 'pressure-gauges',
     name: 'Pressure Gauges',
     icon: 'Gauge',
-    subCategories: [],
+    subCategories: [
+      { id: 'manifold-gauges', name: 'Manifold Gauges' },
+      { id: 'digital-gauges', name: 'Digital Gauges' },
+    ],
     products: [
-      { id: 'pg-1', categoryId: 'pressure-gauges', name: 'HVAC Manifold Gauge Set', shortDesc: 'Professional gauge sets for system charging and diagnostics.', description: 'Professional manifold gauge sets with R410A/R32 compatibility for system charging, evacuation, and diagnostics.', specs: [{ label: 'Range', value: 'Compound: -30~120psi / High: 0~800psi' }, { label: 'Refrigerant', value: 'R22 / R134a / R410A / R32' }], applications: 'AC installation, maintenance, troubleshooting' },
-      { id: 'pg-2', categoryId: 'pressure-gauges', name: 'Digital Pressure Gauge', shortDesc: 'Digital gauges for precise pressure readings.', description: 'High-accuracy digital pressure gauges with backlight display for precise readings in all lighting conditions.', specs: [{ label: 'Accuracy', value: '±0.5% FS' }, { label: 'Range', value: '0~600psi' }], applications: 'Precision diagnostics, system commissioning' },
+      { id: 'pg-1', categoryId: 'pressure-gauges', subCategoryId: 'manifold-gauges', name: 'HVAC Manifold Gauge Set', shortDesc: 'Professional gauge sets for system charging and diagnostics.', description: 'Professional manifold gauge sets with R410A/R32 compatibility for system charging, evacuation, and diagnostics.', specs: [{ label: 'Range', value: 'Compound: -30~120psi / High: 0~800psi' }, { label: 'Refrigerant', value: 'R22 / R134a / R410A / R32' }], applications: 'AC installation, maintenance, troubleshooting' },
+      { id: 'pg-2', categoryId: 'pressure-gauges', subCategoryId: 'digital-gauges', name: 'Digital Pressure Gauge', shortDesc: 'Digital gauges for precise pressure readings.', description: 'High-accuracy digital pressure gauges with backlight display for precise readings in all lighting conditions.', specs: [{ label: 'Accuracy', value: '±0.5% FS' }, { label: 'Range', value: '0~600psi' }], applications: 'Precision diagnostics, system commissioning' },
     ],
   },
   {
@@ -182,11 +185,15 @@ export const categories: Category[] = [
     id: 'compressors',
     name: 'Compressors',
     icon: 'Engine',
-    subCategories: [],
+    subCategories: [
+      { id: 'rotary-compressors', name: 'Rotary Compressors' },
+      { id: 'scroll-compressors', name: 'Scroll Compressors' },
+      { id: 'reciprocating-compressors', name: 'Reciprocating Compressors' },
+    ],
     products: [
-      { id: 'comp-1', categoryId: 'compressors', name: 'Rotary Compressor', shortDesc: 'Efficient rotary compressors for residential AC.', description: 'High-efficiency rotary compressors for residential and light commercial air conditioning systems.', specs: [{ label: 'Capacity', value: '0.5 - 5 HP' }, { label: 'Refrigerant', value: 'R22 / R410A / R32' }, { label: 'Voltage', value: '220V/1Ph/50Hz or 60Hz' }], applications: 'Split AC, window AC, portable AC' },
-      { id: 'comp-2', categoryId: 'compressors', name: 'Scroll Compressor', shortDesc: 'Scroll compressors for commercial applications.', description: 'Reliable scroll compressors for commercial air conditioning and heat pump applications.', specs: [{ label: 'Capacity', value: '3 - 15 HP' }, { label: 'Refrigerant', value: 'R410A / R32 / R407C' }], applications: 'Commercial AC, VRF systems, heat pumps' },
-      { id: 'comp-3', categoryId: 'compressors', name: 'Reciprocating Compressor', shortDesc: 'Reciprocating compressors for industrial refrigeration.', description: 'Heavy-duty reciprocating compressors for industrial refrigeration and cold storage applications.', specs: [{ label: 'Capacity', value: '2 - 30 HP' }, { label: 'Refrigerant', value: 'R22 / R134a / R404A' }], applications: 'Cold storage, industrial refrigeration, ice machines' },
+      { id: 'comp-1', categoryId: 'compressors', subCategoryId: 'rotary-compressors', name: 'Rotary Compressor', shortDesc: 'Efficient rotary compressors for residential AC.', description: 'High-efficiency rotary compressors for residential and light commercial air conditioning systems.', specs: [{ label: 'Capacity', value: '0.5 - 5 HP' }, { label: 'Refrigerant', value: 'R22 / R410A / R32' }, { label: 'Voltage', value: '220V/1Ph/50Hz or 60Hz' }], applications: 'Split AC, window AC, portable AC' },
+      { id: 'comp-2', categoryId: 'compressors', subCategoryId: 'scroll-compressors', name: 'Scroll Compressor', shortDesc: 'Scroll compressors for commercial applications.', description: 'Reliable scroll compressors for commercial air conditioning and heat pump applications.', specs: [{ label: 'Capacity', value: '3 - 15 HP' }, { label: 'Refrigerant', value: 'R410A / R32 / R407C' }], applications: 'Commercial AC, VRF systems, heat pumps' },
+      { id: 'comp-3', categoryId: 'compressors', subCategoryId: 'reciprocating-compressors', name: 'Reciprocating Compressor', shortDesc: 'Reciprocating compressors for industrial refrigeration.', description: 'Heavy-duty reciprocating compressors for industrial refrigeration and cold storage applications.', specs: [{ label: 'Capacity', value: '2 - 30 HP' }, { label: 'Refrigerant', value: 'R22 / R134a / R404A' }], applications: 'Cold storage, industrial refrigeration, ice machines' },
     ],
   },
 ]
