@@ -9,6 +9,7 @@ export default function Navbar() {
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/products', label: 'Products' },
+    { to: '/about', label: 'About Us' },
     { to: '/contact', label: 'Contact Us' },
   ]
 
@@ -42,7 +43,7 @@ export default function Navbar() {
         {/* Language + Mobile toggle */}
         <div className="flex items-center gap-4">
           <button className="hidden rounded-full border border-gray-300 px-3 py-1 text-xs font-medium text-gray-500 transition-colors hover:border-[#1a3a5c] hover:text-[#1a3a5c] sm:block">
-            EN
+            AR
           </button>
           <button
             className="md:hidden"
@@ -70,7 +71,7 @@ export default function Navbar() {
             </Link>
           ))}
           <button className="mt-2 rounded-full border border-gray-300 px-3 py-1 text-xs font-medium text-gray-500">
-            EN
+            AR
           </button>
         </div>
       )}
