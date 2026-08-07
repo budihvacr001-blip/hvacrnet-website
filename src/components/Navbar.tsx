@@ -29,10 +29,10 @@ export default function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              className={`text-sm font-medium transition-colors ${
+              className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                 isActive(link.to)
-                  ? 'text-[#1a3a5c]'
-                  : 'text-gray-600 hover:text-[#1a3a5c]'
+                  ? 'bg-[#1a3a5c] text-white'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-[#1a3a5c]'
               }`}
             >
               {link.label}
