@@ -12,30 +12,30 @@ export default function Home() {
   return (
     <div>
       {/* Hero Banner */}
-      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-[#333333]">
+      <section className="relative flex h-[55vh] min-h-[380px] items-center justify-center overflow-hidden bg-[#333333]">
         {/* Subtle radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.06)_0%,_transparent_70%)]" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
           {/* Logo with light halo backdrop */}
           <div className="animate-fade-in-up relative mx-auto inline-block">
-            <div className="absolute inset-0 -m-8 rounded-full bg-white/10 blur-3xl" />
-            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl drop-shadow-lg" />
+            <div className="absolute inset-0 -m-6 rounded-full bg-white/8 blur-2xl" />
+            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto h-[12vh] min-h-[80px] max-h-[160px] w-auto drop-shadow-lg" />
           </div>
-          <p className="animate-fade-in-up animate-delay-200 mt-8 text-lg font-medium text-white/80 sm:text-xl lg:text-2xl">
+          <p className="animate-fade-in-up animate-delay-200 mt-3 text-base font-medium text-white/80 sm:text-lg lg:text-xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
-          <div className="animate-fade-in-up animate-delay-300 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="animate-fade-in-up animate-delay-300 mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg"
+              className="inline-flex items-center gap-2 rounded-md bg-accent px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg"
             >
               Explore Products
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-md"
+              className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-md"
             >
               Send Inquiry
             </Link>
