@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, MessageCircle, ChevronRight, Package } from 'lucide-react'
+import { Search, MessageCircle, ChevronRight, Package, LayoutGrid } from 'lucide-react'
 import { categories, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -138,14 +138,18 @@ export default function Products() {
                       <div className="invisible absolute left-full top-0 z-30 ml-1 w-56 rounded-md border border-gray-border bg-white py-2 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
                         <button
                           onClick={() => selectSubCategory(cat.id, 'all')}
-                          className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
+                          className={`block w-full px-4 py-2.5 text-left text-sm font-bold transition-colors ${
                             activeSubCategory === 'all' && isActive
-                              ? 'font-semibold text-accent'
-                              : 'text-gray-700 hover:bg-navy/5'
+                              ? 'bg-navy text-white'
+                              : 'bg-gray-50 text-navy hover:bg-navy/10'
                           }`}
                         >
-                          All {cat.name}
+                          <div className="flex items-center gap-2">
+                            <LayoutGrid className="h-4 w-4" />
+                            All {cat.name}
+                          </div>
                         </button>
+                        <div className="my-1 border-t border-gray-border" />
                         {cat.subCategories.map((sub) => (
                           <button
                             key={sub.id}
