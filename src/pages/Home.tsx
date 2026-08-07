@@ -18,7 +18,7 @@ export default function Home() {
           <div className="animate-fade-in-up relative mx-auto inline-block">
             <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl" />
           </div>
-          <p className="animate-fade-in-up animate-delay-200 mt-1.5 text-base font-semibold text-[#1a3a5c] sm:text-lg lg:text-xl">
+          <p className="animate-fade-in-up animate-delay-200 mt-1.5 text-base text-[#1a3a5c] sm:text-lg lg:text-xl">
             Your One-Stop HVACR Parts Supplier from China
           </p>
           <div className="animate-fade-in-up animate-delay-300 mt-6 flex justify-center">
