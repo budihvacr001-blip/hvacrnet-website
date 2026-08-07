@@ -199,14 +199,46 @@ export default function Products() {
               </div>
             )}
 
-            {/* No category selected */}
+            {/* Category Banner */}
+            {activeCategory && currentCategory && (
+              <div className="mb-6 overflow-hidden rounded-lg bg-gradient-to-r from-navy to-navy/80 p-6 sm:p-8">
+                <div className="flex items-center gap-6">
+                  <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                    <Package className="h-10 w-10 text-white/80" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">{currentCategory.name}</h2>
+                    <p className="mt-1 text-white/70">
+                      {currentCategory.products.length} products available
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* No category selected - Show category grid */}
             {!activeCategory ? (
-              <div className="flex flex-col items-center justify-center py-32 text-center">
-                <Package className="mb-4 h-16 w-16 text-gray-border" />
-                <h2 className="text-xl font-semibold text-gray-700">Select a category</h2>
-                <p className="mt-2 text-gray-text">
-                  Choose a product category from the left menu to browse our products
-                </p>
+              <div>
+                <h2 className="mb-6 text-xl font-semibold text-gray-700">Browse by Category</h2>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => selectCategory(cat.id)}
+                      className="group overflow-hidden rounded-lg border border-gray-border bg-white transition-all hover:border-navy hover:shadow-md"
+                    >
+                      <div className="aspect-video bg-gradient-to-br from-navy/10 to-accent/10 flex items-center justify-center">
+                        <Package className="h-12 w-12 text-navy/30 transition-transform group-hover:scale-110" />
+                      </div>
+                      <div className="p-4 text-left">
+                        <h3 className="font-semibold text-gray-700 group-hover:text-navy">
+                          {cat.name}
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-text">{cat.products.length} products</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             ) : filteredProducts.length > 0 ? (
               <>
