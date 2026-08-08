@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Package, Layers, Warehouse, Award, ArrowRight } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const advantages = [
   { icon: Package, title: 'Low MOQ', desc: 'Start from 1 piece — no forced overstocking' },
@@ -11,6 +12,11 @@ const advantages = [
 export default function Home() {
   return (
     <div>
+      <SEO
+        title="HVACR NET - Your One-Stop HVACR Parts Supplier from China"
+        description="Professional HVACR parts supplier with 20 years of trade expertise. Low MOQ, ready stock, one-stop sourcing for copper tubes, fittings, valves, and more."
+        url="/"
+      />
       {/* Hero Banner */}
       <section className="relative flex h-[55vh] min-h-[380px] items-center justify-center overflow-hidden bg-white">
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">

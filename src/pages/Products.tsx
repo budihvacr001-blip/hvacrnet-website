@@ -4,6 +4,26 @@ import { Search, MessageCircle, ChevronRight, Package, LayoutGrid } from 'lucide
 import { categories, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
+import SEO from '../components/SEO'
+
+// Schema.org structured data for products
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'HVACR Products',
+  description: 'Complete range of HVAC and refrigeration parts and components',
+  numberOfItems: categories.reduce((acc, cat) => acc + cat.products.length, 0),
+  itemListElement: categories.map((cat, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: cat.name,
+      description: `${cat.products.length} products in this category`,
+      category: cat.name,
+    },
+  })),
+}
 
 export default function Products() {
   const navigate = useNavigate()
@@ -60,7 +80,19 @@ export default function Products() {
   const currentSubCategory = currentCategory?.subCategories.find((s) => s.id === activeSubCategory)
 
   return (
-    <div className="min-h-screen bg-gray-bg">
+    <>
+      <SEO
+        title="HVACR Products - HVACR Parts & Components | HVACR NET"
+        description="Browse our comprehensive range of HVACR parts including copper tubes, fittings, valves, insulation materials, cables, mounting accessories and more. One-stop sourcing from China."
+        url="/products"
+        ogType="website"
+      />
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <div className="min-h-screen bg-gray-bg">
       {/* Header Banner */}
       <section className="bg-navy py-10 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -307,6 +339,7 @@ export default function Products() {
           onInquire={handleInquire}
         />
       )}
-    </div>
+      </div>
+    </>
   )
 }

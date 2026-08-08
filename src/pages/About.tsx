@@ -1,5 +1,12 @@
+import SEO from '../components/SEO'
+
 export default function About() {
   return (
+    <>
+    <SEO
+      title="About HVACR NET - Your Professional HVACR Sourcing Partner"
+      description="Learn about HVACR NET, your trusted sourcing partner for HVAC and refrigeration parts. 20 years of international trade expertise, ready stock, and flexible sourcing solutions."
+    />
     <div>
       {/* Page Header */}
       <section className="bg-navy py-16">
@@ -84,5 +91,6 @@ export default function About() {
         </div>
       </section>
     </div>
+    </>
   )
 }

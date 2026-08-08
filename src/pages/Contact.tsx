@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const countries = [
   'United States', 'Canada', 'United Kingdom', 'Germany', 'France', 'Italy', 'Spain',
@@ -99,7 +100,20 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-bg">
+    <>
+      <SEO
+        title="Contact Us | HVACR NET - Get a Quote for HVACR Parts"
+        description="Contact HVACR NET for quotes, product inquiries, and sourcing requests. Email, WhatsApp, or fill out our inquiry form. We respond within 24 hours."
+        canonical="/contact"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact HVACR NET",
+          description: "Contact page for HVACR NET refrigeration equipment supplier",
+          url: "https://www.hvacrnet.com/contact",
+        }}
+      />
+      <div className="min-h-screen bg-gray-bg">
       {/* Header */}
       <section className="bg-navy py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -333,5 +347,6 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   )
 }

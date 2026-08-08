@@ -1,3 +1,4 @@
+import { HelmetProvider } from 'react-helmet-async'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
@@ -8,17 +9,21 @@ import Contact from './pages/Contact'
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <ScrollToTop />
-      <Navbar />
-      <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-    </div>
+    <HelmetProvider>
+      <div className="flex min-h-screen flex-col">
+        <ScrollToTop />
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:categorySlug" element={<Products />} />
+            <Route path="/products/:categorySlug/:subCategorySlug" element={<Products />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+      </div>
+    </HelmetProvider>
   )
 }

@@ -1,0 +1,9 @@
+# https://www.hvacrnet.com/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.hvacrnet.com/sitemap.xml
+
+# Disallow admin or private paths if any
+Disallow: /api/
+Disallow: /admin/
