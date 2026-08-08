@@ -52,7 +52,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
       {/* Content */}
       <div className="p-4">
         <h3 className="font-semibold text-[#1a3a5c] mb-2">{product.name}</h3>
-        <p className="text-sm text-gray-600 mb-4 line-clamp-2">{product.shortDesc}</p>
+        <p className="text-sm text-gray-600 mb-4 line-clamp-4">{product.shortDesc}</p>
         <div className="flex gap-2">
           <button
             onClick={() => onInquire(product.name)}
