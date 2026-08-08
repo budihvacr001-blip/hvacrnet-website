@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { X } from 'lucide-react'
 import type { Product } from '../data/products'
 
@@ -8,6 +9,8 @@ interface Props {
 }
 
 export default function ProductModal({ product, onClose, onInquire }: Props) {
+  const [mainImage, setMainImage] = useState(product.images?.[0] || '')
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
@@ -23,17 +26,38 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
           <X className="h-5 w-5" />
         </button>
 
-        {/* Image area */}
-        <div className="flex h-56 items-center justify-center bg-gray-bg">
-          <div className="text-center">
-            <div className="mx-auto mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-navy/10 text-navy">
-              <svg className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-2.25-1.125A2.25 2.25 0 0016.5 6h-1.75a2.25 2.25 0 01-1.591-.659l-1.591-1.59A2.25 2.25 0 009.75 3H7.5a2.25 2.25 0 00-1.591.659L4.318 5.25A2.25 2.25 0 012.727 6H1.5A1.5 1.5 0 000 7.5v9a1.5 1.5 0 001.5 1.5h1.227a2.25 2.25 0 001.591.659l1.591 1.59a2.25 2.25 0 001.591.659H9.75a2.25 2.25 0 001.591-.659l1.591-1.59A2.25 2.25 0 0114.523 18h1.727A1.5 1.5 0 0018 16.5V7.5a1.5 1.5 0 00-1.5-1.5" />
-              </svg>
+        {/* Main Image */}
+        <div className="flex h-64 items-center justify-center bg-gray-bg overflow-hidden">
+          {mainImage ? (
+            <img src={mainImage} alt={product.name} className="w-full h-full object-cover" />
+          ) : (
+            <div className="text-center">
+              <div className="mx-auto mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-navy/10 text-navy">
+                <svg className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-2.25-1.125A2.25 2.25 0 0016.5 6h-1.75a2.25 2.25 0 01-1.591-.659l-1.591-1.59A2.25 2.25 0 009.75 3H7.5a2.25 2.25 0 00-1.591.659L4.318 5.25A2.25 2.25 0 012.727 6H1.5A1.5 1.5 0 000 7.5v9a1.5 1.5 0 001.5 1.5h1.227a2.25 2.25 0 001.591.659l1.591 1.59a2.25 2.25 0 001.591.659H9.75a2.25 2.25 0 001.591-.659l1.591-1.59A2.25 2.25 0 0114.523 18h1.727A1.5 1.5 0 0018 16.5V7.5a1.5 1.5 0 00-1.5-1.5" />
+                </svg>
+              </div>
+              <span className="text-sm text-gray-text">Product Image</span>
             </div>
-            <span className="text-sm text-gray-text">Product Image</span>
-          </div>
+          )}
         </div>
+
+        {/* Thumbnails */}
+        {product.images && product.images.length > 1 && (
+          <div className="flex gap-2 px-6 py-3 bg-gray-bg border-t border-gray-border">
+            {product.images.slice(0, 4).map((img, idx) => (
+              <button
+                key={idx}
+                onClick={() => setMainImage(img)}
+                className={`w-16 h-16 rounded border-2 overflow-hidden flex-shrink-0 transition-all ${
+                  mainImage === img ? 'border-[#1a3a5c]' : 'border-gray-200 hover:border-gray-300'
+                }`}
+              >
+                <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Content */}
         <div className="p-6 sm:p-8">
