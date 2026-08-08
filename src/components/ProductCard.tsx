@@ -24,7 +24,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Main Image */}
-      <div className="bg-gray-50 h-48 flex items-center justify-center overflow-hidden">
+      <div className="bg-gray-50 aspect-[4/3] flex items-center justify-center overflow-hidden">
         {mainImage ? (
           <img src={mainImage} alt={product.name} className="w-full h-full object-cover" />
         ) : (
