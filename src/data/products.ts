@@ -30,13 +30,11 @@ export const categories: Category[] = [
     icon: 'Circle',
     subCategories: [
       { id: 'jumbo-coils', name: 'Jumbo Coils' },
-      { id: 'small-coils', name: 'Small Coils' },
       { id: 'pancake-coils', name: 'Pancake Coils' },
       { id: 'straight-tubes', name: 'Straight Tubes' },
     ],
     products: [
       { id: 'ct-1', categoryId: 'copper-tubes', subCategoryId: 'jumbo-coils', name: 'ACR Copper Jumbo Coil', shortDesc: 'Seamless copper coils for HVAC systems, available in various diameters.', description: 'High-quality seamless copper jumbo coils designed for air conditioning and refrigeration systems. Manufactured to international standards with excellent thermal conductivity.', specs: [{ label: 'Outer Diameter', value: '6.35mm - 54mm' }, { label: 'Wall Thickness', value: '0.4mm - 2.5mm' }, { label: 'Length', value: 'Customizable up to 500m' }, { label: 'Material', value: 'C12200 (TP2)' }], applications: 'Air conditioning systems, refrigeration piping, heat exchangers' },
-      { id: 'ct-2', categoryId: 'copper-tubes', subCategoryId: 'small-coils', name: 'Small Copper Coils', shortDesc: 'Compact coils for residential and light commercial applications.', description: 'Precision-drawn small copper coils ideal for residential AC units and light commercial refrigeration.', specs: [{ label: 'Outer Diameter', value: '3mm - 19.05mm' }, { label: 'Wall Thickness', value: '0.3mm - 1.5mm' }, { label: 'Material', value: 'C12200 (TP2)' }], applications: 'Residential air conditioners, small refrigeration units' },
       { id: 'ct-3', categoryId: 'copper-tubes', subCategoryId: 'pancake-coils', name: 'Pancake Copper Coils', shortDesc: 'Pre-charged and ready-to-use coils for split AC installation.', description: 'Convenient pancake-style copper coils, pre-insulated and ready for split air conditioner installation.', specs: [{ label: 'Sizes', value: '1/4" - 7/8"' }, { label: 'Length', value: '3m / 5m standard' }, { label: 'Material', value: 'C12200 (TP2)' }], applications: 'Split air conditioner installation, mini-split systems' },
       { id: 'ct-4', categoryId: 'copper-tubes', subCategoryId: 'straight-tubes', name: 'Straight Copper Tubes', shortDesc: 'Rigid straight tubes for industrial piping applications.', description: 'Hard-drawn straight copper tubes for industrial HVAC and refrigeration piping systems.', specs: [{ label: 'Outer Diameter', value: '6.35mm - 108mm' }, { label: 'Length', value: '1m - 6m' }, { label: 'Temper', value: 'Hard / Half-hard' }], applications: 'Industrial refrigeration, commercial HVAC systems' },
     ],
