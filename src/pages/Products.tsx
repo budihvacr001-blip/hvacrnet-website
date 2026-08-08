@@ -293,7 +293,7 @@ export default function Products() {
                 <p className="mb-6 text-sm text-gray-text">
                   {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
                 </p>
-                <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
                   {filteredProducts.map((product) => (
                     <ProductCard
                       key={product.id}
