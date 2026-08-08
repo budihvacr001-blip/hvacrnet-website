@@ -177,7 +177,7 @@ export default function Products() {
                             : 'text-gray-400'
                         }`}
                       >
-                        {cat.products.length}
+                        {cat.subCategories.length}
                       </span>
                     </button>
 

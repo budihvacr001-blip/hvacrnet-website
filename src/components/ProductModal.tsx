@@ -15,7 +15,7 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
       <div
-        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white shadow-2xl"
+        className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -61,22 +61,75 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
 
         {/* Content */}
         <div className="p-6 sm:p-8">
+          {/* Product Name */}
           <h2 className="text-2xl font-bold text-navy">{product.name}</h2>
-          <p className="mt-3 leading-relaxed text-gray-700">{product.description}</p>
 
-          {/* Specs table */}
-          {product.specs && product.specs.length > 0 && (
+          {/* Description */}
+          <div className="mt-3 leading-relaxed text-gray-700">
+            {product.description.split('\n\n').map((para, i) => (
+              <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
+            ))}
+          </div>
+
+          {/* Key Features */}
+          {product.features && product.features.length > 0 && (
             <div className="mt-6">
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
-                Specifications
+                Key Features
+              </h3>
+              <ul className="space-y-1.5">
+                {product.features.map((f, i) => (
+                  <li key={i} className="flex items-start text-sm text-gray-700">
+                    <span className="mr-2 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#e8722a]" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Material & Standard */}
+          {product.materialStandard && product.materialStandard.length > 0 && (
+            <div className="mt-6">
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
+                Material &amp; Standard
               </h3>
               <div className="overflow-hidden rounded-lg border border-gray-border">
                 <table className="w-full text-sm">
                   <tbody>
-                    {product.specs.map((spec, i) => (
+                    {product.materialStandard.map((item, i) => (
                       <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                        <td className="px-4 py-2.5 font-medium text-navy">{spec.label}</td>
-                        <td className="px-4 py-2.5 text-gray-700">{spec.value}</td>
+                        <td className="px-4 py-2.5 font-medium text-navy w-1/3">{item.label}</td>
+                        <td className="px-4 py-2.5 text-gray-700">{item.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* Specifications Table */}
+          {product.specTable && product.specTable.rows.length > 0 && (
+            <div className="mt-6">
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
+                Specifications
+              </h3>
+              <div className="overflow-x-auto rounded-lg border border-gray-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-navy text-white">
+                      {product.specTable.headers.map((h, i) => (
+                        <th key={i} className="px-3 py-2.5 text-left font-medium whitespace-nowrap">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {product.specTable.rows.map((row, i) => (
+                      <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
+                        {row.map((cell, j) => (
+                          <td key={j} className="px-3 py-2 whitespace-nowrap text-gray-700">{cell}</td>
+                        ))}
                       </tr>
                     ))}
                   </tbody>
