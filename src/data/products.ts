@@ -50,6 +50,7 @@ export const categories: Category[] = [
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+1',
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+2',
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+3',
+          'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+4',
         ],
         features: [
           'Level-wound for smooth dispensing — no tangles during installation',
@@ -114,6 +115,7 @@ export const categories: Category[] = [
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+1',
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+2',
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+3',
+          'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+4',
         ],
         features: [
           'O60 soft annealed temper for easy field bending',
@@ -171,6 +173,7 @@ export const categories: Category[] = [
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+1',
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+2',
           'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+3',
+          'https://placehold.co/200x200/e2e8f0/1a3a5c?text=View+4',
         ],
         features: [
           'H80 hard drawn temper for structural rigidity',
