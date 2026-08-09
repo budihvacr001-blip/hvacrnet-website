@@ -45,7 +45,7 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
         {/* Thumbnails */}
         {product.images && product.images.length > 1 && (
           <div className="flex gap-2 px-6 py-3 bg-gray-bg border-t border-gray-border">
-            {product.images.slice(0, 4).map((img, idx) => (
+            {product.images.slice(0, 5).map((img, idx) => (
               <button
                 key={idx}
                 onClick={() => setMainImage(img)}

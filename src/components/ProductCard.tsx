@@ -35,7 +35,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
       {/* Thumbnails */}
       {product.images && product.images.length > 1 && (
         <div className="flex gap-2 px-3 py-2 bg-gray-50 border-t border-gray-100">
-          {product.images.slice(0, 4).map((img, idx) => (
+          {product.images.slice(0, 5).map((img, idx) => (
             <button
               key={idx}
               onClick={() => setMainImage(img)}
