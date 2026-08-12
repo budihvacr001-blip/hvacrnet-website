@@ -252,7 +252,7 @@ export default function Products() {
                                 }}
                                 className={`flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
                                   sub.isOverview
-                                    ? 'bg-navy text-white font-medium hover:bg-navy-light'
+                                    ? 'font-bold text-gray-900 hover:bg-navy/5'
                                     : activeSubCategory === sub.id && !activeThirdCategory
                                     ? 'font-semibold text-accent'
                                     : 'text-gray-700 hover:bg-navy/5'
@@ -279,7 +279,7 @@ export default function Products() {
                                       onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
                                       className={`block w-full rounded px-3 py-2 text-left text-sm transition-colors ${
                                         third.isOverview
-                                          ? 'bg-navy text-white font-medium hover:bg-navy-light'
+                                          ? 'font-bold text-gray-900 hover:bg-navy/5'
                                           : activeThirdCategory === third.id
                                           ? 'font-semibold text-accent'
                                           : 'text-gray-700 hover:bg-navy/5'
