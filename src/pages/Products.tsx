@@ -30,7 +30,6 @@ export default function Products() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [activeSubCategory, setActiveSubCategory] = useState<string>('all')
-  const [activeThirdCategory, setActiveThirdCategory] = useState<string>('all')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   const allProducts = useMemo(() => {
@@ -46,9 +45,6 @@ export default function Products() {
     if (activeSubCategory !== 'all') {
       products = products.filter((p) => p.subCategoryId === activeSubCategory)
     }
-    if (activeThirdCategory !== 'all') {
-      products = products.filter((p) => p.thirdCategoryId === activeThirdCategory)
-    }
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase()
       products = products.filter(
@@ -59,30 +55,21 @@ export default function Products() {
       )
     }
     return products
-  }, [allProducts, activeCategory, activeSubCategory, activeThirdCategory, searchQuery])
+  }, [allProducts, activeCategory, activeSubCategory, searchQuery])
 
   const selectCategory = (catId: string) => {
     setActiveCategory(catId)
     setActiveSubCategory('all')
-    setActiveThirdCategory('all')
   }
 
   const selectSubCategory = (catId: string, subId: string) => {
     setActiveCategory(catId)
     setActiveSubCategory(subId)
-    setActiveThirdCategory('all')
-  }
-
-  const selectThirdCategory = (catId: string, subId: string, thirdId: string) => {
-    setActiveCategory(catId)
-    setActiveSubCategory(subId)
-    setActiveThirdCategory(thirdId)
   }
 
   const selectAll = () => {
     setActiveCategory(null)
     setActiveSubCategory('all')
-    setActiveThirdCategory('all')
   }
 
   const handleInquire = (productName: string) => {
@@ -213,56 +200,19 @@ export default function Products() {
                           </div>
                         </button>
                         <div className="my-1 border-t border-gray-border" />
-                        {cat.subCategories.map((sub) => {
-                          const hasThirdLevel = sub.subCategories && sub.subCategories.length > 0
-                          return (
-                            <div key={sub.id} className="group/sub relative">
-                              <button
-                                onClick={() => selectSubCategory(cat.id, sub.id)}
-                                className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
-                                  activeSubCategory === sub.id && activeThirdCategory === 'all'
-                                    ? 'font-semibold text-accent'
-                                    : 'text-gray-700 hover:bg-navy/5'
-                                }`}
-                              >
-                                <div className="flex items-center justify-between">
-                                  <span>{sub.name}</span>
-                                  {hasThirdLevel && (
-                                    <ChevronRight className="h-3 w-3 transition-transform group-hover/sub:rotate-90" />
-                                  )}
-                                </div>
-                              </button>
-                              {hasThirdLevel && (
-                                <div className="invisible absolute left-full top-0 z-40 ml-1 w-48 rounded-md border border-gray-border bg-white py-2 shadow-lg opacity-0 transition-all group-hover/sub:visible group-hover/sub:opacity-100">
-                                  <button
-                                    onClick={() => selectSubCategory(cat.id, sub.id)}
-                                    className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
-                                      activeSubCategory === sub.id && activeThirdCategory === 'all'
-                                        ? 'font-semibold text-accent'
-                                        : 'text-gray-700 hover:bg-navy/5'
-                                    }`}
-                                  >
-                                    All {sub.name}
-                                  </button>
-                                  <div className="my-1 border-t border-gray-border" />
-                                  {sub.subCategories!.map((third) => (
-                                    <button
-                                      key={third.id}
-                                      onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
-                                      className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
-                                        activeThirdCategory === third.id
-                                          ? 'font-semibold text-accent'
-                                          : 'text-gray-700 hover:bg-navy/5'
-                                      }`}
-                                    >
-                                      {third.name}
-                                    </button>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          )
-                        })}
+                        {cat.subCategories.map((sub) => (
+                        <button
+                          key={sub.id}
+                          onClick={() => selectSubCategory(cat.id, sub.id)}
+                          className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
+                            activeSubCategory === sub.id
+                              ? 'font-semibold text-accent'
+                              : 'text-gray-700 hover:bg-navy/5'
+                          }`}
+                        >
+                          {sub.name}
+                        </button>
+                      ))}
                       </div>
                     )}
                   </div>
@@ -301,14 +251,6 @@ export default function Products() {
                     </button>
                   </>
                 )}
-                {activeThirdCategory !== 'all' && currentSubCategory?.subCategories && (
-                  <>
-                    <span>/</span>
-                    <span className="text-navy">
-                      {currentSubCategory.subCategories.find((t) => t.id === activeThirdCategory)?.name}
-                    </span>
-                  </>
-                )}
               </div>
             )}
 
@@ -329,9 +271,7 @@ export default function Products() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">
-                      {activeThirdCategory !== 'all' && currentSubCategory?.subCategories
-                        ? currentSubCategory.subCategories.find((t) => t.id === activeThirdCategory)?.name
-                        : activeSubCategory !== 'all' && currentSubCategory
+                      {activeSubCategory !== 'all' && currentSubCategory
                         ? currentSubCategory.name
                         : currentCategory.name}
                     </h2>
