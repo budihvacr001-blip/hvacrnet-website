@@ -331,7 +331,9 @@ export default function Products() {
             {activeCategory && currentCategory && (
               <div className="mb-6 overflow-hidden rounded-lg bg-gradient-to-r from-navy to-navy/80 p-6 sm:p-8">
                 <h2 className="text-2xl font-bold text-white">
-                  {activeSubCategory !== 'all' && currentSubCategory
+                  {currentThirdCategory
+                    ? currentThirdCategory.name
+                    : activeSubCategory !== 'all' && currentSubCategory
                     ? currentSubCategory.name
                     : currentCategory.name}
                 </h2>
