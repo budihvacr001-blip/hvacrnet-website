@@ -29,7 +29,7 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
         {/* Main Image */}
         <div className="flex aspect-[4/3] items-center justify-center bg-gray-bg overflow-hidden">
           {mainImage ? (
-            <img src={mainImage} alt={product.name} className="w-full h-full object-cover" />
+            <img src={mainImage} alt={product.name} className="w-full h-full object-contain" />
           ) : (
             <div className="text-center">
               <div className="mx-auto mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-navy/10 text-navy">
@@ -53,7 +53,7 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
                   mainImage === img ? 'border-[#1a3a5c]' : 'border-gray-200 hover:border-gray-300'
                 }`}
               >
-                <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-cover" />
+                <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-contain" />
               </button>
             ))}
           </div>

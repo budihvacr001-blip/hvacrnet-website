@@ -26,7 +26,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
       {/* Main Image */}
       <div className="bg-gray-50 aspect-[4/3] flex items-center justify-center overflow-hidden">
         {mainImage ? (
-          <img src={mainImage} alt={product.name} className="w-full h-full object-cover" />
+          <img src={mainImage} alt={product.name} className="w-full h-full object-contain" />
         ) : (
           <div className="text-gray-400 text-sm">No Image</div>
         )}
@@ -43,7 +43,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
                 mainImage === img ? 'border-[#1a3a5c]' : 'border-gray-200 hover:border-gray-300'
               }`}
             >
-              <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-cover" />
+              <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-contain" />
             </button>
           ))}
         </div>
