@@ -364,7 +364,7 @@ export default function Products() {
             )}
 
             {/* Comparison Table for Overview */}
-            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && solenoidValvesComparison && activeCategory === 'solenoid-valves' && (
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && solenoidValvesComparison && activeSubCategory === 'solenoid-valves' && (
               <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
                 <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
                   <h3 className="text-xl font-bold text-white">{solenoidValvesComparison.title}</h3>
@@ -504,7 +504,7 @@ export default function Products() {
             )}
 
             {/* Ball Valves Comparison Table for Overview */}
-            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && ballValvesComparison && activeCategory === 'ball-valves' && (
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && ballValvesComparison && activeSubCategory === 'ball-valves' && (
               <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
                 <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
                   <h3 className="text-xl font-bold text-white">{ballValvesComparison.title}</h3>
