@@ -31,6 +31,7 @@ export interface Category {
   id: string
   name: string
   icon: string
+  bannerImage?: string
   subCategories: SubCategory[]
   products: Product[]
 }
@@ -40,6 +41,7 @@ export const categories: Category[] = [
     id: 'copper-tubes',
     name: 'Copper Tubes',
     icon: 'Circle',
+    bannerImage: '/images/copper-tubes-banner.jpg',
     subCategories: [
       { id: 'jumbo-coils', name: 'Jumbo Coils' },
       { id: 'pancake-coils', name: 'Pancake Coils' },

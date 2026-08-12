@@ -317,7 +317,15 @@ export default function Products() {
               <div className="mb-6 overflow-hidden rounded-lg bg-gradient-to-r from-navy to-navy/80 p-6 sm:p-8">
                 <div className="flex items-center gap-6">
                   <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                    <Package className="h-10 w-10 text-white/80" />
+                    {currentCategory.bannerImage ? (
+                      <img
+                        src={currentCategory.bannerImage}
+                        alt={currentCategory.name}
+                        className="h-full w-full rounded-lg object-cover"
+                      />
+                    ) : (
+                      <Package className="h-10 w-10 text-white/80" />
+                    )}
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">
