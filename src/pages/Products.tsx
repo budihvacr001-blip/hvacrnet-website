@@ -30,6 +30,7 @@ export default function Products() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [activeSubCategory, setActiveSubCategory] = useState<string>('all')
+  const [activeThirdCategory, setActiveThirdCategory] = useState<string | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   const allProducts = useMemo(() => {
@@ -45,6 +46,11 @@ export default function Products() {
     if (activeSubCategory !== 'all') {
       products = products.filter((p) => p.subCategoryId === activeSubCategory)
     }
+
+    if (activeThirdCategory) {
+      products = products.filter((p) => p.thirdCategoryId === activeThirdCategory)
+    }
+
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase()
       products = products.filter(
@@ -55,16 +61,24 @@ export default function Products() {
       )
     }
     return products
-  }, [allProducts, activeCategory, activeSubCategory, searchQuery])
+  }, [allProducts, activeCategory, activeSubCategory, activeThirdCategory, searchQuery])
 
   const selectCategory = (catId: string) => {
     setActiveCategory(catId)
     setActiveSubCategory('all')
+    setActiveThirdCategory(null)
   }
 
   const selectSubCategory = (catId: string, subId: string) => {
     setActiveCategory(catId)
     setActiveSubCategory(subId)
+    setActiveThirdCategory(null)
+  }
+
+  const selectThirdCategory = (catId: string, subId: string, thirdId: string) => {
+    setActiveCategory(catId)
+    setActiveSubCategory(subId)
+    setActiveThirdCategory(thirdId)
   }
 
   const selectAll = () => {
@@ -79,6 +93,9 @@ export default function Products() {
   const currentCategory = activeCategory ? categories.find((c) => c.id === activeCategory) : null
   const currentSubCategory = activeSubCategory !== 'all' && currentCategory
     ? currentCategory.subCategories.find((s) => s.id === activeSubCategory)
+    : null
+  const currentThirdCategory = activeThirdCategory && currentSubCategory?.subCategories
+    ? currentSubCategory.subCategories.find((t) => t.id === activeThirdCategory)
     : null
 
   return (
@@ -200,19 +217,59 @@ export default function Products() {
                           </div>
                         </button>
                         <div className="my-1 border-t border-gray-border" />
-                        {cat.subCategories.map((sub) => (
-                        <button
-                          key={sub.id}
-                          onClick={() => selectSubCategory(cat.id, sub.id)}
-                          className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
-                            activeSubCategory === sub.id
-                              ? 'font-semibold text-accent'
-                              : 'text-gray-700 hover:bg-navy/5'
-                          }`}
-                        >
-                          {sub.name}
-                        </button>
-                      ))}
+                        {cat.subCategories.map((sub) => {
+                          const hasThirdLevel = sub.subCategories && sub.subCategories.length > 0
+                          return (
+                            <div key={sub.id} className="group/sub relative">
+                              <button
+                                onClick={() => selectSubCategory(cat.id, sub.id)}
+                                className={`flex w-full items-center gap-2 px-4 py-2 text-left text-sm transition-colors ${
+                                  activeSubCategory === sub.id && !activeThirdCategory
+                                    ? 'font-semibold text-accent'
+                                    : 'text-gray-700 hover:bg-navy/5'
+                                }`}
+                              >
+                                {hasThirdLevel && (
+                                  <ChevronRight className="h-3 w-3 shrink-0 transition-transform group-hover/sub:rotate-90" />
+                                )}
+                                {!hasThirdLevel && <span className="w-3 shrink-0" />}
+                                <span className="flex-1">{sub.name}</span>
+                              </button>
+                              {/* Third-level dropdown */}
+                              {hasThirdLevel && (
+                                <div className="invisible absolute left-full top-0 z-40 ml-1 w-56 rounded-md border border-gray-border bg-white py-2 shadow-lg opacity-0 transition-all group-hover/sub:visible group-hover/sub:opacity-100">
+                                  <button
+                                    onClick={() => selectSubCategory(cat.id, sub.id)}
+                                    className={`block w-full px-4 py-2.5 text-left text-sm font-bold transition-colors ${
+                                      activeSubCategory === sub.id && !activeThirdCategory
+                                        ? 'bg-navy text-white'
+                                        : 'bg-gray-50 text-navy hover:bg-navy/10'
+                                    }`}
+                                  >
+                                    <div className="flex items-center gap-2">
+                                      <LayoutGrid className="h-4 w-4" />
+                                      All {sub.name}
+                                    </div>
+                                  </button>
+                                  <div className="my-1 border-t border-gray-border" />
+                                  {sub.subCategories!.map((third) => (
+                                    <button
+                                      key={third.id}
+                                      onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
+                                      className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
+                                        activeThirdCategory === third.id
+                                          ? 'font-semibold text-accent'
+                                          : 'text-gray-700 hover:bg-navy/5'
+                                      }`}
+                                    >
+                                      {third.name}
+                                    </button>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          )
+                        })}
                       </div>
                     )}
                   </div>
@@ -251,27 +308,31 @@ export default function Products() {
                     </button>
                   </>
                 )}
+                {currentThirdCategory && activeThirdCategory && (
+                  <>
+                    <span>/</span>
+                    <button
+                      onClick={() => selectThirdCategory(currentCategory!.id, currentSubCategory!.id, currentThirdCategory.id)}
+                      className="hover:text-navy"
+                    >
+                      {currentThirdCategory.name}
+                    </button>
+                  </>
+                )}
               </div>
             )}
 
             {/* Category Banner */}
             {activeCategory && currentCategory && (
               <div className="mb-6 overflow-hidden rounded-lg bg-gradient-to-r from-navy to-navy/80 p-6 sm:p-8">
-                <div className="flex items-center gap-6">
-                  <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                    <Package className="h-10 w-10 text-white/80" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-white">
-                      {activeSubCategory !== 'all' && currentSubCategory
-                        ? currentSubCategory.name
-                        : currentCategory.name}
-                    </h2>
-                    <p className="mt-1 text-white/70">
-                      {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} available
-                    </p>
-                  </div>
-                </div>
+                <h2 className="text-2xl font-bold text-white">
+                  {activeSubCategory !== 'all' && currentSubCategory
+                    ? currentSubCategory.name
+                    : currentCategory.name}
+                </h2>
+                <p className="mt-1 text-white/70">
+                  {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} available
+                </p>
               </div>
             )}
 
