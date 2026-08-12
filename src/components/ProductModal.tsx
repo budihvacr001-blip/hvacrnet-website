@@ -88,6 +88,35 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
             </div>
           )}
 
+          {/* Available Models */}
+          {product.availableModels && product.availableModels.rows.length > 0 && (
+            <div className="mt-6">
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
+                Available Models
+              </h3>
+              <div className="overflow-x-auto rounded-lg border border-gray-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-navy text-white">
+                      {product.availableModels.headers.map((h, i) => (
+                        <th key={i} className="px-3 py-2.5 text-left font-medium whitespace-nowrap">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {product.availableModels.rows.map((row, i) => (
+                      <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
+                        {row.map((cell, j) => (
+                          <td key={j} className="px-3 py-2 whitespace-nowrap text-gray-700">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
           {/* Material & Standard */}
           {product.materialStandard && product.materialStandard.length > 0 && (
             <div className="mt-6">
