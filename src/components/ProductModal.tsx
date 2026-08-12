@@ -167,6 +167,27 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
             </div>
           )}
 
+          {/* Technical Parameters */}
+          {product.specs && product.specs.length > 0 && (
+            <div className="mt-6">
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
+                Technical Parameters
+              </h3>
+              <div className="overflow-hidden rounded-lg border border-gray-border">
+                <table className="w-full text-sm">
+                  <tbody>
+                    {product.specs.map((item, i) => (
+                      <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
+                        <td className="px-4 py-2.5 font-medium text-navy w-1/3">{item.label}</td>
+                        <td className="px-4 py-2.5 text-gray-700">{item.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
           {/* Applications */}
           {product.applications && (
             <div className="mt-6">
