@@ -630,7 +630,7 @@ export const categories: Category[] = [
         id: 'solenoid-valves',
         name: 'Solenoid Valves',
         subCategories: [
-          { id: 'solenoid-valves-overview', name: '📊 Category Overview', isOverview: true },
+          { id: 'solenoid-valves-overview', name: 'Category Overview', isOverview: true },
           { id: 'hvd-standard', name: 'HVD – Standard (ODF)' },
           { id: 'hvp-high-flow', name: 'HVP – High Flow (Flanged)' },
           { id: 'hv-clamping-small', name: 'HV – Clamping, Small Port' },

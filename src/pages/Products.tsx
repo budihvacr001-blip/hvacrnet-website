@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, LayoutGrid } from 'lucide-react'
 import { categories, solenoidValvesComparison, type Product } from '../data/products'
@@ -80,6 +80,18 @@ export default function Products() {
     setActiveSubCategory(subId)
     setActiveThirdCategory(thirdId)
   }
+
+  // Scroll to product card when third category is selected from comparison table
+  useEffect(() => {
+    if (activeThirdCategory && activeThirdCategory !== 'solenoid-valves-overview') {
+      setTimeout(() => {
+        const card = document.getElementById(`product-${activeThirdCategory}`)
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
+  }, [activeThirdCategory])
 
   const selectAll = () => {
     setActiveCategory(null)
@@ -262,7 +274,9 @@ export default function Products() {
                                       key={third.id}
                                       onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
                                       className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
-                                        activeThirdCategory === third.id
+                                        third.isOverview
+                                          ? 'bg-navy text-white font-medium hover:bg-navy-light'
+                                          : activeThirdCategory === third.id
                                           ? 'font-semibold text-accent'
                                           : 'text-gray-700 hover:bg-navy/5'
                                       }`}
@@ -366,11 +380,49 @@ export default function Products() {
                     <tbody>
                       {solenoidValvesComparison.rows.map((row, rowIdx) => (
                         <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          {row.map((cell, cellIdx) => (
-                            <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
-                              {cellIdx === 1 ? <span className="font-medium text-gray-800">{cell}</span> : cell}
-                            </td>
-                          ))}
+                          {row.map((cell, cellIdx) => {
+                            // Product column (index 1) - make it clickable
+                            if (cellIdx === 1) {
+                              // Map product names to thirdCategoryId
+                              const productToId: Record<string, string> = {
+                                'Standard Solenoid Valve (ODF, NC)': 'hvd-standard',
+                                'High Flow Solenoid Valve, Flanged ODF': 'hvp-high-flow',
+                                'Clamping Type Solenoid Valve, Small Port': 'hv-clamping-small',
+                                'Clamping Type Solenoid Valve, Large Port': 'hv-clamping-large',
+                                'IP65 Sealed Solenoid Valve, Direct Operated': 'sv-ip65-direct',
+                                'IP65 Sealed Solenoid Valve, Servo Operated': 'sv-ip65-servo',
+                                'Low Power Solenoid Valve 8W, Direct Operated': '10-8w-direct',
+                                'Low Power Solenoid Valve 8W, Servo Operated': '10-8w-servo',
+                                'Normally Open Solenoid Valve, Small Port': 'hvk-normally-open-small',
+                                'Normally Open Solenoid Valve, Large Port': 'hvk-normally-open-large',
+                                'Compressor Unloading Solenoid Valve, Flanged': 'hv-unloading-flanged',
+                                'Compressor Unloading Solenoid Valve, ODF': 'hv-unloading-odf',
+                                'Hot Gas Defrost Solenoid Valve, 3-Way': 'hvs-hot-gas',
+                                'High Flow Piston Solenoid Valve, ODF': 'hvdf-high-flow',
+                                'High Flow Piston Solenoid Valve, Flanged': 'hvpf-high-flow',
+                              };
+                              const thirdId = productToId[cell];
+                              return (
+                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
+                                  {thirdId ? (
+                                    <button
+                                      onClick={() => selectThirdCategory('valves', 'solenoid-valves', thirdId)}
+                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
+                                    >
+                                      {cell}
+                                    </button>
+                                  ) : (
+                                    <span className="font-medium text-gray-800">{cell}</span>
+                                  )}
+                                </td>
+                              );
+                            }
+                            return (
+                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
+                                {cell}
+                              </td>
+                            );
+                          })}
                         </tr>
                       ))}
                     </tbody>
@@ -413,12 +465,14 @@ export default function Products() {
                 </p>
                 <div className="grid gap-6 grid-cols-1">
                   {filteredProducts.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      onInquire={handleInquire}
-                      onViewDetail={setSelectedProduct}
-                    />
+                    <div id={`product-${product.id}`}>
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        onInquire={handleInquire}
+                        onViewDetail={setSelectedProduct}
+                      />
+                    </div>
                   ))}
                 </div>
               </>
