@@ -524,11 +524,39 @@ export default function Products() {
                     <tbody>
                       {ballValvesComparison.rows.map((row, rowIdx) => (
                         <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          {row.map((cell, cellIdx) => (
-                            <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
-                              {cell}
-                            </td>
-                          ))}
+                          {row.map((cell, cellIdx) => {
+                            // Product column (index 1) - make it clickable
+                            if (cellIdx === 1) {
+                              // Map product names to thirdCategoryId
+                              const productToId: Record<string, string> = {
+                                'Electric Ball Valve (Full Bore)': 'dqf-electric',
+                                'Manual Ball Valve (Full Bore)': 'hbc-manual-full',
+                                'Manual Ball Valve (Reduced Bore)': 'qft-manual-reduced',
+                                'CO₂ Ball Valve (Full Bore)': 'qf-co2',
+                                'Threaded Ball Valve (NPT)': 'gfm-s-threaded',
+                              };
+                              const thirdId = productToId[cell];
+                              return (
+                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
+                                  {thirdId ? (
+                                    <button
+                                      onClick={() => selectThirdCategory('ball-valves', 'ball-valves-overview', thirdId)}
+                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
+                                    >
+                                      {cell}
+                                    </button>
+                                  ) : (
+                                    <span className="font-medium text-gray-800">{cell}</span>
+                                  )}
+                                </td>
+                              );
+                            }
+                            return (
+                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
+                                {cell}
+                              </td>
+                            );
+                          })}
                         </tr>
                       ))}
                     </tbody>

@@ -1586,13 +1586,13 @@ export const filterDriersComparison = {
 // Ball Valves Comparison Table Data
 export const ballValvesComparison = {
   title: 'Refrigeration Ball Valves',
-  subtitle: '5 ball valve variants across 5 series, covering port sizes 1/4" to 3-1/8". Configurations include electric and manual drive, full bore and reduced bore, brazed ODF and NPT threaded connections.',
-  headers: ['#', 'Series', 'Drive Type', 'Bore Type', 'Connection', 'Port Range', 'Kv Range (m³/h)', 'MWP (bar)', 'Refrigerant', 'Temp Range'],
+  subtitle: 'Five ball valve series for refrigeration and HVAC systems — from standard manual ODF valves to 120 bar CO₂-rated and electrically actuated models.',
+  headers: ['#', 'Product', 'Series', 'Drive', 'Bore', 'Connection', 'Port Range', 'Kv (m³/h)', 'MWP (bar)', 'Refrigerant', 'Temp Range', 'Models'],
   rows: [
-    ['1', 'DQF', 'Electric', 'Full Bore', 'Brazed (ODF)', '3/8" ~ 3-1/8"', '5.7 ~ 200', '45', 'HCFC, HFC', '−40 ~ +120 °C'],
-    ['2', 'HBC', 'Manual', 'Full Bore', 'Brazed (ODF)', '1/4" ~ 3-1/8"', '2 ~ 700', '45', 'HCFC, HFC', '−40 ~ +120 °C'],
-    ['3', 'QFT', 'Manual', 'Reduced Bore', 'Brazed (ODF)', '1/4" ~ 2-1/8"', 'N/A', '45', 'R22, R134a, R404A, R407C, R410A', '−40 ~ +120 °C'],
-    ['4', 'QF-CO2', 'Manual', 'Full Bore', 'Brazed (ODF)', '1/2" ~ 2-1/8"', '10 ~ 200', '120', 'CO₂ (R744)', '−50 ~ +150 °C'],
-    ['5', 'GFM-S', 'Manual', 'N/A', 'NPT Threaded', 'NPT 1/4 ~ 1', 'N/A', '120', 'R22, R134a, R404A, R407C, R410A', '−40 ~ +120 °C'],
+    ['1', 'Electric Ball Valve (Full Bore)', 'DQF', 'Electric', 'Full', 'Brazed (ODF)', '3/8"~3-1/8"', '5.7~200', '45', 'HCFC, HFC', '−40~+120°C', '11'],
+    ['2', 'Manual Ball Valve (Full Bore)', 'HBC', 'Manual', 'Full', 'Brazed (ODF)', '1/4"~3-1/8"', '2~700', '45', 'HCFC, HFC', '−40~+120°C', '16'],
+    ['3', 'Manual Ball Valve (Reduced Bore)', 'QFT', 'Manual', 'Reduced', 'Brazed (ODF)', '1/4"~2-1/8"', 'N/A', '45', 'R22, R134a, R404A, R407C, R410A', '−40~+120°C', '10'],
+    ['4', 'CO₂ Ball Valve (Full Bore)', 'QF-CO2', 'Manual', 'Full', 'Brazed (ODF)', '1/2"~2-1/8"', '10~200', '120', 'CO₂ (R744)', '−50~+150°C', '8'],
+    ['5', 'Threaded Ball Valve (NPT)', 'GFM-S', 'Manual', 'N/A', 'NPT Threaded', 'NPT 1/4~1', 'N/A', '120', 'R22, R134a, R404A, R407C, R410A', '−40~+120°C', '5'],
   ],
 };
