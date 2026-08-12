@@ -23,7 +23,6 @@ export interface Category {
   id: string
   name: string
   icon: string
-  bannerImage?: string
   subCategories: SubCategory[]
   products: Product[]
 }
@@ -33,7 +32,6 @@ export const categories: Category[] = [
     id: 'copper-tubes',
     name: 'Copper Tubes',
     icon: 'Circle',
-    bannerImage: '/images/copper-tubes-banner.jpg',
     subCategories: [
       { id: 'jumbo-coils', name: 'Jumbo Coils' },
       { id: 'pancake-coils', name: 'Pancake Coils' },
@@ -613,40 +611,82 @@ export const categories: Category[] = [
   },
   {
     id: 'valves',
-    name: 'Valves',
+    name: 'Solenoid Valves',
     icon: 'Settings',
     subCategories: [
-      { id: 'solenoid-valves', name: 'Solenoid Valves' },
-      { id: 'thermal-expansion-valves', name: 'Thermal Expansion Valves' },
-      { id: 'electronic-expansion-valves', name: 'Electronic Expansion Valves' },
-      { id: 'ball-valves', name: 'Ball Valves' },
-      { id: 'stop-check-valves', name: 'Stop Valves & Check Valves' },
-      { id: 'safety-valves', name: 'Safety Valves' },
-      { id: 'reversing-valves', name: 'Reversing Valves' },
+      { id: 'sv-s', name: 'SV-S Standard' },
+      { id: 'sv-sf', name: 'SV-SF Flanged' },
+      { id: 'sv-sw', name: 'SV-SW Welded' },
+      { id: 'sv-ss', name: 'SV-SS Stainless Steel' },
+      { id: 'sv-h', name: 'SV-H High Pressure' },
+      { id: 'sv-hw', name: 'SV-HW High Pressure Welded' },
+      { id: 'sv-hs', name: 'SV-HS High Pressure SS' },
+      { id: 'sv-hp', name: 'SV-HP High Pressure Flanged' },
+      { id: 'sv-hpw', name: 'SV-HPW High Pressure Welded Flanged' },
+      { id: 'sv-hps', name: 'SV-HPS High Pressure SS Flanged' },
+      { id: 'sv-z', name: 'SV-Z Zero Pressure Drop' },
+      { id: 'sv-zf', name: 'SV-ZF Zero Pressure Drop Flanged' },
+      { id: 'sv-zw', name: 'SV-ZW Zero Pressure Drop Welded' },
+      { id: 'sv-zs', name: 'SV-ZS Zero Pressure Drop SS' },
+      { id: 'sv-zsf', name: 'SV-ZSF Zero Pressure Drop SS Flanged' },
     ],
     products: [
-      { id: 'v-1', categoryId: 'valves', subCategoryId: 'solenoid-valves', name: 'Solenoid Valve', shortDesc: 'Electrically operated valves for refrigerant flow control.', description: 'Direct-acting and servo-operated solenoid valves for precise refrigerant flow control in HVAC systems.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Voltage', value: 'AC220V / AC24V / DC12V' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'Commercial refrigeration, cold rooms, AC systems' },
-      { id: 'v-2', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', name: 'Thermal Expansion Valve (TXV)', shortDesc: 'Mechanical expansion valves for superheat control.', description: 'Thermostatic expansion valves for accurate superheat control in refrigeration and AC systems.', specs: [{ label: 'Capacity', value: '0.5 - 30 TR' }, { label: 'Refrigerant', value: 'R22 / R134a / R410A / R32' }], applications: 'AC systems, commercial refrigeration' },
-      { id: 'v-3', categoryId: 'valves', subCategoryId: 'electronic-expansion-valves', name: 'Electronic Expansion Valve (EEV)', shortDesc: 'Stepper motor-driven valves for precision control.', description: 'Electronic expansion valves with stepper motor for precise, responsive refrigerant flow regulation.', specs: [{ label: 'Steps', value: '480 / 500 steps' }, { label: 'Connection', value: 'Solder' }], applications: 'Inverter AC, precision cooling systems' },
-      { id: 'v-4', categoryId: 'valves', subCategoryId: 'ball-valves', name: 'Ball Valve', shortDesc: 'Quarter-turn valves for on/off flow control.', description: 'Full-port brass ball valves for reliable on/off control in HVAC piping.', specs: [{ label: 'Sizes', value: '1/4" - 2"' }, { label: 'Material', value: 'Forged brass' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'Service valves, isolation points' },
-      { id: 'v-5', categoryId: 'valves', subCategoryId: 'stop-check-valves', name: 'Stop Valve & Check Valve', shortDesc: 'Backflow prevention and isolation valves.', description: 'Globe-style stop valves and spring-loaded check valves for system protection.', specs: [{ label: 'Sizes', value: '1/4" - 4"' }], applications: 'Compressor discharge, liquid line protection' },
-      { id: 'v-6', categoryId: 'valves', subCategoryId: 'safety-valves', name: 'Safety Relief Valve', shortDesc: 'Pressure relief valves for system safety.', description: 'Spring-loaded safety relief valves to protect systems from overpressure conditions.', specs: [{ label: 'Set Pressure', value: 'Customizable' }, { label: 'Certification', value: 'ASME / CE' }], applications: 'Pressure vessel protection, system safety' },
-      { id: 'v-7', categoryId: 'valves', subCategoryId: 'reversing-valves', name: 'Reversing Valve (4-Way)', shortDesc: 'Directional valves for heat pump cycle reversal.', description: '4-way reversing valves for heat pump systems, enabling seamless switching between heating and cooling modes.', specs: [{ label: 'Capacity', value: '1 - 5 HP' }, { label: 'Voltage', value: 'AC220V' }], applications: 'Heat pump systems, reversible AC units' },
+      { id: 'v-1', categoryId: 'valves', subCategoryId: 'sv-s', name: 'SV-S Standard Solenoid Valve', shortDesc: 'Standard solenoid valve for refrigerant flow control.', description: 'Direct-acting and servo-operated solenoid valves for precise refrigerant flow control in HVAC systems.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Voltage', value: 'AC220V / AC24V / DC12V' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'Commercial refrigeration, cold rooms, AC systems' },
+      { id: 'v-2', categoryId: 'valves', subCategoryId: 'sv-sf', name: 'SV-SF Flanged Solenoid Valve', shortDesc: 'Flanged solenoid valve for large pipe connections.', description: 'Flanged solenoid valves for easy installation and maintenance in large-diameter piping systems.', specs: [{ label: 'Connection', value: 'Flange' }, { label: 'Voltage', value: 'AC220V / AC24V / DC12V' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'Industrial refrigeration, large AC systems' },
+      { id: 'v-3', categoryId: 'valves', subCategoryId: 'sv-sw', name: 'SV-SW Welded Solenoid Valve', shortDesc: 'Welded solenoid valve for permanent pipe connections.', description: 'Welded-end solenoid valves for leak-proof permanent installations in high-pressure systems.', specs: [{ label: 'Connection', value: 'Weld' }, { label: 'Voltage', value: 'AC220V / AC24V / DC12V' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'High-pressure refrigeration systems' },
+      { id: 'v-4', categoryId: 'valves', subCategoryId: 'sv-ss', name: 'SV-SS Stainless Steel Solenoid Valve', shortDesc: 'Stainless steel solenoid valve for corrosion resistance.', description: 'Stainless steel body solenoid valves for corrosive environments and food-grade applications.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Material', value: 'Stainless Steel 304/316' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'Food processing, marine applications, corrosive environments' },
+      { id: 'v-5', categoryId: 'valves', subCategoryId: 'sv-h', name: 'SV-H High-Pressure Solenoid Valve', shortDesc: 'High-pressure solenoid valve for demanding applications.', description: 'High-pressure solenoid valves designed for CO2 and other high-pressure refrigerant systems.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Working Pressure', value: '0 - 60 bar' }, { label: 'Refrigerant', value: 'R744 (CO2), R410A, R32' }], applications: 'CO2 refrigeration systems, high-pressure AC' },
+      { id: 'v-6', categoryId: 'valves', subCategoryId: 'sv-hw', name: 'SV-HW High-Pressure Welded Solenoid Valve', shortDesc: 'High-pressure welded solenoid valve.', description: 'High-pressure welded-end solenoid valves for CO2 and high-pressure refrigerant systems.', specs: [{ label: 'Connection', value: 'Weld' }, { label: 'Working Pressure', value: '0 - 60 bar' }, { label: 'Refrigerant', value: 'R744 (CO2), R410A, R32' }], applications: 'CO2 refrigeration, high-pressure systems' },
+      { id: 'v-7', categoryId: 'valves', subCategoryId: 'sv-hs', name: 'SV-HS High-Pressure Stainless Steel Solenoid Valve', shortDesc: 'High-pressure stainless steel solenoid valve.', description: 'High-pressure stainless steel solenoid valves for corrosive and high-pressure environments.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Material', value: 'Stainless Steel 304/316' }, { label: 'Working Pressure', value: '0 - 60 bar' }], applications: 'CO2 systems, marine, food processing' },
+      { id: 'v-8', categoryId: 'valves', subCategoryId: 'sv-hp', name: 'SV-HP High-Pressure Flanged Solenoid Valve', shortDesc: 'High-pressure flanged solenoid valve.', description: 'High-pressure flanged solenoid valves for large-diameter high-pressure piping systems.', specs: [{ label: 'Connection', value: 'Flange' }, { label: 'Working Pressure', value: '0 - 60 bar' }, { label: 'Refrigerant', value: 'R744 (CO2), R410A, R32' }], applications: 'Industrial CO2 systems, large AC' },
+      { id: 'v-9', categoryId: 'valves', subCategoryId: 'sv-hpw', name: 'SV-HPW High-Pressure Welded Flanged Solenoid Valve', shortDesc: 'High-pressure welded flanged solenoid valve.', description: 'High-pressure welded flanged solenoid valves for permanent high-pressure installations.', specs: [{ label: 'Connection', value: 'Weld + Flange' }, { label: 'Working Pressure', value: '0 - 60 bar' }, { label: 'Refrigerant', value: 'R744 (CO2), R410A, R32' }], applications: 'CO2 refrigeration, high-pressure industrial' },
+      { id: 'v-10', categoryId: 'valves', subCategoryId: 'sv-hps', name: 'SV-HPS High-Pressure Stainless Steel Flanged Solenoid Valve', shortDesc: 'High-pressure stainless steel flanged solenoid valve.', description: 'High-pressure stainless steel flanged solenoid valves for corrosive high-pressure environments.', specs: [{ label: 'Connection', value: 'Flange' }, { label: 'Material', value: 'Stainless Steel 304/316' }, { label: 'Working Pressure', value: '0 - 60 bar' }], applications: 'CO2 systems, marine, food processing' },
+      { id: 'v-11', categoryId: 'valves', subCategoryId: 'sv-z', name: 'SV-Z Zero Pressure Drop Solenoid Valve', shortDesc: 'Zero pressure drop solenoid valve for energy efficiency.', description: 'Zero pressure drop solenoid valves minimize energy loss in refrigerant systems.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Pressure Drop', value: '≤ 0.1 bar' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'Energy-efficient AC and refrigeration' },
+      { id: 'v-12', categoryId: 'valves', subCategoryId: 'sv-zf', name: 'SV-ZF Zero Pressure Drop Flanged Solenoid Valve', shortDesc: 'Zero pressure drop flanged solenoid valve.', description: 'Zero pressure drop flanged solenoid valves for large-diameter energy-efficient systems.', specs: [{ label: 'Connection', value: 'Flange' }, { label: 'Pressure Drop', value: '≤ 0.1 bar' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'Large AC systems, energy-efficient refrigeration' },
+      { id: 'v-13', categoryId: 'valves', subCategoryId: 'sv-zw', name: 'SV-ZW Zero Pressure Drop Welded Solenoid Valve', shortDesc: 'Zero pressure drop welded solenoid valve.', description: 'Zero pressure drop welded solenoid valves for permanent energy-efficient installations.', specs: [{ label: 'Connection', value: 'Weld' }, { label: 'Pressure Drop', value: '≤ 0.1 bar' }, { label: 'Working Pressure', value: '0 - 40 bar' }], applications: 'Energy-efficient high-pressure systems' },
+      { id: 'v-14', categoryId: 'valves', subCategoryId: 'sv-zs', name: 'SV-ZS Zero Pressure Drop Stainless Steel Solenoid Valve', shortDesc: 'Zero pressure drop stainless steel solenoid valve.', description: 'Zero pressure drop stainless steel solenoid valves for corrosive energy-efficient applications.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Material', value: 'Stainless Steel 304/316' }, { label: 'Pressure Drop', value: '≤ 0.1 bar' }], applications: 'Food processing, marine, energy-efficient systems' },
+      { id: 'v-15', categoryId: 'valves', subCategoryId: 'sv-zsf', name: 'SV-ZSF Zero Pressure Drop Stainless Steel Flanged Solenoid Valve', shortDesc: 'Zero pressure drop stainless steel flanged solenoid valve.', description: 'Zero pressure drop stainless steel flanged solenoid valves for large-diameter corrosive environments.', specs: [{ label: 'Connection', value: 'Flange' }, { label: 'Material', value: 'Stainless Steel 304/316' }, { label: 'Pressure Drop', value: '≤ 0.1 bar' }], applications: 'Large industrial systems, food processing, marine' },
+    ],
+  },
+  {
+    id: 'ball-valves',
+    name: 'Ball Valves',
+    icon: 'CircleDot',
+    subCategories: [
+      { id: 'bv-s', name: 'BV-S Standard' },
+      { id: 'bv-sf', name: 'BV-SF Flanged' },
+      { id: 'bv-sw', name: 'BV-SW Welded' },
+      { id: 'bv-ss', name: 'BV-SS Stainless Steel' },
+      { id: 'bv-h', name: 'BV-H High Pressure' },
+    ],
+    products: [
+      { id: 'bv-1', categoryId: 'ball-valves', subCategoryId: 'bv-s', name: 'BV-S Standard Ball Valve', shortDesc: 'Standard brass ball valve for general HVAC applications.', description: 'Full-port brass ball valves with chrome-plated ball for reliable on/off flow control in HVAC systems.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Material', value: 'Forged Brass' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'Service valves, isolation points, general HVAC' },
+      { id: 'bv-2', categoryId: 'ball-valves', subCategoryId: 'bv-sf', name: 'BV-SF Flanged Ball Valve', shortDesc: 'Flanged ball valve for large pipe connections.', description: 'Flanged ball valves for easy installation and maintenance in large-diameter piping systems.', specs: [{ label: 'Connection', value: 'Flange' }, { label: 'Material', value: 'Forged Brass' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'Industrial HVAC, large AC systems' },
+      { id: 'bv-3', categoryId: 'ball-valves', subCategoryId: 'bv-sw', name: 'BV-SW Welded Ball Valve', shortDesc: 'Welded ball valve for permanent pipe connections.', description: 'Welded-end ball valves for leak-proof permanent installations in high-pressure systems.', specs: [{ label: 'Connection', value: 'Weld' }, { label: 'Material', value: 'Forged Brass' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'High-pressure HVAC systems' },
+      { id: 'bv-4', categoryId: 'ball-valves', subCategoryId: 'bv-ss', name: 'BV-SS Stainless Steel Ball Valve', shortDesc: 'Stainless steel ball valve for corrosion resistance.', description: 'Stainless steel ball valves for corrosive environments and food-grade applications.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Material', value: 'Stainless Steel 304/316' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'Food processing, marine applications, corrosive environments' },
+      { id: 'bv-5', categoryId: 'ball-valves', subCategoryId: 'bv-h', name: 'BV-H High-Pressure Ball Valve', shortDesc: 'High-pressure ball valve for demanding applications.', description: 'High-pressure ball valves designed for CO2 and other high-pressure refrigerant systems.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Working Pressure', value: '0 - 60 bar' }, { label: 'Refrigerant', value: 'R744 (CO2), R410A, R32' }], applications: 'CO2 refrigeration systems, high-pressure AC' },
     ],
   },
   {
     id: 'filter-driers',
-    name: 'Filter Driers & Sight Glasses',
+    name: 'Filter Driers',
     icon: 'Filter',
     subCategories: [
       { id: 'dry-filters', name: 'Dry Filters / Filter Driers' },
-      { id: 'sight-glasses', name: 'Sight Glasses' },
-      { id: 'filter-cartridges', name: 'Filter Cartridges' },
     ],
     products: [
-      { id: 'fd-1', categoryId: 'filter-driers', subCategoryId: 'dry-filters', name: 'Filter Drier', shortDesc: 'Moisture and contaminant removal for refrigerant systems.', description: 'Bi-flow filter driers with molecular sieve and activated alumina for effective moisture and acid removal.', specs: [{ label: 'Connection', value: 'Solder / ODS' }, { label: 'Core Type', value: 'Molecular sieve + Alumina' }], applications: 'AC and refrigeration system protection' },
-      { id: 'fd-2', categoryId: 'filter-driers', subCategoryId: 'sight-glasses', name: 'Sight Glass / Indicator', shortDesc: 'Visual moisture and refrigerant flow indicators.', description: 'Sight glasses with moisture indicator for visual monitoring of refrigerant condition and flow.', specs: [{ label: 'Connection', value: 'Solder' }, { label: 'Indicator', value: 'Moisture sensitive' }], applications: 'Liquid line monitoring' },
-      { id: 'fd-3', categoryId: 'filter-driers', subCategoryId: 'filter-cartridges', name: 'Filter Cartridge', shortDesc: 'Replaceable filter elements for large systems.', description: 'Replaceable filter cartridges for large-scale refrigeration system filtration.', specs: [{ label: 'Sizes', value: 'Various' }], applications: 'Industrial refrigeration, cold storage' },
+      { id: 'fd-1', categoryId: 'filter-driers', subCategoryId: 'dry-filters', name: 'Filter Drier', shortDesc: 'Moisture and contaminant removal for refrigerant systems.', description: 'Bi-flow filter driers with molecular sieve and activated alumina for effective moisture and acid removal.', specs: [{ label: 'Connection', value: 'Solder / ODS' }, { label: 'Core Type', value: 'Molecular sieve + Alumina' }, { label: 'Working Pressure', value: '45 bar' }], applications: 'AC and refrigeration system protection' },
+    ],
+  },
+  {
+    id: 'sight-glasses',
+    name: 'Sight Glasses',
+    icon: 'Eye',
+    subCategories: [
+      { id: 'sight-glasses', name: 'Sight Glasses' },
+    ],
+    products: [
+      { id: 'sg-1', categoryId: 'sight-glasses', subCategoryId: 'sight-glasses', name: 'Sight Glass / Indicator', shortDesc: 'Visual moisture and refrigerant flow indicators.', description: 'Sight glasses with moisture indicator for visual monitoring of refrigerant condition and flow.', specs: [{ label: 'Connection', value: 'Solder' }, { label: 'Indicator', value: 'Moisture sensitive' }, { label: 'Working Pressure', value: '45 bar' }], applications: 'Liquid line monitoring' },
     ],
   },
   {
