@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
@@ -499,6 +499,68 @@ export default function Products() {
                 </div>
                 <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
                   <p><strong>Note:</strong> MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
+                </div>
+              </div>
+            )}
+
+            {/* Sight Glasses Comparison Table for Overview */}
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && sightGlassesComparison && activeCategory === 'sight-glasses' && (
+              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
+                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
+                  <h3 className="text-xl font-bold text-white">{sightGlassesComparison.title}</h3>
+                  <p className="mt-2 text-sm text-white/80">{sightGlassesComparison.subtitle}</p>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-navy/5">
+                        {sightGlassesComparison.headers.map((header, i) => (
+                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sightGlassesComparison.rows.map((row, rowIdx) => (
+                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                          {row.map((cell, cellIdx) => {
+                            // Product column (index 1) - make it clickable
+                            if (cellIdx === 1) {
+                              // Map product names to thirdCategoryId
+                              const productToId: Record<string, string> = {
+                                'Moisture Indicator Sight Glass (Brazed ODF)': 'sgn-brazed',
+                                'Moisture Indicator Sight Glass (SAE Flare)': 'sgn-sae',
+                                'Moisture Indicator Sight Glass (SAE Flare, M/F)': 'sgn-sae-mf',
+                                'Moisture Indicator Sight Glass (NPT Threaded)': 'sgn-npt',
+                                'Oil Level Sight Glass (G Thread)': 'sgr-g',
+                              };
+                              const thirdId = productToId[cell];
+                              return (
+                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
+                                  {thirdId ? (
+                                    <button
+                                      onClick={() => selectThirdCategory('sight-glasses', 'sight-glasses-overview', thirdId)}
+                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
+                                    >
+                                      {cell}
+                                    </button>
+                                  ) : (
+                                    <span className="font-medium text-gray-800">{cell}</span>
+                                  )}
+                                </td>
+                              );
+                            }
+                            return (
+                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
+                                <span className={cellIdx === 0 ? 'font-semibold text-navy' : 'text-gray-700'}>{cell}</span>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             )}
