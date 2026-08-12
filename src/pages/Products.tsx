@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, MessageCircle, ChevronRight, Package, LayoutGrid } from 'lucide-react'
+import { Search, MessageCircle, ChevronRight, Package } from 'lucide-react'
 import { categories, solenoidValvesComparison, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -235,19 +235,7 @@ export default function Products() {
                     {/* Sub-categories inline */}
                     {hasSubs && expandedCategories[cat.id] && (
                       <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
-                        <button
-                          onClick={() => selectSubCategory(cat.id, 'all')}
-                          className={`block w-full rounded px-3 py-2 text-left text-sm font-bold transition-colors ${
-                            activeSubCategory === 'all' && isActive
-                              ? 'bg-navy text-white'
-                              : 'bg-gray-50 text-navy hover:bg-navy/10'
-                          }`}
-                        >
-                          <div className="flex items-center gap-2">
-                            <LayoutGrid className="h-4 w-4" />
-                            All {cat.name}
-                          </div>
-                        </button>
+
                         {cat.subCategories.map((sub) => {
                           const hasThirdLevel = sub.subCategories && sub.subCategories.length > 0
                           return (
@@ -280,19 +268,7 @@ export default function Products() {
                               {/* Third-level inline */}
                               {hasThirdLevel && expandedSubCategories[`${cat.id}-${sub.id}`] && (
                                 <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
-                                  <button
-                                    onClick={() => selectSubCategory(cat.id, sub.id)}
-                                    className={`block w-full rounded px-3 py-2 text-left text-sm font-bold transition-colors ${
-                                      activeSubCategory === sub.id && !activeThirdCategory
-                                        ? 'bg-navy text-white'
-                                        : 'bg-gray-50 text-navy hover:bg-navy/10'
-                                    }`}
-                                  >
-                                    <div className="flex items-center gap-2">
-                                      <LayoutGrid className="h-4 w-4" />
-                                      All {sub.name}
-                                    </div>
-                                  </button>
+
                                   {sub.subCategories!.map((third) => (
                                     <button
                                       key={third.id}
