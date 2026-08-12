@@ -234,6 +234,11 @@ export default function Products() {
                                 )}
                                 {!hasThirdLevel && <span className="w-3 shrink-0" />}
                                 <span className="flex-1">{sub.name}</span>
+                                {hasThirdLevel && (
+                                  <span className="text-xs text-gray-400">
+                                    {sub.subCategories!.length}
+                                  </span>
+                                )}
                               </button>
                               {/* Third-level dropdown */}
                               {hasThirdLevel && (
