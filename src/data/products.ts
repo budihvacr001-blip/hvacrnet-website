@@ -6,6 +6,7 @@ export interface ThirdCategory {
 }
 
 export interface SubCategory {
+  isOverview?: boolean
   id: string
   name: string
   description?: string
@@ -1098,6 +1099,7 @@ export const categories: Category[] = [
     name: 'Filter Driers',
     icon: 'Filter',
     subCategories: [
+      { id: 'filter-driers-overview', name: 'Category Overview', isOverview: true },
       { id: 'bfk-sae', name: 'BFK Bidirectional (SAE Flare)' },
       { id: 'bfk-odf', name: 'BFK Bidirectional (ODF)' },
       { id: 'dfs-sae', name: 'DFS Unidirectional (SAE Flare)' },
@@ -1390,5 +1392,19 @@ export const solenoidValvesComparison = {
     ['13', 'Hot Gas Defrost Solenoid Valve, 3-Way', 'HVS(R)', 'Piston (3-way)', 'NC', 'Servo (3-way)', 'Special', '22~42 mm', '7.1~20.2', '30', 'AC220V', '4'],
     ['14', 'High Flow Piston Solenoid Valve, ODF', 'HVDF', 'Piston', 'NC', 'Servo', 'Brazed (ODF)', '28.2~59.3 mm', '10~28', '45', 'AC380/220V', '5'],
     ['15', 'High Flow Piston Solenoid Valve, Flanged', 'HVPF', 'Piston', 'NC', 'Servo', 'ODF (flanged)', '35~60.3 mm', '10~30', '45', 'AC380/220V', '5'],
+  ],
+};
+
+// Filter Driers Comparison Table Data
+export const filterDriersComparison = {
+  title: 'Refrigeration Filter Driers',
+  subtitle: '5 filter drier variants across 2 series (BFK bidirectional, DFS unidirectional), covering port sizes 1/4" to 2-5/8". Configurations include solid core and replaceable core, SAE flare and brazed ODF connections.',
+  headers: ['#', 'Product', 'Series', 'Core Type', 'Filter Media', 'Flow', 'Connection', 'Port Size', 'MWP (bar)', 'Temp Range', 'Models'],
+  rows: [
+    ['1', 'Bidirectional Filter Drier, SAE Flare', 'BFK', 'Solid Core', '80% Mol. Sieve + 20% Alumina', 'Bidirectional', 'SAE Flare', '3/8"~3/4"', '45', '−40~+120°C', '10'],
+    ['2', 'Bidirectional Filter Drier, Brazed ODF', 'BFK', 'Solid Core', '80% Mol. Sieve + 20% Alumina', 'Bidirectional', 'Brazed ODF', '3/8"~1-1/8"', '45', '−40~+120°C', '12'],
+    ['3', 'Unidirectional Filter Drier, SAE Flare', 'DFS', 'Solid Core', '100% 3A Mol. Sieve', 'Unidirectional', 'SAE Flare', '1/4"~3/4"', '45', '−40~+120°C', '13'],
+    ['4', 'Unidirectional Filter Drier, Brazed ODF', 'DFS', 'Solid Core', '100% 3A Mol. Sieve', 'Unidirectional', 'Brazed ODF', '1/4"~1-1/8"', '45', '−40~+120°C', '15'],
+    ['5', 'Replaceable Core Filter Drier, Brazed ODF', 'DFS-R', 'Replaceable', '100% 3A Mol. Sieve', 'Unidirectional', 'Brazed ODF', '5/8"~2-5/8"', '42', '−35~+70°C', '19'],
   ],
 };

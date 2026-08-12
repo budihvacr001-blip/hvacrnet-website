@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package } from 'lucide-react'
-import { categories, solenoidValvesComparison, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
@@ -430,6 +430,71 @@ export default function Products() {
                 </div>
                 <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
                   <p><strong>Note:</strong> Kv values are for reference only. MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
+                </div>
+              </div>
+            )}
+
+            {/* Filter Driers Comparison Table for Overview */}
+            {currentThirdCategory?.isOverview && filterDriersComparison && activeCategory === 'filter-driers' && (
+              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
+                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
+                  <h3 className="text-xl font-bold text-white">{filterDriersComparison.title}</h3>
+                  <p className="mt-2 text-sm text-white/80">{filterDriersComparison.subtitle}</p>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-navy/5">
+                        {filterDriersComparison.headers.map((header, i) => (
+                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filterDriersComparison.rows.map((row, rowIdx) => (
+                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                          {row.map((cell, cellIdx) => {
+                            // Product column (index 1) - make it clickable
+                            if (cellIdx === 1) {
+                              // Map product names to subCategoryId
+                              const productToId: Record<string, string> = {
+                                'Bidirectional Filter Drier, SAE Flare': 'bfk-sae',
+                                'Bidirectional Filter Drier, Brazed ODF': 'bfk-odf',
+                                'Unidirectional Filter Drier, SAE Flare': 'dfs-sae',
+                                'Unidirectional Filter Drier, Brazed ODF': 'dfs-odf',
+                                'Replaceable Core Filter Drier, Brazed ODF': 'dfs-replaceable',
+                              };
+                              const subId = productToId[cell];
+                              return (
+                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
+                                  {subId ? (
+                                    <button
+                                      onClick={() => selectSubCategory('filter-driers', subId)}
+                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
+                                    >
+                                      {cell}
+                                    </button>
+                                  ) : (
+                                    <span className="font-medium text-gray-800">{cell}</span>
+                                  )}
+                                </td>
+                              );
+                            }
+                            return (
+                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
+                                {cell}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
+                  <p><strong>Note:</strong> MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
                 </div>
               </div>
             )}
