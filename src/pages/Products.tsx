@@ -602,7 +602,7 @@ export default function Products() {
                                 <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
                                   {thirdId ? (
                                     <button
-                                      onClick={() => selectThirdCategory('ball-valves', 'ball-valves-overview', thirdId)}
+                                      onClick={() => selectThirdCategory('valves', 'ball-valves', thirdId)}
                                       className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
                                     >
                                       {cell}
