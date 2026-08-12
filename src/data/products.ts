@@ -1,13 +1,21 @@
+export interface ThirdCategory {
+  id: string
+  name: string
+  description?: string
+}
+
 export interface SubCategory {
   id: string
   name: string
   description?: string
+  subCategories?: ThirdCategory[]
 }
 
 export interface Product {
   id: string
   categoryId: string
   subCategoryId?: string
+  thirdCategoryId?: string
   name: string
   shortDesc: string
   description: string
@@ -264,7 +272,18 @@ export const categories: Category[] = [
     name: 'Insulation Materials',
     icon: 'Shield',
     subCategories: [
-      { id: 'insulation-tubes', name: 'Insulation Tubes' },
+      {
+        id: 'insulation-tubes',
+        name: 'Insulation Tubes',
+        subCategories: [
+          { id: 'b1-economy', name: 'B1 Economy' },
+          { id: 'b1-high-density', name: 'B1 High Density' },
+          { id: 'b1-high-temp', name: 'B1 High Temp' },
+          { id: 'b1-low-temp', name: 'B1 Low Temp' },
+          { id: 'nbr-lightweight', name: 'NBR Lightweight' },
+          { id: 'nbr-premium', name: 'NBR Premium' },
+        ],
+      },
       { id: 'insulation-sheets', name: 'Insulation Sheets' },
     ],
     products: [
@@ -272,6 +291,7 @@ export const categories: Category[] = [
         id: 'im-1',
         categoryId: 'insulation-materials',
         subCategoryId: 'insulation-tubes',
+        thirdCategoryId: 'b1-economy',
         name: 'NBR/PVC B1 Economy Insulation Tube (55 kg/m³)',
         shortDesc: 'B1 fire rated NBR/PVC insulation tube for AC and refrigeration. Density 55 kg/m³, μ≥10000, 73 SKUs 1/4"–1-7/8".',
         description: 'The most cost-effective insulation solution for standard AC and refrigeration piping. This NBR/PVC closed-cell foam tube provides reliable thermal insulation and condensation control at the lowest price point in our product range. Dual supplier sourcing from Zhongjia Fulaosi and Huamei ensures competitive pricing and stable supply. 73 SKUs spanning 1/4" to 1-7/8" with wall thickness options of 9mm, 13mm, 15mm, and 20mm — the widest size range across all product lines.',
@@ -327,6 +347,7 @@ export const categories: Category[] = [
         id: 'im-2',
         categoryId: 'insulation-materials',
         subCategoryId: 'insulation-tubes',
+        thirdCategoryId: 'b1-high-density',
         name: 'NBR/PVC B1 High Density Insulation Tube (60–65 kg/m³)',
         shortDesc: 'Higher-density NBR/PVC B1 insulation tube for improved thermal performance. Density 60–65 kg/m³, μ≥10000, λ≤0.034.',
         description: 'An upgraded version of the economy grade, offering higher density (60–65 kg/m³) for better insulation performance within the same standard temperature range (-40°C to +105°C). Higher density means a more compact cell structure with smaller, more uniform air pockets, reducing convective heat transfer and resulting in lower thermal conductivity (≤ 0.034 W/(m·K)). The denser material also offers better mechanical durability and tear resistance during installation.',
@@ -376,6 +397,7 @@ export const categories: Category[] = [
         id: 'im-4',
         categoryId: 'insulation-materials',
         subCategoryId: 'insulation-tubes',
+        thirdCategoryId: 'b1-high-temp',
         name: 'NBR/PVC B1 High Density High Temp Insulation Tube (60–65 kg/m³, -50°C to +150°C)',
         shortDesc: 'High temperature NBR/PVC B1 insulation tube. Density 60–65 kg/m³, -50°C to +150°C, μ≥10000.',
         description: 'Designed for high-temperature applications up to +150°C, this high-density NBR/PVC insulation tube maintains excellent thermal performance and fire resistance in demanding environments. The extended temperature range makes it suitable for hot water pipes, steam lines, and high-temperature refrigeration systems.',
@@ -425,6 +447,7 @@ export const categories: Category[] = [
         id: 'im-5',
         categoryId: 'insulation-materials',
         subCategoryId: 'insulation-tubes',
+        thirdCategoryId: 'b1-low-temp',
         name: 'NBR/PVC B1 High Density Low Temp Insulation Tube (60–65 kg/m³, -196°C to +105°C)',
         shortDesc: 'Low temperature NBR/PVC B1 insulation tube. Density 60–65 kg/m³, -196°C to +105°C, μ≥10000.',
         description: 'Specially formulated for cryogenic and ultra-low temperature applications down to -196°C (liquid nitrogen temperature). This high-density NBR/PVC insulation tube maintains flexibility and thermal performance in extreme cold environments, making it ideal for LNG systems, cryogenic storage, and ultra-low temperature refrigeration.',
@@ -473,6 +496,7 @@ export const categories: Category[] = [
         id: 'im-6',
         categoryId: 'insulation-materials',
         subCategoryId: 'insulation-tubes',
+        thirdCategoryId: 'nbr-lightweight',
         name: 'NBR Lightweight Insulation Tube (≤50 kg/m³)',
         shortDesc: 'Lightweight NBR insulation tube. Density ≤50 kg/m³, GREENGUARD Gold certified, EPD available.',
         description: 'Ultra-lightweight NBR insulation tube designed for applications where weight is a critical factor. With density ≤50 kg/m³, this product offers excellent thermal performance while minimizing load on piping systems. GREENGUARD Gold certified for indoor air quality, with EPD (Environmental Product Declaration) available for sustainable building projects.',
@@ -524,6 +548,7 @@ export const categories: Category[] = [
         id: 'im-7',
         categoryId: 'insulation-materials',
         subCategoryId: 'insulation-tubes',
+        thirdCategoryId: 'nbr-premium',
         name: 'NBR Premium Multi-Certified Insulation Tube',
         shortDesc: 'Premium NBR insulation tube with multiple certifications: Class 0, FM 4924, UL94 V-0, GREENGUARD Gold.',
         description: 'The highest-grade NBR insulation tube in our lineup, featuring multiple international certifications for critical applications. Class 0 (BS476 Part 6) fire rating, FM 4924 approval for clean rooms, UL94 V-0 flammability rating, and GREENGUARD Gold certification for indoor air quality. Ideal for data centres, clean rooms, hospitals, and other critical environments where fire safety and air quality are paramount.',
