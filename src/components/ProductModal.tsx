@@ -27,9 +27,9 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
         </button>
 
         {/* Main Image */}
-        <div className="flex aspect-[4/3] items-center justify-center bg-gray-bg overflow-hidden">
+        <div className="flex items-center justify-center bg-gray-bg overflow-hidden max-h-80">
           {mainImage ? (
-            <img src={mainImage} alt={product.name} className="w-full h-full object-contain" />
+            <img src={mainImage} alt={product.name} className="max-w-full max-h-80 object-contain" style={{ imageRendering: 'auto' }} />
           ) : (
             <div className="text-center">
               <div className="mx-auto mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-navy/10 text-navy">

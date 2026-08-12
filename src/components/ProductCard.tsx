@@ -24,9 +24,9 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Main Image */}
-      <div className="bg-gray-50 aspect-[4/3] flex items-center justify-center overflow-hidden">
+      <div className="bg-gray-50 flex items-center justify-center overflow-hidden max-h-64">
         {mainImage ? (
-          <img src={mainImage} alt={product.name} className="w-full h-full object-contain" />
+          <img src={mainImage} alt={product.name} className="max-w-full max-h-64 object-contain" style={{ imageRendering: 'auto' }} />
         ) : (
           <div className="text-gray-400 text-sm">No Image</div>
         )}
