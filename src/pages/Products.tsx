@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, LayoutGrid } from 'lucide-react'
-import { categories, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
@@ -338,8 +338,47 @@ export default function Products() {
                     : currentCategory.name}
                 </h2>
                 <p className="mt-1 text-white/70">
-                  {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} available
+                  {currentThirdCategory?.isOverview
+                    ? 'Product comparison overview'
+                    : `${filteredProducts.length} product${filteredProducts.length !== 1 ? 's' : ''} available`}
                 </p>
+              </div>
+            )}
+
+            {/* Comparison Table for Overview */}
+            {currentThirdCategory?.isOverview && solenoidValvesComparison && (
+              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
+                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
+                  <h3 className="text-xl font-bold text-white">{solenoidValvesComparison.title}</h3>
+                  <p className="mt-2 text-sm text-white/80">{solenoidValvesComparison.subtitle}</p>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-navy/5">
+                        {solenoidValvesComparison.headers.map((header, i) => (
+                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {solenoidValvesComparison.rows.map((row, rowIdx) => (
+                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                          {row.map((cell, cellIdx) => (
+                            <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
+                              {cellIdx === 1 ? <span className="font-medium text-gray-800">{cell}</span> : cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
+                  <p><strong>Note:</strong> Kv values are for reference only. MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
+                </div>
               </div>
             )}
 
@@ -367,7 +406,7 @@ export default function Products() {
                   ))}
                 </div>
               </div>
-            ) : filteredProducts.length > 0 ? (
+            ) : currentThirdCategory?.isOverview ? null : filteredProducts.length > 0 ? (
               <>
                 <p className="mb-6 text-sm text-gray-text">
                   {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found

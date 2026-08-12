@@ -2,6 +2,7 @@ export interface ThirdCategory {
   id: string
   name: string
   description?: string
+  isOverview?: boolean
 }
 
 export interface SubCategory {
@@ -629,6 +630,7 @@ export const categories: Category[] = [
         id: 'solenoid-valves',
         name: 'Solenoid Valves',
         subCategories: [
+          { id: 'solenoid-valves-overview', name: '📊 Category Overview', isOverview: true },
           { id: 'hvd-standard', name: 'HVD – Standard (ODF)' },
           { id: 'hvp-high-flow', name: 'HVP – High Flow (Flanged)' },
           { id: 'hv-clamping-small', name: 'HV – Clamping, Small Port' },
@@ -1172,3 +1174,27 @@ export const categories: Category[] = [
     ],
   },
 ]
+
+// Solenoid Valves Comparison Table Data
+export const solenoidValvesComparison = {
+  title: 'Refrigeration Solenoid Valves',
+  subtitle: '15 solenoid valve variants across 10 series, covering port sizes 1/4" to 2-1/8" (up to 60 mm for industrial models). Configurations include NC/NO, direct/servo-operated, piston and diaphragm structures.',
+  headers: ['#', 'Product', 'Series', 'Structure', 'NO/NC', 'Opening', 'Connection', 'Port Range', 'Kv (m³/h)', 'MWP (bar)', 'Voltage', 'Models'],
+  rows: [
+    ['1', 'Standard Solenoid Valve (ODF, NC)', 'HVD', 'Piston', 'NC', 'Servo', 'Brazed (ODF)', '3/8"~1-5/8"', '0.8~25', '45', 'AC380/220V', '8'],
+    ['2', 'High Flow Solenoid Valve, Flanged ODF', 'HVP', 'Piston', 'NC', 'Servo', 'ODF (flanged)', '1-1/8"~2-1/8"', '10~28', '45', 'AC380/220V', '4'],
+    ['3', 'Clamping Type Solenoid Valve, Small Port', 'HV-S', 'Diaphragm', 'NC', 'Servo', 'SAE/ODF', '1/4"~3/8"', '0.2~0.27', '45', 'AC380/220/110/24V, DC12V', '4'],
+    ['4', 'Clamping Type Solenoid Valve, Large Port', 'HV-L', 'Diaphragm', 'NC', 'Servo', 'SAE/ODF', '3/8"~1-1/8"', '0.8~10', '45', 'AC380/220/110/24V, DC12V', '14'],
+    ['5', 'IP65 Sealed Solenoid Valve, Direct Operated', 'SV-D', 'Diaphragm', 'NC', 'Direct', 'SAE/ODF', '1/4"~3/8"', '0.2~0.27', '45', 'AC380/220/110/24V, DC12V', '4'],
+    ['6', 'IP65 Sealed Solenoid Valve, Servo Operated', 'SV-S', 'Diaphragm', 'NC', 'Servo', 'SAE/ODF', '3/8"~7/8"', '0.8~5.7', '45', 'AC380/220/110/24V, DC12V', '9'],
+    ['7', 'Low Power Solenoid Valve 8W, Direct Operated', '10-D', 'Diaphragm', 'NC', 'Direct', 'SAE/ODF', '1/4"~3/8"', '0.2~0.27', '45', 'AC380/220/110/24V, DC12V', '4'],
+    ['8', 'Low Power Solenoid Valve 8W, Servo Operated', '10-S', 'Diaphragm', 'NC', 'Servo', 'SAE/ODF', '3/8"~3/4"', '0.8~2.6', '45', 'AC380/220/110/24V, DC12V', '8'],
+    ['9', 'Normally Open Solenoid Valve, Small Port', 'HVK-S', 'Diaphragm', 'NO', 'Servo', 'SAE/ODF', '1/4"~3/8"', '0.2~0.8', '45', 'AC380/220/110/24V, DC12V', '6'],
+    ['10', 'Normally Open Solenoid Valve, Large Port', 'HVK-L', 'Diaphragm', 'NO', 'Servo', 'SAE/ODF', '1/2"~1-1/8"', '0.8~10', '45', 'AC380/220/110/24V, DC12V', '12'],
+    ['11', 'Compressor Unloading Solenoid Valve, Flanged', 'HV-U(F)', 'Piston', 'NC', 'Direct', 'Flanged', 'Flange mount', '0.27', '45', 'AC220V', '1'],
+    ['12', 'Compressor Unloading Solenoid Valve, ODF', 'HV-U(O)', 'Piston', 'NC', 'Direct', 'Brazed (ODF)', '3/8"', '0.2', '45', 'AC220V', '1'],
+    ['13', 'Hot Gas Defrost Solenoid Valve, 3-Way', 'HVS(R)', 'Piston (3-way)', 'NC', 'Servo (3-way)', 'Special', '22~42 mm', '7.1~20.2', '30', 'AC220V', '4'],
+    ['14', 'High Flow Piston Solenoid Valve, ODF', 'HVDF', 'Piston', 'NC', 'Servo', 'Brazed (ODF)', '28.2~59.3 mm', '10~28', '45', 'AC380/220V', '5'],
+    ['15', 'High Flow Piston Solenoid Valve, Flanged', 'HVPF', 'Piston', 'NC', 'Servo', 'ODF (flanged)', '35~60.3 mm', '10~30', '45', 'AC380/220V', '5'],
+  ],
+};
