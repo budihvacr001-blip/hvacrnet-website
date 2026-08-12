@@ -123,6 +123,8 @@ export default function Products() {
   const currentThirdCategory = activeThirdCategory && currentSubCategory?.subCategories
     ? currentSubCategory.subCategories.find((t) => t.id === activeThirdCategory)
     : null
+  // Check if the selected subCategory itself is an overview (for filter-driers)
+  const isSubCategoryOverview = currentSubCategory?.isOverview === true
 
   return (
     <>
@@ -249,7 +251,9 @@ export default function Products() {
                                   }))
                                 }}
                                 className={`flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
-                                  activeSubCategory === sub.id && !activeThirdCategory
+                                  sub.isOverview
+                                    ? 'bg-navy text-white font-medium hover:bg-navy-light'
+                                    : activeSubCategory === sub.id && !activeThirdCategory
                                     ? 'font-semibold text-accent'
                                     : 'text-gray-700 hover:bg-navy/5'
                                 }`}
@@ -352,7 +356,7 @@ export default function Products() {
                     : currentCategory.name}
                 </h2>
                 <p className="mt-1 text-white/70">
-                  {currentThirdCategory?.isOverview
+                  {(currentThirdCategory?.isOverview || isSubCategoryOverview)
                     ? 'Product comparison overview'
                     : `${filteredProducts.length} product${filteredProducts.length !== 1 ? 's' : ''} available`}
                 </p>
@@ -360,7 +364,7 @@ export default function Products() {
             )}
 
             {/* Comparison Table for Overview */}
-            {currentThirdCategory?.isOverview && solenoidValvesComparison && (
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && solenoidValvesComparison && activeCategory === 'solenoid-valves' && (
               <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
                 <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
                   <h3 className="text-xl font-bold text-white">{solenoidValvesComparison.title}</h3>
@@ -435,7 +439,7 @@ export default function Products() {
             )}
 
             {/* Filter Driers Comparison Table for Overview */}
-            {currentThirdCategory?.isOverview && filterDriersComparison && activeCategory === 'filter-driers' && (
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && filterDriersComparison && activeCategory === 'filter-driers' && (
               <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
                 <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
                   <h3 className="text-xl font-bold text-white">{filterDriersComparison.title}</h3>
