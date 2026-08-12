@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
@@ -492,6 +492,43 @@ export default function Products() {
                               </td>
                             );
                           })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
+                  <p><strong>Note:</strong> MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
+                </div>
+              </div>
+            )}
+
+            {/* Ball Valves Comparison Table for Overview */}
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && ballValvesComparison && activeCategory === 'ball-valves' && (
+              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
+                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
+                  <h3 className="text-xl font-bold text-white">{ballValvesComparison.title}</h3>
+                  <p className="mt-2 text-sm text-white/80">{ballValvesComparison.subtitle}</p>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-navy/5">
+                        {ballValvesComparison.headers.map((header, i) => (
+                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {ballValvesComparison.rows.map((row, rowIdx) => (
+                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                          {row.map((cell, cellIdx) => (
+                            <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
+                              {cell}
+                            </td>
+                          ))}
                         </tr>
                       ))}
                     </tbody>
