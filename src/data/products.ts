@@ -664,21 +664,426 @@ export const categories: Category[] = [
       { id: '4-way-reversing-valves', name: '4-Way Reversing Valves' },
     ],
     products: [
-      { id: 'v-1', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-2', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-3', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-4', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-5', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-6', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-7', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-8', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-9', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-10', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-11', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-12', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-13', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-14', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
-      { id: 'v-15', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '', name: '', shortDesc: '', description: '' },
+      { id: 'v-1', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hvd-standard', metaTitle: 'Standard Piston Solenoid Valve (ODF, NC) | Refrigeration', metaDescription: 'NC piston solenoid valve with brazed ODF, 3/8\"–1-5/8\", Kv 0.8–25 m³/h, MWP 45 bar, AC220/380V. 8 models in stock. MOQ 1 pc.', name: 'Standard Solenoid Valve — Piston, NC, Brazed ODF (HVD Series)', shortDesc: 'The standard mainstay refrigeration solenoid valve in this range, the HVD Series features a piston structure and pure ODF brazed connection for reliable high-pressure operation. With 8 models covering port sizes from 3/8\" to 1-5/8\", it serves a wide range of HCFC and HFC refrigeration and air conditioning systems.', description: '• Servo-operated solenoid valve designed for one-way flow control in refrigeration, cold storage, and air conditioning systems.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately) for flexible installation and maintenance.', features: [
+      "Proprietary solenoid coil with excellent waterproof performance (IP65)",
+      "Advanced materials provide superior high and low temperature resistance",
+      "24W high-power solenoid coil delivers strong valve opening capability",
+      "Large piston stroke ensures high flow rate performance",
+      "Various AC and DC solenoid coil options available",
+      "Maximum welded connection size: 1-5/8\""
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HVD8-3T", "3/8\"", "0.8"],
+      ["HVD10-4T", "1/2\"", "1.4"],
+      ["HVD10-5T", "5/8\"", "1.9"],
+      ["HVD15-6T", "3/4\"", "2.6"],
+      ["HVD15-7T", "7/8\"", "2.8"],
+      ["HVD25-9T", "1-1/8\"", "10"],
+      ["HVD32-11T", "1-3/8\"", "16"],
+      ["HVD40-13T", "1-5/8\"", "25"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HVD" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / AC220V / 50Hz" },
+      { "label": "Connection Type", "value": "Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Piston" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-2', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hvp-high-flow', metaTitle: 'High Flow Solenoid Valve, Flanged ODF | Refrigeration', metaDescription: 'High flow NC piston solenoid valve with flanged ODF, 1-1/8\"–2-1/8\", Kv 10–28 m³/h, MWP 45 bar. Large-diameter refrigeration. MOQ 1 pc.', name: 'High Flow Solenoid Valve — Piston, NC, Flanged ODF (HVP Series)', shortDesc: 'Delivering the highest flow capacity among standard refrigeration solenoid valves, the HVP Series features a flanged-edge valve body designed for large-diameter refrigeration applications. With 4 models covering ports from 1-1/8\" to 2-1/8\" and Kv values up to 28 m³/h, it is ideal for industrial and commercial refrigeration systems requiring high-capacity refrigerant flow.', description: '• Servo-operated solenoid valve designed for one-way flow control in refrigeration, cold storage, and air conditioning systems.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately) for flexible installation and maintenance.', features: [
+      "Proprietary solenoid coil with excellent waterproof performance (IP65)",
+      "Advanced materials provide superior high and low temperature resistance",
+      "24W high-power solenoid coil delivers strong valve opening capability",
+      "Large piston stroke ensures high flow rate performance",
+      "Various AC and DC solenoid coil options available",
+      "Maximum welded connection size: 2-1/8\""
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HVP25", "1-1/8\"", "10"],
+      ["HVP32", "1-3/8\"", "16"],
+      ["HVP40", "1-5/8\"", "25"],
+      ["HVP54", "2-1/8\"", "28"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HVP" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / AC220V / 50Hz" },
+      { "label": "Connection Type", "value": "Brazed (ODF, flanged edge)" },
+      { "label": "Valve Type", "value": "Piston" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-3', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hv-clamping-small', metaTitle: 'Clamping Type Solenoid Valve, Small Port | Refrigeration', metaDescription: 'Small port clamping solenoid valve, diaphragm NC, SAE flare/ODF, 1/4\"–3/8\", Kv 0.2–0.27, MWP 45 bar, wide voltage. MOQ 1 pc.', name: 'Clamping Type Solenoid Valve — Small Port, Diaphragm, NC (HV Series)', shortDesc: 'A compact diaphragm solenoid valve with a clamping coil design that allows tool-free coil removal for quick maintenance, the HV Series (Small Port) covers port sizes from 1/4\" to 3/8\" and offers the widest voltage range in the lineup (AC380V/220V/110V/24V, DC12V). It is ideal for compact refrigeration and air conditioning installations.', description: '• Direct-operated or servo-operated solenoid valve designed for one-way flow control.\n• Used on liquid lines, suction lines, and hot gas lines in refrigeration, cold storage, and air conditioning units.\n• Precision-engineered valve seat and seals deliver excellent sealing performance.\n• Compatible with coils of various voltages for flexible electrical configuration.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "NC (Normally Closed) type available",
+      "Various port sizes available to suit different system requirements",
+      "Coils of various power supply options available for selection",
+      "9W solenoid coil with MOPD up to 3.1 MPa",
+      "Clamping-type design enables tool-free disassembly using only a screwdriver",
+      "Suitable for diverse applications in refrigeration, cold storage, and air conditioning",
+      "Sealed coil with extended service life, suitable for harsh environments",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HV3-2", "1/4\"", "0.2"],
+      ["HV3-2T", "1/4\"", "0.2"],
+      ["HV3-3", "3/8\"", "0.27"],
+      ["HV3-3T", "3/8\"", "0.27"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HV (Small Port)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-4', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hv-clamping-large', metaTitle: 'Clamping Type Solenoid Valve, Large Port | Refrigeration', metaDescription: 'Large port clamping solenoid valve, diaphragm NC, SAE flare/ODF, 1/2\"–1-1/8\", Kv 0.5–4.5, MWP 45 bar. MOQ 1 pc.', name: 'Clamping Type Solenoid Valve — Large Port, Diaphragm, NC (HV Series)', shortDesc: 'The large-port variant of the clamping-type solenoid valve, covering port sizes from 1/2\" to 1-1/8\" with Kv values up to 4.5 m³/h. Shares the same tool-free clamping coil design as the small-port version, making it ideal for medium-capacity refrigeration and air conditioning systems.', description: '• Direct-operated or servo-operated solenoid valve designed for one-way flow control.\n• Used on liquid lines, suction lines, and hot gas lines in refrigeration, cold storage, and air conditioning units.\n• Precision-engineered valve seat and seals deliver excellent sealing performance.\n• Compatible with coils of various voltages for flexible electrical configuration.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "NC (Normally Closed) type available",
+      "Various port sizes available to suit different system requirements",
+      "Coils of various power supply options available for selection",
+      "9W solenoid coil with MOPD up to 3.1 MPa",
+      "Clamping-type design enables tool-free disassembly using only a screwdriver",
+      "Suitable for diverse applications in refrigeration, cold storage, and air conditioning",
+      "Sealed coil with extended service life, suitable for harsh environments",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HV5-4", "1/2\"", "0.5"],
+      ["HV5-4T", "1/2\"", "0.5"],
+      ["HV8-6", "3/4\"", "1.2"],
+      ["HV8-6T", "3/4\"", "1.2"],
+      ["HV10-8", "7/8\"", "2.0"],
+      ["HV10-8T", "7/8\"", "2.0"],
+      ["HV15-10", "1-1/8\"", "4.5"],
+      ["HV15-10T", "1-1/8\"", "4.5"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HV (Large Port)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-5', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'sv-ip65-direct', metaTitle: 'IP65 Direct-Acting Solenoid Valve | Refrigeration', metaDescription: 'IP65 direct-acting solenoid valve, diaphragm NC, 1/4\"–3/8\", Kv 0.2–0.27, MWP 45 bar, wide voltage range. MOQ 1 pc.', name: 'IP65 Direct-Acting Solenoid Valve — Diaphragm, NC (SV Series)', shortDesc: 'A compact direct-acting solenoid valve with IP65 protection rating, the SV Series (Direct) covers port sizes from 1/4\" to 3/8\". Its direct-acting design ensures reliable operation even at zero pressure differential, making it suitable for small-capacity refrigeration systems.', description: '• Direct-operated solenoid valve designed for one-way flow control in refrigeration and air conditioning systems.\n• IP65 protection rating ensures reliable operation in humid and dusty environments.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "IP65 protection rating for harsh environment operation",
+      "Direct-acting design works at zero pressure differential",
+      "9W solenoid coil with MOPD up to 3.1 MPa",
+      "Various AC and DC voltage options available",
+      "Compact diaphragm structure for reliable sealing",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["SV3-2", "1/4\"", "0.2"],
+      ["SV3-2T", "1/4\"", "0.2"],
+      ["SV3-3", "3/8\"", "0.27"],
+      ["SV3-3T", "3/8\"", "0.27"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "SV (Direct)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Direct-Acting" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-6', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'sv-ip65-servo', metaTitle: 'IP65 Servo-Operated Solenoid Valve | Refrigeration', metaDescription: 'IP65 servo-operated solenoid valve, diaphragm NC, 1/2\"–1-1/8\", Kv 0.5–4.5, MWP 45 bar. MOQ 1 pc.', name: 'IP65 Servo-Operated Solenoid Valve — Diaphragm, NC (SV Series)', shortDesc: 'The servo-operated variant of the IP65 solenoid valve, covering larger port sizes from 1/2\" to 1-1/8\" with Kv values up to 4.5 m³/h. Ideal for medium-capacity refrigeration systems requiring higher flow rates.', description: '• Servo-operated solenoid valve designed for one-way flow control in refrigeration and air conditioning systems.\n• IP65 protection rating ensures reliable operation in humid and dusty environments.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "IP65 protection rating for harsh environment operation",
+      "Servo-operated design for higher flow capacity",
+      "9W solenoid coil with MOPD up to 3.1 MPa",
+      "Various AC and DC voltage options available",
+      "Compact diaphragm structure for reliable sealing",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["SV5-4", "1/2\"", "0.5"],
+      ["SV5-4T", "1/2\"", "0.5"],
+      ["SV8-6", "3/4\"", "1.2"],
+      ["SV8-6T", "3/4\"", "1.2"],
+      ["SV10-8", "7/8\"", "2.0"],
+      ["SV10-8T", "7/8\"", "2.0"],
+      ["SV15-10", "1-1/8\"", "4.5"],
+      ["SV15-10T", "1-1/8\"", "4.5"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "SV (Servo)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-7', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '10-8w-direct', metaTitle: '8W Low Power Direct-Acting Solenoid Valve | Refrigeration', metaDescription: '8W low power direct-acting solenoid valve, diaphragm NC, 1/4\"–3/8\", Kv 0.2–0.27, MWP 45 bar. Energy efficient. MOQ 1 pc.', name: '8W Low Power Direct-Acting Solenoid Valve — Diaphragm, NC (10 Series)', shortDesc: 'An energy-efficient direct-acting solenoid valve with only 8W power consumption, the 10 Series (Direct) covers port sizes from 1/4\" to 3/8\". Its low power design reduces heat generation and extends coil life, making it ideal for continuous-operation refrigeration systems.', description: '• Direct-operated solenoid valve designed for one-way flow control in refrigeration and air conditioning systems.\n• Ultra-low 8W power consumption reduces heat generation and energy costs.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "Ultra-low 8W power consumption for energy efficiency",
+      "Direct-acting design works at zero pressure differential",
+      "Reduced heat generation extends coil service life",
+      "Various AC and DC voltage options available",
+      "Compact diaphragm structure for reliable sealing",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["10-3-2", "1/4\"", "0.2"],
+      ["10-3-2T", "1/4\"", "0.2"],
+      ["10-3-3", "3/8\"", "0.27"],
+      ["10-3-3T", "3/8\"", "0.27"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "10 (Direct)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Direct-Acting" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-8', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: '10-8w-servo', metaTitle: '8W Low Power Servo-Operated Solenoid Valve | Refrigeration', metaDescription: '8W low power servo-operated solenoid valve, diaphragm NC, 1/2\"–1-1/8\", Kv 0.5–4.5, MWP 45 bar. Energy efficient. MOQ 1 pc.', name: '8W Low Power Servo-Operated Solenoid Valve — Diaphragm, NC (10 Series)', shortDesc: 'The servo-operated variant of the 8W low power solenoid valve, covering larger port sizes from 1/2\" to 1-1/8\" with Kv values up to 4.5 m³/h. Combines energy efficiency with higher flow capacity for medium-capacity refrigeration systems.', description: '• Servo-operated solenoid valve designed for one-way flow control in refrigeration and air conditioning systems.\n• Ultra-low 8W power consumption reduces heat generation and energy costs.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "Ultra-low 8W power consumption for energy efficiency",
+      "Servo-operated design for higher flow capacity",
+      "Reduced heat generation extends coil service life",
+      "Various AC and DC voltage options available",
+      "Compact diaphragm structure for reliable sealing",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["10-5-4", "1/2\"", "0.5"],
+      ["10-5-4T", "1/2\"", "0.5"],
+      ["10-8-6", "3/4\"", "1.2"],
+      ["10-8-6T", "3/4\"", "1.2"],
+      ["10-10-8", "7/8\"", "2.0"],
+      ["10-10-8T", "7/8\"", "2.0"],
+      ["10-15-10", "1-1/8\"", "4.5"],
+      ["10-15-10T", "1-1/8\"", "4.5"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "10 (Servo)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-9', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hvk-no-small', metaTitle: 'Normally Open Solenoid Valve, Small Port | Refrigeration', metaDescription: 'Normally open solenoid valve, small port, diaphragm, 1/4\"–3/8\", Kv 0.2–0.27, MWP 45 bar. MOQ 1 pc.', name: 'Normally Open Solenoid Valve — Small Port, Diaphragm (HVK Series)', shortDesc: 'A normally open (NO) solenoid valve that remains open when de-energized and closes when powered, the HVK Series (Small Port) covers port sizes from 1/4\" to 3/8\". Ideal for safety applications where flow must continue during power failure.', description: '• Direct-operated normally open solenoid valve designed for one-way flow control.\n• Remains open when de-energized, closes when powered — ideal for safety-critical applications.\n• Used on liquid lines, suction lines, and hot gas lines in refrigeration and air conditioning units.\n• Compatible with coils of various voltages for flexible electrical configuration.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "Normally Open (NO) configuration for safety applications",
+      "Various port sizes available to suit different system requirements",
+      "Coils of various power supply options available for selection",
+      "9W solenoid coil with MOPD up to 3.1 MPa",
+      "Clamping-type design enables tool-free disassembly using only a screwdriver",
+      "Suitable for diverse applications in refrigeration, cold storage, and air conditioning",
+      "Sealed coil with extended service life, suitable for harsh environments",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HVK3-2", "1/4\"", "0.2"],
+      ["HVK3-2T", "1/4\"", "0.2"],
+      ["HVK3-3", "3/8\"", "0.27"],
+      ["HVK3-3T", "3/8\"", "0.27"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HVK (Small Port)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Direct-Acting" },
+      { "label": "NO/NC", "value": "NO (Normally Open)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-10', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hvk-no-large', metaTitle: 'Normally Open Solenoid Valve, Large Port | Refrigeration', metaDescription: 'Normally open solenoid valve, large port, diaphragm, 1/2\"–1-1/8\", Kv 0.5–4.5, MWP 45 bar. MOQ 1 pc.', name: 'Normally Open Solenoid Valve — Large Port, Diaphragm (HVK Series)', shortDesc: 'The large-port variant of the normally open solenoid valve, covering port sizes from 1/2\" to 1-1/8\" with Kv values up to 4.5 m³/h. Ideal for medium-capacity refrigeration systems requiring fail-open safety configuration.', description: '• Direct-operated normally open solenoid valve designed for one-way flow control.\n• Remains open when de-energized, closes when powered — ideal for safety-critical applications.\n• Used on liquid lines, suction lines, and hot gas lines in refrigeration and air conditioning units.\n• Compatible with coils of various voltages for flexible electrical configuration.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "Normally Open (NO) configuration for safety applications",
+      "Various port sizes available to suit different system requirements",
+      "Coils of various power supply options available for selection",
+      "9W solenoid coil with MOPD up to 3.1 MPa",
+      "Clamping-type design enables tool-free disassembly using only a screwdriver",
+      "Suitable for diverse applications in refrigeration, cold storage, and air conditioning",
+      "Sealed coil with extended service life, suitable for harsh environments",
+      "Certifications: ISO 9001, CE, UL"
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HVK5-4", "1/2\"", "0.5"],
+      ["HVK5-4T", "1/2\"", "0.5"],
+      ["HVK8-6", "3/4\"", "1.2"],
+      ["HVK8-6T", "3/4\"", "1.2"],
+      ["HVK10-8", "7/8\"", "2.0"],
+      ["HVK10-8T", "7/8\"", "2.0"],
+      ["HVK15-10", "1-1/8\"", "4.5"],
+      ["HVK15-10T", "1-1/8\"", "4.5"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HVK (Large Port)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / 220V / 110V / 24V 50/60Hz, DC12V" },
+      { "label": "Connection Type", "value": "SAE Flare / Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Diaphragm" },
+      { "label": "Opening Type", "value": "Direct-Acting" },
+      { "label": "NO/NC", "value": "NO (Normally Open)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-11', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hv-unloading-flanged', metaTitle: 'Unloading Solenoid Valve, Flanged | Refrigeration', metaDescription: 'Unloading solenoid valve with flanged connection, piston NC, 1-1/8\"–2-1/8\", Kv 10–28, MWP 45 bar. MOQ 1 pc.', name: 'Unloading Solenoid Valve — Flanged, Piston, NC (HV Series)', shortDesc: 'A high-capacity unloading solenoid valve with flanged connection, designed for large-diameter refrigeration systems. The HV Series (Unloading, Flanged) covers port sizes from 1-1/8\" to 2-1/8\" with Kv values up to 28 m³/h, ideal for industrial refrigeration compressor unloading applications.', description: '• Servo-operated solenoid valve designed for compressor unloading in large refrigeration systems.\n• Flanged connection ensures secure, leak-free installation on large-diameter pipelines.\n• Suitable for hot gas bypass and capacity control applications.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "High-capacity piston design for large-diameter applications",
+      "Flanged connection for secure, leak-free installation",
+      "24W high-power solenoid coil delivers strong valve opening capability",
+      "Various AC and DC solenoid coil options available",
+      "Suitable for compressor unloading and capacity control",
+      "Maximum connection size: 2-1/8\""
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HV25F", "1-1/8\"", "10"],
+      ["HV32F", "1-3/8\"", "16"],
+      ["HV40F", "1-5/8\"", "25"],
+      ["HV54F", "2-1/8\"", "28"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HV (Unloading, Flanged)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / AC220V / 50Hz" },
+      { "label": "Connection Type", "value": "Flanged" },
+      { "label": "Valve Type", "value": "Piston" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-12', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hv-unloading-odf', metaTitle: 'Unloading Solenoid Valve, ODF | Refrigeration', metaDescription: 'Unloading solenoid valve with brazed ODF connection, piston NC, 1-1/8\"–2-1/8\", Kv 10–28, MWP 45 bar. MOQ 1 pc.', name: 'Unloading Solenoid Valve — Brazed ODF, Piston, NC (HV Series)', shortDesc: 'A high-capacity unloading solenoid valve with brazed ODF connection, designed for large-diameter refrigeration systems. The HV Series (Unloading, ODF) covers port sizes from 1-1/8\" to 2-1/8\" with Kv values up to 28 m³/h, ideal for industrial refrigeration compressor unloading applications.', description: '• Servo-operated solenoid valve designed for compressor unloading in large refrigeration systems.\n• Brazed ODF connection ensures secure, leak-free installation on large-diameter pipelines.\n• Suitable for hot gas bypass and capacity control applications.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "High-capacity piston design for large-diameter applications",
+      "Brazed ODF connection for secure, leak-free installation",
+      "24W high-power solenoid coil delivers strong valve opening capability",
+      "Various AC and DC solenoid coil options available",
+      "Suitable for compressor unloading and capacity control",
+      "Maximum connection size: 2-1/8\""
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HV25T", "1-1/8\"", "10"],
+      ["HV32T", "1-3/8\"", "16"],
+      ["HV40T", "1-5/8\"", "25"],
+      ["HV54T", "2-1/8\"", "28"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HV (Unloading, ODF)" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / AC220V / 50Hz" },
+      { "label": "Connection Type", "value": "Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Piston" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-13', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hvs-hot-gas', metaTitle: 'Hot Gas Defrost Solenoid Valve | Refrigeration', metaDescription: 'Hot gas defrost solenoid valve, piston NC, brazed ODF, 1/2\"–1-5/8\", Kv 2.6–25, MWP 45 bar. MOQ 1 pc.', name: 'Hot Gas Defrost Solenoid Valve — Piston, NC, Brazed ODF (HVS Series)', shortDesc: 'A specialized solenoid valve designed for hot gas defrost applications in refrigeration systems, the HVS Series features a piston structure and brazed ODF connection. With models covering port sizes from 1/2\" to 1-5/8\", it enables efficient defrost cycles in cold storage and commercial refrigeration systems.', description: '• Servo-operated solenoid valve specifically designed for hot gas defrost in refrigeration systems.\n• Enables efficient defrost cycles by redirecting hot discharge gas to the evaporator.\n• Suitable for installation on hot gas defrost lines in cold storage and commercial refrigeration.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "Specialized design for hot gas defrost applications",
+      "Piston structure for reliable high-pressure operation",
+      "24W high-power solenoid coil delivers strong valve opening capability",
+      "Various AC and DC solenoid coil options available",
+      "Brazed ODF connection for secure, leak-free installation",
+      "Maximum connection size: 1-5/8\""
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HVS15-6T", "1/2\"", "2.6"],
+      ["HVS15-7T", "5/8\"", "2.8"],
+      ["HVS25-9T", "3/4\"", "5.0"],
+      ["HVS32-11T", "1-1/8\"", "10"],
+      ["HVS40-13T", "1-3/8\"", "16"],
+      ["HVS50-15T", "1-5/8\"", "25"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HVS" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / AC220V / 50Hz" },
+      { "label": "Connection Type", "value": "Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Piston" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-14', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hvdf-high-flow', metaTitle: 'High Flow Solenoid Valve, ODF | Refrigeration', metaDescription: 'High flow solenoid valve with brazed ODF, piston NC, 1-1/8\"–2-1/8\", Kv 10–28, MWP 45 bar. MOQ 1 pc.', name: 'High Flow Solenoid Valve — Brazed ODF, Piston, NC (HVDF Series)', shortDesc: 'A high-flow solenoid valve with brazed ODF connection, the HVDF Series covers port sizes from 1-1/8\" to 2-1/8\" with Kv values up to 28 m³/h. Designed for large-capacity refrigeration systems requiring maximum flow performance.', description: '• Servo-operated solenoid valve designed for high-flow applications in large refrigeration systems.\n• Brazed ODF connection ensures secure, leak-free installation on large-diameter pipelines.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "High-capacity piston design for large-diameter applications",
+      "Brazed ODF connection for secure, leak-free installation",
+      "24W high-power solenoid coil delivers strong valve opening capability",
+      "Various AC and DC solenoid coil options available",
+      "Maximum flow capacity: Kv 28 m³/h",
+      "Maximum connection size: 2-1/8\""
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HVDF25", "1-1/8\"", "10"],
+      ["HVDF32", "1-3/8\"", "16"],
+      ["HVDF40", "1-5/8\"", "25"],
+      ["HVDF54", "2-1/8\"", "28"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HVDF" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / AC220V / 50Hz" },
+      { "label": "Connection Type", "value": "Brazed (ODF)" },
+      { "label": "Valve Type", "value": "Piston" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
+      { id: 'v-15', categoryId: 'valves', subCategoryId: 'solenoid-valves', thirdCategoryId: 'hvfp-high-flow', metaTitle: 'High Flow Solenoid Valve, Flanged | Refrigeration', metaDescription: 'High flow solenoid valve with flanged connection, piston NC, 1-1/8\"–2-1/8\", Kv 10–28, MWP 45 bar. MOQ 1 pc.', name: 'High Flow Solenoid Valve — Flanged, Piston, NC (HVPF Series)', shortDesc: 'A high-flow solenoid valve with flanged connection, the HVPF Series covers port sizes from 1-1/8\" to 2-1/8\" with Kv values up to 28 m³/h. Designed for large-capacity industrial refrigeration systems requiring maximum flow performance with flanged pipeline connection.', description: '• Servo-operated solenoid valve designed for high-flow applications in large industrial refrigeration systems.\n• Flanged connection ensures secure, leak-free installation on large-diameter pipelines.\n• Suitable for installation on liquid lines, suction lines, and hot gas lines.\n• Compatible with coils of various voltages through a universal valve body design.\n• Available as a complete assembly or as split supply (valve body and coil supplied separately).', features: [
+      "High-capacity piston design for large-diameter applications",
+      "Flanged connection for secure, leak-free installation",
+      "24W high-power solenoid coil delivers strong valve opening capability",
+      "Various AC and DC solenoid coil options available",
+      "Maximum flow capacity: Kv 28 m³/h",
+      "Maximum connection size: 2-1/8\""
+    ], availableModels: { headers: ["Model", "Port Size (Inch)", "Kv (m\u00b3/h)"], rows: [
+      ["HVPF25", "1-1/8\"", "10"],
+      ["HVPF32", "1-3/8\"", "16"],
+      ["HVPF40", "1-5/8\"", "25"],
+      ["HVPF54", "2-1/8\"", "28"]
+    ] }, specs: [
+      { "label": "Series Code", "value": "HVPF" },
+      { "label": "MWP (Maximum Working Pressure)", "value": "45 bar (4.5 MPa)" },
+      { "label": "Rated Voltage", "value": "AC380V / AC220V / 50Hz" },
+      { "label": "Connection Type", "value": "Flanged" },
+      { "label": "Valve Type", "value": "Piston" },
+      { "label": "Opening Type", "value": "Servo-Operated" },
+      { "label": "NO/NC", "value": "NC (Normally Closed)" },
+      { "label": "Refrigerant Compatibility", "value": "HCFC, HFC" },
+      { "label": "Medium Temperature Range", "value": "−30 °C ~ +105 °C" },
+      { "label": "Ambient Temperature", "value": "−40 °C ~ +65 °C" },
+      { "label": "Voltage Fluctuation", "value": "+10% / −15%" },
+      { "label": "Coil Connection", "value": "Standard 3-wire insert connector" }
+    ], applications: 'Refrigeration, cold storage, air conditioning, heat pump systems' },
       { id: 'bv-1', categoryId: 'valves', subCategoryId: 'ball-valves', thirdCategoryId: 'bv-s', name: 'BV-S Standard Ball Valve', shortDesc: 'Standard brass ball valve for general HVAC applications.', description: 'Full-port brass ball valves with chrome-plated ball for reliable on/off flow control in HVAC systems.', specs: [{ label: 'Connection', value: 'Solder / Flare / Thread' }, { label: 'Material', value: 'Forged Brass' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'Service valves, isolation points, general HVAC' },
       { id: 'bv-2', categoryId: 'valves', subCategoryId: 'ball-valves', thirdCategoryId: 'bv-sf', name: 'BV-SF Flanged Ball Valve', shortDesc: 'Flanged ball valve for large pipe connections.', description: 'Flanged ball valves for easy installation and maintenance in large-diameter piping systems.', specs: [{ label: 'Connection', value: 'Flange' }, { label: 'Material', value: 'Forged Brass' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'Industrial HVAC, large AC systems' },
       { id: 'bv-3', categoryId: 'valves', subCategoryId: 'ball-valves', thirdCategoryId: 'bv-sw', name: 'BV-SW Welded Ball Valve', shortDesc: 'Welded ball valve for permanent pipe connections.', description: 'Welded-end ball valves for leak-proof permanent installations in high-pressure systems.', specs: [{ label: 'Connection', value: 'Weld' }, { label: 'Material', value: 'Forged Brass' }, { label: 'Working Pressure', value: '600 WOG' }], applications: 'High-pressure HVAC systems' },
