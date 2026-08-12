@@ -32,6 +32,9 @@ export default function Products() {
   const [activeSubCategory, setActiveSubCategory] = useState<string>('all')
   const [activeThirdCategory, setActiveThirdCategory] = useState<string | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [highlightedProductId, setHighlightedProductId] = useState<string | null>(null)
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
+  const [expandedSubCategories, setExpandedSubCategories] = useState<Record<string, boolean>>({})
 
   const allProducts = useMemo(() => {
     return categories.flatMap((cat) => cat.products)
@@ -80,6 +83,17 @@ export default function Products() {
     setActiveSubCategory(subId)
     setActiveThirdCategory(thirdId)
   }
+
+  useEffect(() => {
+    if (highlightedProductId) {
+      const el = document.getElementById(`product-${highlightedProductId}`)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        const timer = setTimeout(() => setHighlightedProductId(null), 2000)
+        return () => clearTimeout(timer)
+      }
+    }
+  }, [highlightedProductId])
 
   // Scroll to product card when third category is selected from comparison table
   useEffect(() => {
@@ -187,9 +201,15 @@ export default function Products() {
                 const hasSubs = cat.subCategories.length > 0
 
                 return (
-                  <div key={cat.id} className="group relative">
+                  <div key={cat.id}>
                     <button
-                      onClick={() => selectCategory(cat.id)}
+                      onClick={() => {
+                        selectCategory(cat.id)
+                        setExpandedCategories(prev => ({
+                          ...prev,
+                          [cat.id]: !prev[cat.id]
+                        }))
+                      }}
                       className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                         isActive && activeSubCategory === 'all'
                           ? 'bg-navy text-white'
@@ -197,7 +217,7 @@ export default function Products() {
                       }`}
                     >
                       {hasSubs && (
-                        <ChevronRight className="h-4 w-4 shrink-0 transition-transform group-hover:rotate-90" />
+                        <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${expandedCategories[cat.id] ? 'rotate-90' : ''}`} />
                       )}
                       {!hasSubs && <span className="w-4 shrink-0" />}
                       <span className="flex-1">{cat.name}</span>
@@ -212,12 +232,12 @@ export default function Products() {
                       </span>
                     </button>
 
-                    {/* Sub-categories dropdown on hover */}
-                    {hasSubs && (
-                      <div className="invisible absolute left-full top-0 z-30 ml-1 w-56 rounded-md border border-gray-border bg-white py-2 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+                    {/* Sub-categories inline */}
+                    {hasSubs && expandedCategories[cat.id] && (
+                      <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
                         <button
                           onClick={() => selectSubCategory(cat.id, 'all')}
-                          className={`block w-full px-4 py-2.5 text-left text-sm font-bold transition-colors ${
+                          className={`block w-full rounded px-3 py-2 text-left text-sm font-bold transition-colors ${
                             activeSubCategory === 'all' && isActive
                               ? 'bg-navy text-white'
                               : 'bg-gray-50 text-navy hover:bg-navy/10'
@@ -228,21 +248,26 @@ export default function Products() {
                             All {cat.name}
                           </div>
                         </button>
-                        <div className="my-1 border-t border-gray-border" />
                         {cat.subCategories.map((sub) => {
                           const hasThirdLevel = sub.subCategories && sub.subCategories.length > 0
                           return (
-                            <div key={sub.id} className="group/sub relative">
+                            <div key={sub.id}>
                               <button
-                                onClick={() => selectSubCategory(cat.id, sub.id)}
-                                className={`flex w-full items-center gap-2 px-4 py-2 text-left text-sm transition-colors ${
+                                onClick={() => {
+                                  selectSubCategory(cat.id, sub.id)
+                                  setExpandedSubCategories(prev => ({
+                                    ...prev,
+                                    [`${cat.id}-${sub.id}`]: !prev[`${cat.id}-${sub.id}`]
+                                  }))
+                                }}
+                                className={`flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
                                   activeSubCategory === sub.id && !activeThirdCategory
                                     ? 'font-semibold text-accent'
                                     : 'text-gray-700 hover:bg-navy/5'
                                 }`}
                               >
                                 {hasThirdLevel && (
-                                  <ChevronRight className="h-3 w-3 shrink-0 transition-transform group-hover/sub:rotate-90" />
+                                  <ChevronRight className={`h-3 w-3 shrink-0 transition-transform ${expandedSubCategories[`${cat.id}-${sub.id}`] ? 'rotate-90' : ''}`} />
                                 )}
                                 {!hasThirdLevel && <span className="w-3 shrink-0" />}
                                 <span className="flex-1">{sub.name}</span>
@@ -252,12 +277,12 @@ export default function Products() {
                                   </span>
                                 )}
                               </button>
-                              {/* Third-level dropdown */}
-                              {hasThirdLevel && (
-                                <div className="invisible absolute left-full top-0 z-40 ml-1 w-56 rounded-md border border-gray-border bg-white py-2 shadow-lg opacity-0 transition-all group-hover/sub:visible group-hover/sub:opacity-100">
+                              {/* Third-level inline */}
+                              {hasThirdLevel && expandedSubCategories[`${cat.id}-${sub.id}`] && (
+                                <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
                                   <button
                                     onClick={() => selectSubCategory(cat.id, sub.id)}
-                                    className={`block w-full px-4 py-2.5 text-left text-sm font-bold transition-colors ${
+                                    className={`block w-full rounded px-3 py-2 text-left text-sm font-bold transition-colors ${
                                       activeSubCategory === sub.id && !activeThirdCategory
                                         ? 'bg-navy text-white'
                                         : 'bg-gray-50 text-navy hover:bg-navy/10'
@@ -268,12 +293,11 @@ export default function Products() {
                                       All {sub.name}
                                     </div>
                                   </button>
-                                  <div className="my-1 border-t border-gray-border" />
                                   {sub.subCategories!.map((third) => (
                                     <button
                                       key={third.id}
                                       onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
-                                      className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
+                                      className={`block w-full rounded px-3 py-2 text-left text-sm transition-colors ${
                                         third.isOverview
                                           ? 'bg-navy text-white font-medium hover:bg-navy-light'
                                           : activeThirdCategory === third.id
