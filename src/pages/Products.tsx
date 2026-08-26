@@ -374,10 +374,10 @@ export default function Products() {
             )}
 
             {/* Category Positioning Statement */}
-            {activeCategory && currentCategory && !currentThirdCategory?.isOverview && !isSubCategoryOverview && categoryPositioning[currentCategory.id] && (
+            {activeCategory && currentCategory && !currentThirdCategory?.isOverview && !isSubCategoryOverview && (categoryPositioning[currentSubCategory?.id || currentCategory.id]) && (
               <div className="mb-8 rounded-lg border border-navy/10 bg-white p-6 shadow-sm">
                 <p className="text-sm leading-relaxed text-gray-700">
-                  {categoryPositioning[currentCategory.id]}
+                  {categoryPositioning[currentSubCategory?.id || currentCategory.id]}
                 </p>
               </div>
             )}
