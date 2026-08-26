@@ -23,6 +23,9 @@ export default function About() {
             <p>
               HVACR NET was founded by a 20-year expert of international trade. We are not a traditional trading company — we are your professional sourcing partner for HVAC and refrigeration parts.
             </p>
+            <p>
+              Based in Ningbo, China, HVACR NET is a global supplier of HVAC and refrigeration spare parts, serving contractors, wholesalers, and distributors across the Middle East, Africa, Southeast Asia, Europe, and the Americas.
+            </p>
 
             <div className="rounded-lg border border-gray-border bg-gray-bg p-6">
               <h4 className="mb-4 text-lg font-bold text-navy">Why us?</h4>
