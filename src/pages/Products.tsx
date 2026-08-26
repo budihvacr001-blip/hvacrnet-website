@@ -25,6 +25,16 @@ const productSchema = {
   })),
 }
 
+// Category positioning statements for global audience
+const categoryPositioning: Record<string, string> = {
+  'copper-tubes': 'Copper tubes for HVAC and refrigeration systems — straight lengths, pancake coils, and Level Wound Coils (LWC) manufactured to ASTM B280 and EN 12735 standards. Sourced from established mills in Ningbo, China\'s copper processing hub, with a full range of outer diameters and wall thicknesses available. Supplying contractors, wholesalers, and distributors worldwide with flexible MOQ and direct port shipping.',
+  'insulation-tubes': 'Insulation tubes for refrigeration and air conditioning piping, engineered to reduce heat loss and prevent condensation across residential, commercial, and industrial applications. Our polyethylene foam and rubber insulation are compatible with all standard copper tube sizes and perform reliably in diverse climate zones. Flexible order quantities with fast dispatch from Ningbo.',
+  'ball-valves': 'Refrigeration brass ball valves including shut-off valves, charging valves, and receiver valves for HVAC and refrigeration systems. Each valve is forged from high-grade brass and 100% leak-tested before shipment. We supply service technicians, installation contractors, and wholesale distributors with competitive pricing, low MOQ, and reliable quality from Ningbo\'s HVAC component cluster.',
+  'solenoid-valves': 'Refrigeration solenoid valves for precise refrigerant flow control in air conditioning, cold storage, and commercial refrigeration equipment. Our range covers normally closed and normally open configurations compatible with R22, R134a, R404A, R410A, and common refrigerants. Direct sourcing from Ningbo ensures consistent quality and competitive pricing for customers worldwide.',
+  'filter-driers': 'HVAC and refrigeration filter driers that protect systems from moisture, acid, and solid contaminants. Our range includes sealed filter driers, replaceable-core filter driers, and suction line filters for residential, commercial, and industrial applications. Every unit is built with molecular sieve and activated alumina for effective moisture and acid removal — one-stop sourcing with flexible MOQ from Ningbo.',
+  'sight-glasses': 'Refrigeration sight glasses for monitoring refrigerant flow and moisture content in HVAC and refrigeration systems. Each moisture indicator features a color-changing element that provides instant visual confirmation of system condition. Available in brazed and flare connections across common line sizes. Supplying contractors, service technicians, and wholesale distributors globally with reliable quality at competitive prices.',
+}
+
 export default function Products() {
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
@@ -359,6 +369,15 @@ export default function Products() {
                   {(currentThirdCategory?.isOverview || isSubCategoryOverview)
                     ? 'Product comparison overview'
                     : `${filteredProducts.length} product${filteredProducts.length !== 1 ? 's' : ''} available`}
+                </p>
+              </div>
+            )}
+
+            {/* Category Positioning Statement */}
+            {activeCategory && currentCategory && !currentThirdCategory?.isOverview && !isSubCategoryOverview && categoryPositioning[currentCategory.id] && (
+              <div className="mb-8 rounded-lg border border-navy/10 bg-white p-6 shadow-sm">
+                <p className="text-sm leading-relaxed text-gray-700">
+                  {categoryPositioning[currentCategory.id]}
                 </p>
               </div>
             )}
