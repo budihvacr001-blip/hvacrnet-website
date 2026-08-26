@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Products from './pages/Products'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Markets from './pages/Markets'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/products/:categorySlug" element={<Products />} />
             <Route path="/products/:categorySlug/:subCategorySlug" element={<Products />} />
             <Route path="/about" element={<About />} />
+            <Route path="/markets-we-serve" element={<Markets />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
