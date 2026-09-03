@@ -523,7 +523,7 @@ export default function Products() {
             )}
 
             {/* Sight Glasses Comparison Table for Overview */}
-            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && sightGlassesComparison && activeCategory === 'sight-glasses' && (
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && sightGlassesComparison && activeSubCategory === 'sight-glasses' && (
               <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
                 <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
                   <h3 className="text-xl font-bold text-white">{sightGlassesComparison.title}</h3>
@@ -559,7 +559,7 @@ export default function Products() {
                                 <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
                                   {thirdId ? (
                                     <button
-                                      onClick={() => selectThirdCategory('sight-glasses', thirdId, thirdId)}
+                                      onClick={() => selectThirdCategory('valves', 'sight-glasses', thirdId)}
                                       className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
                                     >
                                       {cell}
