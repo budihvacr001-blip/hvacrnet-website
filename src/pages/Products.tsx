@@ -83,8 +83,25 @@ export default function Products() {
           p.description.toLowerCase().includes(q)
       )
     }
+
+    // Sort products by subCategories order defined in the category
+    const category = categories.find((c) => c.id === activeCategory)
+    if (category && category.subCategories.length > 0) {
+      const subCategoryOrder = category.subCategories.map((s) => s.id)
+      products = [...products].sort((a, b) => {
+        const aId = a.subCategoryId || ''
+        const bId = b.subCategoryId || ''
+        const aIndex = subCategoryOrder.indexOf(aId)
+        const bIndex = subCategoryOrder.indexOf(bId)
+        if (aIndex === -1 && bIndex === -1) return 0
+        if (aIndex === -1) return 1
+        if (bIndex === -1) return -1
+        return aIndex - bIndex
+      })
+    }
+
     return products
-  }, [allProducts, activeCategory, activeSubCategory, activeThirdCategory, searchQuery])
+  }, [allProducts, activeCategory, activeSubCategory, activeThirdCategory, searchQuery, categories])
 
   const selectCategory = (catId: string) => {
     setActiveCategory(catId)
