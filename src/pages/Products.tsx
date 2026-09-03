@@ -35,6 +35,16 @@ const categoryPositioning: Record<string, string> = {
   'sight-glasses': 'Refrigeration sight glasses for monitoring refrigerant flow and moisture content in HVAC and refrigeration systems. Each moisture indicator features a color-changing element that provides instant visual confirmation of system condition. Available in brazed and flare connections across common line sizes. Supplying contractors, service technicians, and wholesale distributors globally with reliable quality at competitive prices.',
 }
 
+
+// Helper function to get the first product's first image for a category
+function getCategoryImage(categoryId: string): string | null {
+  const category = categories.find((cat) => cat.id === categoryId)
+  if (!category || category.products.length === 0) return null
+  const firstProduct = category.products[0]
+  if (!firstProduct.images || firstProduct.images.length === 0) return null
+  return firstProduct.images[0]
+}
+
 export default function Products() {
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
@@ -660,8 +670,14 @@ export default function Products() {
                       onClick={() => selectCategory(cat.id)}
                       className="group overflow-hidden rounded-lg border border-gray-border bg-white transition-all hover:border-navy hover:shadow-md"
                     >
-                      <div className="aspect-video bg-gradient-to-br from-navy/10 to-accent/10 flex items-center justify-center">
-                        <Package className="h-12 w-12 text-navy/30 transition-transform group-hover:scale-110" />
+                      <div className="aspect-video bg-gradient-to-br from-navy/10 to-accent/10 flex items-center justify-center overflow-hidden">
+                        {(() => {
+                          const img = getCategoryImage(cat.id)
+                          if (img) {
+                            return <img src={img} alt={cat.name} className="w-full h-full object-contain transition-transform group-hover:scale-105" />
+                          }
+                          return <Package className="h-12 w-12 text-navy/30 transition-transform group-hover:scale-110" />
+                        })()}
                       </div>
                       <div className="p-4 text-left">
                         <h3 className="font-semibold text-gray-700 group-hover:text-navy">
