@@ -61,6 +61,7 @@ export const categories: Category[] = [
     name: 'Copper Tubes',
     icon: 'Circle',
     subCategories: [
+      { id: 'mini-jumbo-coils', name: 'Mini Jumbo Coils' },
       { id: 'jumbo-coils', name: 'Jumbo Coils' },
       { id: 'pancake-coils', name: 'Pancake Coils' },
       { id: 'straight-tubes', name: 'Straight Tubes' },
