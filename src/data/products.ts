@@ -1447,6 +1447,92 @@ export const categories: Category[] = [
         { "label": "Sealing Material", "value": "Secondary reliable sealing structure at valve stem" },
         { "label": "Mounting Direction", "value": "Bidirectional flow, any direction" }
       ], applications: 'Refrigeration and air conditioning systems where brazed connections are impractical, field service and maintenance' },
+      // Sight Glasses - Moisture Indicator & Oil Level
+      { id: 'sg-1', categoryId: 'valves', subCategoryId: 'moisture-indicator-brazed-odf', images: ['/images/P1-Moisture-SightGlass-Brazed-ODF.png'], metaTitle: "Moisture Indicator Sight Glass, Brazed ODF | Refrigeration", metaDescription: "Brazed ODF moisture indicator sight glass for refrigeration liquid lines. Color-changing element detects water content. 7 models, 1/4\"–1-1/8\". 45 bar. MOQ 1 pc.", name: "Moisture Indicator Sight Glass — Brazed ODF Connection (SGN Series)", shortDesc: "Brazed ODF moisture indicator sight glass for permanent installation on refrigeration liquid lines. Color-changing element provides instant visual diagnosis of refrigerant water content. Available in 7 sizes from 1/4\" to 1-1/8\".", description: "• Moisture indicator sight glass designed for installation on refrigeration liquid lines\n• Brazed ODF (solder cup) connection provides a permanent, leak-free joint\n• Visual indicator shows refrigerant flow status, water content, and lubricant oil flow\n• Color-changing moisture indicator: green = dry (safe), yellow = wet (moisture alert)\n• Also detects refrigerant subcooling and insufficient system charging\n• Explosion-proof press-fit structure with a clear, safe observation window\n• Forged copper bar body for strength and corrosion resistance; modified PTFE seal\n• Bidirectional flow — install in either direction; compatible with HCFC and HFC", features: [
+        "Moisture indicator for refrigeration liquid lines",
+        "Brazed ODF connection for permanent, leak-free joint",
+        "Visual indicator shows flow status, water content, and oil flow",
+        "Color-changing element: green = dry, yellow = wet",
+        "Detects subcooling and insufficient charging",
+        "Explosion-proof press-fit structure",
+        "Forged copper bar body with modified PTFE seal",
+        "Bidirectional flow, compatible with HCFC/HFC"
+      ], availableModels: { headers: ["Model", "Port Size (inch)", "Overall Size L×H (mm)"], rows: [
+        ["SGN-1/4 ODF", "1/4", "102×21.5"],
+        ["SGN-3/8 ODF", "3/8", "119×22.5"],
+        ["SGN-1/2 ODF", "1/2", "146×26.5"],
+        ["SGN-5/8 ODF", "5/8", "152×29.5"],
+        ["SGN-3/4 ODF", "3/4", "167×35"],
+        ["SGN-7/8 ODF", "7/8", "173×39"],
+        ["SGN-1-1/8 ODF", "1-1/8", "216×44.5"]
+      ] }, specs: [
+        { label: "Series", value: "SGN" },
+        { label: "Moisture Indicator", value: "Yes" },
+        { label: "Connection", value: "Brazed (ODF)" },
+        { label: "MWP", value: "4.5 MPa (45 bar)" },
+        { label: "Burst Pressure", value: "6.8 MPa (68 bar)" },
+        { label: "Temperature Range", value: "-40°C ~ +80°C" },
+        { label: "Seal", value: "Modified PTFE" },
+        { label: "Body", value: "Forged Copper Bar" },
+        { label: "Leakage", value: "≤2g/a" },
+        { label: "Mounting", value: "Refrigerant liquid line" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" }
+      ], applications: 'Refrigeration liquid lines for monitoring moisture content, refrigerant flow, and lubricant oil return' },
+      { id: 'sg-2', categoryId: 'valves', subCategoryId: 'moisture-indicator-sae-flare', images: ['/images/P2-Moisture-SightGlass-SAE-Flare.png'], metaTitle: "Moisture Indicator Sight Glass, SAE Flare | Refrigeration", metaDescription: "SAE flare moisture indicator sight glass for refrigeration. UNF threaded connection. Color-changing moisture element. 5 models, 1/4\"–3/4\". 45 bar. MOQ 1 pc.", name: "Moisture Indicator Sight Glass — SAE Flare Connection (SGN Series)", shortDesc: "SAE flare moisture indicator sight glass with UNF threaded connection for serviceable installation on refrigeration liquid lines. Color-changing element detects moisture in HCFC/HFC systems. Available in 5 sizes from 1/4\" to 3/4\".", description: "• Moisture indicator sight glass for refrigeration liquid lines with SAE flare connection\n• SAE flare (UNF threaded) connection allows disassembly for service and maintenance\n• Visual indicator shows refrigerant flow, water content, and oil return status\n• Color-changing element: green = dry, yellow = wet\n• Detects excessive moisture, subcooling conditions, and undercharging\n• Explosion-proof press-fit window; forged copper bar body; modified PTFE seal\n• Compatible with HCFC and HFC systems\n• Note: Sight glass body ships with dual male flare; flare nuts included", features: [
+        "Moisture indicator for refrigeration liquid lines",
+        "SAE flare (UNF) connection for serviceable installation",
+        "Visual indicator shows flow, water content, and oil return",
+        "Color-changing element: green = dry, yellow = wet",
+        "Detects moisture, subcooling, and undercharging",
+        "Explosion-proof press-fit window",
+        "Forged copper bar body with modified PTFE seal",
+        "Compatible with HCFC/HFC systems"
+      ], availableModels: { headers: ["Model", "Port Size (inch)", "Thread Spec", "Overall Size L×H (mm)"], rows: [
+        ["SGN-1/4 SAE", "1/4", "7/16-20UNF", "64×21.5"],
+        ["SGN-3/8 SAE", "3/8", "5/8-18UNF", "70×25"],
+        ["SGN-1/2 SAE", "1/2", "3/4-16UNF", "75×26.5"],
+        ["SGN-5/8 SAE", "5/8", "7/8-14UNF", "80×29.5"],
+        ["SGN-3/4 SAE", "3/4", "1-1/16-14UNS", "90×35"]
+      ] }, specs: [
+        { label: "Series", value: "SGN" },
+        { label: "Moisture Indicator", value: "Yes" },
+        { label: "Connection", value: "SAE Flare (UNF)" },
+        { label: "MWP", value: "4.5 MPa (45 bar)" },
+        { label: "Burst Pressure", value: "6.8 MPa (68 bar)" },
+        { label: "Temperature Range", value: "-40°C ~ +80°C" },
+        { label: "Seal", value: "Modified PTFE" },
+        { label: "Body", value: "Forged Copper Bar" },
+        { label: "Leakage", value: "≤2g/a" },
+        { label: "Mounting", value: "Refrigerant liquid line" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" }
+      ], applications: 'Refrigeration liquid lines for monitoring moisture content, refrigerant flow, and lubricant oil return' },
+      { id: 'sg-3', categoryId: 'valves', subCategoryId: 'moisture-indicator-sae-flare-mf', images: ['/images/P3-Moisture-SightGlass-SAE-MF.png'], metaTitle: "Moisture Indicator Sight Glass, SAE Flare M/F | Refrigeration", metaDescription: "Male/female SAE flare sight glass with moisture indicator. Dual-end flare for direct tube connection. 4 models, 1/4\"–5/8\". UNF threads. 45 bar. MOQ 1 pc.", name: "Moisture Indicator Sight Glass — SAE Flare, Male/Female (SGN-MF Series)", shortDesc: "Male/female dual-end SAE flare sight glass with built-in moisture indicator. One male and one female flare end enable direct tube-to-tube connection without additional fittings. Available in 4 sizes from 1/4\" to 5/8\".", description: "• Male/female dual-end SAE flare sight glass for refrigeration liquid lines\n• One male flare end and one female flare end enable direct tube-to-tube connection without additional fittings\n• Color-changing moisture indicator: green = dry, yellow = wet\n• Visual monitoring of refrigerant flow, water content, and oil circulation\n• Explosion-proof press-fit window; forged copper bar body; modified PTFE seal\n• Detects excessive moisture, refrigerant subcooling, and insufficient charging\n• Compatible with HCFC and HFC systems\n• Structure: One end SAE male, one end SAE female", features: [
+        "Male/female dual-end SAE flare for direct tube connection",
+        "Moisture indicator with color-changing element",
+        "Visual monitoring of flow, water content, and oil circulation",
+        "Color-changing element: green = dry, yellow = wet",
+        "Detects moisture, subcooling, and undercharging",
+        "Explosion-proof press-fit window",
+        "Forged copper bar body with modified PTFE seal",
+        "Compatible with HCFC/HFC systems"
+      ], availableModels: { headers: ["Model", "Port Size (inch)", "Thread Spec", "Overall Size L×H (mm)"], rows: [
+        ["SGN-MF-04", "1/4", "7/16-20UNF", "76×21.5"],
+        ["SGN-MF-06", "3/8", "5/8-18UNF", "82×25"],
+        ["SGN-MF-08", "1/2", "3/4-16UNF", "87×26.5"],
+        ["SGN-MF-10", "5/8", "7/8-14UNF", "92×29.5"]
+      ] }, specs: [
+        { label: "Series", value: "SGN-MF" },
+        { label: "Moisture Indicator", value: "Yes" },
+        { label: "Connection", value: "SAE Flare Male/Female" },
+        { label: "MWP", value: "4.5 MPa (45 bar)" },
+        { label: "Burst Pressure", value: "6.8 MPa (68 bar)" },
+        { label: "Temperature Range", value: "-40°C ~ +80°C" },
+        { label: "Seal", value: "Modified PTFE" },
+        { label: "Body", value: "Forged Copper Bar" },
+        { label: "Leakage", value: "≤2g/a" },
+        { label: "Mounting", value: "Refrigerant liquid line" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" }
+      ], applications: 'Refrigeration liquid lines for direct tube-to-tube connection with moisture monitoring' },
     ],
   },
   {
