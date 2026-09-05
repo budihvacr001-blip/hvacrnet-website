@@ -10,11 +10,10 @@ const PORT = process.env.PORT || 5000
 
 // 301 redirect: hvacrnet.com -> www.hvacrnet.com
 app.use((req, res, next) => {
-  const host = req.headers.host || ''
-  // Check if host is hvacrnet.com (without www)
-  if (host === 'hvacrnet.com' || host.startsWith('hvacrnet.com:')) {
-    const newUrl = `https://www.hvacrnet.com${req.url}`
-    return res.redirect(301, newUrl)
+  const rawHost = (req.headers['x-forwarded-host'] || req.headers.host || '').toLowerCase()
+  const host = rawHost.replace(/:\d+$/, '')
+  if (host === 'hvacrnet.com') {
+    return res.redirect(301, `https://www.hvacrnet.com${req.url}`)
   }
   next()
 })
