@@ -163,12 +163,59 @@ export default function Products() {
   // Check if the selected subCategory itself is an overview (for filter-driers)
   const isSubCategoryOverview = currentSubCategory?.isOverview === true
 
+  // Dynamic SEO title and description
+  const SITE_SUFFIX = 'HVACR NET HVAC/R Parts Supplier from China'
+  const seoTitle = (() => {
+    if (currentThirdCategory && !currentThirdCategory.isOverview) {
+      const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
+      if (product?.metaTitle) return `${product.metaTitle} | ${SITE_SUFFIX}`
+      return `${currentThirdCategory.name} - ${currentCategory?.name} | ${SITE_SUFFIX}`
+    }
+    if (currentSubCategory && !isSubCategoryOverview) {
+      return `${currentSubCategory.name} - ${currentCategory?.name} | ${SITE_SUFFIX}`
+    }
+    if (currentCategory) {
+      return `${currentCategory.name} - HVACR Parts | ${SITE_SUFFIX}`
+    }
+    return `HVACR Products - HVACR Parts & Components | ${SITE_SUFFIX}`
+  })()
+
+  const seoDescription = (() => {
+    if (currentThirdCategory && !currentThirdCategory.isOverview) {
+      const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
+      if (product?.metaDescription) return product.metaDescription
+    }
+    if (currentSubCategory && !isSubCategoryOverview && currentCategory) {
+      const positioning = categoryPositioning[currentSubCategory.id]
+      if (positioning) return positioning
+    }
+    if (currentCategory) {
+      const positioning = categoryPositioning[currentCategory.id]
+      if (positioning) return positioning
+      return `Browse ${currentCategory.name} for HVAC and refrigeration systems. Quality parts sourced from Ningbo, China with flexible MOQ and global shipping.`
+    }
+    return 'Browse our comprehensive range of HVACR parts including copper tubes, fittings, valves, insulation materials, cables, mounting accessories and more. One-stop sourcing from Ningbo, China.'
+  })()
+
+  const seoUrl = (() => {
+    if (currentThirdCategory && !currentThirdCategory.isOverview) {
+      return `/products/${currentCategory?.id}/${currentSubCategory?.id}/${currentThirdCategory.id}`
+    }
+    if (currentSubCategory && !isSubCategoryOverview) {
+      return `/products/${currentCategory?.id}/${currentSubCategory?.id}`
+    }
+    if (currentCategory) {
+      return `/products/${currentCategory.id}`
+    }
+    return '/products'
+  })()
+
   return (
     <>
       <SEO
-        title="HVACR Products - HVACR Parts & Components | HVACR NET"
-        description="Browse our comprehensive range of HVACR parts including copper tubes, fittings, valves, insulation materials, cables, mounting accessories and more. One-stop sourcing from China."
-        url="/products"
+        title={seoTitle}
+        description={seoDescription}
+        url={seoUrl}
         ogType="website"
       />
       {/* Schema.org structured data */}

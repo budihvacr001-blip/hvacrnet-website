@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <div>
       <SEO
-        title="HVACR NET - Your One-Stop HVACR Parts Supplier from China"
-        description="Professional HVACR parts supplier with 20 years of trade expertise. Low MOQ, ready stock, one-stop sourcing for copper tubes, fittings, valves, and more."
+        title="HVACR NET - Your One-Stop HVACR Parts Supplier from China | HVAC/R Parts & Components"
+        description="Professional HVACR parts supplier with 20 years of trade expertise. Low MOQ, ready stock, one-stop sourcing for copper tubes, fittings, valves, and more from Ningbo, China."
         url="/"
       />
       {/* Hero Banner */}

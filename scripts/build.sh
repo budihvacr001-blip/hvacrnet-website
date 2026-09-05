@@ -10,3 +10,6 @@ pnpm install --prefer-frozen-lockfile --prefer-offline --loglevel debug --report
 
 echo "Building frontend with Vite..."
 pnpm vite build
+
+echo "Generating sitemap.xml..."
+npx tsx scripts/generate-sitemap.mjs

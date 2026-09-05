@@ -4,8 +4,8 @@ export default function About() {
   return (
     <>
     <SEO
-      title="About HVACR NET - Your Professional HVACR Sourcing Partner"
-      description="Learn about HVACR NET, your trusted sourcing partner for HVAC and refrigeration parts. 20 years of international trade expertise, ready stock, and flexible sourcing solutions."
+      title="About HVACR NET - Professional HVACR Sourcing Partner | 20 Years Trade Expertise"
+      description="Learn about HVACR NET, your trusted sourcing partner for HVAC and refrigeration parts. 20 years of international trade expertise, ready stock, and flexible sourcing solutions from Ningbo, China."
     />
     <div>
       {/* Page Header */}
