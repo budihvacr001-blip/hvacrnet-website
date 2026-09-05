@@ -43,6 +43,9 @@ function buildRoutes() {
 
       if (thirdIds.length > 0) {
         for (const thirdId of thirdIds) {
+          // Only include products with essential content (published)
+          const product = subProducts.find((p) => p.thirdCategoryId === thirdId)
+          if (!product || !product.name || !product.shortDesc || !product.description) continue
           routes.push({ url: `/products/${cat.id}/${subId}/${thirdId}`, lastmod: productsSrcMod, changefreq: 'monthly', priority: '0.7' })
         }
       } else {

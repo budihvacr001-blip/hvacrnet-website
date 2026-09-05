@@ -198,6 +198,23 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
             </div>
           )}
 
+          {/* FAQ */}
+          {product.faq && product.faq.length > 0 && (
+            <div className="mt-6">
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
+                Frequently Asked Questions
+              </h3>
+              <div className="space-y-3">
+                {product.faq.map((item, i) => (
+                  <div key={i} className="rounded-lg border border-gray-border bg-gray-bg p-4">
+                    <h4 className="font-medium text-navy text-sm">{item.question}</h4>
+                    <p className="mt-1.5 text-sm text-gray-700">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* CTA */}
           <div className="mt-8">
             <button

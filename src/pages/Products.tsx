@@ -145,26 +145,26 @@ export default function Products() {
   // Check if the selected subCategory itself is an overview (for filter-driers)
   const isSubCategoryOverview = currentSubCategory?.isOverview === true
 
-  // Dynamic SEO title and description
+  // Dynamic SEO title and description — template rules:
+  // Title: {metaTitle} | HVACR NET; fallback: {name} | HVACR NET Supplier
+  // Description: metaDescription; fallback: shortDesc first 150 chars
   const BRAND = 'HVACR NET'
   const seoTitle = (() => {
     if (currentThirdCategory && !currentThirdCategory.isOverview) {
       const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-      if (product?.metaTitle) {
-        const base = product.metaTitle.length > 45 ? product.metaTitle.slice(0, 45).trim() : product.metaTitle
-        return `${base} | ${BRAND} Supplier`
-      }
-      const name = currentThirdCategory.name
-      const base = name.length > 45 ? name.slice(0, 45).trim() : name
-      return `${base} | ${BRAND} Supplier`
+      const base = product?.metaTitle || currentThirdCategory.name
+      const trimmed = base.length > 50 ? base.slice(0, 47).trim() + '...' : base
+      return `${trimmed} | ${BRAND}`
     }
     if (currentSubCategory && !isSubCategoryOverview) {
       const name = `${currentSubCategory.name} - ${currentCategory?.name}`
-      const base = name.length > 50 ? name.slice(0, 50).trim() : name
-      return `${base} | ${BRAND}`
+      const trimmed = name.length > 50 ? name.slice(0, 47).trim() + '...' : name
+      return `${trimmed} | ${BRAND}`
     }
     if (currentCategory) {
-      return `${currentCategory.name} HVAC/R Parts | ${BRAND}`
+      const name = `${currentCategory.name} HVAC/R Parts`
+      const trimmed = name.length > 50 ? name.slice(0, 47).trim() + '...' : name
+      return `${trimmed} | ${BRAND}`
     }
     return `HVACR Parts & Components | ${BRAND}`
   })()
@@ -174,6 +174,10 @@ export default function Products() {
       const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
       if (product?.metaDescription) {
         return product.metaDescription.length > 155 ? product.metaDescription.slice(0, 152).trim() + '...' : product.metaDescription
+      }
+      // Fallback: shortDesc first 150 chars
+      if (product?.shortDesc) {
+        return product.shortDesc.length > 150 ? product.shortDesc.slice(0, 147).trim() + '...' : product.shortDesc
       }
     }
     if (currentSubCategory && !isSubCategoryOverview && currentCategory) {
@@ -255,7 +259,26 @@ export default function Products() {
     }
   })()
 
-  const schemas = [breadcrumbSchema, productDetailSchema].filter(Boolean) as object[]
+  // FAQPage schema for products with FAQ data
+  const faqPageSchema = (() => {
+    if (!currentThirdCategory || currentThirdCategory.isOverview) return null
+    const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
+    if (!product?.faq || product.faq.length === 0) return null
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: product.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    }
+  })()
+
+  const schemas = [breadcrumbSchema, productDetailSchema, faqPageSchema].filter(Boolean) as object[]
 
   // Related products (same category, excluding current)
   const relatedProducts = useMemo(() => {

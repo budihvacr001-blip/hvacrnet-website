@@ -13,6 +13,11 @@ export interface SubCategory {
   subCategories?: ThirdCategory[]
 }
 
+export interface ProductFAQ {
+  question: string
+  answer: string
+}
+
 export interface Product {
   id: string
   categoryId: string
@@ -30,6 +35,7 @@ export interface Product {
   materialStandard?: { label: string; value: string }[]
   specTable?: { headers: string[]; rows: string[][] }
   availableModels?: { headers: string[]; rows: string[][] }
+  faq?: ProductFAQ[]
 }
 
 export interface Category {
