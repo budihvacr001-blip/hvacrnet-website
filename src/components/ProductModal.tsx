@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { X } from 'lucide-react'
+import { X, ChevronDown } from 'lucide-react'
 import type { Product } from '../data/products'
+import { getProductFAQs } from '../data/faq-constants'
 
 interface Props {
   product: Product
@@ -198,36 +199,8 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
             </div>
           )}
 
-          {/* FAQ */}
-          {(product.faq && product.faq.length > 0) && (
-            <div className="mt-6">
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
-                Frequently Asked Questions
-              </h3>
-              <div className="space-y-3">
-                {/* Product-specific FAQ */}
-                {product.faq.map((item, i) => (
-                  <div key={i} className="rounded-lg border border-gray-border bg-gray-bg p-4">
-                    <h4 className="font-medium text-navy text-sm">{item.question}</h4>
-                    <p className="mt-1.5 text-sm text-gray-700">{item.answer}</p>
-                  </div>
-                ))}
-                {/* Universal FAQs */}
-                <div className="rounded-lg border border-gray-border bg-gray-bg p-4">
-                  <h4 className="font-medium text-navy text-sm">What is the MOQ and lead time?</h4>
-                  <p className="mt-1.5 text-sm text-gray-700">MOQ starts from 1 piece for sample orders. Standard lead time is 7–15 working days depending on order quantity and product availability. Ready stock items can be shipped within 3–5 days.</p>
-                </div>
-                <div className="rounded-lg border border-gray-border bg-gray-bg p-4">
-                  <h4 className="font-medium text-navy text-sm">Do you provide warranty and certification documents?</h4>
-                  <p className="mt-1.5 text-sm text-gray-700">Yes. All products come with quality inspection reports. We can provide CE, ISO, and other certification documents upon request. Technical datasheets and installation guides are available for download.</p>
-                </div>
-                <div className="rounded-lg border border-gray-border bg-gray-bg p-4">
-                  <h4 className="font-medium text-navy text-sm">Can you replace brands like Danfoss, Emerson, or Castel?</h4>
-                  <p className="mt-1.5 text-sm text-gray-700">Yes. Our products are designed as direct replacements for major brands including Danfoss, Emerson, Castel, and Parker. We provide cross-reference lists to help you find the equivalent model. Same specifications, competitive pricing.</p>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* FAQ - Accordion */}
+          <ProductFAQSection product={product} />
 
           {/* CTA */}
           <div className="mt-8">
@@ -242,6 +215,46 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function ProductFAQSection({ product }: { product: Product }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const faqs = getProductFAQs(
+    product.categoryId,
+    product.subCategoryId,
+    product.faqSelection
+  )
+
+  if (faqs.length === 0) return null
+
+  return (
+    <div className="mt-6">
+      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
+        Frequently Asked Questions
+      </h3>
+      <div className="divide-y divide-gray-border overflow-hidden rounded-lg border border-gray-border">
+        {faqs.map((item, i) => (
+          <div key={i}>
+            <button
+              className="flex w-full items-center justify-between px-4 py-3 text-left transition-colors hover:bg-gray-bg"
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              aria-expanded={openIndex === i}
+            >
+              <span className="pr-4 text-sm font-medium text-navy">{item.question}</span>
+              <ChevronDown
+                className={`h-4 w-4 shrink-0 text-gray-text transition-transform ${
+                  openIndex === i ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+            {openIndex === i && (
+              <div className="px-4 pb-3 text-sm text-gray-700">{item.answer}</div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   )

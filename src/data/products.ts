@@ -38,6 +38,7 @@ export interface Product {
   specTable?: { headers: string[]; rows: string[][] }
   availableModels?: { headers: string[]; rows: string[][] }
   faq?: ProductFAQ[]
+  faqSelection?: ProductFAQ // product-specific selection FAQ (overrides category default)
   published?: boolean // defaults to true if not specified
 }
 

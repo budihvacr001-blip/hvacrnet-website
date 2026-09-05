@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
 import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, isPublished, getPublishedProducts, type Product } from '../data/products'
+import { getProductFAQs } from '../data/faq-constants'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
@@ -262,15 +263,17 @@ export default function Products() {
     }
   })()
 
-  // FAQPage schema for products with FAQ data
+  // FAQPage schema - always output for product pages (universal + category FAQs)
   const faqPageSchema = (() => {
     if (!currentThirdCategory || currentThirdCategory.isOverview) return null
     const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-    if (!product?.faq || product.faq.length === 0) return null
+    if (!product) return null
+    const faqs = getProductFAQs(product.categoryId, product.subCategoryId, product.faqSelection)
+    if (faqs.length === 0) return null
     return {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: product.faq.map((item) => ({
+      mainEntity: faqs.map((item) => ({
         '@type': 'Question',
         name: item.question,
         acceptedAnswer: {
