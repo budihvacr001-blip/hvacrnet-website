@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { ChevronRight, ArrowRight, CheckCircle } from 'lucide-react'
 import { type CategoryLandingContent, type Product } from '../data/products'
+import DataTable from './DataTable'
 
 const SITE_URL = 'https://www.hvacrnet.com'
 
@@ -142,66 +143,53 @@ export default function CategoryLanding({
 
         {/* Introduction */}
         <section className="mb-10">
-          <p className="text-gray-700 leading-relaxed text-lg">
+          <p className="text-gray-700 leading-relaxed text-base">
             {content.introduction}
           </p>
         </section>
 
         {/* Comparison Table */}
         <section className="mb-12" id="comparison">
-          <h2 className="text-2xl font-bold text-navy mb-2">{comparisonData.title}</h2>
-          <p className="text-gray-600 mb-6">{comparisonData.subtitle}</p>
-          <div className="overflow-x-auto rounded-lg border border-gray-200">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-navy text-white">
-                  {comparisonData.headers.map((header, i) => (
-                    <th key={i} className="px-3 py-3 text-left font-semibold whitespace-nowrap">
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.rows.map((row, rowIdx) => (
-                  <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    {row.map((cell, cellIdx) => {
-                      // Product name column (index 1) - make it a link
-                      if (cellIdx === 1) {
-                        const productLink = getProductLink(rowIdx)
-                        if (productLink) {
-                          return (
-                            <td key={cellIdx} className="px-3 py-3">
-                              <Link
-                                to={productLink}
-                                className="text-orange font-semibold hover:underline"
-                              >
-                                {cell}
-                              </Link>
-                            </td>
-                          )
-                        }
-                      }
-                      return (
-                        <td key={cellIdx} className="px-3 py-3 whitespace-nowrap">
-                          {cell}
-                        </td>
-                      )
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <h2 className="text-xl font-bold text-navy mb-2">{comparisonData.title}</h2>
+          <p className="text-gray-600 mb-6 text-sm">{comparisonData.subtitle}</p>
+          <DataTable
+            headers={comparisonData.headers}
+            rows={comparisonData.rows.map((row, rowIdx) => {
+              // Product name column (index 1) - make it a link
+              const productLink = getProductLink(rowIdx)
+              if (productLink && row[1]) {
+                const newRow = [...row]
+                newRow[1] = `<link:${productLink}:${row[1]}>`
+                return newRow
+              }
+              return row
+            })}
+            renderCell={(cell, rowIdx, cellIdx) => {
+              if (cellIdx === 1) {
+                const productLink = getProductLink(rowIdx)
+                if (productLink) {
+                  return (
+                    <Link
+                      to={productLink}
+                      className="text-orange font-semibold hover:underline"
+                    >
+                      {cell}
+                    </Link>
+                  )
+                }
+              }
+              return cell
+            }}
+          />
         </section>
 
         {/* How to Choose */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-navy mb-6">How to Choose the Right {subCategoryName || categoryName}</h2>
+          <h2 className="text-xl font-bold text-navy mb-6">How to Choose the Right {subCategoryName || categoryName}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {content.howToChoose.map((section, index) => (
               <div key={index} className="bg-white rounded-lg border border-gray-200 p-6">
-                <h3 className="text-lg font-bold text-navy mb-3 flex items-center">
+                <h3 className="text-base font-bold text-navy mb-3 flex items-center">
                   <CheckCircle className="w-5 h-5 text-orange mr-2 flex-shrink-0" />
                   {section.title}
                 </h3>

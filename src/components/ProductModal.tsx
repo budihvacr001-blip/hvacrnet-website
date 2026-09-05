@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { X, ChevronDown } from 'lucide-react'
 import type { Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
+import DataTable from './DataTable'
 
 interface Props {
   product: Product
@@ -95,26 +96,10 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
                 Available Models
               </h3>
-              <div className="overflow-x-auto rounded-lg border border-gray-border">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="bg-navy text-white">
-                      {product.availableModels.headers.map((h, i) => (
-                        <th key={i} className="px-3 py-2.5 text-left font-medium whitespace-nowrap">{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {product.availableModels.rows.map((row, i) => (
-                      <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                        {row.map((cell, j) => (
-                          <td key={j} className="px-3 py-2 whitespace-nowrap text-gray-700">{cell}</td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <DataTable
+                headers={product.availableModels.headers}
+                rows={product.availableModels.rows}
+              />
             </div>
           )}
 
@@ -124,18 +109,10 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
                 Material &amp; Standard
               </h3>
-              <div className="overflow-hidden rounded-lg border border-gray-border">
-                <table className="w-full text-sm">
-                  <tbody>
-                    {product.materialStandard.map((item, i) => (
-                      <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                        <td className="px-4 py-2.5 font-medium text-navy w-1/3">{item.label}</td>
-                        <td className="px-4 py-2.5 text-gray-700">{item.value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <DataTable
+                keyValue
+                rows={product.materialStandard.map(item => [item.label, item.value])}
+              />
             </div>
           )}
 
@@ -145,26 +122,10 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
                 Specifications
               </h3>
-              <div className="overflow-x-auto rounded-lg border border-gray-border">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="bg-navy text-white">
-                      {product.specTable.headers.map((h, i) => (
-                        <th key={i} className="px-3 py-2.5 text-left font-medium whitespace-nowrap">{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {product.specTable.rows.map((row, i) => (
-                      <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                        {row.map((cell, j) => (
-                          <td key={j} className="px-3 py-2 whitespace-nowrap text-gray-700">{cell}</td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <DataTable
+                headers={product.specTable.headers}
+                rows={product.specTable.rows}
+              />
             </div>
           )}
 
@@ -174,18 +135,10 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
                 Technical Parameters
               </h3>
-              <div className="overflow-hidden rounded-lg border border-gray-border">
-                <table className="w-full text-sm">
-                  <tbody>
-                    {product.specs.map((item, i) => (
-                      <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                        <td className="px-4 py-2.5 font-medium text-navy w-1/3">{item.label}</td>
-                        <td className="px-4 py-2.5 text-gray-700">{item.value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <DataTable
+                keyValue
+                rows={product.specs.map(item => [item.label, item.value])}
+              />
             </div>
           )}
 
