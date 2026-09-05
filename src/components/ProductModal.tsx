@@ -199,18 +199,32 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
           )}
 
           {/* FAQ */}
-          {product.faq && product.faq.length > 0 && (
+          {(product.faq && product.faq.length > 0) && (
             <div className="mt-6">
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy">
                 Frequently Asked Questions
               </h3>
               <div className="space-y-3">
+                {/* Product-specific FAQ */}
                 {product.faq.map((item, i) => (
                   <div key={i} className="rounded-lg border border-gray-border bg-gray-bg p-4">
                     <h4 className="font-medium text-navy text-sm">{item.question}</h4>
                     <p className="mt-1.5 text-sm text-gray-700">{item.answer}</p>
                   </div>
                 ))}
+                {/* Universal FAQs */}
+                <div className="rounded-lg border border-gray-border bg-gray-bg p-4">
+                  <h4 className="font-medium text-navy text-sm">What is the MOQ and lead time?</h4>
+                  <p className="mt-1.5 text-sm text-gray-700">MOQ starts from 1 piece for sample orders. Standard lead time is 7–15 working days depending on order quantity and product availability. Ready stock items can be shipped within 3–5 days.</p>
+                </div>
+                <div className="rounded-lg border border-gray-border bg-gray-bg p-4">
+                  <h4 className="font-medium text-navy text-sm">Do you provide warranty and certification documents?</h4>
+                  <p className="mt-1.5 text-sm text-gray-700">Yes. All products come with quality inspection reports. We can provide CE, ISO, and other certification documents upon request. Technical datasheets and installation guides are available for download.</p>
+                </div>
+                <div className="rounded-lg border border-gray-border bg-gray-bg p-4">
+                  <h4 className="font-medium text-navy text-sm">Can you replace brands like Danfoss, Emerson, or Castel?</h4>
+                  <p className="mt-1.5 text-sm text-gray-700">Yes. Our products are designed as direct replacements for major brands including Danfoss, Emerson, Castel, and Parker. We provide cross-reference lists to help you find the equivalent model. Same specifications, competitive pricing.</p>
+                </div>
               </div>
             </div>
           )}
