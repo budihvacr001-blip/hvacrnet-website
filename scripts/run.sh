@@ -7,4 +7,4 @@ cd "$PROJECT_DIR"
 
 PORT="${DEPLOY_RUN_PORT:-5000}"
 
-exec node server.js
+exec node server.cjs
