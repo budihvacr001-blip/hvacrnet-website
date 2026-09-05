@@ -60,6 +60,15 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/40">
           &copy; {new Date().getFullYear()} Ningbo HVACR Net Refrigeration Equipment Co., Ltd. All rights reserved.
+          <br />
+          <a
+            href="https://beian.miit.gov.cn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/40 transition-colors hover:text-white/60"
+          >
+            浙ICP备2026072070号
+          </a>
         </div>
       </div>
     </footer>

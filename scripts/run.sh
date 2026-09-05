@@ -7,4 +7,4 @@ cd "$PROJECT_DIR"
 
 PORT="${DEPLOY_RUN_PORT:-5000}"
 
-exec pnpm serve -s dist -p "$PORT"
+exec node server.js

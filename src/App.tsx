@@ -1,5 +1,5 @@
-import { HelmetProvider } from 'react-helmet-async'
-import { Routes, Route } from 'react-router-dom'
+import { HelmetProvider, Helmet } from 'react-helmet-async'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
@@ -8,11 +8,25 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Markets from './pages/Markets'
 
+const BASE_URL = 'https://www.hvacrnet.com'
+
+function CanonicalUpdater() {
+  const { pathname } = useLocation()
+  const canonicalUrl = `${BASE_URL}${pathname}`
+  
+  return (
+    <Helmet>
+      <link rel="canonical" href={canonicalUrl} />
+    </Helmet>
+  )
+}
+
 export default function App() {
   return (
     <HelmetProvider>
       <div className="flex min-h-screen flex-col">
         <ScrollToTop />
+        <CanonicalUpdater />
         <Navbar />
         <main className="flex-1">
           <Routes>
