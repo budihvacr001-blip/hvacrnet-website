@@ -56,32 +56,66 @@ export const isPublished = (item: { published?: boolean }): boolean => {
   return item.published !== false // defaults to true if not specified
 }
 
-// Check if a product is complete (has required fields for publishing)
+// Check if a product has complete content (has required fields for publishing)
+// Requirements: images non-empty, specTable with >= 3 rows, description >= 100 chars
+export const isProductContentComplete = (product: Product): boolean => {
+  // 1. Has main image: images array non-empty with valid paths
+  if (!product.images || product.images.length === 0) return false
+  if (!product.images.some(img => img && img.trim().length > 0)) return false
+  
+  // 2. Has spec table: specTable non-empty with at least 3 rows, OR specs with at least 3 items
+  const hasSpecTable = product.specTable && product.specTable.rows && product.specTable.rows.length >= 3
+  const hasSpecs = product.specs && product.specs.length >= 3
+  if (!hasSpecTable && !hasSpecs) return false
+  
+  // 3. Has description: description non-empty and at least 100 characters
+  if (!product.description || product.description.trim().length < 100) return false
+  
+  return true
+}
+
+// Check if a product is "published" - combines manual published field AND content completeness
+// If published=false (manual draft) OR content incomplete, product is unpublished
+export const isProductPublished = (product: Product): boolean => {
+  // Manual draft takes precedence
+  if (product.published === false) return false
+  // Content completeness check
+  return isProductContentComplete(product)
+}
+
+// Legacy: Check if a product is complete (for publishing validation messages)
 export const isProductComplete = (product: Product): { complete: boolean; missing: string[] } => {
   const missing: string[] = []
   if (!product.images || product.images.length === 0) missing.push('主图')
-  if (!product.specTable && (!product.specs || product.specs.length === 0)) missing.push('规格表')
-  if (!product.description || product.description.length < 50) missing.push('详细描述')
+  if (!product.specTable && (!product.specs || product.specs.length < 3)) missing.push('规格参数表（至少3行）')
+  if (!product.description || product.description.length < 100) missing.push('详细描述（至少100字符）')
   return { complete: missing.length === 0, missing }
 }
 
-// Filter categories for navigation: only published categories with at least 1 published product
+// Filter categories for navigation: only published categories with at least 3 published products
 export const getPublishedCategories = (categories: Category[]): Category[] => {
   return categories.filter(cat => {
-    if (!isPublished(cat)) return false
-    const publishedProducts = cat.products.filter(p => isPublished(p))
-    return publishedProducts.length > 0
+    if (cat.published === false) return false
+    const publishedProducts = cat.products.filter(p => isProductPublished(p))
+    return publishedProducts.length >= 3
   })
 }
 
-// Get published products for a category
+// Get published products for a category (content-complete products)
 export const getPublishedProducts = (category: Category): Product[] => {
-  return category.products.filter(p => isPublished(p))
+  return category.products.filter(p => isProductPublished(p))
 }
 
 // Check if a category has enough published products for navigation visibility (>= 3)
 export const hasEnoughProductsForNav = (category: Category, minCount = 3): boolean => {
   return getPublishedProducts(category).length >= minCount
+}
+
+// Get all categories with their published product counts
+export const getCategoryProductCounts = (categories: Category[]): { category: Category; count: number }[] => {
+  return categories
+    .filter(cat => cat.published !== false)
+    .map(cat => ({ category: cat, count: getPublishedProducts(cat).length }))
 }
 
 

@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, isPublished, getPublishedProducts, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, isPublished, isProductPublished, getPublishedProducts, type Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -19,13 +19,14 @@ const categoryPositioning: Record<string, string> = {
 }
 
 
-// Helper function to get the first product's first image for a category
+// Helper function to get the first published product's first image for a category
 function getCategoryImage(categoryId: string): string | null {
   const category = categories.find((cat) => cat.id === categoryId)
-  if (!category || category.products.length === 0) return null
-  const firstProduct = category.products[0]
-  if (!firstProduct.images || firstProduct.images.length === 0) return null
-  return firstProduct.images[0]
+  if (!category) return null
+  // Find first published (content-complete) product with images
+  const publishedProduct = category.products.find(p => isProductPublished(p) && p.images && p.images.length > 0)
+  if (!publishedProduct || !publishedProduct.images || publishedProduct.images.length === 0) return null
+  return publishedProduct.images[0]
 }
 
 export default function Products() {
@@ -49,8 +50,8 @@ export default function Products() {
     let products = allProducts
     products = products.filter((p) => p.categoryId === activeCategory)
 
-    // Only show published products
-    products = products.filter((p) => isPublished(p))
+    // Only show published products (content-complete)
+    products = products.filter((p) => isProductPublished(p))
 
     if (activeSubCategory !== 'all') {
       products = products.filter((p) => p.subCategoryId === activeSubCategory)
@@ -439,8 +440,8 @@ export default function Products() {
                 All Products
               </button>
 
-              {/* Category list - only show published categories with at least 1 published product */}
-              {categories.filter(cat => isPublished(cat) && getPublishedProducts(cat).length > 0).map((cat) => {
+              {/* Category list - only show published categories with at least 3 published products */}
+              {categories.filter(cat => isPublished(cat) && getPublishedProducts(cat).length >= 3).map((cat) => {
                 const isActive = activeCategory === cat.id
                 const hasSubs = cat.subCategories.length > 0
 
@@ -658,7 +659,9 @@ export default function Products() {
               <div>
                 <h2 className="mb-6 text-xl font-semibold text-gray-700">Browse by Category</h2>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {categories.map((cat) => (
+                  {categories.filter(cat => getPublishedProducts(cat).length >= 3).map((cat) => {
+                    const publishedCount = getPublishedProducts(cat).length
+                    return (
                     <button
                       key={cat.id}
                       onClick={() => selectCategory(cat.id)}
@@ -677,10 +680,11 @@ export default function Products() {
                         <h3 className="font-semibold text-gray-700 group-hover:text-navy">
                           {cat.name}
                         </h3>
-                        <p className="mt-1 text-sm text-gray-text">{cat.products.length} products</p>
+                        <p className="mt-1 text-sm text-gray-text">{publishedCount} product{publishedCount !== 1 ? 's' : ''}</p>
                       </div>
                     </button>
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
             ) : currentThirdCategory?.isOverview ? null : filteredProducts.length > 0 ? (
