@@ -1,0 +1,187 @@
+第一部分：类目与导航改名（先执行）
+父类目：Sight Glasses（slug: sight-glasses，挂在 Valves 下，保持不变）
+5 个二级目录由"型号代码命名"改为"功能特征命名"，映射如下（旧 slug 未被收录，直接改，无需 301）：
+#	现在导航名（改）	新导航名	新 slug	页面 H1（功能全名）
+1	SGN – Brazed (ODF)	Moisture Indicator – Brazed ODF	moisture-indicator-brazed-odf	Moisture Indicator Sight Glass — Brazed ODF Connection (SGN Series)
+2	SGN – SAE Flare (UNF)	Moisture Indicator – SAE Flare	moisture-indicator-sae-flare	Moisture Indicator Sight Glass — SAE Flare Connection (SGN Series)
+3	SGN – SAE Flare, M/F	Moisture Indicator – SAE Flare M/F	moisture-indicator-sae-flare-mf	Moisture Indicator Sight Glass — SAE Flare, Male/Female (SGN-MF Series)
+4	SGN – NPT Threaded	Moisture Indicator – NPT Threaded	moisture-indicator-npt	Moisture Indicator Sight Glass — NPT Threaded (SGN-NPT Series)
+5	SGR – Oil Level (G Thread)	Oil Level Sight Glass – G Thread	oil-level-g-thread	Oil Level Sight Glass — G Thread Connection (SGR Series)
+
+命名原则（全站统一）：功能特征词在前、型号系列放括号；客户看得懂、搜索有流量，型号保留在括号吃品牌交叉搜索。
+
+第二部分：5 个产品页完整内容
+每页区块顺序（站内模板固定）：面包屑 → H1 → 短描述 → 主图/参数摘要 → 详细描述/Key Features/Applications → Specifications 参数表 → Available Models 型号表 → FAQ（折叠，3 通用+本类目第 4 条）→ Related Products → CTA。
+FAQ 前 3 条全站通用（代码内置常量），第 4 条用本包末尾「视液镜类目选型 FAQ」。
+通用技术参数 5 页共用：MWP 4.5MPa(45bar)，爆破 6.8MPa(68bar)，温度 -40°C~+80°C，密封件改性 PTFE，本体锻造铜棒，适用 HCFC/HFC，年泄漏率 ≤2g/a，品牌 HONGSEN。
+Product 1：Moisture Indicator Sight Glass — Brazed ODF Connection (SGN Series)
+• URL: /products/valves/sight-glasses/moisture-indicator-brazed-odf
+• Meta Title: Moisture Indicator Sight Glass, Brazed ODF | Refrigeration
+• Meta Description: Brazed ODF moisture indicator sight glass for refrigeration liquid lines. Color-changing element detects water content. 7 models, 1/4"–1-1/8". 45 bar. MOQ 1 pc.
+• Short Description: Brazed ODF moisture indicator sight glass for permanent installation on refrigeration liquid lines. Color-changing element provides instant visual diagnosis of refrigerant water content. Available in 7 sizes from 1/4" to 1-1/8".
+Product Description / Key Features
+• Moisture indicator sight glass designed for installation on refrigeration liquid lines
+• Brazed ODF (solder cup) connection provides a permanent, leak-free joint
+• Visual indicator shows refrigerant flow status, water content, and lubricant oil flow
+• Color-changing moisture indicator: green = dry (safe), yellow = wet (moisture alert)
+• Also detects refrigerant subcooling and insufficient system charging
+• Explosion-proof press-fit structure with a clear, safe observation window
+• Forged copper bar body for strength and corrosion resistance; modified PTFE seal
+• Bidirectional flow — install in either direction; compatible with HCFC and HFC
+Available Models
+Model	Port Size (inch)	Overall Size L×H (mm)
+SGN-1/4 ODF	1/4	102×21.5
+SGN-3/8 ODF	3/8	119×22.5
+SGN-1/2 ODF	1/2	146×26.5
+SGN-5/8 ODF	5/8	152×29.5
+SGN-3/4 ODF	3/4	167×35
+SGN-7/8 ODF	7/8	173×39
+SGN-1-1/8 ODF	1-1/8	216×44.5
+
+Specifications: Series SGN | Moisture Indicator: Yes | Connection: Brazed (ODF) | MWP 45 bar | Burst 68 bar | Temp -40~+80°C | Seal: Modified PTFE | Body: Forged Copper Bar | Leakage ≤2g/a | Mounting: Refrigerant liquid line | HCFC/HFC
+主图: 视液镜产品图/P1-Moisture-SightGlass-Brazed-ODF.png
+Alt: Moisture indicator sight glass with brazed ODF copper tube connections, SGN series, for refrigeration liquid lines
+
+Product 2：Moisture Indicator Sight Glass — SAE Flare Connection (SGN Series)
+• URL: /products/valves/sight-glasses/moisture-indicator-sae-flare
+• Meta Title: Moisture Indicator Sight Glass, SAE Flare | Refrigeration
+• Meta Description: SAE flare moisture indicator sight glass for refrigeration. UNF threaded connection. Color-changing moisture element. 5 models, 1/4"–3/4". 45 bar. MOQ 1 pc.
+• Short Description: SAE flare moisture indicator sight glass with UNF threaded connection for serviceable installation on refrigeration liquid lines. Color-changing element detects moisture in HCFC/HFC systems. Available in 5 sizes from 1/4" to 3/4".
+Product Description / Key Features
+• Moisture indicator sight glass for refrigeration liquid lines with SAE flare connection
+• SAE flare (UNF threaded) connection allows disassembly for service and maintenance
+• Visual indicator shows refrigerant flow, water content, and oil return status
+• Color-changing element: green = dry, yellow = wet
+• Detects excessive moisture, subcooling conditions, and undercharging
+• Explosion-proof press-fit window; forged copper bar body; modified PTFE seal
+• Compatible with HCFC and HFC systems
+• 注：视液镜本体出厂为双外丝（male flare），喇叭口纳子随货配套，页面图片无纳子属正常
+Available Models
+Model	Port Size (inch)	Thread Spec	Overall Size L×H (mm)
+SGN-1/4 SAE	1/4	7/16-20UNF	64×21.5
+SGN-3/8 SAE	3/8	5/8-18UNF	70×25
+SGN-1/2 SAE	1/2	3/4-16UNF	75×26.5
+SGN-5/8 SAE	5/8	7/8-14UNF	80×29.5
+SGN-3/4 SAE	3/4	1-1/16-14UNS	90×35
+
+Specifications: Series SGN | Moisture Indicator: Yes | Connection: SAE Flare (UNF) | MWP 45 bar | Burst 68 bar | Temp -40~+80°C | Seal: Modified PTFE | Body: Forged Copper Bar | Leakage ≤2g/a | Mounting: Refrigerant liquid line | HCFC/HFC
+主图: 视液镜产品图/P2-Moisture-SightGlass-SAE-Flare.png
+Alt: SAE flare UNF moisture indicator sight glass with brass male flare connections, SGN series, for HVAC refrigeration liquid lines
+
+Product 3：Moisture Indicator Sight Glass — SAE Flare, Male/Female (SGN-MF Series)
+• URL: /products/valves/sight-glasses/moisture-indicator-sae-flare-mf
+• Meta Title: Moisture Indicator Sight Glass, SAE Flare M/F | Refrigeration
+• Meta Description: Male/female SAE flare sight glass with moisture indicator. Dual-end flare for direct tube connection. 4 models, 1/4"–5/8". UNF threads. 45 bar. MOQ 1 pc.
+• Short Description: Male/female dual-end SAE flare sight glass with built-in moisture indicator. One male and one female flare end enable direct tube-to-tube connection without additional fittings. Available in 4 sizes from 1/4" to 5/8".
+Product Description / Key Features
+• Male/female dual-end SAE flare sight glass for refrigeration liquid lines
+• One male flare end and one female flare end enable direct tube-to-tube connection without additional fittings
+• Color-changing moisture indicator: green = dry, yellow = wet
+• Visual monitoring of refrigerant flow, water content, and oil circulation
+• Explosion-proof press-fit window; forged copper bar body; modified PTFE seal
+• Detects excessive moisture, refrigerant subcooling, and insufficient charging
+• Compatible with HCFC and HFC systems
+• 结构特征：一端 SAE 外丝喇叭口 + 一端 SAE 内丝六角母口（对应 Castel 3950 类 SAE 扩口外-内螺纹接头型式）
+Available Models
+Model	Port Size (inch)	Thread Spec	Overall Size L×H (mm)
+SGN-1/4-MF	1/4	7/16-20UNF	60×25
+SGN-3/8-MF	3/8	5/8-18UNF	68×31.5
+SGN-1/2-MF	1/2	3/4-16UNF	70×34.5
+SGN-5/8-MF	5/8	7/8-14UNF	78×38
+
+Specifications: Series SGN-MF | Moisture Indicator: Yes | Connection: SAE Flare, Male/Female (UNF) | MWP 45 bar | Burst 68 bar | Temp -40~+80°C | Seal: Modified PTFE | Body: Forged Copper Bar | Leakage ≤2g/a | Mounting: Refrigerant liquid line | HCFC/HFC
+主图: 视液镜产品图/P3-Moisture-SightGlass-SAE-Flare-MF.png
+Alt: Male/female SAE flare moisture indicator sight glass with one male flare and one female hex end, SGN-MF series, for refrigeration lines
+
+Product 4：Moisture Indicator Sight Glass — NPT Threaded (SGN-NPT Series)  ⚠️内容待确认，先做页不发布
+⚠️ 待 Echo 向鸿森核实两点后再发布：① 鸿森是否实际生产"带水分指示器的 NPT 款"（鸿森官网选型表中 NPT 只有 SGR-3/4NPT 油位套口、无水分指示器，SGN 水分指示款官网无 NPT 型号）；② 实际结构与实物图。
+在核实完成、拿到正确实物图前，本页按门禁规则不发布（不进导航、不进 sitemap、URL 返回未发布提示 + noindex）。以下内容占位，核实后据实修正。
+• URL: /products/valves/sight-glasses/moisture-indicator-npt
+• Meta Title: Moisture Indicator Sight Glass, NPT Threaded | Refrigeration
+• Meta Description: NPT threaded moisture indicator sight glass for refrigeration. Tapered pipe thread seal. Color-changing moisture element. 3/4" port. MOQ 1 pc.
+• Short Description（待确认）: NPT threaded moisture indicator sight glass for refrigeration systems. Tapered pipe thread creates a metal-to-metal seal with thread sealant. Color-changing element detects moisture in HCFC/HFC systems.
+Key Features
+• NPT (National Pipe Thread) tapered connection, seals with thread sealant or PTFE tape
+• Color-changing moisture indicator: green = dry, yellow = wet
+• Visual indicator for refrigerant flow, moisture, and oil return
+• Explosion-proof window; forged copper bar body; modified PTFE seal
+• Compatible with HCFC and HFC systems
+Available Models（待确认）
+Model	Port Size (inch)	Thread Spec	Overall Size L×H (mm)
+SGN-3/4 NPT	3/4	NPT 3/4（待确认）	/（待补）
+
+主图: 暂无正确图片（Excel 锚定图 MWP 500psig/175°F、一端喇叭口一端大母口，参数与结构均不符，弃用）。需鸿森原厂实物图。
+
+Product 5：Oil Level Sight Glass — G Thread Connection (SGR Series)  ⚠️螺纹待确认，图待补
+⚠️ 待核实：鸿森官网油位/液位款标注为 SGR-3/4 NPT（3/4 NPT 螺纹，套口式，无水分指示器，35bar/500psig）；Excel 写 SGR-G3/4（G3/4 BSPP 螺纹）。两种螺纹不通用，需向鸿森确认实际供货是 NPT 还是 G(BSPP)，并确认结构是单端拧入油塞式还是套口式。核实前本页不发布。
+• URL: /products/valves/sight-glasses/oil-level-g-thread
+• Meta Title: Oil Level Sight Glass, G Thread | Refrigeration
+• Meta Description: Oil level sight glass for compressor crankcase monitoring. G thread (BSPP) connection. Forged copper body. 3/4" port. 45 bar MWP. MOQ 1 pc.
+• Short Description: Oil level sight glass for monitoring lubricant oil levels in compressor crankcases and liquid levels in receivers. G thread (BSPP, ISO 228-1) connection with end-face gasket seal. Forged copper bar body for durability.
+Key Features
+• Monitors lubricant oil level in compressor crankcases
+• Also indicates liquid level in liquid receivers and drums
+• G thread (BSPP, ISO 228-1) connection with end-face gasket seal（螺纹标准待确认 NPT/G）
+• Explosion-proof observation window; forged copper bar body; modified PTFE seal
+• No moisture indicator — oil/liquid level function only
+• Compatible with HCFC and HFC
+Available Models（待确认）
+Model	Port Size (inch)	Thread Spec	Overall Size L×H (mm)
+SGR-G3/4	3/4	G3/4 BSPP（或 NPT 3/4，待确认）	/（待补）
+
+主图: 暂无（Excel 未配图；油位镜为单端拧入式，外观与管式视液镜不同，需鸿森原厂图）。
+
+第三部分：视液镜选型指南页（hub/landing，路径 /products/valves/sight-glasses）
+• Meta Title: Refrigeration Sight Glasses — Types & Selection Guide | HVACR NET
+• Meta Description: Moisture indicator vs oil level sight glasses for refrigeration. Compare brazed ODF, SAE flare, M/F and NPT connections. Cross-reference SGN/SGR series. 45 bar. MOQ 1 pc.
+• 面包屑: Home > Products > Valves > Sight Glasses
+• 页首引言（150–200 词）：sight glass 的作用（液管看制冷剂流动/水分/气泡、油分回油、曲轴箱油位、储液器液位）；选错连接方式或把油位镜当水分镜的后果；本指南涵盖 4 种水分指示款 + 1 种油位款。
+• 对比表（型号名全部加链接指向对应产品页）：
+#	Product	Function	Connection	Port Range	Moisture Indicator	MWP	Models
+1	Moisture Indicator Sight Glass (Brazed ODF)	Moisture & Flow Indicator	Brazed (ODF)	1/4"–1-1/8"	Yes	45 bar	7
+2	Moisture Indicator Sight Glass (SAE Flare)	Moisture & Flow Indicator	SAE Flare (UNF)	1/4"–3/4"	Yes	45 bar	5
+3	Moisture Indicator Sight Glass (SAE Flare, M/F)	Moisture & Flow Indicator	SAE Flare, M/F	1/4"–5/8"	Yes	45 bar	4
+4	Moisture Indicator Sight Glass (NPT Threaded)	Moisture & Flow Indicator	NPT Threaded	3/4"（待确认）	Yes（待确认）	45 bar	1（待确认）
+5	Oil Level Sight Glass (G Thread)	Oil/Level Indicator	G Thread (BSPP)（待确认）	3/4"	No	45 bar	1
+
+• How to Choose 分步选型：
+1. 先定功能：装液管看水分/流动 → Moisture Indicator（SGN 系列）；装压缩机曲轴箱看油位/储液器看液位 → Oil Level（SGR 系列），两者不可混用。
+2. 再定连接：铜管永久焊接选 Brazed ODF；需现场拆卸维护选 SAE Flare（喇叭口纳子）；管路需一头直连另一头内螺纹选 SAE Flare M/F；钢管/容器锥螺纹口选 NPT。
+3. 定尺寸：按液管外径/连接口尺寸选 1/4"–1-1/8" 对应型号。
+4. 制冷剂：HCFC/HFC 均适用；颜色指示：绿=干燥、黄=潮湿。
+• JSON-LD：BreadcrumbList + ItemList（表格内型号）+ FAQPage。
+• FAQ（手风琴，4 条）：前 3 条用全站通用常量；第 4 条用下文本类目选型问答。
+• CTA：Send us your brand and model (e.g. Danfoss SGN/SGR) for a cross-reference and quote.
+视液镜类目选型 FAQ（第 4 条）
+Q: Which sight glass do I need — a moisture indicator for the liquid line or an oil level sight glass?
+A: Moisture indicator sight glasses (SGN series, brazed ODF or SAE flare) mount on the refrigerant liquid line and show moisture content (green = dry, yellow = wet) and refrigerant flow. Oil level sight glasses (SGR series) mount on the compressor crankcase or liquid receiver and show oil/liquid level only — they have no moisture indicator. Choose brazed ODF for permanent soldered installation, SAE flare for removable service connections, or M/F for direct tube-to-tube flare joints.
+
+第四部分：给编程对话的执行指令（复制）
+按随附《视液镜_SEO完整上架包》完成 Sight Glasses 类目改造与上架：
+
+1. 改名：5 个二级目录按包内"第一部分"映射修改导航名与 slug（功能名命名），父类目 Sight Glasses 不变；旧 slug 直接改无需 301。
+
+2. 产品页：按"第二部分"制作 5 个产品页。title/meta/JSON-LD(Product+BreadcrumbList+FAQPage)/FAQ 手风琴/区块顺序全部走站内已固化模板；参数严格照包内表格录入，不得改数值。
+   - Product 1/2/3 主图用随附 视液镜产品图/ 内 P1/P2/P3 三张图，alt 用包内指定文本；这三页内容完整，按门禁正常发布、进导航和 sitemap。
+   - Product 4/5 内容标注"待确认"，按上线门禁规则保持未发布：不进导航、不进 sitemap、URL 显示未发布提示页并输出 noindex；待客户确认后补图再发布。
+
+3. 选型指南页：按"第三部分"制作 /products/valves/sight-glasses 着陆页（引言+型号对比表[型号名加链接]+How to Choose+FAQ+CTA），输出 BreadcrumbList/ItemList/FAQPage 三类 JSON-LD。该类目可发布产品达 3 个（P1/P2/P3），本指南页进入导航和 sitemap。
+
+4. sitemap 三级 hub 页规则：/products/valves/sight-glasses 等三级类目指南页，当已发布产品≥3 时必须进 sitemap（此规则对 solenoid-valves、ball-valves 同样适用，一并修复）。
+
+部署后自验证并回报：
+- 导航 Sight Glasses 下显示 5 个功能名二级目录（其中 2 个未发布页不进前台导航）；
+- P1/P2/P3 三页可打开、title 为功能名句式、canonical 自指、含 Product/BreadcrumbList/FAQPage JSON-LD、图片正常显示；
+- P4/P5 直接访问 URL 返回未发布提示且 head 含 noindex，不出现在 sitemap；
+- 指南页 /products/valves/sight-glasses 可打开、表格型号链接 200、含 ItemList JSON-LD，且该 URL 与 solenoid-valves、ball-valves 指南页均出现在 sitemap.xml；
+- curl 抽查回报以上结果。
+
+
+第五部分：Echo 待办（图片与待确认项）
+1. 立即上架：Product 1/2/3 三张主图已整理好在「视液镜产品图/」文件夹（P1 ODF / P2 SAE Flare / P3 SAE M/F），随本包发编程即可。
+◦ 注意：你之前标"04-NPT"的那张图（一端纳子母口、一端外丝、铸 60BAR/cULus）实际是 M/F 式，已归入 P3，不要再放 NPT 页。
+2. 找鸿森核实（P4/P5 发布前）：
+◦ SGN 是否有"带水分指示器的 NPT 款"？型号、结构、要原厂实物图；
+◦ SGR-G3/4 油位镜实际螺纹是 NPT 3/4 还是 G3/4(BSPP)？是单端拧入油塞式还是套口式？要原厂图。
+3. 各型号实拍细节图（区分尺寸）后续可逐步补，主图先保证每类 1 张正确。
+4. alt 文本已在各页指定，编程直接用。
