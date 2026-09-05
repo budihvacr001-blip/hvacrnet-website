@@ -104,7 +104,7 @@ export default function Contact() {
       <SEO
         title="Contact Us | HVACR NET - Get a Quote for HVACR Parts"
         description="Contact HVACR NET for quotes, product inquiries, and sourcing requests. Email, WhatsApp, or fill out our inquiry form. We respond within 24 hours."
-        canonical="/contact"
+        url="/contact"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "ContactPage",

@@ -10,6 +10,23 @@ const advantages = [
 ]
 
 export default function Home() {
+  const orgSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Ningbo HVACR Net Refrigeration Equipment Co., Ltd.',
+    alternateName: 'HVACR NET',
+    url: 'https://www.hvacrnet.com',
+    logo: 'https://www.hvacrnet.com/logo.png',
+    description: 'Professional HVACR parts supplier with 20 years of trade expertise. One-stop sourcing for copper tubes, fittings, valves, insulation, and more from Ningbo, China.',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      url: 'https://www.hvacrnet.com/contact',
+      availableLanguage: ['English', 'Chinese'],
+    },
+    sameAs: [],
+  }
+
   return (
     <div>
       <SEO
@@ -17,6 +34,7 @@ export default function Home() {
         description="Professional HVACR parts supplier with 20 years of trade expertise. Low MOQ, ready stock, one-stop sourcing for copper tubes, fittings, valves, and more from Ningbo, China."
         url="/"
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       {/* Hero Banner */}
       <section className="relative flex h-[55vh] min-h-[380px] items-center justify-center overflow-hidden bg-white">
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">

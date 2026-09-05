@@ -1,29 +1,10 @@
 import { useState, useMemo, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Search, MessageCircle, ChevronRight, Package } from 'lucide-react'
+import { useNavigate, Link } from 'react-router-dom'
+import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
 import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
-
-// Schema.org structured data for products
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'HVACR Products',
-  description: 'Complete range of HVAC and refrigeration parts and components',
-  numberOfItems: categories.reduce((acc, cat) => acc + cat.products.length, 0),
-  itemListElement: categories.map((cat, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    item: {
-      '@type': 'Product',
-      name: cat.name,
-      description: `${cat.products.length} products in this category`,
-      category: cat.name,
-    },
-  })),
-}
 
 // Category positioning statements for global audience
 const categoryPositioning: Record<string, string> = {
@@ -164,34 +145,43 @@ export default function Products() {
   const isSubCategoryOverview = currentSubCategory?.isOverview === true
 
   // Dynamic SEO title and description
-  const SITE_SUFFIX = 'HVACR NET HVAC/R Parts Supplier from China'
+  const BRAND = 'HVACR NET'
   const seoTitle = (() => {
     if (currentThirdCategory && !currentThirdCategory.isOverview) {
       const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-      if (product?.metaTitle) return `${product.metaTitle} | ${SITE_SUFFIX}`
-      return `${currentThirdCategory.name} - ${currentCategory?.name} | ${SITE_SUFFIX}`
+      if (product?.metaTitle) {
+        const base = product.metaTitle.length > 45 ? product.metaTitle.slice(0, 45).trim() : product.metaTitle
+        return `${base} | ${BRAND} Supplier`
+      }
+      const name = currentThirdCategory.name
+      const base = name.length > 45 ? name.slice(0, 45).trim() : name
+      return `${base} | ${BRAND} Supplier`
     }
     if (currentSubCategory && !isSubCategoryOverview) {
-      return `${currentSubCategory.name} - ${currentCategory?.name} | ${SITE_SUFFIX}`
+      const name = `${currentSubCategory.name} - ${currentCategory?.name}`
+      const base = name.length > 50 ? name.slice(0, 50).trim() : name
+      return `${base} | ${BRAND}`
     }
     if (currentCategory) {
-      return `${currentCategory.name} - HVACR Parts | ${SITE_SUFFIX}`
+      return `${currentCategory.name} HVAC/R Parts | ${BRAND}`
     }
-    return `HVACR Products - HVACR Parts & Components | ${SITE_SUFFIX}`
+    return `HVACR Parts & Components | ${BRAND}`
   })()
 
   const seoDescription = (() => {
     if (currentThirdCategory && !currentThirdCategory.isOverview) {
       const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-      if (product?.metaDescription) return product.metaDescription
+      if (product?.metaDescription) {
+        return product.metaDescription.length > 155 ? product.metaDescription.slice(0, 152).trim() + '...' : product.metaDescription
+      }
     }
     if (currentSubCategory && !isSubCategoryOverview && currentCategory) {
       const positioning = categoryPositioning[currentSubCategory.id]
-      if (positioning) return positioning
+      if (positioning) return positioning.length > 155 ? positioning.slice(0, 152).trim() + '...' : positioning
     }
     if (currentCategory) {
       const positioning = categoryPositioning[currentCategory.id]
-      if (positioning) return positioning
+      if (positioning) return positioning.length > 155 ? positioning.slice(0, 152).trim() + '...' : positioning
       return `Browse ${currentCategory.name} for HVAC and refrigeration systems. Quality parts sourced from Ningbo, China with flexible MOQ and global shipping.`
     }
     return 'Browse our comprehensive range of HVACR parts including copper tubes, fittings, valves, insulation materials, cables, mounting accessories and more. One-stop sourcing from Ningbo, China.'
@@ -210,18 +200,87 @@ export default function Products() {
     return '/products'
   })()
 
+  // BreadcrumbList schema
+  const breadcrumbSchema = (() => {
+    const items: { name: string; url: string }[] = [{ name: 'Home', url: '/' }, { name: 'Products', url: '/products' }]
+    if (currentCategory) {
+      items.push({ name: currentCategory.name, url: `/products/${currentCategory.id}` })
+    }
+    if (currentSubCategory && !isSubCategoryOverview) {
+      items.push({ name: currentSubCategory.name, url: `/products/${currentCategory?.id}/${currentSubCategory.id}` })
+    }
+    if (currentThirdCategory && !currentThirdCategory.isOverview) {
+      const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
+      items.push({ name: product?.name || currentThirdCategory.name, url: seoUrl })
+    }
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        item: `https://www.hvacrnet.com${item.url}`,
+      })),
+    }
+  })()
+
+  // Product schema for individual product view
+  const productDetailSchema = (() => {
+    if (!currentThirdCategory || currentThirdCategory.isOverview) return null
+    const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
+    if (!product) return null
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      description: product.shortDesc,
+      brand: { '@type': 'Brand', name: 'HVACR NET' },
+      category: currentCategory?.name || 'HVACR Parts',
+      ...(product.images?.[0] ? { image: `https://www.hvacrnet.com${product.images[0]}` } : {}),
+      offers: {
+        '@type': 'Offer',
+        businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+        availability: 'https://schema.org/InStock',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          price: '0',
+          priceCurrency: 'USD',
+          description: 'Contact for pricing',
+        },
+        acceptedPaymentMethod: ['Wire Transfer', 'Letter of Credit'],
+        seller: { '@type': 'Organization', name: 'Ningbo HVACR Net Refrigeration Equipment Co., Ltd.' },
+      },
+    }
+  })()
+
+  const schemas = [breadcrumbSchema, productDetailSchema].filter(Boolean) as object[]
+
+  // Related products (same category, excluding current)
+  const relatedProducts = useMemo(() => {
+    if (!currentCategory) return []
+    const currentProductId = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)?.id
+    return categories
+      .flatMap((cat) => cat.products)
+      .filter((p) => p.categoryId === currentCategory.id && p.id !== currentProductId)
+      .slice(0, 6)
+  }, [currentCategory, activeThirdCategory, filteredProducts])
+
   return (
     <>
       <SEO
         title={seoTitle}
         description={seoDescription}
         url={seoUrl}
-        ogType="website"
-      />
-      {/* Schema.org structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        ogType={currentThirdCategory && !currentThirdCategory.isOverview ? 'product' : 'website'}
+        ogImage={(() => {
+          if (currentThirdCategory && !currentThirdCategory.isOverview) {
+            const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
+            if (product?.images?.[0]) return `https://www.hvacrnet.com${product.images[0]}`
+          }
+          return undefined
+        })()}
+        structuredData={schemas.length > 0 ? schemas : undefined}
       />
       <div className="min-h-screen bg-gray-bg">
       {/* Header Banner */}
@@ -261,6 +320,48 @@ export default function Products() {
           </div>
         </div>
       </section>
+
+      {/* Breadcrumbs */}
+      {(currentCategory || currentSubCategory || currentThirdCategory) && (
+        <nav className="bg-white border-b border-gray-border" aria-label="Breadcrumb">
+          <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+            <ol className="flex flex-wrap items-center gap-1.5 text-sm text-gray-text">
+              <li className="flex items-center">
+                <Link to="/" className="hover:text-navy transition-colors flex items-center gap-1">
+                  <Home className="h-3.5 w-3.5" />
+                  Home
+                </Link>
+              </li>
+              <li className="flex items-center gap-1.5">
+                <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
+                <Link to="/products" className="hover:text-navy transition-colors">Products</Link>
+              </li>
+              {currentCategory && (
+                <li className="flex items-center gap-1.5">
+                  <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
+                  <button onClick={() => selectCategory(currentCategory.id)} className="hover:text-navy transition-colors">
+                    {currentCategory.name}
+                  </button>
+                </li>
+              )}
+              {currentSubCategory && !isSubCategoryOverview && (
+                <li className="flex items-center gap-1.5">
+                  <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
+                  <button onClick={() => selectSubCategory(currentCategory!.id, currentSubCategory.id)} className="hover:text-navy transition-colors">
+                    {currentSubCategory.name}
+                  </button>
+                </li>
+              )}
+              {currentThirdCategory && !currentThirdCategory.isOverview && (
+                <li className="flex items-center gap-1.5">
+                  <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
+                  <span className="text-navy font-medium">{currentThirdCategory.name}</span>
+                </li>
+              )}
+            </ol>
+          </div>
+        </nav>
+      )}
 
       {/* Main Content - Light background with sidebar + products */}
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -775,6 +876,34 @@ export default function Products() {
               <div className="py-20 text-center">
                 <p className="text-lg text-gray-text">No products found matching your criteria.</p>
                 <p className="mt-2 text-sm text-gray-text">Try adjusting your search or filters.</p>
+              </div>
+            )}
+
+            {/* Related Products */}
+            {currentThirdCategory && !currentThirdCategory.isOverview && relatedProducts.length > 0 && (
+              <div className="mt-12 border-t border-gray-border pt-10">
+                <h3 className="text-xl font-bold text-navy mb-6">Related Products</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                  {relatedProducts.map((product) => (
+                    <Link
+                      key={product.id}
+                      to={`/products/${product.categoryId}/${product.subCategoryId}/${product.thirdCategoryId}`}
+                      className="group rounded-lg border border-gray-border p-4 transition-all hover:border-accent hover:shadow-md"
+                    >
+                      {product.images?.[0] && (
+                        <img
+                          src={product.images[0]}
+                          alt={`${product.name} - ${product.shortDesc}`}
+                          className="w-full h-32 object-contain mb-3"
+                        />
+                      )}
+                      <h4 className="text-sm font-semibold text-navy group-hover:text-accent transition-colors line-clamp-2">
+                        {product.name}
+                      </h4>
+                      <p className="mt-1 text-xs text-gray-text line-clamp-2">{product.shortDesc}</p>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
 
