@@ -1,10 +1,11 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
+import CategoryLanding from '../components/CategoryLanding'
 
 // Category positioning statements for global audience
 const categoryPositioning: Record<string, string> = {
@@ -557,272 +558,44 @@ export default function Products() {
               </div>
             )}
 
-            {/* Comparison Table for Overview */}
-            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && solenoidValvesComparison && activeSubCategory === 'solenoid-valves' && (
-              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
-                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
-                  <h3 className="text-xl font-bold text-white">{solenoidValvesComparison.title}</h3>
-                  <p className="mt-2 text-sm text-white/80">{solenoidValvesComparison.subtitle}</p>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="bg-navy/5">
-                        {solenoidValvesComparison.headers.map((header, i) => (
-                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {solenoidValvesComparison.rows.map((row, rowIdx) => (
-                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          {row.map((cell, cellIdx) => {
-                            // Product column (index 1) - make it clickable
-                            if (cellIdx === 1) {
-                              // Map product names to thirdCategoryId
-                              const productToId: Record<string, string> = {
-                                'Standard Solenoid Valve (ODF, NC)': 'hvd-standard',
-                                'High Flow Solenoid Valve, Flanged ODF': 'hvp-high-flow',
-                                'Clamping Type Solenoid Valve, Small Port': 'hv-clamping-small',
-                                'Clamping Type Solenoid Valve, Large Port': 'hv-clamping-large',
-                                'IP65 Sealed Solenoid Valve, Direct Operated': 'sv-ip65-direct',
-                                'IP65 Sealed Solenoid Valve, Servo Operated': 'sv-ip65-servo',
-                                'Low Power Solenoid Valve 8W, Direct Operated': '10-8w-direct',
-                                'Low Power Solenoid Valve 8W, Servo Operated': '10-8w-servo',
-                                'Normally Open Solenoid Valve, Small Port': 'hvk-normally-open-small',
-                                'Normally Open Solenoid Valve, Large Port': 'hvk-normally-open-large',
-                                'Compressor Unloading Solenoid Valve, Flanged': 'hv-unloading-flanged',
-                                'Compressor Unloading Solenoid Valve, ODF': 'hv-unloading-odf',
-                                'Hot Gas Defrost Solenoid Valve, 3-Way': 'hvs-hot-gas',
-                                'High Flow Piston Solenoid Valve, ODF': 'hvdf-high-flow',
-                                'High Flow Piston Solenoid Valve, Flanged': 'hvpf-high-flow',
-                              };
-                              const thirdId = productToId[cell];
-                              return (
-                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
-                                  {thirdId ? (
-                                    <button
-                                      onClick={() => selectThirdCategory('valves', 'solenoid-valves', thirdId)}
-                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
-                                    >
-                                      {cell}
-                                    </button>
-                                  ) : (
-                                    <span className="font-medium text-gray-800">{cell}</span>
-                                  )}
-                                </td>
-                              );
-                            }
-                            return (
-                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
-                                {cell}
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
-                  <p><strong>Note:</strong> Kv values are for reference only. MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
-                </div>
-              </div>
-            )}
+            {/* Category Landing Page for Overview */}
+            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && (() => {
+              const landingContent = categoryLandingContent.find(c =>
+                c.subCategoryId
+                  ? c.subCategoryId === activeSubCategory && c.categoryId === activeCategory
+                  : c.categoryId === activeCategory && !c.subCategoryId
+              );
+              if (!landingContent) return null;
 
-            {/* Filter Driers Comparison Table for Overview */}
-            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && filterDriersComparison && activeCategory === 'filter-driers' && (
-              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
-                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
-                  <h3 className="text-xl font-bold text-white">{filterDriersComparison.title}</h3>
-                  <p className="mt-2 text-sm text-white/80">{filterDriersComparison.subtitle}</p>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="bg-navy/5">
-                        {filterDriersComparison.headers.map((header, i) => (
-                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filterDriersComparison.rows.map((row, rowIdx) => (
-                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          {row.map((cell, cellIdx) => {
-                            // Product column (index 1) - make it clickable
-                            if (cellIdx === 1) {
-                              // Map product names to subCategoryId
-                              const productToId: Record<string, string> = {
-                                'Bidirectional Filter Drier, SAE Flare': 'bfk-sae',
-                                'Bidirectional Filter Drier, Brazed ODF': 'bfk-odf',
-                                'Unidirectional Filter Drier, SAE Flare': 'dfs-sae',
-                                'Unidirectional Filter Drier, Brazed ODF': 'dfs-odf',
-                                'Replaceable Core Filter Drier, Brazed ODF': 'dfs-replaceable',
-                              };
-                              const subId = productToId[cell];
-                              return (
-                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
-                                  {subId ? (
-                                    <button
-                                      onClick={() => selectSubCategory('filter-driers', subId)}
-                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
-                                    >
-                                      {cell}
-                                    </button>
-                                  ) : (
-                                    <span className="font-medium text-gray-800">{cell}</span>
-                                  )}
-                                </td>
-                              );
-                            }
-                            return (
-                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
-                                {cell}
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
-                  <p><strong>Note:</strong> MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
-                </div>
-              </div>
-            )}
+              const comparisonMap: Record<string, typeof solenoidValvesComparison> = {
+                'solenoid-valves': solenoidValvesComparison,
+                'ball-valves': ballValvesComparison,
+                'sight-glasses': sightGlassesComparison,
+              };
+              const filterDrierMap: Record<string, typeof filterDriersComparison> = {
+                'filter-driers': filterDriersComparison,
+              };
+              const comparisonData = comparisonMap[activeSubCategory || ''] || filterDrierMap[activeCategory || ''];
+              if (!comparisonData) return null;
 
-            {/* Sight Glasses Comparison Table for Overview */}
-            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && sightGlassesComparison && activeSubCategory === 'sight-glasses' && (
-              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
-                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
-                  <h3 className="text-xl font-bold text-white">{sightGlassesComparison.title}</h3>
-                  <p className="mt-2 text-sm text-white/80">{sightGlassesComparison.subtitle}</p>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="bg-navy/5">
-                        {sightGlassesComparison.headers.map((header, i) => (
-                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {sightGlassesComparison.rows.map((row, rowIdx) => (
-                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          {row.map((cell, cellIdx) => {
-                            // Product column (index 1) - make it clickable
-                            if (cellIdx === 1) {
-                              // Map product names to thirdCategoryId
-                              const productToId: Record<string, string> = {
-                                'Moisture Indicator Sight Glass (Brazed ODF)': 'sgn-brazed',
-                                'Moisture Indicator Sight Glass (SAE Flare)': 'sgn-sae',
-                                'Moisture Indicator Sight Glass (SAE Flare, M/F)': 'sgn-sae-mf',
-                                'Moisture Indicator Sight Glass (NPT Threaded)': 'sgn-npt',
-                                'Oil Level Sight Glass (G Thread)': 'sgr-g',
-                              };
-                              const thirdId = productToId[cell];
-                              return (
-                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
-                                  {thirdId ? (
-                                    <button
-                                      onClick={() => selectThirdCategory('valves', 'sight-glasses', thirdId)}
-                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
-                                    >
-                                      {cell}
-                                    </button>
-                                  ) : (
-                                    <span className="font-medium text-gray-800">{cell}</span>
-                                  )}
-                                </td>
-                              );
-                            }
-                            return (
-                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
-                                <span className={cellIdx === 0 ? 'font-semibold text-navy' : 'text-gray-700'}>{cell}</span>
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
+              const categoryObj = categories.find(c => c.id === activeCategory);
+              const subCategoryObj = categoryObj?.subCategories.find(s => s.id === activeSubCategory);
+              const categoryProducts = categoryObj?.products.filter(p =>
+                activeSubCategory ? p.subCategoryId === activeSubCategory : true
+              ) || [];
 
-            {/* Ball Valves Comparison Table for Overview */}
-            {(currentThirdCategory?.isOverview || isSubCategoryOverview) && ballValvesComparison && activeSubCategory === 'ball-valves' && (
-              <div className="mb-8 overflow-hidden rounded-lg border border-navy/20 bg-white shadow-lg">
-                <div className="bg-gradient-to-r from-navy to-navy/90 p-6">
-                  <h3 className="text-xl font-bold text-white">{ballValvesComparison.title}</h3>
-                  <p className="mt-2 text-sm text-white/80">{ballValvesComparison.subtitle}</p>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="bg-navy/5">
-                        {ballValvesComparison.headers.map((header, i) => (
-                          <th key={i} className="whitespace-nowrap px-3 py-3 text-left font-semibold text-navy border-b border-navy/10">
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {ballValvesComparison.rows.map((row, rowIdx) => (
-                        <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          {row.map((cell, cellIdx) => {
-                            // Product column (index 1) - make it clickable
-                            if (cellIdx === 1) {
-                              // Map product names to thirdCategoryId
-                              const productToId: Record<string, string> = {
-                                'Electric Ball Valve (Full Bore)': 'dqf-electric',
-                                'Manual Ball Valve (Full Bore)': 'hbc-manual-full',
-                                'Manual Ball Valve (Reduced Bore)': 'qft-manual-reduced',
-                                'CO₂ Ball Valve (Full Bore)': 'qf-co2',
-                                'Threaded Ball Valve (NPT)': 'gfm-s-threaded',
-                              };
-                              const thirdId = productToId[cell];
-                              return (
-                                <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 border-b border-gray-100">
-                                  {thirdId ? (
-                                    <button
-                                      onClick={() => selectThirdCategory('valves', 'ball-valves', thirdId)}
-                                      className="font-medium text-accent hover:text-accent-dark hover:underline transition-colors"
-                                    >
-                                      {cell}
-                                    </button>
-                                  ) : (
-                                    <span className="font-medium text-gray-800">{cell}</span>
-                                  )}
-                                </td>
-                              );
-                            }
-                            return (
-                              <td key={cellIdx} className="whitespace-nowrap px-3 py-2.5 text-gray-600 border-b border-gray-100">
-                                {cell}
-                              </td>
-                            );
-                          })}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="bg-gray-50 px-6 py-4 text-xs text-gray-500 border-t border-gray-100">
-                  <p><strong>Note:</strong> MWP = Maximum Working Pressure. Contact us for specific model selection and technical consultation.</p>
-                </div>
-              </div>
-            )}
+              return (
+                <CategoryLanding
+                  content={landingContent}
+                  comparisonData={comparisonData}
+                  products={categoryProducts}
+                  categoryName={categoryObj?.name || ''}
+                  categorySlug={activeCategory || ''}
+                  subCategoryName={subCategoryObj?.name}
+                  subCategorySlug={activeSubCategory}
+                />
+              );
+            })()}
 
             {/* No category selected - Show category grid */}
             {!activeCategory ? (

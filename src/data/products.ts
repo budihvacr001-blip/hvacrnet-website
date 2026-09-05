@@ -1689,3 +1689,111 @@ export const ballValvesComparison = {
     ['5', 'Threaded Ball Valve (NPT)', 'GFM-S', 'Manual', 'N/A', 'NPT Threaded', 'NPT 1/4~1', 'N/A', '120', 'R22, R134a, R404A, R407C, R410A', '−40~+120°C', '5'],
   ],
 };
+
+// Category Landing Page Content
+export interface CategoryLandingContent {
+  categoryId: string;
+  subCategoryId?: string;
+  h1: string;
+  introduction: string;
+  howToChoose: { title: string; content: string }[];
+  faq: { question: string; answer: string }[];
+  relatedCategories: { name: string; slug: string }[];
+}
+
+export const categoryLandingContent: CategoryLandingContent[] = [
+  {
+    categoryId: 'valves',
+    subCategoryId: 'solenoid-valves',
+    h1: 'Refrigeration Solenoid Valves for HVAC & Refrigeration — Types & Selection Guide',
+    introduction: `Refrigeration solenoid valves are electrically actuated shut-off valves used to control the flow of refrigerant in air conditioning, cold storage, commercial refrigeration, and heat pump systems. They serve as the on/off control point in liquid lines, hot gas defrost circuits, compressor unloading systems, and pump-down configurations. HVACR NET supplies 15 solenoid valve variants across 10 series from Ningbo, China's HVAC/R manufacturing hub — covering port sizes from 1/4" to 2-1/8" (up to 60 mm for industrial models), with configurations including NC/NO, direct/servo-operated, piston and diaphragm structures, and brazed ODF, SAE flare, and flanged connections. All valves are 100% leak-tested before shipment. We supply contractors, wholesalers, and service companies worldwide with MOQ starting from 1 piece, competitive pricing, and ready stock on popular models.`,
+    howToChoose: [
+      { title: 'Direct Operated vs Servo (Pilot) Operated', content: 'Direct operated valves open at zero pressure differential and are ideal for small ports (1/4"–3/8") and low-pressure applications. Servo-operated valves use system pressure to assist opening, offering higher flow capacity (Kv) for larger ports (3/8"–2-1/8"). Choose direct operated for tight shutoff at low pressure; choose servo for larger lines and higher Cv requirements.' },
+      { title: 'Piston vs Diaphragm Structure', content: 'Piston-type solenoid valves (HVD, HVP, HVDF series) handle higher pressures (MWP 45 bar) and larger port sizes, making them suitable for industrial refrigeration and heat pump systems. Diaphragm-type valves (HV-S, HV-L, SV-D, SV-S series) are compact, cost-effective, and ideal for commercial refrigeration and residential AC systems with moderate pressure requirements.' },
+      { title: 'NC (Normally Closed) vs NO (Normally Open)', content: 'NC valves are the default choice for most applications — they close when de-energized, preventing refrigerant flow. NO valves (HVK-S, HVK-L series) remain open when de-energized and are used for hot gas bypass, compressor cooling, or ventilation circuits that must remain open during power failure.' },
+      { title: 'Connection Type: ODF vs Flare vs Flanged', content: 'Brazed ODF connections provide the most reliable, leak-free seal for permanent installations. SAE flare connections allow for serviceable joints that can be disconnected for maintenance. Flanged connections (HVP, HV-U(F) series) are used for large-port industrial valves where field serviceability is required.' },
+      { title: 'Voltage & Coil Protection', content: 'Standard coils operate at AC220V or AC380V for industrial applications. Multi-voltage coils (AC380/220/110/24V, DC12V) offer flexibility for global installations. For outdoor or high-humidity environments, choose IP65-sealed models (SV-D, SV-S series) or low-power 8W coils that generate less heat.' },
+    ],
+    faq: [
+      { question: 'Which solenoid valve is best for heat pump defrost?', answer: 'The HVS(R) 3-way hot gas defrost solenoid valve is specifically designed for heat pump defrost cycles. It reverses refrigerant flow to melt ice on the outdoor coil. For standard defrost on/off control, the HVD or HVDF piston-type valves are also suitable due to their high MWP (45 bar) and large port capacity.' },
+      { question: 'Can I use a 24V DC solenoid valve on a 220V AC system?', answer: 'No. Solenoid valves are designed for specific voltage ratings. Using the wrong voltage will either fail to open the valve (under-voltage) or burn out the coil (over-voltage). Our multi-voltage coils (AC380/220/110/24V, DC12V) can handle multiple voltages, but you must select the correct tap setting.' },
+      { question: 'What is the difference between Kv and Cv?', answer: 'Kv is the flow coefficient in metric units (m³/h), while Cv is in imperial units (US gal/min). Kv ≈ 0.865 × Cv. Our comparison table uses Kv values. For example, a valve with Kv = 10 m³/h has approximately Cv = 11.6.' },
+      { question: 'Do you have solenoid valves for CO₂ (R744) systems?', answer: 'Standard solenoid valves are rated for HCFC/HFC refrigerants at MWP 45 bar. CO₂ systems operate at much higher pressures (up to 120 bar). For CO₂ applications, we recommend our high-pressure piston valves or custom-configured models. Contact us with your specific requirements.' },
+      { question: 'What is the minimum order quantity (MOQ)?', answer: 'MOQ starts from 1 piece for sample orders. We welcome trial orders for quality evaluation before committing to larger quantities. Bulk orders receive volume discounts. Ready stock is available on popular models (HVD, HV-S, SV-S series) for fast dispatch from Ningbo.' },
+    ],
+    relatedCategories: [
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Filter Driers', slug: 'filter-driers' },
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+    ],
+  },
+  {
+    categoryId: 'valves',
+    subCategoryId: 'ball-valves',
+    h1: 'Refrigeration Ball Valves for HVAC & Refrigeration — Types & Selection Guide',
+    introduction: `Refrigeration ball valves are manual or electrically actuated quarter-turn valves used for isolation, flow control, and system service access in HVAC and refrigeration piping systems. They provide reliable shut-off for refrigerant lines, liquid receivers, and service ports. HVACR NET supplies 5 ball valve series from Ningbo, China — including standard manual ODF valves (HBC, QFT), full-bore electric actuated valves (DQF), high-pressure CO₂-rated valves (QF-CO2, 120 bar), and NPT threaded models (GFM-S). Port sizes range from 1/4" to 3-1/8", with full-bore designs for minimal pressure drop and reduced-bore models for cost-effective installations. All valves are forged from high-grade brass, 100% leak-tested, and compatible with R22, R134a, R404A, R407C, R410A, and CO₂ refrigerants. MOQ from 1 piece, ready stock on popular models.`,
+    howToChoose: [
+      { title: 'Manual vs Electric Actuation', content: 'Manual ball valves (HBC, QFT, QF-CO2, GFM-S) are the standard choice for isolation and service access — simple, reliable, and cost-effective. Electric ball valves (DQF series) are used for automated flow control, remote operation, or integration with building management systems. Choose electric when you need programmable or remote-controlled operation.' },
+      { title: 'Full Bore vs Reduced Bore', content: 'Full-bore valves (DQF, HBC, QF-CO2) have an internal diameter matching the pipe size, minimizing pressure drop — essential for liquid lines, suction lines, and systems where flow capacity is critical. Reduced-bore valves (QFT) are more compact and economical, suitable for service ports, gauge connections, and applications where some pressure drop is acceptable.' },
+      { title: 'Standard vs CO₂-Rated Pressure', content: 'Standard ball valves (DQF, HBC, QFT, GFM-S) are rated at MWP 45 bar, suitable for HCFC/HFC refrigerant systems (R22, R134a, R404A, R410A). CO₂ ball valves (QF-CO2) are rated at 120 bar and operate from −50°C to +150°C, designed specifically for transcritical and subcritical CO₂ (R744) systems. Never use standard valves in CO₂ service.' },
+      { title: 'Brazed ODF vs NPT Threaded', content: 'Brazed ODF connections (DQF, HBC, QFT, QF-CO2) provide permanent, leak-free joints for copper piping systems — the standard for refrigeration installations. NPT threaded connections (GFM-S) are used for steel piping, service ports, or applications where disassembly is required. Choose brazed for permanent installations; choose threaded for serviceable connections.' },
+    ],
+    faq: [
+      { question: 'Can I use a standard ball valve in a CO₂ (R744) system?', answer: 'No. CO₂ systems operate at pressures up to 120 bar, far exceeding the 45 bar rating of standard ball valves. Using standard valves in CO₂ service creates a serious safety hazard. Use only QF-CO2 series valves rated for 120 bar and −50°C to +150°C.' },
+      { question: 'What is the difference between full-bore and reduced-bore ball valves?', answer: 'Full-bore valves have an internal diameter matching the pipe size, minimizing pressure drop — ideal for liquid lines and suction lines. Reduced-bore valves have a smaller internal passage, which creates some pressure drop but is more compact and economical. Use full-bore for critical flow paths; reduced-bore is fine for service ports and isolation.' },
+      { question: 'Do you offer electric actuated ball valves?', answer: 'Yes, the DQF series offers full-bore electric ball valves with brazed ODF connections, port sizes 3/8" to 3-1/8", Kv up to 200 m³/h, and MWP 45 bar. They are suitable for automated flow control and BMS integration. Contact us for voltage and control signal options.' },
+      { question: 'What refrigerants are compatible with your ball valves?', answer: 'Standard ball valves (DQF, HBC, QFT, GFM-S) are compatible with R22, R134a, R404A, R407C, R410A, and other HCFC/HFC refrigerants. The QF-CO2 series is specifically designed for CO₂ (R744) systems. All valves use PTFE seats and seals compatible with common refrigerants and POE oils.' },
+      { question: 'What is the MOQ and lead time?', answer: 'MOQ starts from 1 piece. Ready stock is available on popular models (HBC, QFT) for fast dispatch from Ningbo. Custom configurations or large orders typically ship within 7–15 days. We support mixed container orders across multiple product categories.' },
+    ],
+    relatedCategories: [
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+      { name: 'Filter Driers', slug: 'filter-driers' },
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+    ],
+  },
+  {
+    categoryId: 'filter-driers',
+    h1: 'HVAC & Refrigeration Filter Driers — Types & Selection Guide',
+    introduction: `Refrigeration filter driers protect HVAC and refrigeration systems from moisture, acid, and solid contaminants that can damage compressors, expansion valves, and other components. They contain molecular sieve and activated alumina to adsorb water and neutralize acid, while their filter element captures particles and debris. HVACR NET supplies 5 filter drier variants across 2 series from Ningbo, China — BFK bidirectional (10 models) and DFS unidirectional (13 models in solid core, plus 19 replaceable-core models in DFS-R series). Port sizes range from 1/4" to 2-5/8", with SAE flare and brazed ODF connections. All filter driers are built with high-capacity molecular sieve for effective moisture removal and are compatible with R22, R134a, R404A, R410A, and other common refrigerants. MOQ from 1 piece, ready stock on popular sizes.`,
+    howToChoose: [
+      { title: 'Bidirectional vs Unidirectional', content: 'Bidirectional filter driers (BFK series) can be installed in either flow direction, making them versatile for heat pump systems where refrigerant flow reverses between heating and cooling modes. Unidirectional filter driers (DFS series) are optimized for one-way flow, offering higher moisture removal capacity in a more compact body. Use bidirectional for heat pumps; use unidirectional for cooling-only systems.' },
+      { title: 'Solid Core vs Replaceable Core', content: 'Solid core filter driers (BFK, DFS) contain a fixed desiccant core that is replaced as a unit when saturated — simple, reliable, and cost-effective for most applications. Replaceable core filter driers (DFS-R series) allow the desiccant cartridge to be swapped without cutting the shell, reducing maintenance time and waste for large commercial systems. Choose solid core for standard installations; choose replaceable core for large systems where service cost matters.' },
+      { title: 'SAE Flare vs Brazed ODF Connection', content: 'SAE flare connections (BFK flare, DFS flare) allow for serviceable joints that can be disconnected for filter replacement — suitable for small systems and field service. Brazed ODF connections (BFK ODF, DFS ODF) provide permanent, leak-free joints for copper piping — the standard for production installations and systems where vibration resistance is critical.' },
+      { title: 'Molecular Sieve vs Activated Alumina', content: 'Our BFK series uses a blend of 80% molecular sieve + 20% activated alumina, providing both moisture adsorption and acid neutralization — ideal for systems with mixed contaminants. Our DFS series uses 100% 3A molecular sieve, optimized for maximum moisture removal in systems where acid is not a primary concern. Choose the blend for burnout cleanup; choose pure molecular sieve for standard moisture protection.' },
+    ],
+    faq: [
+      { question: 'Can bidirectional filter driers be installed backwards?', answer: 'Yes, BFK bidirectional filter driers are designed to work in either flow direction. They are specifically intended for heat pump systems where refrigerant flow reverses between heating and cooling modes. The internal structure ensures effective filtration regardless of flow direction.' },
+      { question: 'How do I know when to replace a filter drier?', answer: 'Replace the filter drier when: (1) the sight glass shows moisture (color change from green to yellow), (2) system superheat or subcooling is abnormal, (3) the compressor shows signs of acid (burned windings), or (4) as preventive maintenance during compressor replacement. In general, replace every 2–3 years or at each compressor changeout.' },
+      { question: 'What is the difference between 3A and 4A molecular sieve?', answer: '3A molecular sieve has a 3-angstrom pore size, which adsorbs water molecules but excludes larger refrigerant molecules — ideal for refrigeration systems to prevent refrigerant loss. 4A sieve has a 4-angstrom pore and can adsorb both water and some refrigerants. We use 3A sieve in our DFS series to ensure no refrigerant is trapped.' },
+      { question: 'Can I use a unidirectional filter drier in a heat pump?', answer: 'Technically yes, but it is not recommended. Unidirectional driers (DFS) are optimized for one-way flow and may not filter effectively when flow reverses. For heat pump systems, use bidirectional driers (BFK series) which are designed to handle reverse flow without performance loss.' },
+      { question: 'What port size filter drier do I need?', answer: 'Match the filter drier port size to the liquid line pipe size. For example, a 3/8" liquid line needs a 3/8" filter drier. Oversizing is acceptable (a 1/2" drier on a 3/8" line with reducers), but never undersize — this creates a pressure drop restriction. Our range covers 1/4" to 2-5/8" to match all common pipe sizes.' },
+    ],
+    relatedCategories: [
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+    ],
+  },
+  {
+    categoryId: 'valves',
+    subCategoryId: 'sight-glasses',
+    h1: 'Refrigeration Sight Glasses for HVAC & Refrigeration — Types & Selection Guide',
+    introduction: `Refrigeration sight glasses (also called liquid line sight glasses or moisture indicators) are visual monitoring devices installed in liquid lines to indicate refrigerant condition, moisture content, and flow status. They feature a color-changing element that provides instant visual confirmation of system moisture level — green for dry, yellow for wet — helping technicians diagnose problems before they cause damage. HVACR NET supplies sight glasses in SGN and SGR series from Ningbo, China, with ODF brazed and flare connections across common line sizes. Each moisture indicator is factory-calibrated for accuracy with R22, R134a, R404A, R410A, and other common refrigerants. MOQ from 1 piece, ready stock on popular models.`,
+    howToChoose: [
+      { title: 'ODF Brazed vs Flare Connection', content: 'ODF brazed sight glasses (SGN ODF) provide permanent, leak-free joints for copper piping — the standard for production installations and systems where vibration resistance is critical. Flare connection sight glasses (SGN Flare) allow for serviceable joints that can be disconnected for maintenance — suitable for small systems and field service installations.' },
+      { title: 'Standard vs High-Pressure Rating', content: "Standard sight glasses are rated for typical refrigeration pressures (MWP 45 bar). For CO₂ systems or high-pressure applications, specify high-pressure models rated for 120 bar or more. Always match the sight glass pressure rating to your system's maximum working pressure." },
+      { title: 'Moisture Indicator vs Flow Indicator', content: 'Moisture indicator sight glasses feature a color-changing element (green = dry, yellow = wet) that monitors refrigerant moisture content — essential for diagnosing dehydration problems. Flow indicator sight glasses show a bubble-free or bubbly flow pattern to indicate subcooling status. Some models combine both functions. Choose moisture indicator for system health monitoring; choose flow indicator for charge verification.' },
+    ],
+    faq: [
+      { question: 'How accurate are the moisture indicators?', answer: 'Our sight glasses use factory-calibrated moisture indicator elements that accurately detect moisture levels corresponding to dew points from −40°C to +10°C. The color change (green to yellow) is reliable and repeatable, providing instant visual confirmation of system condition.' },
+      { question: 'Can sight glasses be installed in any orientation?', answer: 'Yes, sight glasses can be installed in any orientation (horizontal or vertical). However, for best visibility of the moisture indicator element, install in a horizontal line or at a 45° angle where the indicator is easily visible from the front.' },
+      { question: 'What does a yellow indicator mean?', answer: 'A yellow moisture indicator means the refrigerant contains excess moisture. This could be caused by incomplete evacuation during installation, a leak allowing air/moisture ingress, or a saturated filter drier. Address the root cause and replace the filter drier before the moisture causes acid formation or compressor damage.' },
+      { question: 'Do you have sight glasses for CO₂ systems?', answer: 'Standard sight glasses are rated at MWP 45 bar, suitable for HCFC/HFC systems. For CO₂ (R744) systems operating at 120 bar, we can supply high-pressure sight glasses. Contact us with your specific pressure and temperature requirements.' },
+    ],
+    relatedCategories: [
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Filter Driers', slug: 'filter-driers' },
+    ],
+  },
+];
