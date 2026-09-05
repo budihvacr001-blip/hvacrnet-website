@@ -18,6 +18,47 @@ app.use((req, res, next) => {
   next()
 })
 
+// 301 redirects: old product slugs -> new slugs
+const slugRedirects = {
+  // Filter Driers
+  '/products/filter-driers/bfk-sae': '/products/filter-driers/bidirectional-sae-flare',
+  '/products/filter-driers/bfk-odf': '/products/filter-driers/bidirectional-brazed-odf',
+  '/products/filter-driers/dfs-sae': '/products/filter-driers/unidirectional-sae-flare',
+  '/products/filter-driers/dfs-odf': '/products/filter-driers/unidirectional-brazed-odf',
+  '/products/filter-driers/dfs-replaceable': '/products/filter-driers/replaceable-core-filter-drier',
+  // Solenoid Valves
+  '/products/valves/solenoid-valves/hvd-standard': '/products/valves/solenoid-valves/standard-piston-nc',
+  '/products/valves/solenoid-valves/hvp-high-flow': '/products/valves/solenoid-valves/high-flow-flanged-piston',
+  '/products/valves/solenoid-valves/hv-clamping-small': '/products/valves/solenoid-valves/clamping-type-small-port',
+  '/products/valves/solenoid-valves/hv-clamping-large': '/products/valves/solenoid-valves/clamping-type-large-port',
+  '/products/valves/solenoid-valves/sv-ip65-direct': '/products/valves/solenoid-valves/ip65-direct-operated',
+  '/products/valves/solenoid-valves/sv-ip65-servo': '/products/valves/solenoid-valves/ip65-servo-operated',
+  '/products/valves/solenoid-valves/10-8w-direct': '/products/valves/solenoid-valves/low-power-8w-direct',
+  '/products/valves/solenoid-valves/10-8w-servo': '/products/valves/solenoid-valves/low-power-8w-servo',
+  '/products/valves/solenoid-valves/hvk-normally-open-small': '/products/valves/solenoid-valves/normally-open-small-port',
+  '/products/valves/solenoid-valves/hvk-normally-open-large': '/products/valves/solenoid-valves/normally-open-large-port',
+  '/products/valves/solenoid-valves/hv-unloading-flanged': '/products/valves/solenoid-valves/compressor-unloading-flanged',
+  '/products/valves/solenoid-valves/hv-unloading-odf': '/products/valves/solenoid-valves/compressor-unloading-odf',
+  '/products/valves/solenoid-valves/hvs-hot-gas': '/products/valves/solenoid-valves/hot-gas-defrost-3-way',
+  '/products/valves/solenoid-valves/hvdf-high-flow': '/products/valves/solenoid-valves/high-flow-piston-odf',
+  '/products/valves/solenoid-valves/hvpf-high-flow': '/products/valves/solenoid-valves/high-flow-piston-flanged',
+  // Ball Valves
+  '/products/valves/ball-valves/dqf-electric': '/products/valves/ball-valves/electric-ball-valve-full-bore',
+  '/products/valves/ball-valves/hbc-manual-full': '/products/valves/ball-valves/manual-ball-valve-full-bore',
+  '/products/valves/ball-valves/qft-manual-reduced': '/products/valves/ball-valves/manual-ball-valve-reduced-bore',
+  '/products/valves/ball-valves/qf-co2': '/products/valves/ball-valves/co2-ball-valve-120bar',
+  '/products/valves/ball-valves/gfm-s-threaded': '/products/valves/ball-valves/threaded-ball-valve-npt',
+}
+
+app.use((req, res, next) => {
+  const newPath = slugRedirects[req.path]
+  if (newPath) {
+    const query = req.search || ''
+    return res.redirect(301, newPath + query)
+  }
+  next()
+})
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'dist')))
 
