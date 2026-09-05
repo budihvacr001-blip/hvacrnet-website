@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, isPublished, getPublishedProducts, type Product } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
@@ -47,6 +47,9 @@ export default function Products() {
 
     let products = allProducts
     products = products.filter((p) => p.categoryId === activeCategory)
+
+    // Only show published products
+    products = products.filter((p) => isPublished(p))
 
     if (activeSubCategory !== 'all') {
       products = products.filter((p) => p.subCategoryId === activeSubCategory)
@@ -305,8 +308,35 @@ export default function Products() {
           return undefined
         })()}
         structuredData={schemas.length > 0 ? schemas : undefined}
+        noindex={(() => {
+          // Add noindex for unpublished content
+          if (activeCategory && currentCategory && !isPublished(currentCategory)) return true
+          if (activeSubCategory && activeSubCategory !== 'all' && currentSubCategory && !isPublished(currentSubCategory)) return true
+          if (activeThirdCategory && currentThirdCategory && !isPublished(currentThirdCategory)) return true
+          return false
+        })()}
       />
       <div className="min-h-screen bg-gray-bg">
+      {/* 404 for unpublished content */}
+      {(() => {
+        const isCategoryUnpublished = activeCategory && currentCategory && !isPublished(currentCategory)
+        const isSubCategoryUnpublished = activeSubCategory && activeSubCategory !== 'all' && currentSubCategory && !isPublished(currentSubCategory)
+        const isThirdCategoryUnpublished = activeThirdCategory && currentThirdCategory && !isPublished(currentThirdCategory)
+        const isProductUnpublished = activeThirdCategory && !currentThirdCategory?.isOverview && filteredProducts.length === 0
+        
+        if (isCategoryUnpublished || isSubCategoryUnpublished || isThirdCategoryUnpublished || isProductUnpublished) {
+          return (
+            <div className="mx-auto max-w-7xl px-4 py-20 text-center">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">404</h1>
+              <p className="text-xl text-gray-600 mb-8">This page is not available or has been unpublished.</p>
+              <Link to="/products" className="inline-block bg-navy text-white px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors">
+                Back to Products
+              </Link>
+            </div>
+          )
+        }
+        return null
+      })()}
       {/* Header Banner */}
       <section className="bg-navy py-10 relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -406,8 +436,8 @@ export default function Products() {
                 All Products
               </button>
 
-              {/* Category list */}
-              {categories.map((cat) => {
+              {/* Category list - only show published categories with at least 1 published product */}
+              {categories.filter(cat => isPublished(cat) && getPublishedProducts(cat).length > 0).map((cat) => {
                 const isActive = activeCategory === cat.id
                 const hasSubs = cat.subCategories.length > 0
 

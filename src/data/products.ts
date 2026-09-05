@@ -3,6 +3,7 @@ export interface ThirdCategory {
   name: string
   description?: string
   isOverview?: boolean
+  published?: boolean // defaults to true if not specified
 }
 
 export interface SubCategory {
@@ -11,6 +12,7 @@ export interface SubCategory {
   name: string
   description?: string
   subCategories?: ThirdCategory[]
+  published?: boolean // defaults to true if not specified
 }
 
 export interface ProductFAQ {
@@ -36,6 +38,7 @@ export interface Product {
   specTable?: { headers: string[]; rows: string[][] }
   availableModels?: { headers: string[]; rows: string[][] }
   faq?: ProductFAQ[]
+  published?: boolean // defaults to true if not specified
 }
 
 export interface Category {
@@ -44,6 +47,40 @@ export interface Category {
   icon: string
   subCategories: SubCategory[]
   products: Product[]
+  published?: boolean // defaults to true if not specified
+}
+
+// Publishing gate helper functions
+export const isPublished = (item: { published?: boolean }): boolean => {
+  return item.published !== false // defaults to true if not specified
+}
+
+// Check if a product is complete (has required fields for publishing)
+export const isProductComplete = (product: Product): { complete: boolean; missing: string[] } => {
+  const missing: string[] = []
+  if (!product.images || product.images.length === 0) missing.push('主图')
+  if (!product.specTable && (!product.specs || product.specs.length === 0)) missing.push('规格表')
+  if (!product.description || product.description.length < 50) missing.push('详细描述')
+  return { complete: missing.length === 0, missing }
+}
+
+// Filter categories for navigation: only published categories with at least 1 published product
+export const getPublishedCategories = (categories: Category[]): Category[] => {
+  return categories.filter(cat => {
+    if (!isPublished(cat)) return false
+    const publishedProducts = cat.products.filter(p => isPublished(p))
+    return publishedProducts.length > 0
+  })
+}
+
+// Get published products for a category
+export const getPublishedProducts = (category: Category): Product[] => {
+  return category.products.filter(p => isPublished(p))
+}
+
+// Check if a category has enough published products for navigation visibility (>= 3)
+export const hasEnoughProductsForNav = (category: Category, minCount = 3): boolean => {
+  return getPublishedProducts(category).length >= minCount
 }
 
 

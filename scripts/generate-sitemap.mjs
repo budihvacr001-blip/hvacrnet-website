@@ -5,6 +5,9 @@ import { categories } from '../src/data/products.ts'
 const BASE_URL = 'https://www.hvacrnet.com'
 const DIST_DIR = new URL('../dist/', import.meta.url).pathname
 
+// Helper: check if item is published (defaults to true)
+const isPublished = (item) => item.published !== false
+
 function getLastMod(filePath) {
   try {
     const date = execSync(`git log -1 --format=%cd --date=iso-strict -- "${filePath}" 2>/dev/null`, { encoding: 'utf-8' }).trim()
@@ -28,24 +31,32 @@ function buildRoutes() {
   routes.push({ url: '/contact', lastmod: getLastMod('src/pages/Contact.tsx'), changefreq: 'monthly', priority: '0.6' })
 
   for (const cat of categories) {
-    if (cat.products.length === 0) continue
+    // Skip unpublished categories
+    if (!isPublished(cat)) continue
+    
+    // Only include categories with at least 1 published product
+    const publishedProducts = cat.products.filter(p => isPublished(p))
+    if (publishedProducts.length === 0) continue
 
     routes.push({ url: `/products/${cat.id}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.8' })
 
-    const subIds = [...new Set(cat.products.map((p) => p.subCategoryId).filter(Boolean))]
+    const subIds = [...new Set(publishedProducts.map((p) => p.subCategoryId).filter(Boolean))]
 
     for (const subId of subIds) {
       const sub = cat.subCategories.find((s) => s.id === subId)
       if (sub?.isOverview) continue
+      // Skip unpublished subcategories
+      if (sub && !isPublished(sub)) continue
 
-      const subProducts = cat.products.filter((p) => p.subCategoryId === subId)
+      const subProducts = publishedProducts.filter((p) => p.subCategoryId === subId)
       const thirdIds = [...new Set(subProducts.map((p) => p.thirdCategoryId).filter(Boolean))]
 
       if (thirdIds.length > 0) {
         for (const thirdId of thirdIds) {
-          // Only include products with essential content (published)
+          // Only include published products with essential content
           const product = subProducts.find((p) => p.thirdCategoryId === thirdId)
-          if (!product || !product.name || !product.shortDesc || !product.description) continue
+          if (!product || !isPublished(product)) continue
+          if (!product.name || !product.shortDesc || !product.description) continue
           routes.push({ url: `/products/${cat.id}/${subId}/${thirdId}`, lastmod: productsSrcMod, changefreq: 'monthly', priority: '0.7' })
         }
       } else {

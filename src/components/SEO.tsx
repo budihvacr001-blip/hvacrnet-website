@@ -8,6 +8,7 @@ interface SEOProps {
   ogImage?: string;
   ogType?: string;
   structuredData?: object | object[];
+  noindex?: boolean;
 }
 
 const BASE_URL = 'https://www.hvacrnet.com';
@@ -19,6 +20,7 @@ export default function SEO({
   ogImage, 
   ogType = 'website',
   structuredData,
+  noindex = false,
 }: SEOProps) {
   const location = useLocation();
   const siteName = 'HVACR NET';
@@ -32,6 +34,7 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullUrl} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       {/* Open Graph */}
       <meta property="og:type" content={ogType} />
