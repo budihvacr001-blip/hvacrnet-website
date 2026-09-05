@@ -80,16 +80,22 @@ function buildRoutes() {
       const subProducts = publishedProducts.filter((p) => p.subCategoryId === subId)
       const thirdIds = [...new Set(subProducts.map((p) => p.thirdCategoryId).filter(Boolean))]
 
+      // Add subcategory hub page if >= 3 published products (selection guide landing page)
+      if (subProducts.length >= 3) {
+        routes.push({ url: `/products/${cat.id}/${subId}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.7' })
+      }
+
+      // Add individual product pages
       if (thirdIds.length > 0) {
+        // Products with thirdCategoryId (three-level structure)
         for (const thirdId of thirdIds) {
-          // Only include content-complete products
           const product = subProducts.find((p) => p.thirdCategoryId === thirdId)
           if (!product || !isProductPublished(product)) continue
-          routes.push({ url: `/products/${cat.id}/${subId}/${thirdId}`, lastmod: productsSrcMod, changefreq: 'monthly', priority: '0.7' })
+          routes.push({ url: `/products/${cat.id}/${subId}/${thirdId}`, lastmod: productsSrcMod, changefreq: 'monthly', priority: '0.6' })
         }
-      } else {
-        // Subcategory page without third-level products
-        routes.push({ url: `/products/${cat.id}/${subId}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.7' })
+      } else if (subProducts.length > 0 && subProducts.length < 3) {
+        // Products without thirdCategoryId and < 3 products (add subcategory page as fallback)
+        routes.push({ url: `/products/${cat.id}/${subId}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.6' })
       }
     }
   }
