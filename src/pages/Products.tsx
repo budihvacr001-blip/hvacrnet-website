@@ -440,11 +440,16 @@ export default function Products() {
                 All Products
               </button>
 
-              {/* Category list - only show published categories with enough published products */}
+              {/* Category list - only show visible categories */}
               {categories.filter(cat => {
                 if (cat.published === false) return false
+                // Overview nodes always show
+                if (cat.isOverview) return true
                 // Count all published products under this category (including subcategories)
                 const count = cat.products.filter(p => isProductPublished(p)).length
+                // Leaf nodes: show if has at least 1 published product
+                if (!cat.subCategories || cat.subCategories.length === 0) return count >= 1
+                // Container categories: show if has >= MIN_PRODUCTS_TO_SHOW published products
                 return count >= MIN_PRODUCTS_TO_SHOW
               }).map((cat) => {
                 const isActive = activeCategory === cat.id
@@ -490,10 +495,15 @@ export default function Products() {
 
                         {cat.subCategories.filter(sub => {
                           if (sub.published === false) return false
+                          // Overview nodes always show
+                          if (sub.isOverview) return true
                           // Count published products under this subcategory
                           const count = cat.products.filter(p => 
                             p.subCategoryId === sub.id && isProductPublished(p)
                           ).length
+                          // Leaf nodes: show if has at least 1 published product
+                          if (!sub.subCategories || sub.subCategories.length === 0) return count >= 1
+                          // Container categories: show if has >= MIN_PRODUCTS_TO_SHOW published products
                           return count >= MIN_PRODUCTS_TO_SHOW
                         }).map((sub) => {
                           const hasThirdLevel = sub.subCategories && sub.subCategories.length > 0
@@ -534,11 +544,14 @@ export default function Products() {
 
                                   {sub.subCategories!.filter(third => {
                                     if (third.published === false) return false
+                                    // Overview nodes always show
+                                    if (third.isOverview) return true
                                     // Count published products under this third category
                                     const count = cat.products.filter(p => 
                                       p.thirdCategoryId === third.id && isProductPublished(p)
                                     ).length
-                                    return count >= MIN_PRODUCTS_TO_SHOW
+                                    // Leaf nodes: show if has at least 1 published product
+                                    return count >= 1
                                   }).map((third) => (
                                     <button
                                       key={third.id}

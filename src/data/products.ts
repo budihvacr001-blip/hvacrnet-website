@@ -49,6 +49,7 @@ export interface Category {
   subCategories: SubCategory[]
   products: Product[]
   published?: boolean // defaults to true if not specified
+  isOverview?: boolean // defaults to false if not specified
 }
 
 // Publishing gate helper functions
@@ -92,8 +93,14 @@ export const isProductComplete = (product: Product): { complete: boolean; missin
   return { complete: missing.length === 0, missing }
 }
 
-// Minimum number of published products required for a category to be visible in frontend navigation
+// Minimum number of published products required for a container category to be visible in frontend navigation
 export const MIN_PRODUCTS_TO_SHOW = 2
+
+// Check if a node is a leaf node (product hanging point)
+// A leaf node is not an overview and has no subcategories
+export const isLeafNode = (node: { isOverview?: boolean; subCategories?: unknown[] }): boolean => {
+  return !node.isOverview && (!node.subCategories || node.subCategories.length === 0)
+}
 
 // Recursively count published products under a category node (including all subcategories)
 export const getVisibleProductCount = (
@@ -112,8 +119,41 @@ export const getVisibleProductCount = (
   }).length
 }
 
-// Check if a category should be visible in frontend navigation
-// A category is visible if: published !== false AND has >= MIN_PRODUCTS_TO_SHOW published products
+// Count published products directly under a third category (leaf node)
+export const getThirdCategoryProductCount = (
+  categoryId: string,
+  subCategoryId: string,
+  thirdCategoryId: string,
+  allProducts: Product[]
+): number => {
+  return allProducts.filter(p => {
+    if (!isProductPublished(p)) return false
+    return p.categoryId === categoryId && p.subCategoryId === subCategoryId && p.thirdCategoryId === thirdCategoryId
+  }).length
+}
+
+// Unified visibility check for frontend navigation
+// Rules:
+// - Overview nodes: always show (if published !== false)
+// - Leaf nodes (product hanging points): show if count >= 1
+// - Container categories: show if count >= MIN_PRODUCTS_TO_SHOW
+export const isCategoryVisibleOnStorefront = (
+  node: { id: string; isOverview?: boolean; subCategories?: unknown[]; published?: boolean },
+  categoryId: string,
+  subCategoryId: string | undefined,
+  allProducts: Product[]
+): boolean => {
+  if (node.published === false) return false
+  // Overview nodes always show
+  if (node.isOverview) return true
+  const count = getVisibleProductCount(categoryId, subCategoryId, allProducts)
+  // Leaf nodes: show if has at least 1 published product
+  if (isLeafNode(node)) return count >= 1
+  // Container categories: show if has >= MIN_PRODUCTS_TO_SHOW published products
+  return count >= MIN_PRODUCTS_TO_SHOW
+}
+
+// Legacy function for backward compatibility
 export const isCategoryVisible = (
   categoryId: string,
   subCategoryId: string | undefined,
@@ -128,8 +168,13 @@ export const isCategoryVisible = (
 export const getVisibleCategories = (categories: Category[], _allProducts: Product[]): Category[] => {
   return categories.filter(cat => {
     if (cat.published === false) return false
+    // Overview nodes always show
+    if (cat.isOverview) return true
     // Count all published products under this category (including subcategories)
     const count = cat.products.filter(p => isProductPublished(p)).length
+    // Leaf nodes: show if has at least 1 published product
+    if (isLeafNode(cat)) return count >= 1
+    // Container categories: show if has >= MIN_PRODUCTS_TO_SHOW published products
     return count >= MIN_PRODUCTS_TO_SHOW
   })
 }
