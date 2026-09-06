@@ -154,18 +154,12 @@ export default function CategoryLanding({
           <p className="text-gray-600 mb-6 text-sm">{comparisonData.subtitle}</p>
           <DataTable
             headers={comparisonData.headers}
-            rows={comparisonData.rows.map((row, rowIdx) => {
-              // Product name column (index 1) - make it a link
-              const productLink = getProductLink(rowIdx)
-              if (productLink && row[1]) {
-                const newRow = [...row]
-                newRow[1] = `<link:${productLink}:${row[1]}>`
-                return newRow
-              }
-              return row
-            })}
+            rows={comparisonData.rows}
+            stickyColIdx={comparisonData.headers[0] === '#' ? 1 : 0}
             renderCell={(cell, rowIdx, cellIdx) => {
-              if (cellIdx === 1) {
+              // Product name column is index 1 if there's a # column, otherwise index 0
+              const productColIdx = comparisonData.headers[0] === '#' ? 1 : 0
+              if (cellIdx === productColIdx) {
                 const productLink = getProductLink(rowIdx)
                 if (productLink) {
                   return (

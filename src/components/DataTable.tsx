@@ -6,21 +6,89 @@ interface DataTableProps {
   className?: string
   // For key-value tables (Material & Standard, Technical Parameters)
   keyValue?: boolean
-  // Column count for table-fixed layout
-  minCols?: number
+  // Column index that should be sticky on mobile (default: 0)
+  stickyColIdx?: number
   // Custom cell renderer
   renderCell?: (cell: string, rowIdx: number, colIdx: number) => React.ReactNode
 }
 
-export default function DataTable({ headers, rows, className = '', keyValue = false, minCols, renderCell }: DataTableProps) {
-  const colCount = headers?.length || (keyValue ? 2 : (minCols || rows[0]?.length || 1))
-  const useFixed = colCount >= 9
+export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell }: DataTableProps) {
+  const colCount = headers?.length || (keyValue ? 2 : (rows[0]?.length || 1))
+
+  // Calculate column widths for table-fixed layout (for tables with many columns)
+  const getColumnWidths = (): string[] => {
+    if (colCount < 6) return []
+    
+    const widths: string[] = []
+    
+    // Check if first column is "#" (row number)
+    const hasRowNumber = headers?.[0] === '#'
+    
+    if (hasRowNumber) {
+      widths.push('4%') // # column
+      
+      // Product name column (index 1)
+      if (colCount <= 7) {
+        widths.push('28%')
+      } else if (colCount <= 9) {
+        widths.push('22%')
+      } else {
+        widths.push('18%')
+      }
+      
+      // Remaining columns
+      const remainingCols = colCount - 2
+      const remainingWidth = 100 - 4 - (colCount <= 7 ? 28 : colCount <= 9 ? 22 : 18)
+      
+      for (let i = 0; i < remainingCols; i++) {
+        // Last column (Models) gets slightly less width
+        if (i === remainingCols - 1 && headers?.[colCount - 1]?.toLowerCase().includes('model')) {
+          widths.push('6%')
+        } else {
+          widths.push(`${Math.floor(remainingWidth / remainingCols)}%`)
+        }
+      }
+    } else {
+      // No row number column
+      // Product name column (index 0)
+      if (colCount <= 6) {
+        widths.push('30%')
+      } else if (colCount <= 8) {
+        widths.push('24%')
+      } else {
+        widths.push('20%')
+      }
+      
+      // Remaining columns
+      const remainingCols = colCount - 1
+      const remainingWidth = 100 - (colCount <= 6 ? 30 : colCount <= 8 ? 24 : 20)
+      
+      for (let i = 0; i < remainingCols; i++) {
+        widths.push(`${Math.floor(remainingWidth / remainingCols)}%`)
+      }
+    }
+    
+    // Adjust to ensure total is exactly 100%
+    const total = widths.reduce((sum, w) => sum + parseFloat(w), 0)
+    if (total !== 100 && widths.length > 0) {
+      const diff = 100 - total
+      const lastIdx = widths.length - 1
+      const lastWidth = parseFloat(widths[lastIdx])
+      widths[lastIdx] = `${lastWidth + diff}%`
+    }
+    
+    return widths
+  }
+
+  const columnWidths = getColumnWidths()
+  const useFixed = columnWidths.length > 0
 
   // Determine which columns should keep whitespace-nowrap
-  // Only: model code columns, pure numeric columns, size range columns
   const isShortDataCol = (cell: string, colIdx: number): boolean => {
-    // First column (product name) always allows wrap
-    if (colIdx === 0) return false
+    // Row number column
+    if (headers?.[colIdx] === '#') return true
+    // Sticky column (product name) always allows wrap
+    if (colIdx === stickyColIdx) return false
     // Pure numeric
     if (/^[\d.,\s~\-–]+%?$/.test(cell)) return true
     // Size ranges like 3/8"~3-1/8", 1/4"–1-1/8"
@@ -51,15 +119,13 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
   }
 
   return (
-    <div className={`overflow-x-auto md:overflow-visible rounded-lg border border-gray-border ${className}`}>
+    <div className={`overflow-x-auto rounded-lg border border-gray-border ${className}`}>
       <table className={`w-full text-xs md:text-[13px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[640px] md:min-w-0`}>
-        {useFixed && colCount >= 9 && (
+        {useFixed && (
           <colgroup>
-            <col style={{ width: '22%' }} />
-            {Array.from({ length: colCount - 2 }).map((_, i) => (
-              <col key={i} style={{ width: `${14}%` }} />
+            {columnWidths.map((width, i) => (
+              <col key={i} style={{ width }} />
             ))}
-            <col style={{ width: '14%' }} />
           </colgroup>
         )}
         {headers && (
@@ -78,15 +144,16 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
             <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               {row.map((cell, cellIdx) => {
                 const nowrap = isShortDataCol(cell, cellIdx)
-                const isFirstCol = cellIdx === 0
+                const isStickyCol = cellIdx === stickyColIdx
+                const rowBgClass = rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
                 return (
                   <td
                     key={cellIdx}
                     className={`px-2.5 py-2 align-top ${
-                      isFirstCol ? 'min-w-[160px] font-medium' : ''
-                    } ${nowrap ? 'whitespace-nowrap' : ''} ${
-                      isFirstCol ? 'sticky left-0 z-10 md:static shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] md:shadow-none' : ''
-                    } ${rowIdx % 2 === 0 ? (isFirstCol ? 'bg-white' : '') : (isFirstCol ? 'bg-gray-50' : '')}`}
+                      isStickyCol ? 'font-medium' : ''
+                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal'} ${
+                      isStickyCol ? 'sticky left-0 z-10 md:static shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] md:shadow-none' : ''
+                    } ${isStickyCol ? rowBgClass : ''}`}
                   >
                     {renderCell ? renderCell(cell, rowIdx, cellIdx) : cell}
                   </td>
