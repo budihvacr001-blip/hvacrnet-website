@@ -9,9 +9,13 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Markets from './pages/Markets'
 
-export default function App() {
+interface AppProps {
+  helmetContext?: any
+}
+
+export default function App({ helmetContext }: AppProps) {
   return (
-    <HelmetProvider>
+    <HelmetProvider context={helmetContext || {}}>
       <div className="flex min-h-screen flex-col">
         <ScrollToTop />
         <Navbar />

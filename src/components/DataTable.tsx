@@ -32,62 +32,72 @@ const getColRole = (header: string | undefined): 'number' | 'product' | 'models'
 const atomizeText = (text: string): React.ReactNode => {
   if (!text) return null
   
-  // Split by delimiters (spaces, commas, slashes) while keeping the delimiters
-  const parts = String(text).split(/([\s,/]+)/)
+  const str = String(text)
   
-  // Group parts into atoms (non-delimiters) and delimiters
-  const atoms: React.ReactNode[] = []
+  // Split by delimiters (spaces, commas, slashes) while keeping the delimiters
+  const parts = str.split(/([\s,/]+)/)
+  
+  if (parts.length === 0) return str
+  if (parts.length === 1) {
+    // Single atom, check for temperature unit
+    const atom = parts[0]
+    return <span className="whitespace-nowrap">{atom}</span>
+  }
+  
+  // Build atoms with delimiters between them
+  const result: React.ReactNode[] = []
   let currentAtom = ''
   
   for (let i = 0; i < parts.length; i++) {
     const part = parts[i]
     
-    // Check if this is a delimiter
-    if (/^[\s,/]+$/.test(part)) {
+    // Check if this is a delimiter (space, comma, slash)
+    const isDelimiter = /^[\s,/]+$/.test(part)
+    
+    if (isDelimiter) {
       // Finish current atom if any
       if (currentAtom) {
-        // Check if next part is a temperature unit (°C, °F)
-        const nextPart = parts[i + 1]
-        if (nextPart && /^[°º]\s*[CFcf]$/.test(nextPart)) {
-          // Merge temperature unit with current atom
-          currentAtom += part + nextPart
-          i++ // Skip the temperature unit
-          // Check if there's a delimiter after the unit
-          const afterUnit = parts[i + 1]
-          if (afterUnit && /^[\s,/]+$/.test(afterUnit)) {
-            // End of atom, push it
-            atoms.push(
-              <span key={atoms.length} className="whitespace-nowrap">
-                {currentAtom}
+        result.push(
+          <span key={`atom-${result.length}`} className="whitespace-nowrap">
+            {currentAtom}
+          </span>
+        )
+        currentAtom = ''
+      }
+      // Add delimiter as-is (browser can break here)
+      result.push(<span key={`delim-${result.length}`}>{part}</span>)
+    } else {
+      // Check if this is a temperature unit (°C, °F, ºC, ºF)
+      const isTempUnit = /^[°º]\s*[CFcf]$/.test(part)
+      
+      if (isTempUnit && currentAtom) {
+        // Merge temperature unit with current atom (no space between)
+        currentAtom += part
+      } else if (isTempUnit && result.length > 0) {
+        // Temperature unit without preceding atom, merge with previous atom
+        // Find the last atom span and append to it
+        const lastIdx = result.length - 1
+        const lastElement = result[lastIdx]
+        if (React.isValidElement(lastElement)) {
+          const props = lastElement.props as { className?: string; children?: React.ReactNode }
+          if (props.className?.includes('whitespace-nowrap')) {
+            // Merge with previous atom
+            const prevContent = props.children
+            result[lastIdx] = (
+              <span key={`atom-${lastIdx}`} className="whitespace-nowrap">
+                {prevContent}{part}
               </span>
             )
-            atoms.push(afterUnit) // Add the delimiter
-            currentAtom = ''
-            i++ // Skip the delimiter
           } else {
-            // No delimiter after unit, continue building atom
+            // Previous element is a delimiter, start new atom
+            currentAtom = part
           }
         } else {
-          // Normal atom, push it
-          atoms.push(
-            <span key={atoms.length} className="whitespace-nowrap">
-              {currentAtom}
-            </span>
-          )
-          atoms.push(part) // Add the delimiter
-          currentAtom = ''
+          // Previous element is a delimiter, start new atom
+          currentAtom = part
         }
       } else {
-        // No current atom, just add the delimiter
-        atoms.push(part)
-      }
-    } else {
-      // Check if this is a temperature unit that should be merged with previous
-      if (/^[°º]\s*[CFcf]$/.test(part) && atoms.length > 0) {
-        // This is a standalone temperature unit, merge with previous atom
-        // Just add it as part of current atom
-        currentAtom += part
-      } else {
+        // Regular atom part
         currentAtom += part
       }
     }
@@ -95,14 +105,14 @@ const atomizeText = (text: string): React.ReactNode => {
   
   // Push any remaining atom
   if (currentAtom) {
-    atoms.push(
-      <span key={atoms.length} className="whitespace-nowrap">
+    result.push(
+      <span key={`atom-${result.length}`} className="whitespace-nowrap">
         {currentAtom}
       </span>
     )
   }
   
-  return <>{atoms}</>
+  return <>{result}</>
 }
 
 // Process React node to atomize text content
@@ -222,8 +232,8 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <tbody>
             {rows.map((row, i) => (
               <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                <td className="px-1.5 py-1.5 font-medium text-navy w-1/3 align-top leading-tight">{atomizeText(row[0])}</td>
-                <td className="px-1.5 py-1.5 text-gray-700 align-top leading-tight whitespace-normal break-normal">{atomizeText(row[1])}</td>
+                <td className="px-1.5 py-1.5 font-medium text-navy w-1/3 align-top leading-tight overflow-hidden">{atomizeText(row[0])}</td>
+                <td className="px-1.5 py-1.5 text-gray-700 align-top leading-tight whitespace-normal break-normal overflow-hidden">{atomizeText(row[1])}</td>
               </tr>
             ))}
           </tbody>
@@ -246,7 +256,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-1.5 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-normal">
+                <th key={i} className="px-1.5 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-normal overflow-hidden">
                   {atomizeText(h)}
                 </th>
               ))}
@@ -264,7 +274,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                 return (
                   <td
                     key={cellIdx}
-                    className={`px-1.5 py-1.5 align-top ${
+                    className={`px-1.5 py-1.5 align-top overflow-hidden ${
                       isStickyCol ? 'font-medium' : ''
                     } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-normal leading-tight'} ${
                       isStickyCol ? 'sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]' : ''

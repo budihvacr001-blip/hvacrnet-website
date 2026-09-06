@@ -451,7 +451,13 @@ export default function Products() {
                 if (!cat.subCategories || cat.subCategories.length === 0) return count >= 1
                 // Container categories: show if has >= MIN_PRODUCTS_TO_SHOW published products
                 return count >= MIN_PRODUCTS_TO_SHOW
-              }).map((cat) => {
+              }).map((cat, index, filteredArray) => {
+                // Calculate sequence number for non-overview items
+                const categorySequenceNumber = filteredArray
+                  .slice(0, index + 1)
+                  .filter(c => !c.isOverview)
+                  .length
+                const showCategorySequence = !cat.isOverview
                 const isActive = activeCategory === cat.id
                 const hasSubs = cat.subCategories.length > 0
                 // Calculate total product count for this category (recursive)
@@ -477,16 +483,27 @@ export default function Products() {
                         <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${expandedCategories[cat.id] ? 'rotate-90' : ''}`} />
                       )}
                       {!hasSubs && <span className="w-4 shrink-0" />}
-                      <span className="flex-1">{cat.name}</span>
-                      <span
-                        className={`text-xs ${
+                      {showCategorySequence && (
+                        <span className={`shrink-0 text-xs tabular-nums ${
                           isActive && activeSubCategory === 'all'
                             ? 'text-white/60'
-                            : 'text-gray-400'
-                        }`}
-                      >
-                        {totalProductCount}
-                      </span>
+                            : 'text-gray-500'
+                        }`}>
+                          {String(categorySequenceNumber).padStart(2, '0')}
+                        </span>
+                      )}
+                      <span className="flex-1">{cat.name}</span>
+                      {!cat.isOverview && (
+                        <span
+                          className={`text-xs ${
+                            isActive && activeSubCategory === 'all'
+                              ? 'text-white/60'
+                              : 'text-gray-400'
+                          }`}
+                        >
+                          {totalProductCount}
+                        </span>
+                      )}
                     </button>
 
                     {/* Sub-categories inline - only show visible subcategories */}
@@ -505,7 +522,13 @@ export default function Products() {
                           if (!sub.subCategories || sub.subCategories.length === 0) return count >= 1
                           // Container categories: show if has >= MIN_PRODUCTS_TO_SHOW published products
                           return count >= MIN_PRODUCTS_TO_SHOW
-                        }).map((sub) => {
+                        }).map((sub, index, filteredArray) => {
+                          // Calculate sequence number for non-overview items
+                          const subSequenceNumber = filteredArray
+                            .slice(0, index + 1)
+                            .filter(s => !s.isOverview)
+                            .length
+                          const showSubSequence = !sub.isOverview
                           const hasThirdLevel = sub.subCategories && sub.subCategories.length > 0
                           // Calculate product count for this subcategory
                           const subProductCount = cat.products.filter(p => 
@@ -533,10 +556,17 @@ export default function Products() {
                                   <ChevronRight className={`h-3 w-3 shrink-0 transition-transform ${expandedSubCategories[`${cat.id}-${sub.id}`] ? 'rotate-90' : ''}`} />
                                 )}
                                 {!hasThirdLevel && <span className="w-3 shrink-0" />}
+                                {showSubSequence && (
+                                  <span className="shrink-0 text-xs text-gray-400 tabular-nums">
+                                    {String(subSequenceNumber).padStart(2, '0')}
+                                  </span>
+                                )}
                                 <span className="flex-1">{sub.name}</span>
-                                <span className="text-xs text-gray-400">
-                                  {subProductCount}
-                                </span>
+                                {!sub.isOverview && (
+                                  <span className="text-xs text-gray-400">
+                                    {subProductCount}
+                                  </span>
+                                )}
                               </button>
                               {/* Third-level inline */}
                               {hasThirdLevel && expandedSubCategories[`${cat.id}-${sub.id}`] && (

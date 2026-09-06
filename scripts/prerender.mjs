@@ -9,7 +9,6 @@ import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
-import { HelmetProvider } from 'react-helmet-async'
 import React from 'react'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -46,18 +45,14 @@ function getIndexTemplate() {
 }
 
 // 预渲染单个路由
-function prerenderRoute(pathname, template) {
-  const helmetContext = {}
+function prerenderRoute(pathname: string, template: string) {
+  const helmetContext: any = {}
   
   const appHtml = renderToString(
     React.createElement(
-      HelmetProvider,
-      { context: helmetContext },
-      React.createElement(
-        StaticRouter,
-        { location: pathname },
-        React.createElement(App)
-      )
+      StaticRouter,
+      { location: pathname },
+      React.createElement(App, { helmetContext })
     )
   )
   
@@ -74,10 +69,10 @@ function prerenderRoute(pathname, template) {
   
   // 注入 helmet 数据
   if (helmet) {
-    const helmetTitle = helmet.title.toString()
-    const helmetMeta = helmet.meta.toString()
-    const helmetLink = helmet.link.toString()
-    const helmetScript = helmet.script.toString()
+    const helmetTitle = helmet.title?.toString() || ''
+    const helmetMeta = helmet.meta?.toString() || ''
+    const helmetLink = helmet.link?.toString() || ''
+    const helmetScript = helmet.script?.toString() || ''
     
     // 替换 title
     if (helmetTitle) {
@@ -130,7 +125,7 @@ async function main() {
       
       writeFileSync(outputPath, html)
       console.log(`[SSG] Pre-rendered: ${url}`)
-    } catch (error) {
+    } catch (error: any) {
       console.log(`[SSG] Failed to pre-render ${url}: ${error.message}`)
     }
   }
