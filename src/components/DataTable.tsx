@@ -12,83 +12,104 @@ interface DataTableProps {
   renderCell?: (cell: string, rowIdx: number, colIdx: number) => React.ReactNode
 }
 
+// Long content column keywords (case-insensitive match)
+const LONG_CONTENT_KEYWORDS = ['voltage', 'connection', 'structure', 'refrigerant']
+
+// Check if a header matches a column role
+const getColRole = (header: string | undefined): 'number' | 'product' | 'models' | 'long' | 'default' => {
+  if (!header) return 'default'
+  const h = header.toLowerCase().trim()
+  if (h === '#') return 'number'
+  if (h === 'product') return 'product'
+  if (h.includes('model')) return 'models'
+  if (LONG_CONTENT_KEYWORDS.some(kw => h.includes(kw))) return 'long'
+  return 'default'
+}
+
 export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell }: DataTableProps) {
   const colCount = headers?.length || (keyValue ? 2 : (rows[0]?.length || 1))
 
-  // Calculate column widths for table-fixed layout (for tables with many columns)
+  // Calculate column widths by column role (sum must = 100%)
   const getColumnWidths = (): string[] => {
-    if (colCount < 6) return []
-    
-    const widths: string[] = []
-    
-    // Check if first column is "#" (row number)
-    const hasRowNumber = headers?.[0] === '#'
-    
-    if (hasRowNumber) {
-      widths.push('4%') // # column
-      
-      // Product name column (index 1)
-      if (colCount <= 7) {
-        widths.push('28%')
-      } else if (colCount <= 9) {
-        widths.push('22%')
+    if (colCount < 6 || !headers) return []
+
+    const roles = headers.map(h => getColRole(h))
+    const widths: number[] = new Array(colCount).fill(0)
+
+    // Fixed width columns
+    const WIDTHS = {
+      number: 4,
+      product: 18,
+      models: 6,
+      long: 9,
+    }
+
+    // First pass: assign fixed widths
+    let usedWidth = 0
+    let defaultColCount = 0
+
+    roles.forEach((role, i) => {
+      if (role === 'number') {
+        widths[i] = WIDTHS.number
+        usedWidth += WIDTHS.number
+      } else if (role === 'product') {
+        widths[i] = WIDTHS.product
+        usedWidth += WIDTHS.product
+      } else if (role === 'models') {
+        widths[i] = WIDTHS.models
+        usedWidth += WIDTHS.models
+      } else if (role === 'long') {
+        widths[i] = WIDTHS.long
+        usedWidth += WIDTHS.long
       } else {
-        widths.push('18%')
+        defaultColCount++
       }
-      
-      // Remaining columns
-      const remainingCols = colCount - 2
-      const remainingWidth = 100 - 4 - (colCount <= 7 ? 28 : colCount <= 9 ? 22 : 18)
-      
-      for (let i = 0; i < remainingCols; i++) {
-        // Last column (Models) gets slightly less width
-        if (i === remainingCols - 1 && headers?.[colCount - 1]?.toLowerCase().includes('model')) {
-          widths.push('6%')
-        } else {
-          widths.push(`${Math.floor(remainingWidth / remainingCols)}%`)
+    })
+
+    // Second pass: distribute remaining width to default columns
+    const remainingWidth = 100 - usedWidth
+    if (defaultColCount > 0) {
+      const defaultWidth = Math.floor(remainingWidth / defaultColCount)
+      let distributedWidth = 0
+
+      roles.forEach((role, i) => {
+        if (role === 'default') {
+          widths[i] = defaultWidth
+          distributedWidth += defaultWidth
+        }
+      })
+
+      // Add remainder to last default column
+      const remainder = remainingWidth - distributedWidth
+      if (remainder !== 0) {
+        const lastDefaultIdx = roles.lastIndexOf('default')
+        if (lastDefaultIdx >= 0) {
+          widths[lastDefaultIdx] += remainder
         }
       }
     } else {
-      // No row number column
-      // Product name column (index 0)
-      if (colCount <= 6) {
-        widths.push('30%')
-      } else if (colCount <= 8) {
-        widths.push('24%')
-      } else {
-        widths.push('20%')
-      }
-      
-      // Remaining columns
-      const remainingCols = colCount - 1
-      const remainingWidth = 100 - (colCount <= 6 ? 30 : colCount <= 8 ? 24 : 20)
-      
-      for (let i = 0; i < remainingCols; i++) {
-        widths.push(`${Math.floor(remainingWidth / remainingCols)}%`)
+      // No default columns, adjust last column to make sum = 100
+      const currentSum = widths.reduce((a, b) => a + b, 0)
+      if (currentSum !== 100 && colCount > 0) {
+        widths[colCount - 1] += (100 - currentSum)
       }
     }
-    
-    // Adjust to ensure total is exactly 100%
-    const total = widths.reduce((sum, w) => sum + parseFloat(w), 0)
-    if (total !== 100 && widths.length > 0) {
-      const diff = 100 - total
-      const lastIdx = widths.length - 1
-      const lastWidth = parseFloat(widths[lastIdx])
-      widths[lastIdx] = `${lastWidth + diff}%`
-    }
-    
-    return widths
+
+    return widths.map(w => `${w}%`)
   }
 
   const columnWidths = getColumnWidths()
   const useFixed = columnWidths.length > 0
 
-  // Determine which columns should keep whitespace-nowrap
+  // Determine which columns should keep whitespace-nowrap (short data only)
   const isShortDataCol = (cell: string, colIdx: number): boolean => {
     // Row number column
     if (headers?.[colIdx] === '#') return true
     // Sticky column (product name) always allows wrap
     if (colIdx === stickyColIdx) return false
+    // Check column role - models and number columns are always nowrap
+    const role = getColRole(headers?.[colIdx])
+    if (role === 'number' || role === 'models') return true
     // Pure numeric
     if (/^[\d.,\s~\-–]+%?$/.test(cell)) return true
     // Size ranges like 3/8"~3-1/8", 1/4"–1-1/8"
@@ -104,12 +125,12 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
   if (keyValue) {
     return (
       <div className={`overflow-hidden rounded-lg border border-gray-border ${className}`}>
-        <table className="w-full text-xs md:text-[13px] border-collapse">
+        <table className="w-full text-[11px] md:text-[12px] border-collapse">
           <tbody>
             {rows.map((row, i) => (
               <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                <td className="px-2.5 py-2 font-medium text-navy w-1/3 align-top">{row[0]}</td>
-                <td className="px-2.5 py-2 text-gray-700 align-top">{row[1]}</td>
+                <td className="px-2.5 py-1.5 font-medium text-navy w-1/3 align-top break-words leading-tight">{row[0]}</td>
+                <td className="px-2.5 py-1.5 text-gray-700 align-top break-words leading-tight">{row[1]}</td>
               </tr>
             ))}
           </tbody>
@@ -120,7 +141,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
 
   return (
     <div className={`overflow-x-auto rounded-lg border border-gray-border ${className}`}>
-      <table className={`w-full text-xs md:text-[13px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[640px] md:min-w-0`}>
+      <table className={`w-full text-[11px] md:text-[12px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[640px] md:min-w-0`}>
         {useFixed && (
           <colgroup>
             {columnWidths.map((width, i) => (
@@ -132,7 +153,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-2.5 py-2 text-left font-semibold align-top">
+                <th key={i} className="px-2.5 py-1.5 text-left font-semibold align-top break-words leading-tight">
                   {h}
                 </th>
               ))}
@@ -149,9 +170,9 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                 return (
                   <td
                     key={cellIdx}
-                    className={`px-2.5 py-2 align-top ${
+                    className={`px-2.5 py-1.5 align-top ${
                       isStickyCol ? 'font-medium' : ''
-                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal'} ${
+                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-words leading-tight'} ${
                       isStickyCol ? 'sticky left-0 z-10 md:static shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] md:shadow-none' : ''
                     } ${isStickyCol ? rowBgClass : ''}`}
                   >
