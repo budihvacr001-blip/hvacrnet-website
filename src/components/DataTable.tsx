@@ -26,14 +26,97 @@ const getColRole = (header: string | undefined): 'number' | 'product' | 'models'
   return 'default'
 }
 
-// Render header text with word-level nowrap (each word stays intact, wraps only at spaces)
-const renderHeaderWords = (text: string): React.ReactNode => {
-  const words = String(text).split(' ')
-  return words.map((word, idx, arr) => (
-    <span key={idx} className="whitespace-nowrap">
-      {word}{idx < arr.length - 1 ? ' ' : ''}
-    </span>
-  ))
+// Atomize text: split into non-breakable atoms separated by breakable delimiters
+// Atoms (words, numbers, -40~120°C, DC12V, etc.) stay intact; breaks only at spaces, commas, slashes
+// Temperature units °C/°F are merged with the preceding atom
+const atomizeText = (text: string): React.ReactNode => {
+  if (!text) return null
+  
+  // Split by delimiters (spaces, commas, slashes) while keeping the delimiters
+  const parts = String(text).split(/([\s,/]+)/)
+  
+  // Group parts into atoms (non-delimiters) and delimiters
+  const atoms: React.ReactNode[] = []
+  let currentAtom = ''
+  
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i]
+    
+    // Check if this is a delimiter
+    if (/^[\s,/]+$/.test(part)) {
+      // Finish current atom if any
+      if (currentAtom) {
+        // Check if next part is a temperature unit (°C, °F)
+        const nextPart = parts[i + 1]
+        if (nextPart && /^[°º]\s*[CFcf]$/.test(nextPart)) {
+          // Merge temperature unit with current atom
+          currentAtom += part + nextPart
+          i++ // Skip the temperature unit
+          // Check if there's a delimiter after the unit
+          const afterUnit = parts[i + 1]
+          if (afterUnit && /^[\s,/]+$/.test(afterUnit)) {
+            // End of atom, push it
+            atoms.push(
+              <span key={atoms.length} className="whitespace-nowrap">
+                {currentAtom}
+              </span>
+            )
+            atoms.push(afterUnit) // Add the delimiter
+            currentAtom = ''
+            i++ // Skip the delimiter
+          } else {
+            // No delimiter after unit, continue building atom
+          }
+        } else {
+          // Normal atom, push it
+          atoms.push(
+            <span key={atoms.length} className="whitespace-nowrap">
+              {currentAtom}
+            </span>
+          )
+          atoms.push(part) // Add the delimiter
+          currentAtom = ''
+        }
+      } else {
+        // No current atom, just add the delimiter
+        atoms.push(part)
+      }
+    } else {
+      // Check if this is a temperature unit that should be merged with previous
+      if (/^[°º]\s*[CFcf]$/.test(part) && atoms.length > 0) {
+        // This is a standalone temperature unit, merge with previous atom
+        // Just add it as part of current atom
+        currentAtom += part
+      } else {
+        currentAtom += part
+      }
+    }
+  }
+  
+  // Push any remaining atom
+  if (currentAtom) {
+    atoms.push(
+      <span key={atoms.length} className="whitespace-nowrap">
+        {currentAtom}
+      </span>
+    )
+  }
+  
+  return <>{atoms}</>
+}
+
+// Process React node to atomize text content
+const atomizeNode = (node: React.ReactNode): React.ReactNode => {
+  if (typeof node === 'string') {
+    return atomizeText(node)
+  }
+  if (React.isValidElement(node)) {
+    const children = (node as React.ReactElement<{ children?: React.ReactNode }>).props.children
+    if (typeof children === 'string') {
+      return React.cloneElement(node as React.ReactElement<{ children?: React.ReactNode }>, {}, atomizeText(children))
+    }
+  }
+  return node
 }
 
 export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell }: DataTableProps) {
@@ -135,12 +218,12 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
   if (keyValue) {
     return (
       <div className={`overflow-hidden rounded-lg border border-gray-border ${className}`}>
-        <table className="w-full text-[11px] md:text-[12px] border-collapse">
+        <table className="w-full text-[10.5px] md:text-[11.5px] border-collapse">
           <tbody>
             {rows.map((row, i) => (
               <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                <td className="px-2.5 py-1.5 font-medium text-navy w-1/3 align-top break-words leading-tight">{row[0]}</td>
-                <td className="px-2.5 py-1.5 text-gray-700 align-top break-words leading-tight">{row[1]}</td>
+                <td className="px-1.5 py-1.5 font-medium text-navy w-1/3 align-top leading-tight">{atomizeText(row[0])}</td>
+                <td className="px-1.5 py-1.5 text-gray-700 align-top leading-tight whitespace-normal break-normal">{atomizeText(row[1])}</td>
               </tr>
             ))}
           </tbody>
@@ -151,7 +234,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
 
   return (
     <div className={`overflow-x-auto rounded-lg border border-gray-border ${className}`}>
-      <table className={`w-full text-[11px] md:text-[12px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[1024px]`}>
+      <table className={`w-full text-[10.5px] md:text-[11.5px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[1024px]`}>
         {useFixed && (
           <colgroup>
             {columnWidths.map((width, i) => (
@@ -163,8 +246,8 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-2.5 py-1.5 text-left font-semibold align-top leading-tight">
-                  {renderHeaderWords(h)}
+                <th key={i} className="px-1.5 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-normal">
+                  {atomizeText(h)}
                 </th>
               ))}
             </tr>
@@ -177,16 +260,17 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                 const nowrap = isShortDataCol(cell, cellIdx)
                 const isStickyCol = cellIdx === stickyColIdx
                 const rowBgClass = rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                const cellContent = renderCell ? renderCell(cell, rowIdx, cellIdx) : atomizeText(cell)
                 return (
                   <td
                     key={cellIdx}
-                    className={`px-2.5 py-1.5 align-top ${
+                    className={`px-1.5 py-1.5 align-top ${
                       isStickyCol ? 'font-medium' : ''
-                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-words leading-tight'} ${
+                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-normal leading-tight'} ${
                       isStickyCol ? 'sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]' : ''
                     } ${isStickyCol ? rowBgClass : ''}`}
                   >
-                    {renderCell ? renderCell(cell, rowIdx, cellIdx) : cell}
+                    {renderCell && React.isValidElement(cellContent) ? atomizeNode(cellContent) : cellContent}
                   </td>
                 )
               })}
