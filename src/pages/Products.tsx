@@ -552,21 +552,35 @@ export default function Products() {
                                     ).length
                                     // Leaf nodes: show if has at least 1 published product
                                     return count >= 1
-                                  }).map((third) => (
-                                    <button
-                                      key={third.id}
-                                      onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
-                                      className={`block w-full rounded px-3 py-2 text-left text-sm transition-colors ${
-                                        third.isOverview
-                                          ? 'font-bold text-gray-900 hover:bg-navy/5'
-                                          : activeThirdCategory === third.id
-                                          ? 'font-semibold text-accent'
-                                          : 'text-gray-700 hover:bg-navy/5'
-                                      }`}
-                                    >
-                                      {third.name}
-                                    </button>
-                                  ))}
+                                  }).map((third, index, filteredArray) => {
+                                    // Calculate sequence number for non-overview items
+                                    const sequenceNumber = filteredArray
+                                      .slice(0, index + 1)
+                                      .filter(t => !t.isOverview)
+                                      .length
+                                    const showSequence = !third.isOverview
+                                    
+                                    return (
+                                      <button
+                                        key={third.id}
+                                        onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
+                                        className={`flex w-full items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
+                                          third.isOverview
+                                            ? 'font-bold text-gray-900 hover:bg-navy/5'
+                                            : activeThirdCategory === third.id
+                                            ? 'font-semibold text-accent'
+                                            : 'text-gray-700 hover:bg-navy/5'
+                                        }`}
+                                      >
+                                        {showSequence && (
+                                          <span className="shrink-0 text-xs text-gray-400 tabular-nums">
+                                            {String(sequenceNumber).padStart(2, '0')}
+                                          </span>
+                                        )}
+                                        <span className="flex-1">{third.name}</span>
+                                      </button>
+                                    )
+                                  })}
                                 </div>
                               )}
                             </div>
