@@ -233,7 +233,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
             {rows.map((row, i) => (
               <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
                 <td className="px-1.5 py-1.5 font-medium text-navy w-1/3 align-top leading-tight overflow-hidden">{atomizeText(row[0])}</td>
-                <td className="px-1.5 py-1.5 text-gray-700 align-top leading-tight whitespace-normal break-normal overflow-hidden">{atomizeText(row[1])}</td>
+                <td className="px-1.5 py-1.5 text-gray-700 align-top leading-tight whitespace-normal break-all overflow-hidden">{atomizeText(row[1])}</td>
               </tr>
             ))}
           </tbody>
@@ -256,7 +256,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-2 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-normal overflow-hidden">
+                <th key={i} className="px-2 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-all overflow-hidden">
                   {atomizeText(h)}
                 </th>
               ))}
@@ -278,7 +278,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                     key={cellIdx}
                     className={`px-2 py-1.5 align-top overflow-hidden ${
                       isStickyCol ? 'font-medium' : ''
-                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-normal leading-tight'} ${
+                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-all leading-tight'} ${
                       isLongContent ? 'text-[9.5px] md:text-[10.5px]' : ''
                     } ${
                       isStickyCol ? `sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] ${rowBgClass}` : ''
