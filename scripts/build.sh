@@ -13,3 +13,9 @@ pnpm vite build
 
 echo "Generating sitemap.xml..."
 npx tsx scripts/generate-sitemap.mjs
+
+echo "Pre-rendering pages (SSG)..."
+npx tsx scripts/prerender.mjs || echo "SSG pre-rendering failed (non-blocking)"
+
+echo "Submitting URLs to IndexNow..."
+node scripts/indexnow-submit.mjs || echo "IndexNow submission failed (non-blocking)"

@@ -1,9 +1,23 @@
 # https://www.hvacrnet.com/robots.txt
+
+# Allow all mainstream crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: *
 Allow: /
 
 Sitemap: https://www.hvacrnet.com/sitemap.xml
 
-# Disallow admin or private paths if any
+# Disallow admin or private paths
 Disallow: /api/
 Disallow: /admin/
