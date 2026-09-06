@@ -64,8 +64,8 @@ const atomizeText = (text: string): React.ReactNode => {
         )
         currentAtom = ''
       }
-      // Add delimiter as-is (browser can break here)
-      result.push(<span key={`delim-${result.length}`}>{part}</span>)
+      // Add delimiter with <wbr> for break opportunity
+      result.push(<span key={`delim-${result.length}`} className="break-normal">{part}<wbr/></span>)
     } else {
       // Check if this is a temperature unit (°C, °F, ºC, ºF)
       const isTempUnit = /^[°º]\s*[CFcf]$/.test(part)
@@ -256,7 +256,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-1.5 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-normal overflow-hidden">
+                <th key={i} className="px-2 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-normal overflow-hidden">
                   {atomizeText(h)}
                 </th>
               ))}
@@ -270,15 +270,19 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                 const nowrap = isShortDataCol(cell, cellIdx)
                 const isStickyCol = cellIdx === stickyColIdx
                 const rowBgClass = rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                // Check if cell content is long (>14 chars) for font size reduction
+                const isLongContent = !nowrap && cell.length > 14
                 const cellContent = renderCell ? renderCell(cell, rowIdx, cellIdx) : atomizeText(cell)
                 return (
                   <td
                     key={cellIdx}
-                    className={`px-1.5 py-1.5 align-top overflow-hidden ${
+                    className={`px-2 py-1.5 align-top overflow-hidden ${
                       isStickyCol ? 'font-medium' : ''
                     } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-normal leading-tight'} ${
-                      isStickyCol ? 'sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]' : ''
-                    } ${isStickyCol ? rowBgClass : ''}`}
+                      isLongContent ? 'text-[9.5px] md:text-[10.5px]' : ''
+                    } ${
+                      isStickyCol ? `sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] ${rowBgClass}` : ''
+                    }`}
                   >
                     {renderCell && React.isValidElement(cellContent) ? atomizeNode(cellContent) : cellContent}
                   </td>
