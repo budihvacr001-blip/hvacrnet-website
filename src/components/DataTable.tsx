@@ -26,6 +26,16 @@ const getColRole = (header: string | undefined): 'number' | 'product' | 'models'
   return 'default'
 }
 
+// Render header text with word-level nowrap (each word stays intact, wraps only at spaces)
+const renderHeaderWords = (text: string): React.ReactNode => {
+  const words = String(text).split(' ')
+  return words.map((word, idx, arr) => (
+    <span key={idx} className="whitespace-nowrap">
+      {word}{idx < arr.length - 1 ? ' ' : ''}
+    </span>
+  ))
+}
+
 export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell }: DataTableProps) {
   const colCount = headers?.length || (keyValue ? 2 : (rows[0]?.length || 1))
 
@@ -141,7 +151,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
 
   return (
     <div className={`overflow-x-auto rounded-lg border border-gray-border ${className}`}>
-      <table className={`w-full text-[11px] md:text-[12px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[640px] md:min-w-0`}>
+      <table className={`w-full text-[11px] md:text-[12px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[1024px]`}>
         {useFixed && (
           <colgroup>
             {columnWidths.map((width, i) => (
@@ -153,8 +163,8 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-2.5 py-1.5 text-left font-semibold align-top break-words leading-tight">
-                  {h}
+                <th key={i} className="px-2.5 py-1.5 text-left font-semibold align-top leading-tight">
+                  {renderHeaderWords(h)}
                 </th>
               ))}
             </tr>
@@ -173,7 +183,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                     className={`px-2.5 py-1.5 align-top ${
                       isStickyCol ? 'font-medium' : ''
                     } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-words leading-tight'} ${
-                      isStickyCol ? 'sticky left-0 z-10 md:static shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] md:shadow-none' : ''
+                      isStickyCol ? 'sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)]' : ''
                     } ${isStickyCol ? rowBgClass : ''}`}
                   >
                     {renderCell ? renderCell(cell, rowIdx, cellIdx) : cell}
