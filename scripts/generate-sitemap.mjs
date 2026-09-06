@@ -5,6 +5,9 @@ import { categories } from '../src/data/products.ts'
 const BASE_URL = 'https://www.hvacrnet.com'
 const DIST_DIR = new URL('../dist/', import.meta.url).pathname
 
+// Minimum published products required for a category to appear in sitemap
+const MIN_PRODUCTS_TO_SHOW = 2
+
 // Helper: check if item is manually published (defaults to true)
 const isManuallyPublished = (item) => item.published !== false
 
@@ -61,8 +64,8 @@ function buildRoutes() {
     // Get content-complete products
     const publishedProducts = cat.products.filter(p => isProductPublished(p))
     
-    // Category page: only include if >= 3 published products
-    if (publishedProducts.length >= 3) {
+    // Category page: only include if >= MIN_PRODUCTS_TO_SHOW published products
+    if (publishedProducts.length >= MIN_PRODUCTS_TO_SHOW) {
       routes.push({ url: `/products/${cat.id}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.8' })
     }
     
@@ -94,8 +97,8 @@ function buildRoutes() {
         // Three-level structure: category > subcategory > thirdCategory
         const thirdIds = [...new Set(directProducts.map((p) => p.thirdCategoryId).filter(Boolean))]
 
-        // Add subcategory hub page if >= 3 published products (selection guide landing page)
-        if (directProducts.length >= 3) {
+        // Add subcategory hub page if >= MIN_PRODUCTS_TO_SHOW published products (selection guide landing page)
+        if (directProducts.length >= MIN_PRODUCTS_TO_SHOW) {
           routes.push({ url: `/products/${cat.id}/${subId}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.7' })
         }
 
@@ -107,16 +110,16 @@ function buildRoutes() {
             if (!product || !isProductPublished(product)) continue
             routes.push({ url: `/products/${cat.id}/${subId}/${thirdId}`, lastmod: productsSrcMod, changefreq: 'monthly', priority: '0.6' })
           }
-        } else if (directProducts.length > 0 && directProducts.length < 3) {
-          // Products without thirdCategoryId and < 3 products (add subcategory page as fallback)
+        } else if (directProducts.length > 0 && directProducts.length < MIN_PRODUCTS_TO_SHOW) {
+          // Products without thirdCategoryId and < MIN_PRODUCTS_TO_SHOW products (add subcategory page as fallback)
           routes.push({ url: `/products/${cat.id}/${subId}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.6' })
         }
       } else if (nestedProducts.length > 0) {
         // Nested subcategory structure: category > subcategory > nested subcategory
         const nestedSubIds = sub.subCategories.filter(ss => !ss.isOverview).map(ss => ss.id)
         
-        // Add parent subcategory hub page if >= 3 published products in nested subcategories
-        if (nestedProducts.length >= 3) {
+        // Add parent subcategory hub page if >= MIN_PRODUCTS_TO_SHOW published products in nested subcategories
+        if (nestedProducts.length >= MIN_PRODUCTS_TO_SHOW) {
           routes.push({ url: `/products/${cat.id}/${subId}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.7' })
         }
         

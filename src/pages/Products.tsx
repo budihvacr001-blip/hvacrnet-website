@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, isPublished, isProductPublished, getPublishedProducts, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -440,10 +440,17 @@ export default function Products() {
                 All Products
               </button>
 
-              {/* Category list - only show published categories with at least 3 published products */}
-              {categories.filter(cat => isPublished(cat) && getPublishedProducts(cat).length >= 3).map((cat) => {
+              {/* Category list - only show published categories with enough published products */}
+              {categories.filter(cat => {
+                if (cat.published === false) return false
+                // Count all published products under this category (including subcategories)
+                const count = cat.products.filter(p => isProductPublished(p)).length
+                return count >= MIN_PRODUCTS_TO_SHOW
+              }).map((cat) => {
                 const isActive = activeCategory === cat.id
                 const hasSubs = cat.subCategories.length > 0
+                // Calculate total product count for this category (recursive)
+                const totalProductCount = cat.products.filter(p => isProductPublished(p)).length
 
                 return (
                   <div key={cat.id}>
@@ -473,16 +480,27 @@ export default function Products() {
                             : 'text-gray-400'
                         }`}
                       >
-                        {cat.subCategories.length}
+                        {totalProductCount}
                       </span>
                     </button>
 
-                    {/* Sub-categories inline */}
+                    {/* Sub-categories inline - only show visible subcategories */}
                     {hasSubs && expandedCategories[cat.id] && (
                       <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
 
-                        {cat.subCategories.map((sub) => {
+                        {cat.subCategories.filter(sub => {
+                          if (sub.published === false) return false
+                          // Count published products under this subcategory
+                          const count = cat.products.filter(p => 
+                            p.subCategoryId === sub.id && isProductPublished(p)
+                          ).length
+                          return count >= MIN_PRODUCTS_TO_SHOW
+                        }).map((sub) => {
                           const hasThirdLevel = sub.subCategories && sub.subCategories.length > 0
+                          // Calculate product count for this subcategory
+                          const subProductCount = cat.products.filter(p => 
+                            p.subCategoryId === sub.id && isProductPublished(p)
+                          ).length
                           return (
                             <div key={sub.id}>
                               <button
@@ -506,17 +524,22 @@ export default function Products() {
                                 )}
                                 {!hasThirdLevel && <span className="w-3 shrink-0" />}
                                 <span className="flex-1">{sub.name}</span>
-                                {hasThirdLevel && (
-                                  <span className="text-xs text-gray-400">
-                                    {sub.subCategories!.length}
-                                  </span>
-                                )}
+                                <span className="text-xs text-gray-400">
+                                  {subProductCount}
+                                </span>
                               </button>
                               {/* Third-level inline */}
                               {hasThirdLevel && expandedSubCategories[`${cat.id}-${sub.id}`] && (
                                 <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
 
-                                  {sub.subCategories!.map((third) => (
+                                  {sub.subCategories!.filter(third => {
+                                    if (third.published === false) return false
+                                    // Count published products under this third category
+                                    const count = cat.products.filter(p => 
+                                      p.thirdCategoryId === third.id && isProductPublished(p)
+                                    ).length
+                                    return count >= MIN_PRODUCTS_TO_SHOW
+                                  }).map((third) => (
                                     <button
                                       key={third.id}
                                       onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
@@ -659,8 +682,12 @@ export default function Products() {
               <div>
                 <h2 className="mb-6 text-xl font-semibold text-gray-700">Browse by Category</h2>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {categories.filter(cat => getPublishedProducts(cat).length >= 3).map((cat) => {
-                    const publishedCount = getPublishedProducts(cat).length
+                  {categories.filter(cat => {
+                    if (cat.published === false) return false
+                    const count = cat.products.filter(p => isProductPublished(p)).length
+                    return count >= MIN_PRODUCTS_TO_SHOW
+                  }).map((cat) => {
+                    const publishedCount = cat.products.filter(p => isProductPublished(p)).length
                     return (
                     <button
                       key={cat.id}

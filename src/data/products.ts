@@ -92,6 +92,60 @@ export const isProductComplete = (product: Product): { complete: boolean; missin
   return { complete: missing.length === 0, missing }
 }
 
+// Minimum number of published products required for a category to be visible in frontend navigation
+export const MIN_PRODUCTS_TO_SHOW = 2
+
+// Recursively count published products under a category node (including all subcategories)
+export const getVisibleProductCount = (
+  categoryId: string,
+  subCategoryId: string | undefined,
+  allProducts: Product[]
+): number => {
+  return allProducts.filter(p => {
+    // Must be published (content-complete)
+    if (!isProductPublished(p)) return false
+    // Must belong to this category
+    if (p.categoryId !== categoryId) return false
+    // If subCategoryId is specified, product must belong to it or its children
+    if (subCategoryId && p.subCategoryId !== subCategoryId) return false
+    return true
+  }).length
+}
+
+// Check if a category should be visible in frontend navigation
+// A category is visible if: published !== false AND has >= MIN_PRODUCTS_TO_SHOW published products
+export const isCategoryVisible = (
+  categoryId: string,
+  subCategoryId: string | undefined,
+  allProducts: Product[],
+  minCount: number = MIN_PRODUCTS_TO_SHOW
+): boolean => {
+  const count = getVisibleProductCount(categoryId, subCategoryId, allProducts)
+  return count >= minCount
+}
+
+// Get all visible categories for navigation (recursive, includes subcategories)
+export const getVisibleCategories = (categories: Category[], _allProducts: Product[]): Category[] => {
+  return categories.filter(cat => {
+    if (cat.published === false) return false
+    // Count all published products under this category (including subcategories)
+    const count = cat.products.filter(p => isProductPublished(p)).length
+    return count >= MIN_PRODUCTS_TO_SHOW
+  })
+}
+
+// Get visible subcategories for a category
+export const getVisibleSubCategories = (category: Category, _allProducts: Product[]): SubCategory[] => {
+  return category.subCategories.filter(sub => {
+    if (sub.published === false) return false
+    // Count published products under this subcategory
+    const count = category.products.filter(p => 
+      p.subCategoryId === sub.id && isProductPublished(p)
+    ).length
+    return count >= MIN_PRODUCTS_TO_SHOW
+  })
+}
+
 // Filter categories for navigation: only published categories with at least 3 published products
 export const getPublishedCategories = (categories: Category[]): Category[] => {
   return categories.filter(cat => {
