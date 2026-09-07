@@ -26,7 +26,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
       {/* Main Image */}
       <div className="bg-gray-50 flex items-center justify-center overflow-hidden max-h-64">
         {mainImage ? (
-          <img src={mainImage} alt={product.name} className="max-w-full max-h-64 object-contain" style={{ imageRendering: 'auto' }} />
+          <img src={mainImage} alt={product.name} className="max-w-full max-h-64 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
         ) : (
           <div className="text-gray-400 text-sm">No Image</div>
         )}
@@ -43,7 +43,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
                 mainImage === img ? 'border-[#1a3a5c]' : 'border-gray-200 hover:border-gray-300'
               }`}
             >
-              <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-contain" />
+              <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-contain" loading={idx === 0 ? 'eager' : 'lazy'} />
             </button>
           ))}
         </div>

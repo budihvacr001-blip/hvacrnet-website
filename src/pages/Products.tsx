@@ -29,39 +29,56 @@ function getCategoryImage(categoryId: string): string | null {
   return publishedProduct.images[0]
 }
 
-export default function Products() {
-  const navigate = useNavigate()
-  const params = useParams<{ categorySlug?: string; subCategorySlug?: string; thirdCategorySlug?: string }>()
-  const [searchQuery, setSearchQuery] = useState('')
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
-  const [activeSubCategory, setActiveSubCategory] = useState<string>('all')
-  const [activeThirdCategory, setActiveThirdCategory] = useState<string | null>(null)
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const [highlightedProductId, setHighlightedProductId] = useState<string | null>(null)
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
-  const [expandedSubCategories, setExpandedSubCategories] = useState<Record<string, boolean>>({})
+// Helper function to compute initial state from URL params (works in SSR)
+function computeInitialState(params: { categorySlug?: string; subCategorySlug?: string; thirdCategorySlug?: string }) {
+  let activeCategory: string | null = null
+  let activeSubCategory = 'all'
+  let activeThirdCategory: string | null = null
 
-  // Initialize state from URL params on mount
-  useEffect(() => {
-    if (params.categorySlug) {
-      const cat = categories.find(c => c.id === params.categorySlug)
-      if (cat) {
-        setActiveCategory(cat.id)
-        if (params.subCategorySlug) {
-          const subCat = cat.subCategories.find(s => s.id === params.subCategorySlug)
-          if (subCat) {
-            setActiveSubCategory(subCat.id)
-            if (params.thirdCategorySlug) {
-              const thirdCat = subCat.subCategories?.find(t => t.id === params.thirdCategorySlug)
-              if (thirdCat) {
-                setActiveThirdCategory(thirdCat.id)
-              }
+  if (params.categorySlug) {
+    const cat = categories.find(c => c.id === params.categorySlug)
+    if (cat) {
+      activeCategory = cat.id
+      if (params.subCategorySlug) {
+        const subCat = cat.subCategories.find(s => s.id === params.subCategorySlug)
+        if (subCat) {
+          activeSubCategory = subCat.id
+          if (params.thirdCategorySlug) {
+            const thirdCat = subCat.subCategories?.find(t => t.id === params.thirdCategorySlug)
+            if (thirdCat) {
+              activeThirdCategory = thirdCat.id
             }
           }
         }
       }
     }
-  }, [params])
+  }
+
+  return { activeCategory, activeSubCategory, activeThirdCategory }
+}
+
+export default function Products() {
+  const navigate = useNavigate()
+  const params = useParams<{ categorySlug?: string; subCategorySlug?: string; thirdCategorySlug?: string }>()
+  const [searchQuery, setSearchQuery] = useState('')
+  
+  // Initialize state from URL params (works in both SSR and client)
+  const initialState = computeInitialState(params)
+  const [activeCategory, setActiveCategory] = useState<string | null>(initialState.activeCategory)
+  const [activeSubCategory, setActiveSubCategory] = useState<string>(initialState.activeSubCategory)
+  const [activeThirdCategory, setActiveThirdCategory] = useState<string | null>(initialState.activeThirdCategory)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [highlightedProductId, setHighlightedProductId] = useState<string | null>(null)
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
+  const [expandedSubCategories, setExpandedSubCategories] = useState<Record<string, boolean>>({})
+
+  // Sync state when URL params change (e.g., user clicks navigation)
+  useEffect(() => {
+    const newState = computeInitialState(params)
+    setActiveCategory(newState.activeCategory)
+    setActiveSubCategory(newState.activeSubCategory)
+    setActiveThirdCategory(newState.activeThirdCategory)
+  }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
 
   const allProducts = useMemo(() => {
     return categories.flatMap((cat) => cat.products)

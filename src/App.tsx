@@ -14,25 +14,35 @@ interface AppProps {
 }
 
 export default function App({ helmetContext }: AppProps) {
+  const content = (
+    <div className="flex min-h-screen flex-col">
+      <ScrollToTop />
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:categorySlug" element={<Products />} />
+          <Route path="/products/:categorySlug/:subCategorySlug" element={<Products />} />
+          <Route path="/products/:categorySlug/:subCategorySlug/:thirdCategorySlug" element={<Products />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/markets-we-serve" element={<Markets />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  )
+  
+  // If helmetContext is explicitly null, don't wrap with HelmetProvider (for SSR with external HelmetProvider)
+  // Otherwise, wrap with HelmetProvider (for client-side or when helmetContext is provided)
+  if (helmetContext === null) {
+    return content
+  }
+  
   return (
     <HelmetProvider context={helmetContext || {}}>
-      <div className="flex min-h-screen flex-col">
-        <ScrollToTop />
-        <Navbar />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:categorySlug" element={<Products />} />
-            <Route path="/products/:categorySlug/:subCategorySlug" element={<Products />} />
-            <Route path="/products/:categorySlug/:subCategorySlug/:thirdCategorySlug" element={<Products />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/markets-we-serve" element={<Markets />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      {content}
     </HelmetProvider>
   )
 }

@@ -9,6 +9,7 @@ import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import React from 'react'
 
 // 设置全局 React（用于 JSX 转换）
@@ -51,51 +52,61 @@ function getIndexTemplate() {
 function prerenderRoute(pathname: string, template: string) {
   const helmetContext: any = {}
   
+  // Wrap with HelmetProvider at the top level
   const appHtml = renderToString(
     React.createElement(
-      StaticRouter,
-      { location: pathname },
-      React.createElement(App, { helmetContext })
+      HelmetProvider,
+      { context: helmetContext },
+      React.createElement(
+        StaticRouter,
+        { location: pathname },
+        React.createElement(App, { helmetContext: null }) // Pass null to force App to use parent HelmetProvider
+      )
     )
   )
   
-  const { helmet } = helmetContext
+  // Extract title and meta from rendered HTML (since helmetContext is not populated)
+  const titleMatch = appHtml.match(/<title>(.*?)<\/title>/)
+  const title = titleMatch ? titleMatch[1] : ''
+  
+  // Extract meta description
+  const metaDescMatch = appHtml.match(/<meta name="description" content="(.*?)"/)
+  const metaDesc = metaDescMatch ? metaDescMatch[1] : ''
+  
+  // Extract all meta and link tags
+  const metaTags = appHtml.match(/<meta[^>]*>/g) || []
+  const linkTags = appHtml.match(/<link[^>]*rel="(canonical|preload)"[^>]*>/g) || []
+  
+  console.log(`[SSG] Pre-rendered: ${pathname} - title: ${title.substring(0, 50)}...`)
   
   // 替换模板中的内容
   let html = template
   
-  // 替换 root div 内容
+  // 替换 root div 内容 (remove title/meta/link from appHtml since they belong in head)
+  const bodyContent = appHtml
+    .replace(/<title>.*?<\/title>/, '')
+    .replace(/<meta[^>]*>/g, '')
+    .replace(/<link[^>]*rel="(canonical|preload)"[^>]*>/g, '')
+  
   html = html.replace(
     /<div id="root"><\/div>/,
-    `<div id="root">${appHtml}</div>`
+    `<div id="root">${bodyContent}</div>`
   )
   
-  // 注入 helmet 数据
-  if (helmet) {
-    const helmetTitle = helmet.title?.toString() || ''
-    const helmetMeta = helmet.meta?.toString() || ''
-    const helmetLink = helmet.link?.toString() || ''
-    const helmetScript = helmet.script?.toString() || ''
-    
-    // 替换 title
-    if (helmetTitle) {
-      html = html.replace(/<title>.*?<\/title>/, helmetTitle)
-    }
-    
-    // 注入 meta 标签到 head
-    if (helmetMeta) {
-      html = html.replace('</head>', `${helmetMeta}\n</head>`)
-    }
-    
-    // 注入 link 标签到 head
-    if (helmetLink) {
-      html = html.replace('</head>', `${helmetLink}\n</head>`)
-    }
-    
-    // 注入 script 标签到 head
-    if (helmetScript) {
-      html = html.replace('</head>', `${helmetScript}\n</head>`)
-    }
+  // 替换 title
+  if (title) {
+    html = html.replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
+  }
+  
+  // 注入 meta description
+  if (metaDesc) {
+    html = html.replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${metaDesc}"`)
+  }
+  
+  // 注入 canonical link
+  const canonicalLink = linkTags.find(l => l.includes('canonical'))
+  if (canonicalLink) {
+    html = html.replace(/<link rel="canonical" href=".*?"/, canonicalLink)
   }
   
   return html
