@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
 import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
@@ -31,6 +31,7 @@ function getCategoryImage(categoryId: string): string | null {
 
 export default function Products() {
   const navigate = useNavigate()
+  const params = useParams<{ categorySlug?: string; subCategorySlug?: string; thirdCategorySlug?: string }>()
   const [searchQuery, setSearchQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [activeSubCategory, setActiveSubCategory] = useState<string>('all')
@@ -39,6 +40,28 @@ export default function Products() {
   const [highlightedProductId, setHighlightedProductId] = useState<string | null>(null)
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
   const [expandedSubCategories, setExpandedSubCategories] = useState<Record<string, boolean>>({})
+
+  // Initialize state from URL params on mount
+  useEffect(() => {
+    if (params.categorySlug) {
+      const cat = categories.find(c => c.id === params.categorySlug)
+      if (cat) {
+        setActiveCategory(cat.id)
+        if (params.subCategorySlug) {
+          const subCat = cat.subCategories.find(s => s.id === params.subCategorySlug)
+          if (subCat) {
+            setActiveSubCategory(subCat.id)
+            if (params.thirdCategorySlug) {
+              const thirdCat = subCat.subCategories?.find(t => t.id === params.thirdCategorySlug)
+              if (thirdCat) {
+                setActiveThirdCategory(thirdCat.id)
+              }
+            }
+          }
+        }
+      }
+    }
+  }, [params])
 
   const allProducts = useMemo(() => {
     return categories.flatMap((cat) => cat.products)
