@@ -632,11 +632,11 @@ export const categories: Category[] = [
         },
         applications: 'Air conditioning chilled water pipes, refrigeration suction and discharge lines, hot and cold water plumbing systems, ductwork insulation, HVAC maintenance and retrofit projects',
         images: [
-          '/images/insulation-tube-b1-economy-01.jpg',
-          '/images/insulation-tube-b1-economy-02.jpg',
-          '/images/insulation-tube-b1-economy-03.jpg',
-          '/images/insulation-tube-b1-economy-04.jpg',
-          '/images/insulation-tube-b1-economy-05.jpg',
+          'https://static.coze.site/1523302220958247_0-drive/221124540266223586/01-B1%20Economy-1_1788755684459_1_k0wf.jpg?sign=1791261347-ac2562ba8c-0-ead69ef021b58a1c1e40d4d359ded0628e42de5bd9588e92d71e097a720417a2',
+          'https://static.coze.site/1523302220958247_0-drive/221124540266223586/01-B1%20Economy-2_1788755684459_2_aijy.jpg?sign=1791261347-9d06ce08c1-0-733e8c605f2c6c8a38eeed27b64dfba32de24c258d3449d11b9ec58c7f53fea3',
+          'https://static.coze.site/1523302220958247_0-drive/221124540266223586/01-B1%20Economy-3_1788755684459_3_ex28.jpg?sign=1791261347-4cd5d67d10-0-882efb9b1f472973dfce36f2cebf7e669fae30a593956d5d84b5183b54e09227',
+          'https://static.coze.site/1523302220958247_0-drive/221124540266223586/01-B1%20Economy-4_1788755684459_4_tmpg.jpg?sign=1791261347-213009d77a-0-d591ca7a5b048a45e3644a370dbd6bf7b3d50f1157494828ece97f13f2b227b9',
+          'https://static.coze.site/1523302220958247_0-drive/221124540266223586/01-B1%20Economy-5_1788755684458_0_s92c.jpg?sign=1791261347-a26db803ef-0-144551c9fd6f07ea21125f0bb69a9570e6e669dea20e975ac11cc9567ac928e4',
         ],
       },
       {
