@@ -130,24 +130,6 @@ export default function Products() {
     return products
   }, [allProducts, activeCategory, activeSubCategory, activeThirdCategory, searchQuery, categories])
 
-  const selectCategory = (catId: string) => {
-    setActiveCategory(catId)
-    setActiveSubCategory('all')
-    setActiveThirdCategory(null)
-  }
-
-  const selectSubCategory = (catId: string, subId: string) => {
-    setActiveCategory(catId)
-    setActiveSubCategory(subId)
-    setActiveThirdCategory(null)
-  }
-
-  const selectThirdCategory = (catId: string, subId: string, thirdId: string) => {
-    setActiveCategory(catId)
-    setActiveSubCategory(subId)
-    setActiveThirdCategory(thirdId)
-  }
-
   useEffect(() => {
     if (highlightedProductId) {
       const el = document.getElementById(`product-${highlightedProductId}`)
@@ -170,11 +152,6 @@ export default function Products() {
       }, 100)
     }
   }, [activeThirdCategory])
-
-  const selectAll = () => {
-    setActiveCategory(null)
-    setActiveSubCategory('all')
-  }
 
   const handleInquire = (productName: string) => {
     navigate('/contact', { state: { productInterest: productName } })
@@ -437,17 +414,17 @@ export default function Products() {
               {currentCategory && (
                 <li className="flex items-center gap-1.5">
                   <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
-                  <button onClick={() => selectCategory(currentCategory.id)} className="hover:text-navy transition-colors">
+                  <Link to={`/products/${currentCategory.id}`} className="hover:text-navy transition-colors">
                     {currentCategory.name}
-                  </button>
+                  </Link>
                 </li>
               )}
               {currentSubCategory && !isSubCategoryOverview && (
                 <li className="flex items-center gap-1.5">
                   <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
-                  <button onClick={() => selectSubCategory(currentCategory!.id, currentSubCategory.id)} className="hover:text-navy transition-colors">
+                  <Link to={`/products/${currentCategory!.id}/${currentSubCategory.id}`} className="hover:text-navy transition-colors">
                     {currentSubCategory.name}
-                  </button>
+                  </Link>
                 </li>
               )}
               {currentThirdCategory && !currentThirdCategory.isOverview && (
@@ -468,8 +445,8 @@ export default function Products() {
           <aside className="w-64 shrink-0">
             <nav className="space-y-1">
               {/* All Products */}
-              <button
-                onClick={selectAll}
+              <Link
+                to="/products"
                 className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                   activeCategory === null
                     ? 'bg-navy text-white'
@@ -478,7 +455,7 @@ export default function Products() {
               >
                 <Package className="h-4 w-4 shrink-0" />
                 All Products
-              </button>
+              </Link>
 
               {/* Category list - only show visible categories */}
               {categories.filter(cat => {
@@ -505,46 +482,62 @@ export default function Products() {
 
                 return (
                   <div key={cat.id}>
-                    <button
-                      onClick={() => {
-                        selectCategory(cat.id)
-                        setExpandedCategories(prev => ({
-                          ...prev,
-                          [cat.id]: !prev[cat.id]
-                        }))
-                      }}
-                      className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors ${
-                        isActive && activeSubCategory === 'all'
-                          ? 'bg-navy text-white'
-                          : 'text-gray-700 hover:bg-navy/5'
-                      }`}
-                    >
-                      {hasSubs && (
-                        <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${expandedCategories[cat.id] ? 'rotate-90' : ''}`} />
-                      )}
-                      {!hasSubs && <span className="w-4 shrink-0" />}
-                      {showCategorySequence && (
-                        <span className={`shrink-0 text-xs tabular-nums ${
+                    <div className="flex items-center">
+                      <Link
+                        to={`/products/${cat.id}`}
+                        onClick={() => {
+                          setExpandedCategories(prev => ({
+                            ...prev,
+                            [cat.id]: !prev[cat.id]
+                          }))
+                        }}
+                        className={`flex-1 flex items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                           isActive && activeSubCategory === 'all'
-                            ? 'text-white/60'
-                            : 'text-gray-500'
-                        }`}>
-                          {String(categorySequenceNumber).padStart(2, '0')}
-                        </span>
-                      )}
-                      <span className="flex-1">{cat.name}</span>
-                      {!cat.isOverview && (
-                        <span
-                          className={`text-xs ${
+                            ? 'bg-navy text-white'
+                            : 'text-gray-700 hover:bg-navy/5'
+                        }`}
+                      >
+                        {hasSubs && (
+                          <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${expandedCategories[cat.id] ? 'rotate-90' : ''}`} />
+                        )}
+                        {!hasSubs && <span className="w-4 shrink-0" />}
+                        {showCategorySequence && (
+                          <span className={`shrink-0 text-xs tabular-nums ${
                             isActive && activeSubCategory === 'all'
                               ? 'text-white/60'
-                              : 'text-gray-400'
-                          }`}
+                              : 'text-gray-500'
+                          }`}>
+                            {String(categorySequenceNumber).padStart(2, '0')}
+                          </span>
+                        )}
+                        <span className="flex-1">{cat.name}</span>
+                        {!cat.isOverview && (
+                          <span
+                            className={`text-xs ${
+                              isActive && activeSubCategory === 'all'
+                                ? 'text-white/60'
+                                : 'text-gray-400'
+                            }`}
+                          >
+                            {totalProductCount}
+                          </span>
+                        )}
+                      </Link>
+                      {hasSubs && (
+                        <button
+                          onClick={() => {
+                            setExpandedCategories(prev => ({
+                              ...prev,
+                              [cat.id]: !prev[cat.id]
+                            }))
+                          }}
+                          className="p-2 text-gray-400 hover:text-gray-600"
+                          aria-label="Toggle subcategories"
                         >
-                          {totalProductCount}
-                        </span>
+                          <ChevronRight className={`h-4 w-4 transition-transform ${expandedCategories[cat.id] ? 'rotate-90' : ''}`} />
+                        </button>
                       )}
-                    </button>
+                    </div>
 
                     {/* Sub-categories inline - only show visible subcategories */}
                     {hasSubs && expandedCategories[cat.id] && (
@@ -576,38 +569,54 @@ export default function Products() {
                           ).length
                           return (
                             <div key={sub.id}>
-                              <button
-                                onClick={() => {
-                                  selectSubCategory(cat.id, sub.id)
-                                  setExpandedSubCategories(prev => ({
-                                    ...prev,
-                                    [`${cat.id}-${sub.id}`]: !prev[`${cat.id}-${sub.id}`]
-                                  }))
-                                }}
-                                className={`flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
-                                  sub.isOverview
-                                    ? 'font-bold text-gray-900 hover:bg-navy/5'
-                                    : activeSubCategory === sub.id && !activeThirdCategory
-                                    ? 'font-semibold text-accent'
-                                    : 'text-gray-700 hover:bg-navy/5'
-                                }`}
-                              >
+                              <div className="flex items-center">
+                                <Link
+                                  to={`/products/${cat.id}/${sub.id}`}
+                                  onClick={() => {
+                                    setExpandedSubCategories(prev => ({
+                                      ...prev,
+                                      [`${cat.id}-${sub.id}`]: !prev[`${cat.id}-${sub.id}`]
+                                    }))
+                                  }}
+                                  className={`flex-1 flex items-center gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
+                                    sub.isOverview
+                                      ? 'font-bold text-gray-900 hover:bg-navy/5'
+                                      : activeSubCategory === sub.id && !activeThirdCategory
+                                      ? 'font-semibold text-accent'
+                                      : 'text-gray-700 hover:bg-navy/5'
+                                  }`}
+                                >
+                                  {hasThirdLevel && (
+                                    <ChevronRight className={`h-3 w-3 shrink-0 transition-transform ${expandedSubCategories[`${cat.id}-${sub.id}`] ? 'rotate-90' : ''}`} />
+                                  )}
+                                  {!hasThirdLevel && <span className="w-3 shrink-0" />}
+                                  {showSubSequence && (
+                                    <span className="shrink-0 text-xs text-gray-400 tabular-nums">
+                                      {String(subSequenceNumber).padStart(2, '0')}
+                                    </span>
+                                  )}
+                                  <span className="flex-1">{sub.name}</span>
+                                  {!sub.isOverview && (
+                                    <span className="text-xs text-gray-400">
+                                      {subProductCount}
+                                    </span>
+                                  )}
+                                </Link>
                                 {hasThirdLevel && (
-                                  <ChevronRight className={`h-3 w-3 shrink-0 transition-transform ${expandedSubCategories[`${cat.id}-${sub.id}`] ? 'rotate-90' : ''}`} />
+                                  <button
+                                    onClick={() => {
+                                      setExpandedSubCategories(prev => ({
+                                        ...prev,
+                                        [`${cat.id}-${sub.id}`]: !prev[`${cat.id}-${sub.id}`]
+                                      }))
+                                    }}
+                                    className="p-1 text-gray-400 hover:text-gray-600"
+                                    aria-label="Toggle third-level categories"
+                                  >
+                                    <ChevronRight className={`h-3 w-3 transition-transform ${expandedSubCategories[`${cat.id}-${sub.id}`] ? 'rotate-90' : ''}`} />
+                                  </button>
                                 )}
-                                {!hasThirdLevel && <span className="w-3 shrink-0" />}
-                                {showSubSequence && (
-                                  <span className="shrink-0 text-xs text-gray-400 tabular-nums">
-                                    {String(subSequenceNumber).padStart(2, '0')}
-                                  </span>
-                                )}
-                                <span className="flex-1">{sub.name}</span>
-                                {!sub.isOverview && (
-                                  <span className="text-xs text-gray-400">
-                                    {subProductCount}
-                                  </span>
-                                )}
-                              </button>
+                              </div>
                               {/* Third-level inline */}
                               {hasThirdLevel && expandedSubCategories[`${cat.id}-${sub.id}`] && (
                                 <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
@@ -631,9 +640,9 @@ export default function Products() {
                                     const showSequence = !third.isOverview
                                     
                                     return (
-                                      <button
+                                      <Link
                                         key={third.id}
-                                        onClick={() => selectThirdCategory(cat.id, sub.id, third.id)}
+                                        to={`/products/${cat.id}/${sub.id}/${third.id}`}
                                         className={`flex w-full items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
                                           third.isOverview
                                             ? 'font-bold text-gray-900 hover:bg-navy/5'
@@ -648,7 +657,7 @@ export default function Products() {
                                           </span>
                                         )}
                                         <span className="flex-1">{third.name}</span>
-                                      </button>
+                                      </Link>
                                     )
                                   })}
                                 </div>
@@ -669,40 +678,40 @@ export default function Products() {
             {/* Breadcrumb */}
             {activeCategory && (
               <div className="mb-4 flex items-center gap-2 text-sm text-gray-text">
-                <button onClick={selectAll} className="hover:text-navy">
+                <Link to="/products" className="hover:text-navy">
                   All Products
-                </button>
+                </Link>
                 {currentCategory && (
                   <>
                     <span>/</span>
-                    <button
-                      onClick={() => selectCategory(currentCategory.id)}
+                    <Link
+                      to={`/products/${currentCategory.id}`}
                       className="hover:text-navy"
                     >
                       {currentCategory.name}
-                    </button>
+                    </Link>
                   </>
                 )}
                 {currentSubCategory && activeSubCategory !== 'all' && (
                   <>
                     <span>/</span>
-                    <button
-                      onClick={() => selectSubCategory(currentCategory!.id, currentSubCategory.id)}
+                    <Link
+                      to={`/products/${currentCategory!.id}/${currentSubCategory.id}`}
                       className="hover:text-navy"
                     >
                       {currentSubCategory.name}
-                    </button>
+                    </Link>
                   </>
                 )}
                 {currentThirdCategory && activeThirdCategory && (
                   <>
                     <span>/</span>
-                    <button
-                      onClick={() => selectThirdCategory(currentCategory!.id, currentSubCategory!.id, currentThirdCategory.id)}
+                    <Link
+                      to={`/products/${currentCategory!.id}/${currentSubCategory!.id}/${currentThirdCategory.id}`}
                       className="hover:text-navy"
                     >
                       {currentThirdCategory.name}
-                    </button>
+                    </Link>
                   </>
                 )}
               </div>
@@ -786,9 +795,9 @@ export default function Products() {
                   }).map((cat) => {
                     const publishedCount = cat.products.filter(p => isProductPublished(p)).length
                     return (
-                    <button
+                    <Link
                       key={cat.id}
-                      onClick={() => selectCategory(cat.id)}
+                      to={`/products/${cat.id}`}
                       className="group overflow-hidden rounded-lg border border-gray-border bg-white transition-all hover:border-navy hover:shadow-md"
                     >
                       <div className="aspect-video bg-gradient-to-br from-navy/10 to-accent/10 flex items-center justify-center overflow-hidden">
@@ -806,7 +815,7 @@ export default function Products() {
                         </h3>
                         <p className="mt-1 text-sm text-gray-text">{publishedCount} product{publishedCount !== 1 ? 's' : ''}</p>
                       </div>
-                    </button>
+                    </Link>
                     )
                   })}
                 </div>
