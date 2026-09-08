@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { existsSync } from 'fs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -55,6 +56,26 @@ app.use((req, res, next) => {
   if (newPath) {
     const query = req.search || ''
     return res.redirect(301, newPath + query)
+  }
+  next()
+})
+
+// Serve pre-rendered HTML pages (SSG) - BEFORE static files
+app.use((req, res, next) => {
+  // Try to serve pre-rendered HTML for the current path
+  // Handle both /path and /path/ URLs
+  const cleanPath = req.path.endsWith('/') ? req.path.slice(0, -1) : req.path
+  const possiblePaths = [
+    path.join(__dirname, 'dist', cleanPath, 'index.html'),
+    path.join(__dirname, 'dist', req.path, 'index.html'),
+    path.join(__dirname, 'dist', cleanPath + '.html'),
+    path.join(__dirname, 'dist', req.path + '.html'),
+  ]
+  
+  for (const filePath of possiblePaths) {
+    if (existsSync(filePath)) {
+      return res.sendFile(filePath)
+    }
   }
   next()
 })
