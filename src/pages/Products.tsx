@@ -768,7 +768,7 @@ export default function Products() {
               const categoryObj = categories.find(c => c.id === activeCategory);
               const subCategoryObj = categoryObj?.subCategories.find(s => s.id === activeSubCategory);
               const categoryProducts = categoryObj?.products.filter(p =>
-                activeSubCategory ? p.subCategoryId === activeSubCategory : true
+                activeSubCategory && !subCategoryObj?.isOverview ? p.subCategoryId === activeSubCategory : true
               ) || [];
 
               return (

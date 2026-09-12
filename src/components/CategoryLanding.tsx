@@ -90,6 +90,9 @@ export default function CategoryLanding({
       if (product.thirdCategoryId) {
         return `/products/${categorySlug}/${subCategorySlug || ''}#${product.thirdCategoryId}`
       }
+      if (product.subCategoryId) {
+        return `/products/${categorySlug}/${product.subCategoryId}#product-${product.id}`
+      }
     }
     return null
   }
