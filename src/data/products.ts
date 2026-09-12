@@ -739,6 +739,16 @@ export const categories: Category[] = [
         ],
       },
       {
+        id: 'thermal-expansion-valves',
+        name: 'Thermostatic Expansion Valve',
+        subCategories: [
+          { id: 'trf-heavy-duty-txv', name: 'Heavy-Duty TXV — TRF Series (SAE Flare)' },
+          { id: 'ter-universal-txv', name: 'Universal TXV — TER Series (ODF / SAE Flare)' },
+          { id: 'tf-replaceable-orifice', name: 'Universal TXV, Replaceable Orifice — TF Series' },
+          { id: 'tf-core-replaceable-orifice', name: 'Replaceable Orifice — TXV Core 0#–6#' },
+        ],
+      },
+      {
         id: 'sight-glasses',
         name: 'Sight Glasses',
         subCategories: [
@@ -750,7 +760,6 @@ export const categories: Category[] = [
           { id: 'oil-level-g-thread', name: 'Oil Level Sight Glass – G Thread' },
         ],
       },
-      { id: 'thermal-expansion-valves', name: 'Thermal Expansion Valves' },
       { id: 'safety-valves', name: 'Safety Valves' },
       { id: 'check-valves', name: 'Check Valves' },
       { id: 'stop-valves', name: 'Stop Valves' },
@@ -1444,6 +1453,169 @@ export const categories: Category[] = [
       // Product 4 & 5: Placeholder - pending confirmation from supplier
       { id: 'sg-4', categoryId: 'valves', subCategoryId: 'sight-glasses', thirdCategoryId: 'moisture-indicator-npt', published: false, images: [], metaTitle: "Moisture Indicator Sight Glass, NPT Threaded | Refrigeration", metaDescription: "NPT threaded moisture indicator sight glass for refrigeration. Content pending supplier confirmation.", name: "Moisture Indicator Sight Glass — NPT Threaded (SGN-NPT Series)", shortDesc: "NPT threaded moisture indicator sight glass. Content pending supplier confirmation.", description: "Pending supplier confirmation.", features: [], availableModels: { headers: ["Model", "Port Size", "Overall Size"], rows: [] }, specs: [], applications: 'Pending supplier confirmation.' },
       { id: 'sg-5', categoryId: 'valves', subCategoryId: 'sight-glasses', thirdCategoryId: 'oil-level-g-thread', published: false, images: [], metaTitle: "Oil Level Sight Glass, G Thread | Refrigeration", metaDescription: "Oil level sight glass with G thread connection. Content pending supplier confirmation.", name: "Oil Level Sight Glass — G Thread Connection (SGR Series)", shortDesc: "Oil level sight glass with G thread connection. Content pending supplier confirmation.", description: "Pending supplier confirmation.", features: [], availableModels: { headers: ["Model", "Port Size", "Overall Size"], rows: [] }, specs: [], applications: 'Pending supplier confirmation.' },
+      {
+        id: 'tx-1', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'trf-heavy-duty-txv', images: ['/images/txv-placeholder.svg'],
+        metaTitle: 'Heavy-Duty Thermostatic Expansion Valve | TRF Series | HVACR NET',
+        metaDescription: 'HVACR NET TRF heavy-duty TXV for R22/R404A/R134a/R410A, 1.5–52 TR, SAE flare, external equalization. 82 models. MOQ 1 pc.',
+        name: 'Heavy-Duty Thermostatic Expansion Valve — TRF Series (SAE Flare)',
+        shortDesc: 'TRF series heavy-duty thermostatic expansion valves are engineered for high-capacity commercial and industrial refrigeration systems. Available for R22, R404A/R507, R134a and R410A refrigerants with capacity range from 1.5 TR to 52 TR, SAE flare connections with external equalization provide reliable performance in demanding applications.',
+        description: "• Designed for high-capacity commercial and industrial refrigeration applications.\n• Covers R22, R404A/R507, R134a and R410A refrigerants with dedicated charge formulations.\n• Capacity range: 1.5 TR (R134a) to 52 TR (R410A).\n• SAE flare connection for easy installation and maintenance.\n• External equalization for systems with significant pressure drop across evaporator.\n• Replaceable power element for field serviceability.\n• Standard 1.5m capillary tube length.\n• Operating temperature: power element ≤100°C (N charge) / ≤150°C (K/MAH charge), valve body ≤110°C.",
+        features: [
+          'Heavy-duty construction for industrial refrigeration applications',
+          'Four refrigerant variants: TRF22W (R22), TRF404W (R404A/R507), TRF134W (R134a), TRF410W (R410A)',
+          'External equalization standard for all models',
+          'SAE flare inlet/outlet connections (3/8" to 1-1/8")',
+          'Static superheat: 4K default (adjustable)',
+          'Max working pressure: 4.6 MPa (all variants)',
+          'Charge types: N / K / MAH (optional) for temperature range flexibility',
+          'Bi-directional flow capability for heat pump applications (TQR variant sold separately)',
+          'Compatible with HCFC, HFC and HFO refrigerants',
+          'Factory-tested and individually packaged'
+        ],
+        availableModels: { headers: ['Model', 'Refrigerant', 'Capacity Range', 'Connection', 'Equalization'], rows: [
+          ['TRF22W-3-3-5 to TRF22W-42-9-11', 'R22/R407C', '3–42 TR (10–148 kW)', 'SAE Flare', 'External'],
+          ['TRF404W-2-3-5 to TRF404W-26-9-11', 'R404A/R507', '2–26 TR (7–92 kW)', 'SAE Flare', 'External'],
+          ['TRF134W-1.5-3-5 to TRF134W-25-9-11', 'R134a', '1.5–25 TR (6–87 kW)', 'SAE Flare', 'External'],
+          ['TRF410W-3.5-3-5 to TRF410W-52-9-11', 'R410A', '3.5–52 TR (12–182 kW)', 'SAE Flare', 'External']
+        ] },
+        specs: [
+          { label: 'Refrigerant', value: 'R22/R407C, R404A/R507, R134a, R410A' },
+          { label: 'Nominal Capacity', value: '1.5–52 TR (5–182 kW)' },
+          { label: 'Max Working Pressure', value: '4.6 MPa' },
+          { label: 'Connection Type', value: 'SAE Flare' },
+          { label: 'Inlet/Outlet Size', value: '3/8"–1-1/8" (varies by model)' },
+          { label: 'Equalization', value: 'External' },
+          { label: 'Static Superheat', value: '4K (default, adjustable)' },
+          { label: 'Charge Type', value: 'N / K / MAH (optional)' },
+          { label: 'Capillary Length', value: '1.5m' },
+          { label: 'Power Element Temp', value: '≤100°C (N) / ≤150°C (K/MAH)' },
+          { label: 'Valve Body Temp', value: '≤110°C' },
+          { label: 'Evaporating Temp Range', value: '-40°C to +10°C (N charge)' }
+        ],
+        applications: 'Commercial and industrial refrigeration, cold storage, large commercial systems'
+      },
+      {
+        id: 'tx-2', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'ter-universal-txv', images: ['/images/txv-placeholder.svg'],
+        metaTitle: 'Universal Thermostatic Expansion Valve | TER Series | HVACR NET',
+        metaDescription: 'HVACR NET TER universal TXV for R22/R404A/R134a/R410A, 1.5–13 TR, ODF solder & SAE flare, internal/external equalization. 37 models. MOQ 1 pc.',
+        name: 'Universal Thermostatic Expansion Valve — TER Series (ODF Solder & SAE Flare)',
+        shortDesc: 'TER series universal thermostatic expansion valves provide reliable superheat control for commercial refrigeration and air conditioning systems. Available in two configurations — TER (ODF solder, internal equalization) for fixed installations and TERW (SAE flare, external equalization) for serviceable applications. Covers R22, R404A/R507, R134a and R410A refrigerants with capacity range from 1.5 TR to 13 TR.',
+        description: "• Universal application for commercial refrigeration and air conditioning.\n• Two connection options: TER (ODF solder, internal equalization) and TERW (SAE flare, external equalization).\n• Covers R22, R404A/R507, R134a and R410A refrigerants.\n• Capacity range: 1.5 TR to 13 TR per refrigerant variant.\n• Compact design suitable for small to medium commercial systems.\n• Internal equalization for single-circuit evaporators (TER).\n• External equalization for multi-circuit or high-pressure-drop evaporators (TERW).\n• Standard 1.5m capillary tube length.\n• Operating temperature: power element ≤100°C (N charge) / ≤150°C (K/MAH charge), valve body ≤110°C.",
+        features: [
+          'Dual configuration: TER (ODF/internal) and TERW (SAE/external)',
+          'Four refrigerant variants: TER22/TER22W (R22), TER404/TER404W (R404A/R507), TER134/TER134W (R134a), TER410/TER410W (R410A)',
+          'ODF solder connection for permanent installation (TER)',
+          'SAE flare connection for easy maintenance (TERW)',
+          'Internal equalization standard on TER models',
+          'External equalization standard on TERW models',
+          'Static superheat: 4K default (adjustable)',
+          'Max working pressure: 4.6 MPa (all variants)',
+          'Charge types: N / K / MAH (optional)',
+          'Factory-tested and individually packaged'
+        ],
+        availableModels: { headers: ['Model', 'Refrigerant', 'Capacity Range', 'Connection', 'Equalization'], rows: [
+          ['TER22-3 to TER22-11', 'R22/R407C', '3–11 TR (10–38 kW)', 'ODF Solder', 'Internal'],
+          ['TER22W-3 to TER22W-11', 'R22/R407C', '3–11 TR (10–38 kW)', 'SAE Flare', 'External'],
+          ['TER404-2 to TER404-7.5', 'R404A/R507', '2–7.5 TR (7–26 kW)', 'ODF Solder', 'Internal'],
+          ['TER404W-2 to TER404W-7.5', 'R404A/R507', '2–7.5 TR (7–26 kW)', 'SAE Flare', 'External'],
+          ['TER134-1.5 to TER134-7', 'R134a', '1.5–7 TR (6–24 kW)', 'ODF Solder', 'Internal'],
+          ['TER134W-1.5 to TER134W-7', 'R134a', '1.5–7 TR (6–24 kW)', 'SAE Flare', 'External'],
+          ['TER410-3.5 to TER410-13', 'R410A', '3.5–13 TR (12–45 kW)', 'ODF Solder', 'Internal'],
+          ['TER410W-3.5 to TER410W-13', 'R410A', '3.5–13 TR (12–45 kW)', 'SAE Flare', 'External']
+        ] },
+        specs: [
+          { label: 'Refrigerant', value: 'R22/R407C, R404A/R507, R134a, R410A' },
+          { label: 'Nominal Capacity', value: '1.5–13 TR (5–45 kW)' },
+          { label: 'Max Working Pressure', value: '4.6 MPa' },
+          { label: 'Connection Type', value: 'ODF Solder (TER) / SAE Flare (TERW)' },
+          { label: 'Inlet/Outlet Size', value: '3/8"–7/8" (varies by model)' },
+          { label: 'Equalization', value: 'Internal (TER) / External (TERW)' },
+          { label: 'Static Superheat', value: '4K (default, adjustable)' },
+          { label: 'Charge Type', value: 'N / K / MAH (optional)' },
+          { label: 'Capillary Length', value: '1.5m' },
+          { label: 'Power Element Temp', value: '≤100°C (N) / ≤150°C (K/MAH)' },
+          { label: 'Valve Body Temp', value: '≤110°C' },
+          { label: 'Evaporating Temp Range', value: '-40°C to +10°C (N charge)' }
+        ],
+        applications: 'Commercial refrigeration and air conditioning, small to medium systems'
+      },
+      {
+        id: 'tx-3', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'tf-replaceable-orifice', images: ['/images/txv-placeholder.svg'],
+        metaTitle: 'Thermostatic Expansion Valve Replaceable Orifice | TF Series | HVACR NET',
+        metaDescription: 'HVACR NET TF universal TXV with replaceable orifice for R22/R404A/R134a/R410A, 0.18–5.6 TR, SAE flare/ODF, internal/external equalization. 8 models + 7 orifice sizes. MOQ 1 pc.',
+        name: 'Universal Thermostatic Expansion Valve, Replaceable Orifice — TF Series',
+        shortDesc: 'TF series thermostatic expansion valves feature replaceable orifice assemblies, allowing capacity adjustment without replacing the entire valve body. Ideal for service technicians and OEMs who need flexibility across multiple refrigerants and capacities. Covers R22, R404A/R507, R134a and R410A with capacity range from 0.18 TR to 5.6 TR using seven interchangeable orifice sizes (0#–6#).',
+        description: "• Replaceable orifice design for capacity flexibility and field serviceability.\n• A single valve body serves multiple refrigerants with different orifice sizes.\n• Covers R22, R404A/R507, R134a and R410A refrigerants.\n• Capacity range: 0.18 TR to 5.6 TR (varies by refrigerant and orifice size).\n• Two configurations: TF (SAE flare or ODF, internal equalization) and TFW (SAE flare, external equalization).\n• Seven interchangeable orifice sizes: 0# through 6#.\n• Standard 1.5m capillary tube length.\n• Operating temperature: power element ≤100°C (N charge) / ≤150°C (K/MAH charge), valve body ≤110°C.",
+        features: [
+          'Replaceable orifice assembly (0#–6#) for capacity adjustment',
+          'Four refrigerant variants: TF22/TF22W (R22), TF134/TF134W (R134a), TF404/TF404W (R404A/R507), TF410/TF410W (R410A)',
+          'Internal equalization standard on TF models',
+          'External equalization standard on TFW models',
+          'SAE flare or ODF connection options',
+          'Static superheat: 4K default (adjustable)',
+          'Max working pressure: 3.4–4.6 MPa (varies by refrigerant)',
+          'Charge types: N / NM / NL / B (optional)',
+          'Orifice sizes: 0# (0.25–1.48 TR R22) to 6# (2.05–5.60 TR R22)',
+          'Factory-tested and individually packaged'
+        ],
+        availableModels: { headers: ['Model', 'Refrigerant', 'Capacity Range', 'Connection', 'Equalization'], rows: [
+          ['TF22 / TF22W', 'R22/R407C', '0.25–5.60 TR (0.90–19.70 kW)', 'SAE Flare / ODF', 'Internal / External'],
+          ['TF134 / TF134W', 'R134a', '0.19–2.90 TR (0.68–10.10 kW)', 'SAE Flare / ODF', 'Internal / External'],
+          ['TF404 / TF404W', 'R404A/R507', '0.18–4.40 TR (0.64–15.50 kW)', 'SAE Flare / ODF', 'Internal / External'],
+          ['TF410 / TF410W', 'R410A', '0.35–5.39 TR (1.26–18.79 kW)', 'SAE Flare / ODF', 'Internal / External']
+        ] },
+        specs: [
+          { label: 'Refrigerant', value: 'R22/R407C, R404A/R507, R134a, R410A' },
+          { label: 'Nominal Capacity', value: '0.18–5.60 TR (0.64–19.72 kW)' },
+          { label: 'Max Working Pressure', value: '3.4–4.6 MPa (varies by refrigerant)' },
+          { label: 'Connection Type', value: 'SAE Flare / ODF' },
+          { label: 'Equalization', value: 'Internal (TF) / External (TFW)' },
+          { label: 'Static Superheat', value: '4K (default, adjustable)' },
+          { label: 'Charge Type', value: 'N / NM / NL / B (optional)' },
+          { label: 'Orifice Sizes', value: '0#–6# (7 sizes)' },
+          { label: 'Capillary Length', value: '1.5m' },
+          { label: 'Power Element Temp', value: '≤100°C (N) / ≤150°C (K/MAH)' },
+          { label: 'Valve Body Temp', value: '≤110°C' },
+          { label: 'Evaporating Temp Range', value: '-40°C to +10°C (N charge)' }
+        ],
+        applications: 'Commercial refrigeration and air conditioning, service technicians, OEM applications'
+      },
+      {
+        id: 'tx-4', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'tf-core-replaceable-orifice', images: ['/images/txv-placeholder.svg'],
+        metaTitle: 'Replaceable TXV Orifice | TF Series Valve Core | HVACR NET',
+        metaDescription: 'HVACR NET replaceable TXV orifice for TF series expansion valves, 7 sizes (0#–6#), universal refrigerant compatibility. 7 models. MOQ 1 pc.',
+        name: 'Replaceable TXV Orifice — TF Series Valve Core (0#–6#)',
+        shortDesc: 'Replacement orifice assemblies for TF series thermostatic expansion valves. Seven sizes (0# through 6#) allow precise capacity matching across R22, R404A/R507, R134a and R410A refrigerants. Essential for service technicians and OEMs who need to adjust valve capacity without replacing the entire valve body.',
+        description: "• Replacement orifice assembly for TF series TXV valve bodies.\n• Seven sizes: 0# through 6# for precise capacity selection.\n• Universal compatibility with TF22, TF134, TF404 and TF410 valve bodies.\n• Capacity range: 0.25 TR to 5.60 TR (R22 reference).\n• Allows field capacity adjustment without valve body replacement.\n• Reduces inventory costs for service organizations.\n• Factory-calibrated and individually packaged.",
+        features: [
+          '7 orifice sizes: 0#, 1#, 2#, 3#, 4#, 5#, 6#',
+          'Universal refrigerant compatibility (R22, R404A/R507, R134a, R410A)',
+          'Capacity varies by refrigerant type and orifice size',
+          'Easy field replacement with standard tools',
+          'Reduces spare parts inventory requirements',
+          'Factory-tested and calibrated',
+          'Individually packaged for protection'
+        ],
+        availableModels: { headers: ['Model', 'Orifice Size', 'R22 Capacity Range'], rows: [
+          ['TXV-Core-0#', '0#', '0.25–1.48 TR (0.90–5.20 kW)'],
+          ['TXV-Core-1#', '1#', '0.35–2.10 TR (1.24–7.40 kW)'],
+          ['TXV-Core-2#', '2#', '0.50–3.03 TR (1.76–10.67 kW)'],
+          ['TXV-Core-3#', '3#', '0.71–4.31 TR (2.50–15.18 kW)'],
+          ['TXV-Core-4#', '4#', '1.01–5.60 TR (3.55–19.72 kW)'],
+          ['TXV-Core-5#', '5#', '1.44–5.60 TR (5.07–19.72 kW)'],
+          ['TXV-Core-6#', '6#', '2.05–5.60 TR (7.22–19.72 kW)']
+        ] },
+        specs: [
+          { label: 'Compatibility', value: 'TF series TXV valve bodies' },
+          { label: 'Orifice Sizes', value: '0#–6# (7 sizes)' },
+          { label: 'Refrigerant Compatibility', value: 'R22, R404A/R507, R134a, R410A' },
+          { label: 'Capacity Range (R22)', value: '0.25–5.60 TR (0.90–19.72 kW)' },
+          { label: 'Material', value: 'Brass / stainless steel (manufacturer specification)' },
+          { label: 'Replacement Interval', value: 'As needed based on system requirements' },
+          { label: 'Installation', value: 'Field-replaceable with standard tools' }
+        ],
+        applications: 'Service technicians, OEMs, refrigeration and air conditioning maintenance'
+      }
     ],
   },
   {

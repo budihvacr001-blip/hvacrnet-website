@@ -1,0 +1,314 @@
+# 热力膨胀阀_SEO内容_5Products
+
+## Product 1: Heavy-Duty Thermostatic Expansion Valve — TRF Series (SAE Flare)
+
+**Meta Title:** Heavy-Duty Thermostatic Expansion Valve | TRF Series | HVACR NET
+**Meta Description:** HVACR NET TRF heavy-duty TXV for R22/R404A/R134a/R410A, 1.5–52 TR, SAE flare, external equalization. 82 models. MOQ 1 pc.
+
+### Heavy-Duty Thermostatic Expansion Valve — TRF Series
+
+TRF series heavy-duty thermostatic expansion valves are engineered for high-capacity commercial and industrial refrigeration systems. Available for R22, R404A/R507, R134a, and R410A refrigerants with capacity range from 1.5 TR to 52 TR. SAE flare connections with external equalization provide reliable performance in demanding applications including cold storage, industrial refrigeration, and large commercial systems.
+
+### Product Description
+
+- Designed for high-capacity commercial and industrial refrigeration applications
+- Covers R22, R404A/R507, R134a, and R410A refrigerants with dedicated charge formulations
+- Capacity range: 1.5 TR (R134a) to 52 TR (R410A)
+- SAE flare connection for easy installation and maintenance
+- External equalization for systems with significant pressure drop across evaporator
+- Replaceable power element for field serviceability
+- Standard 1.5m capillary tube length
+- Operating temperature: Power element ≤100°C (N charge) / ≤150°C (K/MAH charge), Valve body ≤110°C
+
+### Key Features
+
+- Heavy-duty construction for industrial refrigeration applications
+- Four refrigerant variants: TRF22W (R22), TRF404W (R404A/R507), TRF134W (R134a), TRF410W (R410A)
+- External equalization standard for all models
+- SAE flare inlet/outlet connections (3/8" to 1-1/8")
+- Static superheat: 4K default (adjustable)
+- Max working pressure: 4.6 MPa (all variants)
+- Charge types: N / K / MAH (optional) for temperature range flexibility
+- Bi-directional flow capability for heat pump applications (TQR variant available separately)
+- Compatible with HCFC, HFC, and HFO refrigerants
+- Factory-tested and individually packaged
+
+### Available Models
+
+| Model | Refrigerant | Capacity Range | Connection | Equalization |
+|-------|-------------|----------------|------------|--------------|
+| TRF22W-3-3-5 to TRF22W-42-9-11 | R22/R407C | 3–42 TR (10–148 kW) | SAE Flare | External |
+| TRF404W-2-3-5 to TRF404W-26-9-11 | R404A/R507 | 2–26 TR (7–92 kW) | SAE Flare | External |
+| TRF134W-1.5-3-5 to TRF134W-25-9-11 | R134a | 1.5–25 TR (6–87 kW) | SAE Flare | External |
+| TRF410W-3.5-3-5 to TRF410W-52-9-11 | R410A | 3.5–52 TR (12–182 kW) | SAE Flare | External |
+
+### Technical Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Refrigerant | R22/R407C, R404A/R507, R134a, R410A |
+| Nominal Capacity | 1.5–52 TR (5–182 kW) |
+| Max Working Pressure | 4.6 MPa |
+| Connection Type | SAE Flare |
+| Inlet/Outlet Size | 3/8"–1-1/8" (varies by model) |
+| Equalization | External |
+| Static Superheat | 4K (default, adjustable) |
+| Charge Type | N / K / MAH (optional) |
+| Capillary Length | 1.5m |
+| Power Element Temp | ≤100°C (N) / ≤150°C (K/MAH) |
+| Valve Body Temp | ≤110°C |
+| Evaporating Temp Range | -40°C to +10°C (N charge) |
+
+---
+
+## Product 2: Universal Thermostatic Expansion Valve — TER Series (ODF Solder & SAE Flare)
+
+**Meta Title:** Universal Thermostatic Expansion Valve | TER Series | HVACR NET
+**Meta Description:** HVACR NET TER universal TXV for R22/R404A/R134a/R410A, 1.5–13 TR, ODF solder & SAE flare, internal/external equalization. 37 models. MOQ 1 pc.
+
+### Universal Thermostatic Expansion Valve — TER Series
+
+TER series universal thermostatic expansion valves provide reliable superheat control for commercial refrigeration and air conditioning systems. Available in two configurations: TER (ODF solder, internal equalization) for fixed installations and TERW (SAE flare, external equalization) for serviceable applications. Covers R22, R404A/R507, R134a, and R410A refrigerants with capacity range from 1.5 TR to 13 TR.
+
+### Product Description
+
+- Universal application for commercial refrigeration and air conditioning
+- Two connection options: TER (ODF solder, internal equalization) and TERW (SAE flare, external equalization)
+- Covers R22, R404A/R507, R134a, and R410A refrigerants
+- Capacity range: 1.5 TR to 13 TR per refrigerant variant
+- Compact design suitable for small to medium commercial systems
+- Internal equalization for single-circuit evaporators (TER)
+- External equalization for multi-circuit or high-pressure-drop evaporators (TERW)
+- Standard 1.5m capillary tube length
+- Operating temperature: Power element ≤100°C (N charge) / ≤150°C (K/MAH charge), Valve body ≤110°C
+
+### Key Features
+
+- Dual configuration: TER (ODF/internal) and TERW (SAE/external)
+- Four refrigerant variants: TER22/TER22W (R22), TER404/TER404W (R404A/R507), TER134/TER134W (R134a), TER410/TER410W (R410A)
+- ODF solder connection for permanent installation (TER)
+- SAE flare connection for easy maintenance (TERW)
+- Internal equalization standard on TER models
+- External equalization standard on TERW models
+- Static superheat: 4K default (adjustable)
+- Max working pressure: 4.6 MPa (all variants)
+- Charge types: N / K / MAH (optional)
+- Factory-tested and individually packaged
+
+### Available Models
+
+| Model | Refrigerant | Capacity Range | Connection | Equalization |
+|-------|-------------|----------------|------------|--------------|
+| TER22-3 to TER22-11 | R22/R407C | 3–11 TR (10–38 kW) | ODF Solder | Internal |
+| TER22W-3 to TER22W-11 | R22/R407C | 3–11 TR (10–38 kW) | SAE Flare | External |
+| TER404-2 to TER404-7.5 | R404A/R507 | 2–7.5 TR (7–26 kW) | ODF Solder | Internal |
+| TER404W-2 to TER404W-7.5 | R404A/R507 | 2–7.5 TR (7–26 kW) | SAE Flare | External |
+| TER134-1.5 to TER134-7 | R134a | 1.5–7 TR (6–24 kW) | ODF Solder | Internal |
+| TER134W-1.5 to TER134W-7 | R134a | 1.5–7 TR (6–24 kW) | SAE Flare | External |
+| TER410-3.5 to TER410-13 | R410A | 3.5–13 TR (12–45 kW) | ODF Solder | Internal |
+| TER410W-3.5 to TER410W-13 | R410A | 3.5–13 TR (12–45 kW) | SAE Flare | External |
+
+### Technical Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Refrigerant | R22/R407C, R404A/R507, R134a, R410A |
+| Nominal Capacity | 1.5–13 TR (5–45 kW) |
+| Max Working Pressure | 4.6 MPa |
+| Connection Type | ODF Solder (TER) / SAE Flare (TERW) |
+| Inlet/Outlet Size | 3/8"–7/8" (varies by model) |
+| Equalization | Internal (TER) / External (TERW) |
+| Static Superheat | 4K (default, adjustable) |
+| Charge Type | N / K / MAH (optional) |
+| Capillary Length | 1.5m |
+| Power Element Temp | ≤100°C (N) / ≤150°C (K/MAH) |
+| Valve Body Temp | ≤110°C |
+| Evaporating Temp Range | -40°C to +10°C (N charge) |
+
+---
+
+## Product 3: Universal Thermostatic Expansion Valve with Replaceable Orifice — TF Series
+
+**Meta Title:** Thermostatic Expansion Valve Replaceable Orifice | TF Series | HVACR NET
+**Meta Description:** HVACR NET TF universal TXV with replaceable orifice for R22/R404A/R134a/R410A, 0.18–5.6 TR, SAE flare/ODF, internal/external equalization. 8 models + 7 orifice sizes. MOQ 1 pc.
+
+### Universal Thermostatic Expansion Valve with Replaceable Orifice — TF Series
+
+TF series thermostatic expansion valves feature replaceable orifice assemblies, allowing capacity adjustment without replacing the entire valve body. Ideal for service technicians and OEMs who need flexibility across multiple refrigerants and capacities. Covers R22, R404A/R507, R134a, and R410A with capacity range from 0.18 TR to 5.6 TR using seven interchangeable orifice sizes (0#–6#).
+
+### Product Description
+
+- Replaceable orifice design for capacity flexibility and field serviceability
+- Single valve body serves multiple refrigerants with different orifice sizes
+- Covers R22, R404A/R507, R134a, and R410A refrigerants
+- Capacity range: 0.18 TR to 5.6 TR (varies by refrigerant and orifice size)
+- Two configurations: TF (SAE flare or ODF, internal equalization) and TFW (SAE flare, external equalization)
+- Seven interchangeable orifice sizes: 0# through 6#
+- Standard 1.5m capillary tube length
+- Operating temperature: Power element ≤100°C (N charge) / ≤150°C (K/MAH charge), Valve body ≤110°C
+
+### Key Features
+
+- Replaceable orifice assembly (0#–6#) for capacity adjustment
+- Four refrigerant variants: TF22/TF22W (R22), TF134/TF134W (R134a), TF404/TF404W (R404A/R507), TF410/TF410W (R410A)
+- Internal equalization standard on TF models
+- External equalization standard on TFW models
+- SAE flare or ODF connection options
+- Static superheat: 4K default (adjustable)
+- Max working pressure: 3.4–4.6 MPa (varies by refrigerant)
+- Charge types: N / NM / NL / B (optional)
+- Orifice sizes: 0# (0.25–1.48 TR R22) to 6# (2.05–5.60 TR R22)
+- Factory-tested and individually packaged
+
+### Available Models
+
+| Model | Refrigerant | Capacity Range | Connection | Equalization |
+|-------|-------------|----------------|------------|--------------|
+| TF22 / TF22W | R22/R407C | 0.25–5.60 TR (0.90–19.70 kW) | SAE Flare / ODF | Internal / External |
+| TF134 / TF134W | R134a | 0.19–2.90 TR (0.68–10.10 kW) | SAE Flare / ODF | Internal / External |
+| TF404 / TF404W | R404A/R507 | 0.18–4.40 TR (0.64–15.50 kW) | SAE Flare / ODF | Internal / External |
+| TF410 / TF410W | R410A | 0.35–5.39 TR (1.26–18.79 kW) | SAE Flare / ODF | Internal / External |
+
+#### Replaceable Orifice Sizes
+
+| Orifice No. | R22 Capacity Range |
+|-------------|-------------------|
+| 0# | 0.25–1.48 TR (0.90–5.20 kW) |
+| 1# | 0.35–2.10 TR (1.24–7.40 kW) |
+| 2# | 0.50–3.03 TR (1.76–10.67 kW) |
+| 3# | 0.71–4.31 TR (2.50–15.18 kW) |
+| 4# | 1.01–5.60 TR (3.55–19.72 kW) |
+| 5# | 1.44–5.60 TR (5.07–19.72 kW) |
+| 6# | 2.05–5.60 TR (7.22–19.72 kW) |
+
+### Technical Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Refrigerant | R22/R407C, R404A/R507, R134a, R410A |
+| Nominal Capacity | 0.18–5.60 TR (0.64–19.72 kW) |
+| Max Working Pressure | 3.4–4.6 MPa (varies by refrigerant) |
+| Connection Type | SAE Flare / ODF |
+| Equalization | Internal (TF) / External (TFW) |
+| Static Superheat | 4K (default, adjustable) |
+| Charge Type | N / NM / NL / B (optional) |
+| Orifice Sizes | 0#–6# (7 sizes) |
+| Capillary Length | 1.5m |
+| Power Element Temp | ≤100°C (N) / ≤150°C (K/MAH) |
+| Valve Body Temp | ≤110°C |
+| Evaporating Temp Range | -40°C to +10°C (N charge) |
+
+---
+
+
+## Product 4: Replaceable TXV Orifice — For TF Series
+
+**Meta Title:** Replaceable TXV Orifice | TF Series Valve Core | HVACR NET
+**Meta Description:** HVACR NET replaceable TXV orifice for TF series expansion valves, 7 sizes (0#–6#), universal refrigerant compatibility. 7 models. MOQ 1 pc.
+
+### Replaceable TXV Orifice — For TF Series
+
+Replacement orifice assemblies for TF series thermostatic expansion valves. Seven sizes (0# through 6#) allow precise capacity matching across R22, R404A/R507, R134a, and R410A refrigerants. Essential for service technicians and OEMs who need to adjust valve capacity without replacing the entire valve body.
+
+### Product Description
+
+- Replacement orifice assembly for TF series TXV valve bodies
+- Seven sizes: 0# through 6# for precise capacity selection
+- Universal compatibility with TF22, TF134, TF404, TF410 valve bodies
+- Capacity range: 0.25 TR to 5.60 TR (R22 reference)
+- Allows field capacity adjustment without valve body replacement
+- Reduces inventory costs for service organizations
+- Factory-calibrated and individually packaged
+
+### Key Features
+
+- 7 orifice sizes: 0#, 1#, 2#, 3#, 4#, 5#, 6#
+- Universal refrigerant compatibility (R22, R404A/R507, R134a, R410A)
+- Capacity varies by refrigerant type and orifice size
+- Easy field replacement with standard tools
+- Reduces spare parts inventory requirements
+- Factory-tested and calibrated
+- Individually packaged for protection
+
+### Available Models
+
+| Model | Orifice Size | R22 Capacity Range |
+|-------|--------------|-------------------|
+| TXV-Core-0# | 0# | 0.25–1.48 TR (0.90–5.20 kW) |
+| TXV-Core-1# | 1# | 0.35–2.10 TR (1.24–7.40 kW) |
+| TXV-Core-2# | 2# | 0.50–3.03 TR (1.76–10.67 kW) |
+| TXV-Core-3# | 3# | 0.71–4.31 TR (2.50–15.18 kW) |
+| TXV-Core-4# | 4# | 1.01–5.60 TR (3.55–19.72 kW) |
+| TXV-Core-5# | 5# | 1.44–5.60 TR (5.07–19.72 kW) |
+| TXV-Core-6# | 6# | 2.05–5.60 TR (7.22–19.72 kW) |
+
+### Technical Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Compatibility | TF series TXV valve bodies |
+| Orifice Sizes | 0#–6# (7 sizes) |
+| Refrigerant Compatibility | R22, R404A/R507, R134a, R410A |
+| Capacity Range (R22) | 0.25–5.60 TR (0.90–19.72 kW) |
+| Material | Brass/stainless steel (manufacturer specification) |
+| Replacement Interval | As needed based on system requirements |
+| Installation | Field-replaceable with standard tools |
+
+---
+
+# INTERNAL — DO NOT UPLOAD TO WEBSITE
+
+## 全产品横向对比总表
+
+| # | Product | Series | Refrigerant | Capacity Range | Connection | Equalization | Orifice | Models |
+|---|---------|--------|-------------|----------------|------------|--------------|---------|--------|
+| 1 | Heavy-Duty TXV (SAE Flare) | TRF | R22/R404A/R134a/R410A | 1.5–52 TR | SAE Flare | External | Fixed | 82 |
+| 2 | Universal TXV (ODF/SAE) | TER | R22/R404A/R134a/R410A | 1.5–13 TR | ODF/SAE | Internal/External | Fixed | 37 |
+| 3 | Universal TXV Replaceable Orifice | TF | R22/R404A/R134a/R410A | 0.18–5.6 TR | SAE/ODF | Internal/External | Replaceable (0#–6#) | 8 |
+| 4 | Bi-Directional TXV (Heat Pump) | TQR | R134a | 1.5–10 TR | SAE Flare | External | Fixed | 8 |
+| 5 | Replaceable TXV Orifice | TF-Core | Universal | 0.25–5.6 TR (R22) | N/A | N/A | 0#–6# | 7 |
+
+## SEO Keywords
+
+**Heavy-Duty TXV (TRF):**
+1. heavy duty thermostatic expansion valve
+2. industrial TXV valve
+3. large capacity expansion valve
+4. SAE flare TXV
+5. high capacity refrigeration valve
+
+**Universal TXV (TER):**
+1. universal thermostatic expansion valve
+2. commercial TXV valve
+3. ODF solder expansion valve
+4. SAE flare TXV
+5. small capacity thermostatic valve
+
+**Replaceable Orifice TXV (TF):**
+1. thermostatic expansion valve replaceable orifice
+2. adjustable capacity TXV
+3. TF series expansion valve
+4. serviceable TXV valve
+5. multi-refrigerant expansion valve
+
+**Bi-Directional TXV (TQR):**
+1. bi-directional thermostatic expansion valve
+2. heat pump TXV valve
+3. R134a heat pump expansion valve
+4. reversible flow TXV
+5. heat pump refrigerant valve
+
+**TXV Orifice:**
+1. replaceable TXV orifice
+2. thermostatic expansion valve orifice
+3. TXV valve core
+4. TF series orifice assembly
+5. adjustable TXV capacity orifice
+
+## GEO Optimization Notes
+
+1. **R22 Phase-out Markets:** Emphasize R404A/R410A variants for regions with R22 restrictions (EU, North America). TRF404W and TER404 series are key products.
+2. **R410A High-Pressure Markets:** Highlight TRF410W and TER410 series for regions transitioning to R410A (Asia, Middle East). Note 4.6 MPa MWP rating.
+3. **Heat Pump Growth Markets:** Promote TQR134W series for regions with growing heat pump adoption (Europe, North America, China). Bi-directional capability is key selling point.
+4. **Service & Maintenance Markets:** Emphasize TF series with replaceable orifice for regions with strong service technician networks (North America, Europe). Reduces inventory costs.
+5. **Developing Markets:** TER series offers cost-effective solution for small to medium commercial applications. Both ODF (TER) and SAE (TERW) options cover different installation preferences.

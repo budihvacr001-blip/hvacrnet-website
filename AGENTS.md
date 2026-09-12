@@ -32,6 +32,9 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - sitemap.xml 在构建时由 `scripts/generate-sitemap.mjs` 自动生成，读取 `src/data/products.ts` 中的分类和产品数据
 - 每个产品页/类目页的 title 和 meta description 由 Products.tsx 动态生成，格式：`产品名 - 类目 | HVACR NET HVAC/R Parts Supplier from China`
 - 产品数据中的 `metaTitle` 和 `metaDescription` 字段用于产品详情页的 SEO
+- Valves 下的二级目录顺序（侧边栏序号动态按非 overview 项 index 生成）：01 Solenoid → 02 Ball Valves → 03 Thermostatic Expansion Valve → 04 Sight Glasses → 05+ 其余
+- Thermostatic Expansion Valve 二级目录（`thermal-expansion-valves`）下含 4 个产品（three-level 结构，third categories：`trf-heavy-duty-txv` TRF / `ter-universal-txv` TER / `tf-replaceable-orifice` TF / `tf-core-replaceable-orifice` TF-Core），对应产品 id `tx-1`~`tx-4`
+- 该二级目录 SEO 内容来自 `assets/# 热力膨胀阀_SEO内容_5Products.txt`（4 个正式产品 + 内部对比表；对比总表/TQR/SEO Keywords 标注 `INTERNAL — DO NOT UPLOAD`，未上线）
 - `categoryPositioning` 对象提供各类目的全球定位语，用于类目页的 meta description
 - canonical 标签由 `CanonicalUpdater` 组件和 `SEO` 组件共同管理，统一指向 `https://www.hvacrnet.com`
 - 301 重定向：`hvacrnet.com` → `www.hvacrnet.com`（通过 server.js 中间件实现，读取 `X-Forwarded-Host` 头）
@@ -47,4 +50,5 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 
 ## 常见问题和预防
 - 产品图片暂用占位图，后续替换
+- TXV 系列（tx-1~tx-4）暂用通用占位图 `public/images/txv-placeholder.svg`，等待用户提供 4 个产品的实物图片后替换
 - 询盘表单前端提交+弹窗确认，无后端
