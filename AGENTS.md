@@ -50,5 +50,5 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 
 ## 常见问题和预防
 - 产品图片暂用占位图，后续替换
-- TXV 系列（tx-1~tx-4）暂用通用占位图 `public/images/txv-placeholder.svg`，等待用户提供 4 个产品的实物图片后替换
+- TXV 系列（tx-1~tx-4）图片已替换为实物图：tx-1 TRF `tx-trf-01.png`、tx-2 TER `tx-ter-01.png`、tx-3 TF 内平衡 `tx-tf-01.png` + 外平衡 `tx-tfw-02.png`（两张）、tx-4 TF-Core `tx-core-01.png`（均位于 `public/images/`）
 - 询盘表单前端提交+弹窗确认，无后端

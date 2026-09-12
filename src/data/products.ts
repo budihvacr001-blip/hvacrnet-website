@@ -1454,7 +1454,7 @@ export const categories: Category[] = [
       { id: 'sg-4', categoryId: 'valves', subCategoryId: 'sight-glasses', thirdCategoryId: 'moisture-indicator-npt', published: false, images: [], metaTitle: "Moisture Indicator Sight Glass, NPT Threaded | Refrigeration", metaDescription: "NPT threaded moisture indicator sight glass for refrigeration. Content pending supplier confirmation.", name: "Moisture Indicator Sight Glass — NPT Threaded (SGN-NPT Series)", shortDesc: "NPT threaded moisture indicator sight glass. Content pending supplier confirmation.", description: "Pending supplier confirmation.", features: [], availableModels: { headers: ["Model", "Port Size", "Overall Size"], rows: [] }, specs: [], applications: 'Pending supplier confirmation.' },
       { id: 'sg-5', categoryId: 'valves', subCategoryId: 'sight-glasses', thirdCategoryId: 'oil-level-g-thread', published: false, images: [], metaTitle: "Oil Level Sight Glass, G Thread | Refrigeration", metaDescription: "Oil level sight glass with G thread connection. Content pending supplier confirmation.", name: "Oil Level Sight Glass — G Thread Connection (SGR Series)", shortDesc: "Oil level sight glass with G thread connection. Content pending supplier confirmation.", description: "Pending supplier confirmation.", features: [], availableModels: { headers: ["Model", "Port Size", "Overall Size"], rows: [] }, specs: [], applications: 'Pending supplier confirmation.' },
       {
-        id: 'tx-1', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'trf-heavy-duty-txv', images: ['/images/txv-placeholder.svg'],
+        id: 'tx-1', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'trf-heavy-duty-txv', images: ['/images/tx-trf-01.png'],
         metaTitle: 'Heavy-Duty Thermostatic Expansion Valve | TRF Series | HVACR NET',
         metaDescription: 'HVACR NET TRF heavy-duty TXV for R22/R404A/R134a/R410A, 1.5–52 TR, SAE flare, external equalization. 82 models. MOQ 1 pc.',
         name: 'Heavy-Duty Thermostatic Expansion Valve — TRF Series (SAE Flare)',
@@ -1495,7 +1495,7 @@ export const categories: Category[] = [
         applications: 'Commercial and industrial refrigeration, cold storage, large commercial systems'
       },
       {
-        id: 'tx-2', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'ter-universal-txv', images: ['/images/txv-placeholder.svg'],
+        id: 'tx-2', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'ter-universal-txv', images: ['/images/tx-ter-01.png'],
         metaTitle: 'Universal Thermostatic Expansion Valve | TER Series | HVACR NET',
         metaDescription: 'HVACR NET TER universal TXV for R22/R404A/R134a/R410A, 1.5–13 TR, ODF solder & SAE flare, internal/external equalization. 37 models. MOQ 1 pc.',
         name: 'Universal Thermostatic Expansion Valve — TER Series (ODF Solder & SAE Flare)',
@@ -1540,7 +1540,7 @@ export const categories: Category[] = [
         applications: 'Commercial refrigeration and air conditioning, small to medium systems'
       },
       {
-        id: 'tx-3', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'tf-replaceable-orifice', images: ['/images/txv-placeholder.svg'],
+        id: 'tx-3', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'tf-replaceable-orifice', images: ['/images/tx-tf-01.png', '/images/tx-tfw-02.png'],
         metaTitle: 'Thermostatic Expansion Valve Replaceable Orifice | TF Series | HVACR NET',
         metaDescription: 'HVACR NET TF universal TXV with replaceable orifice for R22/R404A/R134a/R410A, 0.18–5.6 TR, SAE flare/ODF, internal/external equalization. 8 models + 7 orifice sizes. MOQ 1 pc.',
         name: 'Universal Thermostatic Expansion Valve, Replaceable Orifice — TF Series',
@@ -1581,7 +1581,7 @@ export const categories: Category[] = [
         applications: 'Commercial refrigeration and air conditioning, service technicians, OEM applications'
       },
       {
-        id: 'tx-4', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'tf-core-replaceable-orifice', images: ['/images/txv-placeholder.svg'],
+        id: 'tx-4', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'tf-core-replaceable-orifice', images: ['/images/tx-core-01.png'],
         metaTitle: 'Replaceable TXV Orifice | TF Series Valve Core | HVACR NET',
         metaDescription: 'HVACR NET replaceable TXV orifice for TF series expansion valves, 7 sizes (0#–6#), universal refrigerant compatibility. 7 models. MOQ 1 pc.',
         name: 'Replaceable TXV Orifice — TF Series Valve Core (0#–6#)',
