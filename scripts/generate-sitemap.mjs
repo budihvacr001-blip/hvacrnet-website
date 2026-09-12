@@ -1,6 +1,6 @@
 import { writeFileSync, statSync } from 'fs'
 import { execSync } from 'child_process'
-import { categories, categoryLandingContent } from '../src/data/products.ts'
+import { categories } from '../src/data/products.ts'
 
 const BASE_URL = 'https://www.hvacrnet.com'
 const DIST_DIR = new URL('../dist/', import.meta.url).pathname
@@ -69,16 +69,6 @@ function buildRoutes() {
       routes.push({ url: `/products/${cat.id}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.8' })
     }
     
-    // Landing/content overview subcategories (e.g. TXV selection guide) — include if they have landing content
-    for (const sub of cat.subCategories || []) {
-      if (sub?.isOverview && isManuallyPublished(sub)) {
-        const hasLanding = categoryLandingContent.some((c) => c.categoryId === cat.id && c.subCategoryId === sub.id)
-        if (hasLanding) {
-          routes.push({ url: `/products/${cat.id}/${sub.id}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.7' })
-        }
-      }
-    }
-
     // If no published products, skip entirely
     if (publishedProducts.length === 0) continue
 
