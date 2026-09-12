@@ -37,6 +37,7 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - 该二级目录 SEO 内容来自 `assets/# 热力膨胀阀_SEO内容_5Products.txt`（4 个正式产品 + 内部对比表；对比总表/TQR/SEO Keywords 标注 `INTERNAL — DO NOT UPLOAD`，未上线）
 - Thermostatic Expansion Valve 下含一个 Category Overview 子项 `thermal-expansion-valves-overview`（isOverview，侧边栏"Category Overview"人，CSR 渲染、不入 sitemap，与 ball-valves-overview 一致），内容来自该二级目录的 categoryPage 内容：自定义 metaTitle/metaDescription "Refrigeration Thermostatic Expansion Valves | Types & Selection Guide" + `txvComparison` 对比表（4 行 TRF/TER/TF/TF-Core，产品名列链接到 `/products/valves/thermal-expansion-valves#<thirdCategoryId>`，与 ball-valves-overview 一致，靠 comparison 页的 getProductLink 逐行映射 products 生成）。overview 的自定义 meta 由 `CategoryLandingContent` 的可选字段 metaTitle/metaDescription 提供，`CategoryLanding` 优先使用；howToChoose/FAQ 为空时不渲染该区块
 - `categoryPositioning` 对象提供各类目的全球定位语，用于类目页的 meta description
+- 约定（所有分类 overview 通用）：每个有 comparison 对比表的 Category Overview，产品名列必须通过 `getProductLink`（comparison 页逐行映射传入的 `products`）链接到产品（`/<category>/<subCategory>#<thirdCategoryId>`）；新目录 overview 渲染时要把 `products` 传成 `categoryProducts`，切勿传空数组，否则产品名列变纯文本
 - canonical 标签由 `CanonicalUpdater` 组件和 `SEO` 组件共同管理，统一指向 `https://www.hvacrnet.com`
 - 301 重定向：`hvacrnet.com` → `www.hvacrnet.com`（通过 server.js 中间件实现，读取 `X-Forwarded-Host` 头）
 
