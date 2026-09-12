@@ -95,8 +95,8 @@ export default function CategoryLanding({
   }
 
   // SEO meta
-  const seoTitle = `${subCategoryName || categoryName} for Refrigeration & HVAC | HVACR NET Supplier`
-  const seoDescription = content.introduction.substring(0, 150).trim() + '...'
+  const seoTitle = content.metaTitle || `${subCategoryName || categoryName} for Refrigeration & HVAC | HVACR NET Supplier`
+  const seoDescription = content.metaDescription || (content.introduction.substring(0, 150).trim() + '...')
 
   return (
     <>
@@ -178,6 +178,7 @@ export default function CategoryLanding({
         </section>
 
         {/* How to Choose */}
+        {content.howToChoose.length > 0 && (
         <section className="mb-12">
           <h2 className="text-xl font-bold text-navy mb-6">How to Choose the Right {subCategoryName || categoryName}</h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -194,8 +195,10 @@ export default function CategoryLanding({
             ))}
           </div>
         </section>
+        )}
 
         {/* FAQ */}
+        {content.faq.length > 0 && (
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-navy mb-6">Frequently Asked Questions</h2>
           <div className="space-y-4">
@@ -215,6 +218,7 @@ export default function CategoryLanding({
             ))}
           </div>
         </section>
+        )}
 
         {/* CTA */}
         <section className="bg-navy rounded-xl p-8 text-center mb-10">

@@ -232,6 +232,18 @@ export const sightGlassesComparison = {
   ],
 };
 
+export const txvComparison = {
+  title: "Thermostatic Expansion Valve Series Comparison",
+  subtitle: "Thermostatic expansion valve series compared by refrigerant, capacity range, connection type, equalization, orifice, and available models.",
+  headers: ["#", "Product", "Series", "Refrigerant", "Capacity Range", "Connection", "Equalization", "Orifice", "Models"],
+  rows: [
+    ["1", "Heavy-Duty TXV (SAE Flare)", "TRF", "R22/R404A/R134a/R410A", "1.5–52 TR (5–182 kW)", "SAE Flare", "External", "Fixed", "82"],
+    ["2", "Universal TXV (ODF/SAE)", "TER", "R22/R404A/R134a/R410A", "1.5–13 TR (5–45 kW)", "ODF/SAE", "Internal/External", "Fixed", "37"],
+    ["3", "Universal TXV Replaceable Orifice", "TF", "R22/R404A/R134a/R410A", "0.18–5.6 TR (0.64–19.7 kW)", "SAE/ODF", "Internal/External", "Replaceable (0#–6#)", "8"],
+    ["4", "Replaceable TXV Orifice", "TF-Core", "Universal", "0.25–5.6 TR (0.90–19.7 kW)", "N/A", "N/A", "0#–6#", "7"],
+  ],
+};
+
 export const categories: Category[] = [
   {
     id: 'copper-tubes',
@@ -742,6 +754,7 @@ export const categories: Category[] = [
         id: 'thermal-expansion-valves',
         name: 'Thermostatic Expansion Valve',
         subCategories: [
+          { id: 'thermal-expansion-valves-overview', name: 'Category Overview', isOverview: true },
           { id: 'trf-heavy-duty-txv', name: 'Heavy-Duty TXV — TRF Series (SAE Flare)' },
           { id: 'ter-universal-txv', name: 'Universal TXV — TER Series (ODF / SAE Flare)' },
           { id: 'tf-replaceable-orifice', name: 'Universal TXV, Replaceable Orifice — TF Series' },
@@ -1941,6 +1954,8 @@ export const ballValvesComparison = {
 export interface CategoryLandingContent {
   categoryId: string;
   subCategoryId?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   h1: string;
   introduction: string;
   howToChoose: { title: string; content: string }[];
@@ -2039,6 +2054,21 @@ export const categoryLandingContent: CategoryLandingContent[] = [
       { name: 'Solenoid Valves', slug: 'solenoid-valves' },
       { name: 'Ball Valves', slug: 'ball-valves' },
       { name: 'Filter Driers', slug: 'filter-driers' },
+    ],
+  },
+  {
+    categoryId: 'valves',
+    subCategoryId: 'thermal-expansion-valves',
+    metaTitle: 'Refrigeration Thermostatic Expansion Valves | Types & Selection Guide',
+    metaDescription: 'Compare 5 types of thermostatic expansion valves—heavy-duty, universal, replaceable orifice, bi-directional, and valve cores. Select by refrigerant, capacity, and connection type.',
+    h1: 'Refrigeration Thermostatic Expansion Valves',
+    introduction: `Five TXV series covering 0.18–52 TR for R22, R404A/R507, R134a, and R410A refrigerants. From heavy-duty industrial valves (TRF) to replaceable-orifice service valves (TF) and bi-directional heat pump valves (TQR). ODF solder and SAE flare connections, internal or external equalization.`,
+    howToChoose: [],
+    faq: [],
+    relatedCategories: [
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
     ],
   },
 ];
