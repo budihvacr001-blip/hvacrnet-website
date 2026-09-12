@@ -775,7 +775,7 @@ export default function Products() {
                 <CategoryLanding
                   content={landingContent}
                   comparisonData={comparisonData}
-                  products={activeSubCategory === 'thermal-expansion-valves' ? [] : categoryProducts}
+                  products={categoryProducts}
                   categoryName={categoryObj?.name || ''}
                   categorySlug={activeCategory || ''}
                   subCategoryName={subCategoryObj?.name}
