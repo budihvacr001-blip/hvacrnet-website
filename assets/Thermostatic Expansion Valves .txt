@@ -1,0 +1,192 @@
+Thermostatic Expansion Valves — Selection Guide
+
+Meta Title: Thermostatic Expansion Valve Selection Guide: How to Choose | HVACR NET (72 chars)
+
+Meta Description: Compare 5 TXV series — TRF heavy-duty, TER universal, TF replaceable orifice, TQR bi-directional. Select by refrigerant, capacity, connection type, and equalisation. MOQ 1 pc. (173 chars)
+
+
+
+Home > Products > Thermostatic Expansion Valves > Selection Guide
+
+
+
+Thermostatic Expansion Valve (TXV) Selection Guide
+
+A thermostatic expansion valve (TXV / TEV) meters liquid refrigerant into the evaporator, maintaining correct superheat under varying loads. Choosing the wrong TXV leads to poor cooling efficiency, compressor flooding, or evaporator starvation — all of which shorten equipment life and increase energy costs.
+
+This guide covers 153 models across 5 TXV series from Hongsen, one of China's largest thermal expansion valve manufacturers. You will find a side-by-side comparison of every series, a step-by-step selection workflow, and answers to the most common questions. Whether you need a heavy-duty valve for a cold room, a universal valve for field service, or a bi-directional valve for a heat pump, this page will help you pick the right part — fast.
+
+
+
+TXV Series at a Glance
+
+#	Series	Key Feature	Refrigerant	Capacity Range	Connection	Equalisation	Valve Element	Models
+1	TRF / TRFW Heavy-Duty TXV
+High-capacity, robust body for commercial & industrial	R22/R407C · R404A/R507 · R134a · R410A	1.5–52 TR (6–182 kW)	SAE Flare	External	Fixed (non-replaceable)	82
+2	TER / TERW Universal TXV
+Compact, versatile — fixed cold room & service use	R22/R407C · R404A/R507 · R134a · R410A	1.5–13 TR (6–45 kW)	ODF Solder (TER) / SAE Flare (TERW)	Internal (TER) / External (TERW)	Fixed (non-replaceable)	36
+3	TF / TFW Replaceable Orifice TXV
+Swappable orifice 0#–6# — one body, multiple capacities	R22/R407C · R134a · R404A/R507 · R410A	0.18–5.60 TR (0.64–19.70 kW)	SAE Flare / ODF	Internal (TF) / External (TFW)	Replaceable (0#–6#)	9
+4	TQR Bi-Directional TXV
+Reversible flow for heat pump cycling — R134a only	R134a	1.5–10 TR (6–37 kW)	SAE Flare	External	Fixed (non-replaceable)	8
+5	TXV-Core Replaceable Orifices
+Spare orifice kits for TF / TFW series	Universal (all refrigerants)	0.25–5.60 TR (R22 basis)	N/A	N/A	0#–6#	7
+
+
+Common specs across all series:
+- Capillary tube: 1.5 m (standard)
+- Static Superheat: 0–8 °C (default 4 °C)
+- Power Element temp limit: ≤100 °C (N charge) / ≤150 °C (K, MAH charge)
+- Valve Body temp limit: ≤110 °C
+- Max Working Pressure: 3.4 MPa (TF) / 4.6 MPa (TRF, TER, TQR)
+- Charge types: N / K / MAH (optional) for TRF, TER, TQR; N / NM / NL / B (optional) for TF
+
+How to Choose the Right TXV
+Step 1: Identify Your Refrigerant
+Match the TXV series to your system refrigerant:
+Refrigerant	Compatible Series
+R22 / R407C	TRF, TER, TF, TQR*
+R404A / R507	TRF, TER, TF
+R134a	TRF, TER, TF, TQR
+R410A	TRF, TER, TF
+
+*TQR is R134a only.
+Step 2: Determine Required Capacity (TR or kW)
+Calculate the evaporator load in tons of refrigeration (TR) or kW. Then select a series whose capacity range covers your requirement:
+• Small capacity (< 5.6 TR) → TF series (replaceable orifice, flexible)
+• Medium capacity (1.5–15 TR) → TER series (compact, cost-effective)
+• Large capacity (1.5–52 TR) → TRF series (heavy-duty, high flow)
+• Heat pump / bi-directional → TQR series (R134a, reversible flow)
+Step 3: Choose Connection Type
+Connection	Series	Best For
+SAE Flare (UNF nut)	TRFW, TERW, TFW, TQRW	Field service, systems needing disassembly for maintenance
+ODF Solder (braze weld)	TER, TF	Permanent installations — cold rooms, industrial refrigeration
+
+Step 4: Select Equalisation Mode
+• Internal Equalisation — for single-circuit evaporators with low pressure drop (TER, TF).
+• External Equalisation — for multi-circuit evaporators or systems with high evaporator pressure drop (TRF, TERW, TFW, TQR).
+Step 5: Pick Orifice Size (TF Series Only)
+For the TF replaceable-orifice series, choose orifice number 0#–6# based on required capacity. One valve body fits all 7 orifices — just swap the core to adjust capacity. This makes TF ideal for stock simplification in aftermarket service.
+
+FAQ
+Q1: What is the difference between a TXV and an EEV?
+A TXV (thermostatic expansion valve) is a mechanical, self-regulating valve that uses a sensing bulb and charge pressure to control superheat. An EEV (electronic expansion valve) uses a stepper motor and controller for precise digital control. TXVs are simpler, more affordable, and widely used in commercial refrigeration. EEVs are preferred where tight temperature accuracy and variable-speed compressor systems are required.
+Q2: Can I use the same TXV for R22 and R407C?
+Yes. Hongsen TXV series are rated for both R22 and R407C. The two refrigerants have similar pressure-temperature characteristics, so the same valve body and orifice work for both. However, always verify capacity at your actual operating conditions.
+Q3: How do I know if I need internal or external equalisation?
+Use internal equalisation when the evaporator has a single circuit and the pressure drop across the distributor is small (typically under 2 psi / 0.14 bar). Use external equalisation when you have multiple evaporator circuits, a distributor with significant pressure drop, or when the evaporator outlet pressure is noticeably lower than the inlet.
+Q4: What is the MOQ for Hongsen TXVs from HVACR NET?
+MOQ is 1 piece. We support mixed-model orders, so you can combine different series, refrigerants, and orifice sizes in a single order. Contact us with your model numbers for a quote.
+
+JSON-LD Structured Data
+// json
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Thermostatic Expansion Valve Series",
+  "description": "Complete comparison of 5 TXV series from Hongsen — TRF, TER, TF, TQR, and TXV-Core replaceable orifices.",
+  "numberOfItems": 5,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TRF / TRFW Heavy-Duty TXV",
+      "description": "High-capacity TXV for R22, R404A/R507, R134a, R410A. 1.5–52 TR. SAE Flare. External equalisation. 82 models."
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "TER / TERW Universal TXV",
+      "description": "Compact universal TXV for R22, R404A/R507, R134a, R410A. 1.5–13 TR. ODF or SAE Flare. 36 models."
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "TF / TFW Replaceable Orifice TXV",
+      "description": "Replaceable orifice TXV, 0#–6#. Multi-refrigerant. 0.18–5.60 TR. SAE Flare or ODF. 9 models."
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "TQR Bi-Directional TXV",
+      "description": "Bi-directional TXV for R134a heat pumps. 1.5–10 TR. SAE Flare. External equalisation. 8 models."
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "TXV-Core Replaceable Orifices",
+      "description": "Spare orifice kits 0#–6# for TF/TFW series. Universal refrigerant compatibility."
+    }
+  ]
+}
+
+// json
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.hvacrnet.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.hvacrnet.com/products"},
+    {"@type": "ListItem", "position": 3, "name": "Thermostatic Expansion Valves", "item": "https://www.hvacrnet.com/products/txv"},
+    {"@type": "ListItem", "position": 4, "name": "Selection Guide", "item": "https://www.hvacrnet.com/products/txv/selection-guide"}
+  ]
+}
+
+// json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between a TXV and an EEV?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A TXV is a mechanical, self-regulating valve using a sensing bulb and charge pressure. An EEV uses a stepper motor and controller for digital precision. TXVs are simpler and more affordable; EEVs are preferred for tight accuracy and variable-speed systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the same TXV for R22 and R407C?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Hongsen TXV series are rated for both R22 and R407C. The two refrigerants have similar pressure-temperature characteristics."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if I need internal or external equalisation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use internal equalisation for single-circuit evaporators with low pressure drop. Use external equalisation for multi-circuit evaporators or systems with significant distributor pressure drop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the MOQ for TXVs from HVACR NET?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MOQ is 1 piece. We support mixed-model orders across all TXV series."
+      }
+    }
+  ]
+}
+
+
+CTA
+Need help selecting the right TXV?
+Send us your model numbers, refrigerant type, and capacity requirements — we will match the right valve and quote within 24 hours.
+📩 Send Inquiry
+
+Related Categories
+• Solenoid Valves
+• Ball Valves
+• Filter Driers
+• Sight Glasses
+• Safety Valves
+• Check Valves
+
+Keywords Block
+thermostatic expansion valve, TXV, TEV, expansion valve selection, TXV manufacturer, HVACR expansion valve, R22 expansion valve, R404A TXV, R134a TXV, R410A TXV, TXV for cold room, TXV for AC, bi-directional TXV, heat pump expansion valve, replaceable orifice TXV, heavy duty expansion valve, commercial TXV, industrial TXV, Danfoss alternative TXV, Castel expansion valve, Alco TXV, Emerson expansion valve, TXV China supplier, expansion valve wholesale, TXV exporter, TXV for mini split, TXV troubleshooting, how to choose TXV, expansion valve capacity, TXV superheat adjustment
+
+© 2026 HVACR NET · Ningbo HVACR Net Refrigeration Equipment Co., Ltd. · All rights reserved.

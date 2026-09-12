@@ -95,8 +95,8 @@ export default function CategoryLanding({
   }
 
   // SEO meta
-  const seoTitle = `${subCategoryName || categoryName} for Refrigeration & HVAC | HVACR NET Supplier`
-  const seoDescription = content.introduction.substring(0, 150).trim() + '...'
+  const seoTitle = content.metaTitle || `${subCategoryName || categoryName} for Refrigeration & HVAC | HVACR NET Supplier`
+  const seoDescription = content.metaDescription || content.introduction.substring(0, 150).trim() + '...'
 
   return (
     <>

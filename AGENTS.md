@@ -12,6 +12,7 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - `src/pages/` — 页面：Home / Products / Contact / About / Markets
 - `src/components/` — 共享组件：Navbar、Footer、ProductCard、ProductModal、SEO
 - `src/data/products.ts` — 产品数据（分类、子分类、卡片信息、SEO 字段）
+- 选型指南类目：valves 下新增 `txv`（Thermostatic Expansion Valves，isOverview 二级类目），内容为选型指南页，comparison 数据为 `txvComparison`，landing 内容在 `categoryLandingContent`（含自定义 metaTitle/metaDescription）
 - `src/index.css` — 全局样式与 Tailwind 入口
 - `scripts/generate-sitemap.mjs` — 构建时自动生成 sitemap.xml（读取 products.ts）
 - `scripts/build.sh` — 部署构建脚本（pnpm install + vite build + sitemap 生成）

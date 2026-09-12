@@ -739,6 +739,12 @@ export const categories: Category[] = [
         ],
       },
       {
+        id: 'txv',
+        name: 'Thermostatic Expansion Valves',
+        isOverview: true,
+        description: 'Thermostatic expansion valves (TXV / TEV) for precise refrigerant metering and superheat control — 5 series: TRF, TER, TF, TQR and replaceable orifices.',
+      },
+      {
         id: 'sight-glasses',
         name: 'Sight Glasses',
         subCategories: [
@@ -1765,10 +1771,25 @@ export const ballValvesComparison = {
   ],
 };
 
+export const txvComparison = {
+  title: 'TXV Series at a Glance',
+  subtitle: 'Complete comparison of 5 TXV series from Hongsen \u2014 TRF heavy-duty, TER universal, TF replaceable orifice, TQR bi-directional, and TXV-Core replaceable orifices.',
+  headers: ['#', 'Series', 'Key Feature', 'Refrigerant', 'Capacity Range', 'Connection', 'Equalisation', 'Valve Element', 'Models'],
+  rows: [
+    ['1', 'TRF / TRFW Heavy-Duty TXV', 'High-capacity, robust body for commercial & industrial', 'R22/R407C \u00b7 R404A/R507 \u00b7 R134a \u00b7 R410A', '1.5\u201352 TR (6\u2013182 kW)', 'SAE Flare', 'External', 'Fixed (non-replaceable)', '82'],
+    ['2', 'TER / TERW Universal TXV', 'Compact, versatile \u2014 fixed cold room & service use', 'R22/R407C \u00b7 R404A/R507 \u00b7 R134a \u00b7 R410A', '1.5\u201313 TR (6\u201345 kW)', 'ODF Solder (TER) / SAE Flare (TERW)', 'Internal (TER) / External (TERW)', 'Fixed (non-replaceable)', '36'],
+    ['3', 'TF / TFW Replaceable Orifice TXV', 'Swappable orifice 0#\u20136# \u2014 one body, multiple capacities', 'R22/R407C \u00b7 R134a \u00b7 R404A/R507 \u00b7 R410A', '0.18\u20135.60 TR (0.64\u201319.70 kW)', 'SAE Flare / ODF', 'Internal (TF) / External (TFW)', 'Replaceable (0#\u20136#)', '9'],
+    ['4', 'TQR Bi-Directional TXV', 'Reversible flow for heat pump cycling \u2014 R134a only', 'R134a', '1.5\u201310 TR (6\u201337 kW)', 'SAE Flare', 'External', 'Fixed (non-replaceable)', '8'],
+    ['5', 'TXV-Core Replaceable Orifices', 'Spare orifice kits for TF / TFW series', 'Universal (all refrigerants)', '0.25\u20135.60 TR (R22 basis)', 'N/A', 'N/A', '0#\u20136#', '7'],
+  ],
+};
+
 // Category Landing Page Content
 export interface CategoryLandingContent {
   categoryId: string;
   subCategoryId?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   h1: string;
   introduction: string;
   howToChoose: { title: string; content: string }[];
@@ -1869,4 +1890,48 @@ export const categoryLandingContent: CategoryLandingContent[] = [
       { name: 'Filter Driers', slug: 'filter-driers' },
     ],
   },
+    {
+      categoryId: 'valves',
+      subCategoryId: 'txv',
+      metaTitle: 'Thermostatic Expansion Valve Selection Guide: How to Choose | HVACR NET',
+      metaDescription: 'Compare 5 TXV series — TRF heavy-duty, TER universal, TF replaceable orifice, TQR bi-directional. Select by refrigerant, capacity, connection type, and equalisation. MOQ 1 pc.',
+      h1: 'Thermostatic Expansion Valve (TXV) Selection Guide',
+      introduction: `A thermostatic expansion valve (TXV / TEV) meters liquid refrigerant into the evaporator, maintaining correct superheat under varying loads. Choosing the wrong TXV leads to poor cooling efficiency, compressor flooding, or evaporator starvation — all of which shorten equipment life and increase energy costs.
+
+This guide covers 153 models across 5 TXV series from Hongsen, one of China's largest thermal expansion valve manufacturers. You will find a side-by-side comparison of every series, a step-by-step selection workflow, and answers to the most common questions. Whether you need a heavy-duty valve for a cold room, a universal valve for field service, or a bi-directional valve for a heat pump, this page will help you pick the right part — fast.`,
+      howToChoose: [
+        {
+          title: 'Identify Your Refrigerant',
+          content: 'Match the TXV series to your system refrigerant: R22/R407C → TRF, TER, TF; R404A/R507 → TRF, TER, TF; R134a → TRF, TER, TF, TQR; R410A → TRF, TER, TF. (TQR is R134a only.)',
+        },
+        {
+          title: 'Determine Required Capacity (TR or kW)',
+          content: 'Small capacity (< 5.6 TR) → TF series (replaceable orifice, flexible). Medium capacity (1.5–15 TR) → TER series (compact, cost-effective). Large capacity (1.5–52 TR) → TRF series (heavy-duty, high flow). Heat pump / bi-directional → TQR series (R134a, reversible flow).',
+        },
+        {
+          title: 'Choose Connection Type',
+          content: 'SAE Flare (UNF nut) — TRFW, TERW, TFW, TQRW; best for field service and systems needing disassembly for maintenance. ODF Solder (braze weld) — TER, TF; for permanent installations such as cold rooms and industrial refrigeration.',
+        },
+        {
+          title: 'Select Equalisation Mode',
+          content: 'Internal equalisation — for single-circuit evaporators with low pressure drop (TER, TF). External equalisation — for multi-circuit evaporators or systems with high evaporator pressure drop (TRF, TERW, TFW, TQR).',
+        },
+        {
+          title: 'Pick Orifice Size (TF Series Only)',
+          content: 'For the TF replaceable-orifice series, choose orifice number 0\u0023–6\u0023 based on required capacity. One valve body fits all 7 orifices — just swap the core to adjust capacity, making TF ideal for stock simplification in aftermarket service.',
+        },
+      ],
+      faq: [
+        { question: 'What is the difference between a TXV and an EEV?', answer: 'A TXV (thermostatic expansion valve) is a mechanical, self-regulating valve that uses a sensing bulb and charge pressure to control superheat. An EEV (electronic expansion valve) uses a stepper motor and controller for precise digital control. TXVs are simpler, more affordable, and widely used in commercial refrigeration. EEVs are preferred where tight temperature accuracy and variable-speed compressors are required.' },
+        { question: 'Can I use the same TXV for R22 and R407C?', answer: 'Yes. Hongsen TXV series are rated for both R22 and R407C. The two refrigerants have similar pressure-temperature characteristics, so the same valve body and orifice work for both. However, always verify capacity at your actual operating conditions.' },
+        { question: 'How do I know if I need internal or external equalisation?', answer: 'Use internal equalisation when the evaporator has a single circuit and the pressure drop across the distributor is small (typically under 2 psi / 0.14 bar). Use external equalisation when you have multiple evaporator circuits, a distributor with significant pressure drop, or when the evaporator outlet pressure is noticeably lower than the inlet.' },
+        { question: 'What is the MOQ for Hongsen TXVs from HVACR NET?', answer: 'MOQ is 1 piece. We support mixed-model orders, so you can combine different series, refrigerants, and orifice sizes in a single order. Contact us with your model numbers for a quote.' },
+      ],
+      relatedCategories: [
+        { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+        { name: 'Ball Valves', slug: 'ball-valves' },
+        { name: 'Filter Driers', slug: 'filter-driers' },
+        { name: 'Sight Glasses', slug: 'sight-glasses' },
+      ],
+    },
 ];
