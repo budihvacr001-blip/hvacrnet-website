@@ -108,7 +108,7 @@ function buildRoutes() {
           for (const thirdId of thirdIds) {
             const product = directProducts.find((p) => p.thirdCategoryId === thirdId)
             if (!product || !isProductPublished(product)) continue
-            routes.push({ url: `/products/${cat.id}/${subId}/${thirdId}`, lastmod: productsSrcMod, changefreq: 'monthly', priority: '0.6' })
+            routes.push({ url: `/products/${cat.id}/${subId}/${thirdId}`, lastmod: productsSrcMod, changefreq: 'weekly', priority: '0.6' })
           }
         } else if (directProducts.length > 0 && directProducts.length < MIN_PRODUCTS_TO_SHOW) {
           // Products without thirdCategoryId and < MIN_PRODUCTS_TO_SHOW products (add subcategory page as fallback)
