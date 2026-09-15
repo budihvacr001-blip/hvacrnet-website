@@ -1,18 +1,11 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { navLinks } from '../data/navLinks'
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
-
-  const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/products', label: 'Products' },
-    { to: '/markets-we-serve', label: 'Markets We Serve' },
-    { to: '/about', label: 'About Us' },
-    { to: '/contact', label: 'Contact Us' },
-  ]
 
   const isActive = (path: string) => location.pathname === path
 

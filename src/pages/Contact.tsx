@@ -229,7 +229,7 @@ export default function Contact() {
       />
       <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold text-[#1a3a5c] sm:text-4xl">Contact Us</h1>
+          <h1 className="text-3xl font-bold uppercase text-[#1a3a5c] sm:text-4xl">Contact Us</h1>
           <p className="mx-auto mt-3 max-w-2xl text-gray-600">
             Tell us what you need — we&apos;ll respond within 24 hours
           </p>
