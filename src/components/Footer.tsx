@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-4 sm:gap-6 md:grid-cols-3 md:items-start">
           {/* Left - Brand */}
-          <div>
+          <div className="md:text-center">
             <Link to="/" className="inline-block">
               <img src="/logo.png" alt="HVACR NET" className="h-10 w-auto sm:h-12" />
             </Link>
@@ -20,9 +20,9 @@ export default function Footer() {
           </div>
 
           {/* Middle - Quick Links */}
-          <div>
+          <div className="md:text-center">
             <h3 className="text-base font-bold uppercase text-white">Quick Links</h3>
-            <div className="mt-1.5 mb-4 h-[3px] w-11 bg-white" />
+            <div className="mt-1.5 mb-4 h-[3px] w-11 bg-white md:mx-auto" />
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.to}>
@@ -35,9 +35,9 @@ export default function Footer() {
           </div>
 
           {/* Right - Contact */}
-          <div>
+          <div className="md:text-center">
             <h3 className="text-base font-bold uppercase text-white">Contact</h3>
-            <div className="mt-1.5 mb-4 h-[3px] w-11 bg-white" />
+            <div className="mt-1.5 mb-4 h-[3px] w-11 bg-white md:mx-auto" />
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <a href="mailto:info@hvacrnet.com" className="transition-colors hover:text-white">
