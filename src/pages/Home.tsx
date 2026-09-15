@@ -79,21 +79,25 @@ export default function Home() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-navy py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Gain not just a supplier, but a dedicated teammate.
-          </h2>
-          <p className="mt-4 text-lg text-white/70">
-            Let's win your market together.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-md bg-accent px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg"
-          >
-            Send Inquiry
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+      <section className="bg-gray-bg py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="rounded-lg bg-navy p-8 text-center sm:p-12">
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-3xl font-bold text-white sm:text-4xl">
+                Gain not just a supplier, but a dedicated teammate.
+              </h2>
+              <p className="mt-4 text-lg text-white/70">
+                Let's win your market together.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-md bg-accent px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg"
+              >
+                Send Inquiry
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
