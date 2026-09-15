@@ -238,18 +238,37 @@ export default function Contact() {
         <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
           {/* Left: inquiry form */}
           <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
+            {status === 'success' ? (
+              <div className="flex min-h-[320px] items-center justify-center">
+                <div
+                  role="status"
+                  className="max-w-md text-center"
+                >
+                  <svg
+                    className="mx-auto h-14 w-14 text-green-600"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <path d="m9 11 3 3L22 4" />
+                  </svg>
+                  <p className="mt-5 text-xl font-semibold text-[#1a3a5c]">
+                    Thank you!
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                    Your inquiry has been sent. We will respond within 24 hours.
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
             <h2 className="mb-8 text-2xl font-semibold text-[#1a3a5c]">Send an Inquiry</h2>
 
-            {status === 'success' && (
-              <div
-                role="status"
-                className="mb-6 flex items-start gap-3 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
-              >
-                <span>
-                  Thank you! Your inquiry has been sent. We will respond within 24 hours.
-                </span>
-              </div>
-            )}
             {status === 'error' && (
               <div
                 role="alert"
@@ -392,7 +411,9 @@ export default function Contact() {
                 {submitting ? 'Sending...' : 'Submit Inquiry'}
                 {!submitting && <ArrowRight className="h-4 w-4" aria-hidden="true" />}
               </button>
-            </form>
+              </form>
+              </>
+            )}
           </div>
 
           {/* Right: sidebar */}
