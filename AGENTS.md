@@ -23,10 +23,14 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - 构建：`vite.config.ts`
 
 ## 运行与预览
-- 开发：`pnpm run dev`
+- 开发：`pnpm run dev`（纯本地，默认 5173）
 - 构建：`pnpm run build`（本地开发构建）
 - 部署构建：`bash scripts/build.sh`（包含 sitemap 生成）
-- 预览端口：5000（由 .preview 控制）
+- **预览链路：`.coze` 的 `[dev]` 指向包装脚本，由平台在 5000 常驻拉起**
+  - `[dev].build` → `scripts/coze-preview-build.sh`（`pnpm install`）
+  - `[dev].run` → `scripts/coze-preview-run.sh`（幂等占 5000 端口，`vite --host 0.0.0.0 --port 5000 --strictPort`，vite 缺失时自动先 `pnpm install`）
+  - 预览端口：5000（由 .preview 控制 expose_port=5000）
+  - 注意：本环境的 `node_modules` 会在每次 shell 调用后被清空，`[dev].run` 脚本内置自愈 reinstall；手动 nohup 后台无法持久，预览必须走平台管理
 
 ## SEO 与 Sitemap
 - sitemap.xml 在构建时由 `scripts/generate-sitemap.mjs` 自动生成，读取 `src/data/products.ts` 中的分类和产品数据

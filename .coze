@@ -10,8 +10,8 @@ entrypoint = "index.html"
 preview_enable = "enabled"
 
 [dev]
-build = ["pnpm", "run", "build"]
-run = ["pnpm", "run", "dev"]
+build = ["bash", "scripts/coze-preview-build.sh"]
+run = ["bash", "scripts/coze-preview-run.sh"]
 
 [deploy]
 build = ["bash", "scripts/build.sh"]
