@@ -4,8 +4,8 @@ import { navLinks } from '../data/navLinks'
 export default function Footer() {
   return (
     <footer className="bg-navy-dark">
-      <div className="px-10 py-12">
-        <div className="grid gap-10 md:grid-cols-3 md:items-start">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-3 md:items-start">
           {/* Left - Brand */}
           <div>
             <Link to="/" className="inline-block">
