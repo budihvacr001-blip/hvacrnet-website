@@ -187,7 +187,7 @@ export default function Contact() {
           <button
             type="button"
             onClick={() => setQrOpen(true)}
-            className="group relative h-14 w-full overflow-hidden rounded-lg border border-gray-200 bg-white sm:w-14 sm:shrink-0"
+            className="group relative h-10 w-full overflow-hidden rounded-lg border border-gray-200 bg-white sm:h-10 sm:w-10 sm:shrink-0"
             aria-label="View WeChat QR code"
           >
             <img
@@ -426,18 +426,26 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Instagram"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[#1a3a5c] transition hover:border-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white"
+                  title="Instagram"
+                  className="group relative flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[#1a3a5c] transition hover:border-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white"
                 >
                   <InstagramIcon className="h-5 w-5" aria-hidden="true" />
+                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-[#1a3a5c] px-2 py-1 text-xs font-medium text-white opacity-0 shadow-md transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100">
+                    Instagram
+                  </span>
                 </a>
                 <a
                   href="https://www.tiktok.com/@kongheng66"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on TikTok"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[#1a3a5c] transition hover:border-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white"
+                  title="TikTok"
+                  className="group relative flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[#1a3a5c] transition hover:border-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white"
                 >
                   <TikTokIcon className="h-5 w-5" aria-hidden="true" />
+                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-[#1a3a5c] px-2 py-1 text-xs font-medium text-white opacity-0 shadow-md transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100">
+                    TikTok
+                  </span>
                 </a>
               </div>
             </div>
