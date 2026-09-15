@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ImageLightbox from './ImageLightbox';
 
 export interface Product {
   id: string;
@@ -20,13 +21,28 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, onInquire, onViewDetail }: ProductCardProps) {
   const [mainImage, setMainImage] = useState(product.images?.[0] || '');
+  const images = product.images || [];
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (idx: number) => {
+    setLightboxIndex(idx);
+    setLightboxOpen(true);
+  };
 
   return (
+    <>
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Main Image */}
       <div className="bg-gray-50 flex items-center justify-center overflow-hidden max-h-64">
         {mainImage ? (
-          <img src={mainImage} alt={product.name} className="max-w-full max-h-64 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
+          <button
+            onClick={() => openLightbox(Math.max(0, images.indexOf(mainImage)))}
+            className="cursor-zoom-in"
+            aria-label="View image enlarged"
+          >
+            <img src={mainImage} alt={product.name} className="max-w-full max-h-64 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
+          </button>
         ) : (
           <div className="text-gray-400 text-sm">No Image</div>
         )}
@@ -38,7 +54,10 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
           {product.images.slice(0, 5).map((img, idx) => (
             <button
               key={idx}
-              onClick={() => setMainImage(img)}
+              onClick={() => {
+                setMainImage(img);
+                openLightbox(idx);
+              }}
               className={`w-14 h-14 rounded border-2 overflow-hidden flex-shrink-0 transition-all ${
                 mainImage === img ? 'border-[#1a3a5c]' : 'border-gray-200 hover:border-gray-300'
               }`}
@@ -69,5 +88,13 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
         </div>
       </div>
     </div>
+    <ImageLightbox
+      open={lightboxOpen}
+      images={images}
+      initialIndex={lightboxIndex}
+      alt={product.name}
+      onClose={() => setLightboxOpen(false)}
+    />
+    </>
   );
 }
