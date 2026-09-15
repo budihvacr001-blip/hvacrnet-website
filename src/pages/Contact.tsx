@@ -419,9 +419,10 @@ export default function Contact() {
           {/* Right: sidebar */}
           <aside className="space-y-6 self-start">
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1a3a5c]">
+              <h2 className="text-base font-bold uppercase tracking-wide text-[#1a3a5c]">
                 Get in Touch
               </h2>
+              <div className="mb-4 mt-1.5 h-[3px] w-11 rounded-sm bg-[#1a3a5c]" />
               <div className="divide-y divide-gray-200">
                 {contactItems.map((item) => (
                   <div key={item.label} className="flex items-start gap-4 py-5 first:pt-0 last:pb-0">
@@ -438,9 +439,10 @@ export default function Contact() {
             </div>
 
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1a3a5c]">
+              <h2 className="text-base font-bold uppercase tracking-wide text-[#1a3a5c]">
                 Follow Us
               </h2>
+              <div className="mb-4 mt-1.5 h-[3px] w-11 rounded-sm bg-[#1a3a5c]" />
               <div className="flex items-center gap-3">
                 <a
                   href="https://instagram.com/hvacr_net"
