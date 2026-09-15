@@ -187,7 +187,7 @@ export default function Contact() {
           <button
             type="button"
             onClick={() => setQrOpen(true)}
-            className="group relative h-10 w-full overflow-hidden rounded-lg border border-gray-200 bg-white sm:h-10 sm:w-10 sm:shrink-0"
+            className="group relative h-14 w-full overflow-hidden rounded-lg border border-gray-200 bg-white sm:h-14 sm:w-14 sm:shrink-0 sm:-mt-4"
             aria-label="View WeChat QR code"
           >
             <img
