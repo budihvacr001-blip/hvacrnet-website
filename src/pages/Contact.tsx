@@ -474,10 +474,27 @@ export default function Contact() {
             </div>
 
             <div className="rounded-2xl bg-[#1a3a5c] p-6 text-white shadow-sm">
-              <p className="text-4xl font-extrabold">20+</p>
-              <p className="mt-2 text-sm text-white/90">
-                Years of International Trade Expertise
-              </p>
+              <div className="grid grid-cols-[1fr_1px_1fr] items-center gap-4">
+                <div className="text-left">
+                  <p className="text-4xl font-extrabold leading-none">20+</p>
+                  <p className="mt-2 text-sm leading-snug text-white/90">
+                    Years of International
+                    <br />
+                    Trade Expertise
+                  </p>
+                </div>
+                <div className="h-16 w-px bg-white/25" aria-hidden="true" />
+                <div className="text-left">
+                  <p className="text-3xl font-extrabold leading-none tracking-tight sm:text-4xl">
+                    1,000+ m²
+                  </p>
+                  <p className="mt-2 text-sm leading-snug text-white/90">
+                    Ready-Stock HVACR
+                    <br />
+                    Parts Warehouse
+                  </p>
+                </div>
+              </div>
             </div>
           </aside>
         </div>
