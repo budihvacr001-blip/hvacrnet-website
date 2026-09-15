@@ -3,6 +3,7 @@ import { X, ChevronDown } from 'lucide-react'
 import type { Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
 import DataTable from './DataTable'
+import ImageLightbox from './ImageLightbox'
 
 interface Props {
   product: Product
@@ -12,8 +13,17 @@ interface Props {
 
 export default function ProductModal({ product, onClose, onInquire }: Props) {
   const [mainImage, setMainImage] = useState(product.images?.[0] || '')
+  const images = product.images || []
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
+
+  const openLightbox = (idx: number) => {
+    setLightboxIndex(idx)
+    setLightboxOpen(true)
+  }
 
   return (
+    <>
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
       <div
@@ -31,7 +41,13 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
         {/* Main Image */}
         <div className="flex items-center justify-center bg-gray-bg overflow-hidden max-h-80">
           {mainImage ? (
-            <img src={mainImage} alt={product.name} className="max-w-full max-h-80 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
+            <button
+              onClick={() => openLightbox(Math.max(0, images.indexOf(mainImage)))}
+              className="cursor-zoom-in"
+              aria-label="View image enlarged"
+            >
+              <img src={mainImage} alt={product.name} className="max-w-full max-h-80 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
+            </button>
           ) : (
             <div className="text-center">
               <div className="mx-auto mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-navy/10 text-navy">
@@ -50,7 +66,10 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
             {product.images.slice(0, 5).map((img, idx) => (
               <button
                 key={idx}
-                onClick={() => setMainImage(img)}
+                onClick={() => {
+                  setMainImage(img)
+                  openLightbox(idx)
+                }}
                 className={`w-16 h-16 rounded border-2 overflow-hidden flex-shrink-0 transition-all ${
                   mainImage === img ? 'border-[#1a3a5c]' : 'border-gray-200 hover:border-gray-300'
                 }`}
@@ -170,6 +189,15 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
         </div>
       </div>
     </div>
+
+    <ImageLightbox
+      open={lightboxOpen}
+      images={images}
+      initialIndex={lightboxIndex}
+      alt={product.name}
+      onClose={() => setLightboxOpen(false)}
+    />
+    </>
   )
 }
 
