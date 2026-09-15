@@ -3,7 +3,7 @@ import { navLinks } from '../data/navLinks'
 
 export default function Footer() {
   return (
-    <footer className="bg-navy">
+    <footer className="bg-navy-dark">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           {/* Left - Brand */}
