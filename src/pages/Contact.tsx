@@ -1,356 +1,486 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from 'lucide-react'
+import {
+  Mail,
+  MessageCircle,
+  MapPin,
+  X,
+  ArrowRight,
+} from 'lucide-react'
 import SEO from '../components/SEO'
 
-const countries = [
-  'United States', 'Canada', 'United Kingdom', 'Germany', 'France', 'Italy', 'Spain',
-  'Netherlands', 'Belgium', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Poland',
-  'Australia', 'New Zealand', 'Brazil', 'Mexico', 'Argentina', 'Chile', 'Colombia',
-  'South Africa', 'Nigeria', 'Egypt', 'Saudi Arabia', 'UAE', 'Qatar', 'Kuwait',
-  'India', 'Pakistan', 'Bangladesh', 'Indonesia', 'Thailand', 'Vietnam', 'Philippines',
-  'Malaysia', 'Singapore', 'Japan', 'South Korea', 'Russia', 'Turkey', 'Other',
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+)
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05 6.33 6.33 0 0 0 1.9 12.75 6.34 6.34 0 0 0 6.33-6.33v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+  </svg>
+)
+
+const WEB3FORMS_KEY = 'b6cec139-6ea9-4c1c-ad3a-f7bf908421a8'
+
+const INITIAL_FORM = {
+  contactPerson: '', // Contact Person
+  jobTitle: '', // Job Title / Position
+  companyName: '', // Company Name
+  country: '',
+  email: '',
+  phone: '', // WhatsApp / Phone
+  productInterest: '',
+  message: '',
+}
+
+const COUNTRIES = [
+  'United States',
+  'Canada',
+  'Mexico',
+  'Brazil',
+  'United Kingdom',
+  'Germany',
+  'France',
+  'Spain',
+  'Italy',
+  'Netherlands',
+  'Poland',
+  'Russia',
+  'Turkey',
+  'UAE',
+  'Saudi Arabia',
+  'Egypt',
+  'India',
+  'Pakistan',
+  'Bangladesh',
+  'Indonesia',
+  'Malaysia',
+  'Thailand',
+  'Vietnam',
+  'Philippines',
+  'Singapore',
+  'Australia',
+  'New Zealand',
+  'South Africa',
+  'China',
+  'Japan',
+  'South Korea',
+  'Others',
 ]
 
 export default function Contact() {
-  const location = useLocation()
-  const prefillProduct = (location.state as any)?.productInterest || ''
-
-  const [form, setForm] = useState({
-    contactPerson: '',
-    jobTitle: '',
-    companyName: '',
-    country: '',
-    email: '',
-    whatsapp: '',
-    productInterest: prefillProduct,
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
+  const [form, setForm] = useState(INITIAL_FORM)
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [submitting, setSubmitting] = useState(false)
+  const [status, setStatus] = useState<'success' | 'error' | null>(null)
+  const [qrOpen, setQrOpen] = useState(false)
 
   useEffect(() => {
-    if (prefillProduct) {
-      setForm((f) => ({ ...f, productInterest: prefillProduct }))
+    if (qrOpen) {
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = ''
+      }
     }
-  }, [prefillProduct])
+  }, [qrOpen])
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setQrOpen(false)
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [])
+
+  const update = (field: keyof typeof INITIAL_FORM, value: string) => {
+    setForm((f) => ({ ...f, [field]: value }))
+    if (errors[field]) setErrors((e) => ({ ...e, [field]: '' }))
+  }
 
   const validate = () => {
-    const errs: Record<string, string> = {}
-    if (!form.contactPerson.trim()) errs.contactPerson = 'Required'
-    if (!form.companyName.trim()) errs.companyName = 'Required'
-    if (!form.country) errs.country = 'Please select a country'
-    if (!form.email.trim()) errs.email = 'Required'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Invalid email'
-    if (!form.whatsapp.trim()) errs.whatsapp = 'Required'
-    if (!form.message.trim()) errs.message = 'Required'
-    return errs
+    const e: Record<string, string> = {}
+    if (!form.contactPerson.trim()) e.contactPerson = 'Please enter your contact name.'
+    if (!form.companyName.trim()) e.companyName = 'Please enter your company name.'
+    if (!form.country) e.country = 'Please select your country.'
+    if (!form.email.trim()) e.email = 'Please enter your email address.'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Please enter a valid email address.'
+    if (!form.phone.trim()) e.phone = 'Please enter your WhatsApp / phone number.'
+    if (!form.message.trim()) e.message = 'Please describe your requirement.'
+    return e
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setStatus(null)
     const errs = validate()
     setErrors(errs)
-    if (Object.keys(errs).length === 0) {
-      setSubmitted(true)
-    }
-  }
+    if (Object.keys(errs).length > 0) return
 
-  const handleChange = (field: string, value: string) => {
-    setForm((f) => ({ ...f, [field]: value }))
-    if (errors[field]) {
-      setErrors((e) => {
-        const next = { ...e }
-        delete next[field]
-        return next
+    setSubmitting(true)
+    try {
+      const payload = {
+        access_key: WEB3FORMS_KEY,
+        subject: 'New Inquiry from HVACR NET Website',
+        from_name: 'HVACR NET Contact Form',
+        'Contact Person': form.contactPerson,
+        'Job Title / Position': form.jobTitle,
+        'Company Name': form.companyName,
+        'Country': form.country,
+        'Email': form.email,
+        'WhatsApp / Phone': form.phone,
+        'Product Interest': form.productInterest,
+        'Message / Requirement': form.message,
+      }
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
       })
+      const data = await res.json()
+      if (data.success) {
+        setStatus('success')
+        setForm(INITIAL_FORM)
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    } finally {
+      setSubmitting(false)
     }
   }
 
-  if (submitted) {
-    return (
-      <div className="flex min-h-[70vh] items-center justify-center bg-gray-bg px-4">
-        <div className="text-center">
-          <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-500" />
-          <h2 className="text-2xl font-bold text-navy">Inquiry Sent Successfully!</h2>
-          <p className="mt-3 text-gray-text">
-            Thank you for your interest. Our team will review your inquiry and get back to you within 24 hours.
-          </p>
+  const fieldClass =
+    'w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-[#e8722a] focus:ring-2 focus:ring-[#e8722a]/20'
+  const labelClass = 'mb-1.5 block text-sm font-medium text-[#1a3a5c]'
+
+  const contactItems = [
+    {
+      icon: <Mail className="h-5 w-5 shrink-0" aria-hidden="true" />,
+      label: 'Email',
+      body: (
+        <a
+          href="mailto:info@hvacrnet.com"
+          className="text-gray-700 break-all transition hover:text-[#e8722a]"
+        >
+          info@hvacrnet.com
+        </a>
+      ),
+    },
+    {
+      icon: <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />,
+      label: 'WeChat',
+      body: (
+        <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-gray-700">Echo (HVACR_net)</span>
           <button
-            onClick={() => {
-              setSubmitted(false)
-              setForm({
-                contactPerson: '',
-                jobTitle: '',
-                companyName: '',
-                country: '',
-                email: '',
-                whatsapp: '',
-                productInterest: '',
-                message: '',
-              })
-            }}
-            className="mt-6 rounded-md bg-navy px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-navy-light"
+            type="button"
+            onClick={() => setQrOpen(true)}
+            className="group relative h-14 w-full overflow-hidden rounded-lg border border-gray-200 bg-white sm:w-14 sm:shrink-0"
+            aria-label="View WeChat QR code"
           >
-            Send Another Inquiry
+            <img
+              src="images/wechat-qr.jpg"
+              alt="WeChat QR Code"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[3] group-hover:shadow-xl"
+            />
           </button>
         </div>
-      </div>
-    )
-  }
+      ),
+    },
+    {
+      icon: <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />,
+      label: 'WhatsApp',
+      body: (
+        <a
+          href="https://wa.me/8618018696001"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-700 transition hover:text-[#e8722a]"
+        >
+          +86 180 1869 6001
+        </a>
+      ),
+    },
+    {
+      icon: <MapPin className="h-5 w-5 shrink-0" aria-hidden="true" />,
+      label: 'Company Address',
+      body: <span className="text-gray-700">Ningbo, Zhejiang, China</span>,
+    },
+  ]
 
   return (
     <>
       <SEO
-        title="Contact Us | HVACR NET - Get a Quote for HVACR Parts"
-        description="Contact HVACR NET for quotes, product inquiries, and sourcing requests. Email, WhatsApp, or fill out our inquiry form. We respond within 24 hours."
-        url="/contact"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          name: "Contact HVACR NET",
-          description: "Contact page for HVACR NET refrigeration equipment supplier",
-          url: "https://www.hvacrnet.com/contact",
-        }}
+        title="Contact Us | HVACR NET — Global HVAC/R Parts Supplier"
+        description="Contact HVACR NET for HVAC/R parts request — response within 24 hours. Copper tubes, valves, filter driers, thermostatic expansion valves and more from China."
+        ogType="website"
       />
-      <div className="min-h-screen bg-gray-bg">
-      {/* Header */}
-      <section className="bg-navy py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-white sm:text-4xl">Contact Us</h1>
-          <p className="mt-2 text-white/70">
-            Tell us what you need — we'll respond within 24 hours
+      <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <h1 className="text-3xl font-bold text-[#1a3a5c] sm:text-4xl">Contact Us</h1>
+          <p className="mx-auto mt-3 max-w-2xl text-gray-600">
+            Tell us what you need — we&apos;ll respond within 24 hours
           </p>
         </div>
-      </section>
 
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-5">
-          {/* Form */}
-          <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="rounded-lg border border-gray-border bg-white p-6 sm:p-8">
-              <h2 className="mb-6 text-xl font-bold text-navy">Send an Inquiry</h2>
+        <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
+          {/* Left: inquiry form */}
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
+            <h2 className="mb-8 text-2xl font-semibold text-[#1a3a5c]">Send an Inquiry</h2>
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                {/* Contact Person */}
+            {status === 'success' && (
+              <div
+                role="status"
+                className="mb-6 flex items-start gap-3 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
+              >
+                <span>
+                  Thank you! Your inquiry has been sent. We will respond within 24 hours.
+                </span>
+              </div>
+            )}
+            {status === 'error' && (
+              <div
+                role="alert"
+                className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              >
+                Something went wrong while sending your inquiry. Please try again.
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} noValidate className="space-y-6">
+              <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+              <input type="hidden" name="subject" value="New Inquiry from HVACR NET Website" />
+              <input type="hidden" name="from_name" value="HVACR NET Contact Form" />
+
+              <div className="grid gap-6 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">
-                    Contact Person <span className="text-red-500">*</span>
+                  <label htmlFor="contactPerson" className={labelClass}>
+                    Contact Person <span className="text-[#e8722a]">*</span>
                   </label>
                   <input
+                    id="contactPerson"
                     type="text"
                     value={form.contactPerson}
-                    onChange={(e) => handleChange('contactPerson', e.target.value)}
-                    className={`w-full rounded-md border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent ${
-                      errors.contactPerson ? 'border-red-400' : 'border-gray-border'
-                    }`}
+                    onChange={(e) => update('contactPerson', e.target.value)}
                     placeholder="Your full name"
+                    className={fieldClass}
                   />
-                  {errors.contactPerson && <p className="mt-1 text-xs text-red-500">{errors.contactPerson}</p>}
+                  {errors.contactPerson && <p className="mt-1 text-xs text-red-600">{errors.contactPerson}</p>}
                 </div>
-
-                {/* Job Title */}
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">
+                  <label htmlFor="jobTitle" className={labelClass}>
                     Job Title / Position
                   </label>
                   <input
+                    id="jobTitle"
                     type="text"
                     value={form.jobTitle}
-                    onChange={(e) => handleChange('jobTitle', e.target.value)}
-                    className="w-full rounded-md border border-gray-border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent"
+                    onChange={(e) => update('jobTitle', e.target.value)}
                     placeholder="e.g. Purchasing Manager"
+                    className={fieldClass}
                   />
                 </div>
-
-                {/* Company Name */}
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">
-                    Company Name <span className="text-red-500">*</span>
+                  <label htmlFor="companyName" className={labelClass}>
+                    Company Name <span className="text-[#e8722a]">*</span>
                   </label>
                   <input
+                    id="companyName"
                     type="text"
                     value={form.companyName}
-                    onChange={(e) => handleChange('companyName', e.target.value)}
-                    className={`w-full rounded-md border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent ${
-                      errors.companyName ? 'border-red-400' : 'border-gray-border'
-                    }`}
+                    onChange={(e) => update('companyName', e.target.value)}
                     placeholder="Your company name"
+                    className={fieldClass}
                   />
-                  {errors.companyName && <p className="mt-1 text-xs text-red-500">{errors.companyName}</p>}
+                  {errors.companyName && <p className="mt-1 text-xs text-red-600">{errors.companyName}</p>}
                 </div>
-
-                {/* Country */}
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">
-                    Country <span className="text-red-500">*</span>
+                  <label htmlFor="country" className={labelClass}>
+                    Country <span className="text-[#e8722a]">*</span>
                   </label>
                   <select
+                    id="country"
                     value={form.country}
-                    onChange={(e) => handleChange('country', e.target.value)}
-                    className={`w-full rounded-md border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent ${
-                      errors.country ? 'border-red-400' : 'border-gray-border'
-                    }`}
+                    onChange={(e) => update('country', e.target.value)}
+                    className={fieldClass}
                   >
-                    <option value="">Select country</option>
-                    {countries.map((c) => (
-                      <option key={c} value={c}>{c}</option>
+                    <option value="">Select Country</option>
+                    {COUNTRIES.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
                     ))}
                   </select>
-                  {errors.country && <p className="mt-1 text-xs text-red-500">{errors.country}</p>}
+                  {errors.country && <p className="mt-1 text-xs text-red-600">{errors.country}</p>}
                 </div>
-
-                {/* Email */}
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">
-                    Email <span className="text-red-500">*</span>
+                  <label htmlFor="email" className={labelClass}>
+                    Email <span className="text-[#e8722a]">*</span>
                   </label>
                   <input
+                    id="email"
                     type="email"
                     value={form.email}
-                    onChange={(e) => handleChange('email', e.target.value)}
-                    className={`w-full rounded-md border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent ${
-                      errors.email ? 'border-red-400' : 'border-gray-border'
-                    }`}
+                    onChange={(e) => update('email', e.target.value)}
                     placeholder="your@email.com"
+                    className={fieldClass}
                   />
-                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                  {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
                 </div>
-
-                {/* WhatsApp */}
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">
-                    WhatsApp / Phone <span className="text-red-500">*</span>
+                  <label htmlFor="phone" className={labelClass}>
+                    WhatsApp / Phone <span className="text-[#e8722a]">*</span>
                   </label>
                   <input
-                    type="text"
-                    value={form.whatsapp}
-                    onChange={(e) => handleChange('whatsapp', e.target.value)}
-                    className={`w-full rounded-md border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent ${
-                      errors.whatsapp ? 'border-red-400' : 'border-gray-border'
-                    }`}
+                    id="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) => update('phone', e.target.value)}
                     placeholder="+1 234 567 8900"
+                    className={fieldClass}
                   />
-                  {errors.whatsapp && <p className="mt-1 text-xs text-red-500">{errors.whatsapp}</p>}
+                  {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
                 </div>
               </div>
 
-              {/* Product Interest */}
-              <div className="mt-5">
-                <label className="mb-1.5 block text-sm font-medium text-gray-700">
+              <div>
+                <label htmlFor="productInterest" className={labelClass}>
                   Product Interest
                 </label>
                 <input
+                  id="productInterest"
                   type="text"
                   value={form.productInterest}
-                  onChange={(e) => handleChange('productInterest', e.target.value)}
-                  className="w-full rounded-md border border-gray-border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="e.g. Copper Tubes, Solenoid Valves, Capacitors"
+                  onChange={(e) => update('productInterest', e.target.value)}
+                  placeholder="e.g. Copper Tubes, Solenoid Valves"
+                  className={fieldClass}
                 />
               </div>
 
-              {/* Message */}
-              <div className="mt-5">
-                <label className="mb-1.5 block text-sm font-medium text-gray-700">
-                  Message / Requirement <span className="text-red-500">*</span>
+              <div>
+                <label htmlFor="message" className={labelClass}>
+                  Message / Requirement <span className="text-[#e8722a]">*</span>
                 </label>
                 <textarea
+                  id="message"
                   rows={5}
                   value={form.message}
-                  onChange={(e) => handleChange('message', e.target.value)}
-                  className={`w-full resize-none rounded-md border px-3 py-2.5 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-accent ${
-                    errors.message ? 'border-red-400' : 'border-gray-border'
-                  }`}
-                  placeholder="Please describe your requirements: quantities, specifications, delivery timeline, etc."
+                  onChange={(e) => update('message', e.target.value)}
+                  placeholder="Please describe your requirements, quantity, destination, etc. We will contact you within 24 hours."
+                  className={`${fieldClass} resize-y`}
                 />
-                {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
+                {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
               </div>
 
               <button
                 type="submit"
-                className="mt-6 w-full rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover sm:w-auto"
+                disabled={submitting}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#e8722a] px-6 py-3.5 text-base font-semibold text-white transition hover:bg-[#cf5f1e] focus:outline-none focus:ring-2 focus:ring-[#e8722a]/40 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
               >
-                Submit Inquiry
+                {submitting ? 'Sending...' : 'Submit Inquiry'}
+                {!submitting && <ArrowRight className="h-4 w-4" aria-hidden="true" />}
               </button>
             </form>
           </div>
 
-          {/* Contact Info */}
-          <div className="lg:col-span-2">
-            <div className="rounded-lg border border-gray-border bg-white p-6 sm:p-8">
-              <h2 className="mb-6 text-xl font-bold text-navy">Get in Touch</h2>
-
-              <div className="space-y-5">
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy/5 text-navy">
-                    <Mail className="h-5 w-5" />
+          {/* Right: sidebar */}
+          <aside className="space-y-6 self-start">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1a3a5c]">
+                Get in Touch
+              </h2>
+              <div className="divide-y divide-gray-200">
+                {contactItems.map((item) => (
+                  <div key={item.label} className="flex items-start gap-4 py-5 first:pt-0 last:pb-0">
+                    <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#1a3a5c]/5 text-[#1a3a5c]">
+                      {item.icon}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium text-[#1a3a5c]">{item.label}</p>
+                      <div className="mt-1 w-full">{item.body}</div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-navy">Email</p>
-                    <p className="text-sm text-gray-text">info@hvacrnet.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy/5 text-navy">
-                    <Phone className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-navy">WhatsApp</p>
-                    <p className="text-sm text-gray-text">+86 XXX XXXX XXXX</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy/5 text-navy">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-navy">Company Address</p>
-                    <p className="text-sm text-gray-text">Ningbo, Zhejiang, China</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 border-t border-gray-border pt-6">
-                <p className="mb-3 text-sm font-medium text-navy">Follow Us</p>
-                <div className="flex gap-3">
-                  {/* WeChat */}
-                  <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors hover:bg-navy hover:text-white">
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.492.492 0 01.177-.554C23.004 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-7.062-6.122zM14.033 13.07c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.969-.982z"/></svg>
-                  </a>
-                  {/* WhatsApp */}
-                  <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors hover:bg-navy hover:text-white">
-                    <MessageCircle className="h-5 w-5" />
-                  </a>
-                  {/* LinkedIn */}
-                  <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors hover:bg-navy hover:text-white">
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  </a>
-                  {/* Facebook */}
-                  <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors hover:bg-navy hover:text-white">
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  </a>
-                  {/* TikTok */}
-                  <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors hover:bg-navy hover:text-white">
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.17V11.7a4.83 4.83 0 01-3.77-1.24V6.69h3.77z"/></svg>
-                  </a>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Trust badge */}
-            <div className="mt-6 rounded-lg bg-navy p-6 text-center">
-              <p className="text-lg font-bold text-white">20+ Years</p>
-              <p className="mt-1 text-sm text-white/70">of International Trade Expertise</p>
-              <p className="mt-3 text-xs text-white/50">
-                Serving markets across Europe, North America, Middle East, and Southeast Asia
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1a3a5c]">
+                Follow Us
+              </h2>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://instagram.com/hvacr_net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[#1a3a5c] transition hover:border-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white"
+                >
+                  <InstagramIcon className="h-5 w-5" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@kongheng66"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on TikTok"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-[#1a3a5c] transition hover:border-[#1a3a5c] hover:bg-[#1a3a5c] hover:text-white"
+                >
+                  <TikTokIcon className="h-5 w-5" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-[#1a3a5c] p-6 text-white shadow-sm">
+              <p className="text-4xl font-extrabold">20+</p>
+              <p className="mt-2 text-sm text-white/90">
+                Years of International Trade Expertise
               </p>
             </div>
+          </aside>
+        </div>
+      </section>
+
+      {/* WeChat QR modal */}
+      {qrOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setQrOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="WeChat QR code"
+        >
+          <button
+            type="button"
+            onClick={() => setQrOpen(false)}
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+            aria-label="Close QR code"
+          >
+            <X className="h-6 w-6" aria-hidden="true" />
+          </button>
+          <div className="w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+            <img
+              src="images/wechat-qr.jpg"
+              alt="WeChat QR Code"
+              className="aspect-square w-full rounded-xl bg-white object-contain p-2"
+            />
+            <p className="mt-4 text-center text-sm text-white/80">
+              Scan the QR code to add us on WeChat
+            </p>
           </div>
         </div>
-      </div>
-    </div>
+      )}
     </>
   )
 }

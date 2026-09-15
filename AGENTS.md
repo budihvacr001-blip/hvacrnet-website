@@ -57,4 +57,7 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 ## 常见问题和预防
 - 产品图片暂用占位图，后续替换
 - TXV 系列（tx-1~tx-4）图片已替换为实物图：tx-1 TRF `tx-trf-01.png`、tx-2 TER `tx-ter-01.png`、tx-3 TF 内平衡 `tx-tf-01.png` + 外平衡 `tx-tfw-02.png`（两张）、tx-4 TF-Core `tx-core-01.png`（均位于 `public/images/`）
-- 询盘表单前端提交+弹窗确认，无后端
+- 询盘表单改用 web3forms：前端 fetch `https://api.web3forms.com/submit`(JSON)，access_key=`b6cec139-6ea9-4c1c-ad3a-f7bf908421a8`、subject/from_name 固定；成功绿色提示+重置，失败红色提示，无后端
+- Contact 侧边栏：Get in Touch（Email/WeChat/WhatsApp/Address，高度等齐）+ Follow Us（Instagram→instagram.com/hvacr_net、TikTok→www.tiktok.com/@kongheng66）+ 20+ Years 徽章
+- WeChat 二维码缩略图 `public/images/wechat-qr.jpg`（3.5rem，hover scale(3)+box-shadow，点击全屏 modal）
+- **env 陷阱：依赖(node_modules)在 pipeline/worktree 中会被清空，`pnpm run dev` 报 `vite: not found` 导致预览/test_run 服务探活失败；用 `pnpm install` 恢复后再验证**
