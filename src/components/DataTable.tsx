@@ -143,7 +143,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
     const WIDTHS = {
       number: 4,
       product: 18,
-      models: 8,
+      models: 13,
       long: 9,
     }
 
