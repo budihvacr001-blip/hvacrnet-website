@@ -1,8 +1,0 @@
-<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="600" fill="#eef0f2"/>
-  <rect x="8" y="8" width="584" height="584" fill="none" stroke="#d9dfe3" stroke-width="3"/>
-  <text x="300" y="290" font-family="Arial,sans-serif" font-size="24" fill="#444948" font-weight="600" text-anchor="middle">HVACR NET</text>
-  <text x="300" y="326" font-family="Arial,sans-serif" font-size="19" fill="#6b7280" text-anchor="middle">T-B Manual</text>
-  <text x="300" y="420" font-family="Arial,sans-serif" font-size="18" fill="#9aa1a6" text-anchor="middle">Product Image</text>
-  <text x="300" y="446" font-family="Arial,sans-serif" font-size="14" fill="#b4bbbf" text-anchor="middle">Placeholder - photo pending</text>
-</svg>

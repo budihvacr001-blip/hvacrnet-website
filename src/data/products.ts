@@ -1961,7 +1961,7 @@ export const categories: Category[] = [
         ]
       },
       {
-        id: 'torch-tb', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tb.svg'],
+        id: 'torch-tb', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tb-01.png', '/images/brazing-torch-tb-02.png', '/images/brazing-torch-tb-03.png'],
         metaTitle: 'Direct-Mount Brazing Torch (Manual Ignition, 1350°C) | HVACR',
         metaDescription: 'Budget-friendly direct-mount brazing torch, manual ignition, stainless steel nozzle, 1350°C, pipes up to 12mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
         name: 'Direct-Mount Brazing Torch — Manual Ignition, Compact Design (T-B Series)',
