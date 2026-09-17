@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
 import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, txvComparison, brazingTorchesComparison, brazingRodsComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
@@ -73,6 +73,7 @@ export default function Products() {
   const [expandedSubCategories, setExpandedSubCategories] = useState<Record<string, boolean>>({})
   const [expandedThirds, setExpandedThirds] = useState<Record<string, boolean>>({})
   const location = useLocation()
+  const sidebarRef = useRef<HTMLElement>(null)
 
   // Sync state when URL params change (e.g., user clicks navigation)
   useEffect(() => {
@@ -80,6 +81,16 @@ export default function Products() {
     setActiveCategory(newState.activeCategory)
     setActiveSubCategory(newState.activeSubCategory)
     setActiveThirdCategory(newState.activeThirdCategory)
+    // Auto-expand ancestor categories so a deep active item is visible in the sidebar
+    if (newState.activeCategory) {
+      setExpandedCategories(prev => ({ ...prev, [newState.activeCategory!]: true }))
+    }
+    if (newState.activeSubCategory && newState.activeSubCategory !== 'all') {
+      setExpandedSubCategories(prev => ({
+        ...prev,
+        [`${newState.activeCategory}-${newState.activeSubCategory}`]: true
+      }))
+    }
   }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
 
   // Scroll to a specific product when arriving via #product-<id> hash
@@ -96,6 +107,24 @@ export default function Products() {
       }, 120)
     }
   }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
+
+  // Scroll the sidebar so the current active item appears near its top (Docusaurus-style)
+  useEffect(() => {
+    const sidebar = sidebarRef.current
+    if (!sidebar) return
+    // Wait a frame for ancestor expansion + re-render so the active element exists
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const activeEls = sidebar.querySelectorAll('[data-active="true"]')
+        if (!activeEls.length) return
+        const activeEl = activeEls[activeEls.length - 1]
+    const sidebarTop = sidebar.getBoundingClientRect().top
+    const elTop = activeEl.getBoundingClientRect().top - sidebarTop + sidebar.scrollTop
+    const target = elTop - sidebar.clientHeight * 0.3
+    sidebar.scrollTo({ top: Math.max(0, target), behavior: 'smooth' })
+      })
+    })
+  }, [activeCategory, activeSubCategory, activeThirdCategory, highlightedProductId])
 
   const allProducts = useMemo(() => {
     return categories.flatMap((cat) => cat.products)
@@ -473,11 +502,12 @@ export default function Products() {
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex gap-8">
           {/* Left Sidebar - Always visible category list */}
-          <aside className="w-64 shrink-0">
+          <aside ref={sidebarRef} className="sticky top-16 max-h-[calc(100vh-4rem)] w-64 shrink-0 self-start overflow-y-auto overscroll-contain">
             <nav className="space-y-1">
               {/* All Products */}
               <Link
                 to="/products"
+                data-active={activeCategory === null ? 'true' : undefined}
                 className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                   activeCategory === null
                     ? 'bg-navy text-white'
@@ -516,6 +546,7 @@ export default function Products() {
                     <div className="flex items-center">
                       <Link
                         to={`/products/${cat.id}`}
+                        data-active={isActive && activeSubCategory === 'all' ? 'true' : undefined}
                         onClick={() => {
                           setExpandedCategories(prev => ({
                             ...prev,
@@ -603,6 +634,7 @@ export default function Products() {
                               <div className="flex items-center">
                                 <Link
                                   to={`/products/${cat.id}/${sub.id}`}
+                                  data-active={activeSubCategory === sub.id && !activeThirdCategory ? 'true' : undefined}
                                   onClick={() => {
                                     setExpandedSubCategories(prev => ({
                                       ...prev,
@@ -695,6 +727,7 @@ export default function Products() {
                                         <div className="flex items-center">
                                         <Link
                                           to={`/products/${cat.id}/${sub.id}/${third.id}`}
+                                          data-active={!third.isOverview && activeThirdCategory === third.id ? 'true' : undefined}
                                           onClick={() => {
                                             if (isSharedThird && !expandedThirds[thirdKey]) {
                                               setExpandedThirds(prev => ({ ...prev, [thirdKey]: true }))
@@ -736,6 +769,7 @@ export default function Products() {
                                           <Link
                                             key={ov.id}
                                             to={`/products/${cat.id}/${sub.id}/${ov.id}`}
+                                            data-active={activeThirdCategory === ov.id ? 'true' : undefined}
                                             className={`ml-5 flex w-full items-start gap-2 rounded px-3 py-1.5 text-left text-sm transition-colors ${
                                               activeThirdCategory === ov.id
                                                 ? 'font-semibold text-accent'
@@ -751,6 +785,7 @@ export default function Products() {
                                               <Link
                                                 key={p.id}
                                                 to={`/products/${cat.id}/${sub.id}/${third.id}#product-${p.id}`}
+                                                data-active={highlightedProductId === p.id ? 'true' : undefined}
                                                 className={`ml-5 flex w-full items-start gap-2 rounded px-3 py-1.5 text-left text-sm transition-colors ${
                                                   highlightedProductId === p.id
                                                     ? 'font-semibold text-accent'
