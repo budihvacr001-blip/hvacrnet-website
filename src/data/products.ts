@@ -2077,7 +2077,7 @@ export const categories: Category[] = [
         ]
       },
       {
-        id: 'torch-tc2a-2f', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tc2a-2f.svg'],
+        id: 'torch-tc2a-2f', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tc2a-2f-01.png', '/images/brazing-torch-tc2a-2f-02.png', '/images/brazing-torch-tc2a-2f-03.png', '/images/brazing-torch-tc2a-2f-04.png', '/images/brazing-torch-tc2a-2f-05.png', '/images/brazing-torch-tc2a-2f-06.png'],
         metaTitle: 'Hose Dual-Head Brazing Torch (Valve, 1.5m, 35mm) | HVACR',
         metaDescription: 'Dual-head hose brazing torch with on-torch valve, 1.5m hose, piezoelectric ignition, 1350°C, pipes up to 35mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
         name: 'Hose Dual-Head Brazing Torch with On-Torch Valve — 1.5m Hose (T-C2A-2F Series)',
