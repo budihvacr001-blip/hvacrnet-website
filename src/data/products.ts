@@ -4,6 +4,7 @@ export interface ThirdCategory {
   description?: string
   isOverview?: boolean
   published?: boolean // defaults to true if not specified
+  belongsToThird?: string // for overview nodes: render as a nested sub-item under this third catalog (keeps the overview belonging to a product catalog like ball-valves)
 }
 
 export interface SubCategory {
@@ -1878,7 +1879,7 @@ export const categories: Category[] = [
         id: 'welding-gas-equipment',
         name: 'Welding & Gas Equipment',
         subCategories: [
-          { id: 'brazing-torches-overview', name: 'Category Overview', isOverview: true },
+          { id: 'brazing-torches-overview', name: 'Category Overview', isOverview: true, belongsToThird: 'brazing-torches' },
           { id: 'brazing-torches', name: 'Brazing Torches' },
           { id: 'brazing-rods', name: 'Brazing Rods' },
         ],

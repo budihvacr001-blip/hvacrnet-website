@@ -624,6 +624,8 @@ export default function Products() {
 
                                   {sub.subCategories!.filter(third => {
                                     if (third.published === false) return false
+                                    // Overview nodes that belong to a specific third catalog are rendered nested (not as flat siblings)
+                                    if (third.isOverview && third.belongsToThird) return false
                                     // Overview nodes always show
                                     if (third.isOverview) return true
                                     // Count published products under this third category
@@ -639,26 +641,42 @@ export default function Products() {
                                       .filter(t => !t.isOverview)
                                       .length
                                     const showSequence = !third.isOverview
-                                    
+                                    // Nested overview nodes that belong under this third
+                                    const nestedOverviews = (sub.subCategories || [])
+                                      .filter(o => o.isOverview && o.belongsToThird === third.id)
                                     return (
-                                      <Link
-                                        key={third.id}
-                                        to={`/products/${cat.id}/${sub.id}/${third.id}`}
-                                        className={`flex w-full items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
-                                          third.isOverview
-                                            ? 'font-bold text-gray-900 hover:bg-navy/5'
-                                            : activeThirdCategory === third.id
-                                            ? 'font-semibold text-accent'
-                                            : 'text-gray-700 hover:bg-navy/5'
-                                        }`}
-                                      >
-                                        {showSequence && (
-                                          <span className="shrink-0 text-xs text-gray-400 tabular-nums">
-                                            {String(sequenceNumber).padStart(2, '0')}
-                                          </span>
-                                        )}
-                                        <span className="flex-1">{third.name}</span>
-                                      </Link>
+                                      <div key={third.id} className="space-y-1">
+                                        <Link
+                                          to={`/products/${cat.id}/${sub.id}/${third.id}`}
+                                          className={`flex w-full items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
+                                            third.isOverview
+                                              ? 'font-bold text-gray-900 hover:bg-navy/5'
+                                              : activeThirdCategory === third.id
+                                              ? 'font-semibold text-accent'
+                                              : 'text-gray-700 hover:bg-navy/5'
+                                          }`}
+                                        >
+                                          {showSequence && (
+                                            <span className="shrink-0 text-xs text-gray-400 tabular-nums">
+                                              {String(sequenceNumber).padStart(2, '0')}
+                                            </span>
+                                          )}
+                                          <span className="flex-1">{third.name}</span>
+                                        </Link>
+                                        {nestedOverviews.map((ov) => (
+                                          <Link
+                                            key={ov.id}
+                                            to={`/products/${cat.id}/${sub.id}/${ov.id}`}
+                                            className={`ml-5 flex w-full items-start gap-2 rounded px-3 py-1.5 text-left text-sm transition-colors ${
+                                              activeThirdCategory === ov.id
+                                                ? 'font-semibold text-accent'
+                                                : 'font-bold text-gray-900 hover:bg-navy/5'
+                                            }`}
+                                          >
+                                            <span className="flex-1">{ov.name}</span>
+                                          </Link>
+                                        ))}
+                                      </div>
                                     )
                                   })}
                                 </div>
