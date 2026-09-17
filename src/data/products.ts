@@ -1881,6 +1881,7 @@ export const categories: Category[] = [
         subCategories: [
           { id: 'brazing-torches-overview', name: 'Category Overview', isOverview: true, belongsToThird: 'brazing-torches' },
           { id: 'brazing-torches', name: 'Brazing Torches' },
+          { id: 'brazing-rods-overview', name: 'Category Overview', isOverview: true, belongsToThird: 'brazing-rods' },
           { id: 'brazing-rods', name: 'Brazing Rods' },
         ],
       },
@@ -2325,10 +2326,22 @@ export const brazingTorchesComparison = {
   ],
 };
 
+export const brazingRodsComparison = {
+  title: 'Brazing Rod Series Comparison',
+  subtitle: 'Three phosphorus-copper brazing rod options compared by rod form, cross-section, length, silver content, melting range, and key advantage.',
+  headers: ['#', 'Product', 'Model', 'Rod Form', 'Cross-section', 'Length', 'Ag%', 'P%', 'Solidus', 'Liquidus', 'Brazing Temp', 'Key Advantage'],
+  rows: [
+    ['1', 'Round Brazing Rod', 'JINCOOL-R2.5', 'Round', 'φ2.5mm', '500mm', '0%', '6.8–7.5%', '710°C', '793°C', '790–850°C', 'Standard round, smooth feed'],
+    ['2', 'Flat Brazing Rod', 'JINCOOL-F1.3', 'Flat', '1.3×3.2mm', '400mm', '0%', '6.8–7.5%', '710°C', '793°C', '790–850°C', 'Flat form, controlled flow'],
+    ['3', 'Flat Brazing Rod Pro', 'JINCOOL-F1.3-Pro', 'Flat (Pro)', '1.3×3.2mm', '450mm', '0%', '6.8–7.5%', '710°C', '793°C', '790–850°C', 'Extended length, fewer rod changes'],
+  ],
+};
+
 // Category Landing Page Content
 export interface CategoryLandingContent {
   categoryId: string;
   subCategoryId?: string;
+  overviewId?: string;
   metaTitle?: string;
   metaDescription?: string;
   h1: string;
@@ -2449,10 +2462,27 @@ export const categoryLandingContent: CategoryLandingContent[] = [
   {
     categoryId: 'tools',
     subCategoryId: 'welding-gas-equipment',
+    overviewId: 'brazing-torches-overview',
     metaTitle: 'Brazing Torches for HVAC & Refrigeration | Types & Selection Guide',
     metaDescription: 'Compare 6 brazing torch types — propane, MAPP gas & blowtorch models. Hose, direct-mount & dual-head with piezo or manual ignition. Select by pipe size & fuel.',
     h1: 'Brazing Torches for HVAC & Refrigeration',
     introduction: 'Six brazing torch (gas torch / blowtorch) options for copper pipe and HVAC applications — from compact direct-mount propane torches to heavy-duty hose models, all compatible with MAPP/MAP-Pro/Propane via CGA 600 connection and rated to 1350°C.',
+    howToChoose: [],
+    faq: [],
+    relatedCategories: [
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+    ],
+  },
+  {
+    categoryId: 'tools',
+    subCategoryId: 'welding-gas-equipment',
+    overviewId: 'brazing-rods-overview',
+    metaTitle: 'Brazing Rods for HVAC & Refrigeration | Types & Selection Guide',
+    metaDescription: 'Compare 3 phosphorus-copper brazing rod types — round, flat, and flat-pro. Select by rod form, cross-section, and application. Self-fluxing on copper.',
+    h1: 'Brazing Rods for HVAC & Refrigeration',
+    introduction: 'Three phosphorus-copper brazing rod options for copper pipe and HVAC applications — from standard round rods to extended-length flat pro rods, all self-fluxing on copper-to-copper joints with no additional flux required. Brazing temperature range 790–850°C.',
     howToChoose: [],
     faq: [],
     relatedCategories: [

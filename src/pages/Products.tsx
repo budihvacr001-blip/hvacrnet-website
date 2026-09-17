@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, txvComparison, brazingTorchesComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, txvComparison, brazingTorchesComparison, brazingRodsComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -805,9 +805,11 @@ export default function Products() {
             {/* Category Landing Page for Overview */}
             {(currentThirdCategory?.isOverview || isSubCategoryOverview) && (() => {
               const landingContent = categoryLandingContent.find(c =>
-                c.subCategoryId
-                  ? c.subCategoryId === activeSubCategory && c.categoryId === activeCategory
-                  : c.categoryId === activeCategory && !c.subCategoryId
+                activeThirdCategory && c.overviewId
+                  ? c.overviewId === activeThirdCategory
+                  : c.subCategoryId
+                    ? c.subCategoryId === activeSubCategory && c.categoryId === activeCategory
+                    : c.categoryId === activeCategory && !c.subCategoryId
               );
               if (!landingContent) return null;
 
@@ -817,17 +819,22 @@ export default function Products() {
                 'sight-glasses': sightGlassesComparison,
                 'thermal-expansion-valves': txvComparison,
                 'welding-gas-equipment': brazingTorchesComparison,
+                'brazing-torches-overview': brazingTorchesComparison,
+                'brazing-rods-overview': brazingRodsComparison,
               };
               const filterDrierMap: Record<string, typeof filterDriersComparison> = {
                 'filter-driers': filterDriersComparison,
               };
-              const comparisonData = comparisonMap[activeSubCategory || ''] || filterDrierMap[activeCategory || ''];
+              const comparisonData = comparisonMap[activeThirdCategory || ''] || comparisonMap[activeSubCategory || ''] || filterDrierMap[activeCategory || ''];
               if (!comparisonData) return null;
 
               const categoryObj = categories.find(c => c.id === activeCategory);
               const subCategoryObj = categoryObj?.subCategories.find(s => s.id === activeSubCategory);
+              const overviewThirdId = currentThirdCategory?.isOverview ? currentThirdCategory.belongsToThird : null;
               const categoryProducts = categoryObj?.products.filter(p =>
-                activeSubCategory && !subCategoryObj?.isOverview ? p.subCategoryId === activeSubCategory : true
+                overviewThirdId
+                  ? p.thirdCategoryId === overviewThirdId
+                  : activeSubCategory && !subCategoryObj?.isOverview ? p.subCategoryId === activeSubCategory : true
               ) || [];
 
               return (
