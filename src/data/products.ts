@@ -1884,7 +1884,7 @@ export const categories: Category[] = [
     ],
     products: [
       {
-        id: 'torch-jc3', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-jc3.svg'],
+        id: 'torch-jc3', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-jc3.png'],
         metaTitle: 'Heavy-Duty Hose Brazing Torch (1350°C, Piezo Ignition) | HVACR',
         metaDescription: 'Heavy-duty air-fuel brazing torch with 1.5m hose, brass nozzle, piezoelectric ignition, 1350°C flame, handles pipes up to 40mm. CGA 600. 15 pcs/ctn. MOQ 1 pc.',
         name: 'Heavy-Duty Hose Brazing Torch — 1.5m Hose, Brass Nozzle, Piezoelectric Auto-Ignition (JC-3 Series)',
@@ -1922,7 +1922,7 @@ export const categories: Category[] = [
         ]
       },
       {
-        id: 'torch-ta', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-ta.svg'],
+        id: 'torch-ta', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-ta-01.png', '/images/brazing-torch-ta-02.png', '/images/brazing-torch-ta-03.png', '/images/brazing-torch-ta-04.png', '/images/brazing-torch-ta-05.png'],
         metaTitle: 'Direct-Mount Brazing Torch (360° Swivel, Piezo Ignition) | HVACR',
         metaDescription: 'Compact direct-mount brazing torch with 360° swivel tip, stainless steel nozzle, piezoelectric ignition, 1350°C, pipes up to 12mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
         name: 'Direct-Mount Brazing Torch — 360° Swivel Tip, Compact Body, Piezoelectric Auto-Ignition (T-A Series)',
