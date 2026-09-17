@@ -256,7 +256,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-2 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-all overflow-hidden">
+                <th key={i} className="px-2 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-words overflow-hidden">
                   {atomizeText(h)}
                 </th>
               ))}
@@ -278,7 +278,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                     key={cellIdx}
                     className={`px-2 py-1.5 align-top overflow-hidden ${
                       isStickyCol ? 'font-medium' : ''
-                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-all leading-tight'} ${
+                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-words leading-tight'} ${
                       isLongContent ? 'text-[9.5px] md:text-[10.5px]' : ''
                     } ${
                       isStickyCol ? `sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] ${rowBgClass}` : ''
