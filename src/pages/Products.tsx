@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
 import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, txvComparison, brazingTorchesComparison, brazingRodsComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
@@ -72,6 +72,7 @@ export default function Products() {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
   const [expandedSubCategories, setExpandedSubCategories] = useState<Record<string, boolean>>({})
   const [expandedThirds, setExpandedThirds] = useState<Record<string, boolean>>({})
+  const location = useLocation()
 
   // Sync state when URL params change (e.g., user clicks navigation)
   useEffect(() => {
@@ -145,6 +146,19 @@ export default function Products() {
 
     return products
   }, [allProducts, activeCategory, activeSubCategory, activeThirdCategory, searchQuery, categories])
+
+  // Focus product from #product-<id> hash: when a specific product is requested via the
+  // shared third category's product links, render only that product in the main content.
+  const focusedProductId = useMemo(() => {
+    const hash = window.location.hash
+    return hash.startsWith('#product-') ? hash.slice('#product-'.length) : null
+  }, [location.hash])
+
+  const focusedProducts = useMemo(() => {
+    if (!focusedProductId) return filteredProducts
+    const hit = filteredProducts.find((p) => p.id === focusedProductId)
+    return hit ? [hit] : filteredProducts
+  }, [focusedProductId, filteredProducts])
 
   useEffect(() => {
     if (highlightedProductId) {
@@ -922,11 +936,13 @@ export default function Products() {
               </div>
             ) : currentThirdCategory?.isOverview ? null : filteredProducts.length > 0 ? (
               <>
-                <p className="mb-6 text-sm text-gray-text">
-                  {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
-                </p>
+                {!focusedProductId && (
+                  <p className="mb-6 text-sm text-gray-text">
+                    {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
+                  </p>
+                )}
                 <div className="grid gap-6 grid-cols-1">
-                  {filteredProducts.map((product) => (
+                  {focusedProducts.map((product) => (
                     <div id={`product-${product.id}`}>
                       <ProductCard
                         key={product.id}
