@@ -9,7 +9,7 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - pnpm 包管理
 
 ## 目录结构
-- `src/pages/` — 页面：Home / Products / Contact / About / Markets
+- `src/pages/` — 页面：Home / Products / Contact / About / Markets / Admin（后台目录树总览，含空目录，noindex，路由 /admin，不进 sitemap）
 - `src/components/` — 共享组件：Navbar、Footer、ProductCard、ProductModal、SEO
 - `src/data/products.ts` — 产品数据（分类、子分类、卡片信息、SEO 字段）
 - `src/index.css` — 全局样式与 Tailwind 入口
@@ -37,7 +37,9 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - 每个产品页/类目页的 title 和 meta description 由 Products.tsx 动态生成，格式：`产品名 - 类目 | HVACR NET HVAC/R Parts Supplier from China`
 - 产品数据中的 `metaTitle` 和 `metaDescription` 字段用于产品详情页的 SEO
 - Valves 下的二级目录顺序（侧边栏序号动态按非 overview 项 index 生成）：01 Solenoid → 02 Ball Valves → 03 Thermostatic Expansion Valve → 04 Sight Glasses → 05+ 其余
-- Thermostatic Expansion Valve 二级目录（`thermal-expansion-valves`）下含 4 个产品（three-level 结构，third categories：`trf-heavy-duty-txv` TRF / `ter-universal-txv` TER / `tf-replaceable-orifice` TF / `tf-core-replaceable-orifice` TF-Core），对应产品 id `tx-1`~`tx-4`
+- 一级目录可见顺序（动态序号）：01 Copper Tubes、02 Insulation Tubes、03 Valves、04 Filter Driers、05 Tools & Equipment（等）。空目录/无发布产品的一级目录前台侧边栏不显示，但会显示在 `/admin` 后台页
+- Tools & Equipment 一级目录（`tools`）：二级 `welding-gas-equipment`（Welding & Gas Equipment，container），三级 `brazing-torches`（Brazing Torches，6 个产品 torch-jc3/torch-ta/torch-tb/torch-t2b/torch-tca-fb/torch-tc2a-2f，占位图 `/images/brazing-torch-*.svg` 待替换真实图）与 `brazing-rods`（Brazing Rods，空）
+- `src/pages/Admin.tsx` 后台页：展示完整目录树（含空目录/未发布产品），每节点显示序号、published 数量、类型（container/overview），SEO noindex，路由 `/admin`；不会进入 sitemap
 - 该二级目录 SEO 内容来自 `assets/# 热力膨胀阀_SEO内容_5Products.txt`（4 个正式产品 + 内部对比表；对比总表/TQR/SEO Keywords 标注 `INTERNAL — DO NOT UPLOAD`，未上线）
 - Thermostatic Expansion Valve 下含一个 Category Overview 子项 `thermal-expansion-valves-overview`（isOverview，侧边栏"Category Overview"人，CSR 渲染、不入 sitemap，与 ball-valves-overview 一致），内容来自该二级目录的 categoryPage 内容：自定义 metaTitle/metaDescription "Refrigeration Thermostatic Expansion Valves | Types & Selection Guide" + `txvComparison` 对比表（4 行 TRF/TER/TF/TF-Core，产品名列链接到 `/products/valves/thermal-expansion-valves#<thirdCategoryId>`，与 ball-valves-overview 一致，靠 comparison 页的 getProductLink 逐行映射 products 生成）。overview 的自定义 meta 由 `CategoryLandingContent` 的可选字段 metaTitle/metaDescription 提供，`CategoryLanding` 优先使用；howToChoose/FAQ 为空时不渲染该区块
 - `categoryPositioning` 对象提供各类目的全球定位语，用于类目页的 meta description

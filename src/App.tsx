@@ -8,6 +8,7 @@ import Products from './pages/Products'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Markets from './pages/Markets'
+import Admin from './pages/Admin'
 
 interface AppProps {
   helmetContext?: any
@@ -28,6 +29,7 @@ export default function App({ helmetContext }: AppProps) {
           <Route path="/about" element={<About />} />
           <Route path="/markets-we-serve" element={<Markets />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
       <Footer />

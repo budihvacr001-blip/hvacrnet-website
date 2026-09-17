@@ -1882,7 +1882,241 @@ export const categories: Category[] = [
         ],
       },
     ],
-    products: [],
+    products: [
+      {
+        id: 'torch-jc3', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-jc3.svg'],
+        metaTitle: 'Heavy-Duty Hose Brazing Torch (1350°C, Piezo Ignition) | HVACR',
+        metaDescription: 'Heavy-duty air-fuel brazing torch with 1.5m hose, brass nozzle, piezoelectric ignition, 1350°C flame, handles pipes up to 40mm. CGA 600. 15 pcs/ctn. MOQ 1 pc.',
+        name: 'Heavy-Duty Hose Brazing Torch — 1.5m Hose, Brass Nozzle, Piezoelectric Auto-Ignition (JC-3 Series)',
+        shortDesc: 'The JC-3 is a heavy-duty air-fuel brazing torch with a 1.5m hose and brass nozzle, designed for professional HVAC and plumbing brazing applications. Featuring piezoelectric auto-ignition — no battery required — and a maximum flame temperature of 1350°C, it handles pipe diameters up to 40mm with MAPP/MAP-Pro/Propane fuel sources via a standard CGA 600 connection.',
+        description: '• Heavy-duty air-fuel (oxygen-free) hose torch engineered for high-temperature brazing of copper and other metal pipes.\n• Integrated 1.5m hose with on-torch valve control provides flexible reach and precise flame adjustment at the work site.\n• Brass nozzle delivers consistent, stable flame distribution for reliable brazing joints on pipes up to 40mm diameter.\n• Piezoelectric auto-ignition system generates sparks through mechanical pressure — no batteries or external power source needed.\n• Maximum flame temperature of 1350°C, suitable for copper-to-copper brazing with phosphorus-copper filler metals.\n• Standard CGA 600 (1"-20 UNEF) inlet fits all standard MAPP, MAP-Pro, and propane disposable cylinders.',
+        features: [
+          'Heavy-duty design with reinforced hose for demanding jobsite conditions',
+          'Brass nozzle for superior flame stability and extended service life',
+          'Piezoelectric auto-ignition — battery-free, instant spark on demand',
+          'On-torch valve for precise flame control without reaching the regulator',
+          '1.5m (150cm) hose provides ample working reach',
+          'Handles pipes up to 40mm diameter — covers the majority of HVAC brazing tasks',
+          'Compatible with MAPP, MAP-Pro, and Propane gas cylinders via CGA 600 connection'
+        ],
+        availableModels: { headers: ['Model', 'Description'], rows: [
+          ['JC-3', 'Heavy-Duty Hose Torch, 1.5m Hose, Brass Nozzle, Piezo Ignition']
+        ] },
+        specs: [
+          { label: 'Torch Type', value: 'Air-Fuel (Oxygen-Free) Hose Torch' },
+          { label: 'Fuel Compatibility', value: 'MAPP / MAP-Pro / Propane' },
+          { label: 'Ignition Type', value: 'Piezoelectric Auto-Ignition' },
+          { label: 'Maximum Pipe Diameter', value: '≤40mm' },
+          { label: 'Connection Interface', value: 'CGA 600 (1"-20 UNEF)' },
+          { label: 'Nozzle Material', value: 'Brass' },
+          { label: 'Maximum Flame Temperature', value: '1350°C' },
+          { label: 'Hose Length', value: '150cm (1.5m)' },
+          { label: 'Packing', value: '15 pcs/ctn' },
+          { label: 'Supplier', value: 'JINCOOL (金冷)' }
+        ],
+        faq: [
+          { question: 'What makes this a "heavy-duty" torch?', answer: 'The JC-3 features a reinforced brass nozzle and handles pipes up to 40mm — the largest capacity in this range. It is designed for continuous, demanding jobsite conditions.' },
+          { question: 'Do I need oxygen with this torch?', answer: 'No. This is an air-fuel (oxygen-free) torch that draws oxygen from ambient air. Compatible with MAPP, MAP-Pro, and Propane via CGA 600 connection.' },
+          { question: 'What is the maximum flame temperature?', answer: '1350°C with MAPP/MAP-Pro gas, suitable for brazing copper, brass, and other common HVAC metals.' },
+          { question: 'How long is the hose?', answer: '1.5m (150cm) flexible hose with integrated valve control, providing extended reach and precise flame modulation at the work site.' }
+        ]
+      },
+      {
+        id: 'torch-ta', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-ta.svg'],
+        metaTitle: 'Direct-Mount Brazing Torch (360° Swivel, Piezo Ignition) | HVACR',
+        metaDescription: 'Compact direct-mount brazing torch with 360° swivel tip, stainless steel nozzle, piezoelectric ignition, 1350°C, pipes up to 12mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
+        name: 'Direct-Mount Brazing Torch — 360° Swivel Tip, Compact Body, Piezoelectric Auto-Ignition (T-A Series)',
+        shortDesc: 'The T-A is a compact direct-mount brazing torch that screws directly onto CGA 600 gas cylinders — no hose required. Its signature 360° swivel tip rotates the nozzle freely to prevent hose twisting and enables comfortable access in tight spaces. With piezoelectric auto-ignition and a stainless steel nozzle rated to 1350°C, it handles pipes up to 12mm for light-duty HVAC and plumbing work.',
+        description: '• Compact direct-mount air-fuel torch that connects directly to disposable gas cylinders — no hose or regulator needed for a streamlined, portable setup.\n• 360° swivel tip rotates the torch head freely in any direction, preventing gas cylinder distortion and allowing ergonomic positioning in confined work areas.\n• Stainless steel nozzle provides excellent heat resistance and flame precision at temperatures up to 1350°C.\n• Piezoelectric auto-ignition delivers reliable, battery-free spark ignition with a single press.\n• Designed for pipes up to 12mm diameter — ideal for small-diameter copper pipe brazing in refrigeration and plumbing.\n• CGA 600 (1"-20 UNEF) threaded connection fits standard MAPP, MAP-Pro, and propane cylinders.',
+        features: [
+          '360° swivel tip — rotates freely for ergonomic positioning and prevents cylinder twisting',
+          'Direct-mount design — no hose required; screws directly onto the gas cylinder for maximum portability',
+          'Piezoelectric auto-ignition — instant, battery-free spark',
+          'Stainless steel nozzle for heat resistance and long service life',
+          'Compact and lightweight — ideal for service technicians working in tight spaces',
+          'Handles pipes up to 12mm — perfect for small-diameter refrigeration and plumbing jobs',
+          'Compatible with MAPP, MAP-Pro, and Propane via CGA 600 connection'
+        ],
+        availableModels: { headers: ['Model', 'Description'], rows: [
+          ['T-A', 'Direct-Mount Torch, 360° Swivel Tip, Piezo Ignition']
+        ] },
+        specs: [
+          { label: 'Torch Type', value: 'Air-Fuel (Oxygen-Free) Direct-Mount' },
+          { label: 'Fuel Compatibility', value: 'MAPP / MAP-Pro / Propane' },
+          { label: 'Ignition Type', value: 'Piezoelectric Auto-Ignition' },
+          { label: 'Maximum Pipe Diameter', value: '≤12mm' },
+          { label: 'Connection Interface', value: 'CGA 600 (1"-20 UNEF)' },
+          { label: 'Nozzle Material', value: 'Stainless Steel' },
+          { label: 'Maximum Flame Temperature', value: '1350°C' },
+          { label: 'Hose Length', value: 'N/A (Direct-Mount)' },
+          { label: 'Special Feature', value: '360° Swivel Tip' },
+          { label: 'Packing', value: '10 pcs/ctn' },
+          { label: 'Supplier', value: 'JINCOOL (金冷)' }
+        ],
+        faq: [
+          { question: 'What is the 360° swivel tip?', answer: 'The torch head rotates 360 degrees, preventing hose twist during use and allowing you to maintain a comfortable grip while directing the flame at any angle.' },
+          { question: 'What is the maximum pipe diameter?', answer: 'Up to 12mm — ideal for small-diameter copper tubing commonly used in residential HVAC and refrigeration systems.' },
+          { question: 'Is this torch compact?', answer: 'Yes, the T-A is a direct-mount (compact) torch that screws directly onto the gas cylinder with no hose. It is lightweight and portable for quick, close-range jobs.' },
+          { question: 'Do I need batteries for ignition?', answer: 'No. The piezoelectric ignition generates sparks mechanically — no batteries or external power needed.' }
+        ]
+      },
+      {
+        id: 'torch-tb', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tb.svg'],
+        metaTitle: 'Direct-Mount Brazing Torch (Manual Ignition, 1350°C) | HVACR',
+        metaDescription: 'Budget-friendly direct-mount brazing torch, manual ignition, stainless steel nozzle, 1350°C, pipes up to 12mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
+        name: 'Direct-Mount Brazing Torch — Manual Ignition, Compact Design (T-B Series)',
+        shortDesc: 'The T-B is an economical direct-mount brazing torch with manual ignition, designed for cost-conscious users. It screws directly onto CGA 600 gas cylinders and features a stainless steel nozzle rated to 1350°C, handling pipes up to 12mm. Requires an external flame source for ignition.',
+        description: '• Direct-mount air-fuel torch that connects directly to disposable gas cylinders — no hose or regulator needed.\n• Manual ignition requires an external flame source (lighter or match) — simpler design with fewer parts that can fail.\n• Stainless steel nozzle provides reliable heat resistance for consistent brazing performance.\n• Maximum flame temperature of 1350°C for copper-to-copper brazing applications.\n• Handles pipes up to 12mm diameter — suitable for residential HVAC and refrigeration tasks.\n• CGA 600 (1"-20 UNEF) threaded connection fits standard MAPP, MAP-Pro, and propane cylinders.',
+        features: [
+          'Budget-friendly design — the most affordable option in the range',
+          'Manual ignition — fewer mechanical parts, lower failure rate',
+          'Direct-mount — screws directly onto gas cylinder, no hose required',
+          'Stainless steel nozzle for reliable performance',
+          'Compact and lightweight for portability',
+          'Handles pipes up to 12mm',
+          'Compatible with MAPP, MAP-Pro, and Propane via CGA 600 connection'
+        ],
+        availableModels: { headers: ['Model', 'Description'], rows: [
+          ['T-B', 'Direct-Mount Torch, Manual Ignition']
+        ] },
+        specs: [
+          { label: 'Torch Type', value: 'Air-Fuel (Oxygen-Free) Direct-Mount' },
+          { label: 'Fuel Compatibility', value: 'MAPP / MAP-Pro / Propane' },
+          { label: 'Ignition Type', value: 'Manual (External Flame Source)' },
+          { label: 'Maximum Pipe Diameter', value: '≤12mm' },
+          { label: 'Connection Interface', value: 'CGA 600 (1"-20 UNEF)' },
+          { label: 'Nozzle Material', value: 'Stainless Steel' },
+          { label: 'Maximum Flame Temperature', value: '1350°C' },
+          { label: 'Hose Length', value: 'N/A (Direct-Mount)' },
+          { label: 'Packing', value: '10 pcs/ctn' },
+          { label: 'Supplier', value: 'JINCOOL (金冷)' }
+        ],
+        faq: [
+          { question: 'What does "manual ignition" mean?', answer: 'The T-B requires an external flame source (lighter, match) to ignite. It does not have piezoelectric auto-ignition. This makes it the most budget-friendly option in the range.' },
+          { question: 'Why choose manual over auto-ignition?', answer: 'Manual ignition models are typically more affordable and have fewer mechanical parts that can fail. Ideal for budget-conscious buyers or occasional use.' },
+          { question: 'What is the maximum pipe diameter?', answer: 'Up to 12mm — suitable for small-diameter copper tubing in residential HVAC applications.' },
+          { question: 'Is this torch portable?', answer: 'Yes, the direct-mount design means no hose — it screws directly onto the gas cylinder for a compact, lightweight setup.' }
+        ]
+      },
+      {
+        id: 'torch-t2b', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-t2b.svg'],
+        metaTitle: 'Direct-Mount Dual-Head Brazing Torch (Piezo, 35mm) | HVACR',
+        metaDescription: 'Dual-head direct-mount brazing torch, wider flame pattern, piezoelectric ignition, 1350°C, pipes up to 35mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
+        name: 'Direct-Mount Dual-Head Brazing Torch — Wide Flame, Piezoelectric Auto-Ignition (T-2B Series)',
+        shortDesc: 'The T-2B is a direct-mount dual-head brazing torch featuring two nozzle tips that produce a wider, more uniform flame pattern for brazing larger pipe joints without repositioning. With piezoelectric auto-ignition and a maximum capacity of 35mm, it bridges the gap between compact torches and hose models for mid-range HVAC work.',
+        description: '• Direct-mount dual-head air-fuel torch with two nozzle tips for wider, more uniform flame coverage.\n• Dual-head design allows brazing of larger pipe joints (up to 35mm) without frequent repositioning — improving efficiency on production jobs.\n• Piezoelectric auto-ignition provides reliable, battery-free spark ignition.\n• Stainless steel nozzles ensure heat resistance and consistent flame quality at temperatures up to 1350°C.\n• Screws directly onto CGA 600 gas cylinders — no hose required, maintaining portability.\n• CGA 600 (1"-20 UNEF) connection fits standard MAPP, MAP-Pro, and propane cylinders.',
+        features: [
+          'Dual-head nozzle — wider flame pattern for larger joints, fewer repositioning steps',
+          'Piezoelectric auto-ignition — instant, battery-free spark',
+          'Direct-mount design — compact and portable, no hose needed',
+          'Handles pipes up to 35mm — covers most mid-size commercial HVAC brazing tasks',
+          'Stainless steel nozzles for durability and flame precision',
+          'Compatible with MAPP, MAP-Pro, and Propane via CGA 600 connection'
+        ],
+        availableModels: { headers: ['Model', 'Description'], rows: [
+          ['T-2B', 'Direct-Mount Dual-Head Torch, Piezo Ignition']
+        ] },
+        specs: [
+          { label: 'Torch Type', value: 'Air-Fuel (Oxygen-Free) Direct-Mount Dual-Head' },
+          { label: 'Fuel Compatibility', value: 'MAPP / MAP-Pro / Propane' },
+          { label: 'Ignition Type', value: 'Piezoelectric Auto-Ignition' },
+          { label: 'Maximum Pipe Diameter', value: '≤35mm' },
+          { label: 'Connection Interface', value: 'CGA 600 (1"-20 UNEF)' },
+          { label: 'Nozzle Material', value: 'Stainless Steel' },
+          { label: 'Maximum Flame Temperature', value: '1350°C' },
+          { label: 'Hose Length', value: 'N/A (Direct-Mount)' },
+          { label: 'Special Feature', value: 'Dual-Head Nozzle' },
+          { label: 'Packing', value: '10 pcs/ctn' },
+          { label: 'Supplier', value: 'JINCOOL (金冷)' }
+        ],
+        faq: [
+          { question: 'What does "dual head" mean?', answer: 'The T-2B has two nozzle tips that produce a wider, more uniform flame pattern — ideal for brazing larger pipe joints without repositioning the torch.' },
+          { question: 'What is the maximum pipe diameter?', answer: 'Up to 35mm — covers the majority of mid-size commercial HVAC brazing applications.' },
+          { question: 'Is this a direct-mount or hose torch?', answer: 'Direct-mount — screws directly onto the gas cylinder with no hose. Compact and portable with dual-head efficiency.' },
+          { question: 'When should I choose the T-2B over the T-A?', answer: 'Choose T-2B when you need wider flame coverage for larger joints (up to 35mm). Choose T-A for smaller pipes (up to 12mm) where the 360° swivel tip is more valuable.' }
+        ]
+      },
+      {
+        id: 'torch-tca-fb', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tca-fb.svg'],
+        metaTitle: 'Hose Brazing Torch with Valve (1.5m, Piezo, 28mm) | HVACR',
+        metaDescription: 'Air-fuel hose brazing torch with on-torch valve, 1.5m hose, piezoelectric ignition, 1350°C, pipes up to 28mm. Single head. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
+        name: 'Hose Brazing Torch with On-Torch Valve — Single Head, 1.5m Hose (T-CA-FB Series)',
+        shortDesc: 'The T-CA-FB is a hose-type brazing torch with an integrated on-torch valve for precise flame control at the work site. Featuring a 1.5m flexible hose, piezoelectric auto-ignition, and a single-head stainless steel nozzle, it handles pipes up to 28mm — combining the reach of a hose torch with the simplicity of a single-head design.',
+        description: '• Hose-type air-fuel torch with 1.5m flexible hose and on-torch valve for precise flame modulation without reaching the regulator.\n• Integrated valve control allows real-time flame adjustment directly at the torch — ideal for confined spaces or elevated work positions.\n• Single-head stainless steel nozzle provides focused flame for precise brazing on pipes up to 28mm diameter.\n• Piezoelectric auto-ignition delivers battery-free, instant spark.\n• Maximum flame temperature of 1350°C for reliable copper brazing.\n• CGA 600 (1"-20 UNEF) connection fits standard MAPP, MAP-Pro, and propane cylinders.',
+        features: [
+          'On-torch valve — precise flame control at the work site, no need to reach the regulator',
+          '1.5m (150cm) hose — extended reach for confined spaces and elevated work',
+          'Single-head nozzle — focused flame for precision work',
+          'Piezoelectric auto-ignition — battery-free, instant spark',
+          'Handles pipes up to 28mm — covers most residential and light commercial HVAC tasks',
+          'Stainless steel nozzle for heat resistance and durability',
+          'Compatible with MAPP, MAP-Pro, and Propane via CGA 600 connection'
+        ],
+        availableModels: { headers: ['Model', 'Description'], rows: [
+          ['T-CA-FB', 'Hose Torch with Valve, Single Head, 1.5m Hose']
+        ] },
+        specs: [
+          { label: 'Torch Type', value: 'Air-Fuel (Oxygen-Free) Hose Torch' },
+          { label: 'Fuel Compatibility', value: 'MAPP / MAP-Pro / Propane' },
+          { label: 'Ignition Type', value: 'Piezoelectric Auto-Ignition' },
+          { label: 'Maximum Pipe Diameter', value: '≤28mm' },
+          { label: 'Connection Interface', value: 'CGA 600 (1"-20 UNEF)' },
+          { label: 'Nozzle Material', value: 'Stainless Steel' },
+          { label: 'Maximum Flame Temperature', value: '1350°C' },
+          { label: 'Hose Length', value: '150cm (1.5m)' },
+          { label: 'Valve', value: 'On-Torch Valve' },
+          { label: 'Head Type', value: 'Single Head' },
+          { label: 'Packing', value: '10 pcs/ctn' },
+          { label: 'Supplier', value: 'JINCOOL (金冷)' }
+        ],
+        faq: [
+          { question: 'What does "with valve" mean?', answer: 'The T-CA-FB has an integrated on-torch valve, allowing you to control the flame directly at the torch without reaching back to the regulator. This provides precise flame modulation at the work site.' },
+          { question: 'Is this single-head or dual-head?', answer: 'Single-head. For dual-head with hose and valve, see the T-C2A-2F model.' },
+          { question: 'What is the hose length?', answer: '1.5m (150cm) flexible hose, providing extended reach for confined spaces or elevated work positions.' },
+          { question: 'When should I choose this over the JC-3?', answer: 'Choose T-CA-FB for pipes up to 28mm where you need on-torch valve control and a lighter setup. Choose JC-3 for larger pipes (up to 40mm) where the brass nozzle and heavy-duty build are more important.' }
+        ]
+      },
+      {
+        id: 'torch-tc2a-2f', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tc2a-2f.svg'],
+        metaTitle: 'Hose Dual-Head Brazing Torch (Valve, 1.5m, 35mm) | HVACR',
+        metaDescription: 'Dual-head hose brazing torch with on-torch valve, 1.5m hose, piezoelectric ignition, 1350°C, pipes up to 35mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
+        name: 'Hose Dual-Head Brazing Torch with On-Torch Valve — 1.5m Hose (T-C2A-2F Series)',
+        shortDesc: 'The T-C2A-2F is the most versatile brazing torch in the range, combining a 1.5m hose with on-torch valve control and a dual-head nozzle for wide, uniform flame coverage. With piezoelectric auto-ignition and a maximum capacity of 35mm, it is ideal for professional HVAC technicians who need reach, precision, and efficiency.',
+        description: '• Hose-type air-fuel torch with 1.5m flexible hose, on-torch valve, and dual-head nozzle — the most feature-complete model in the range.\n• Dual-head nozzle produces a wider, more uniform flame pattern, enabling efficient brazing of larger pipe joints (up to 35mm) without frequent repositioning.\n• Integrated on-torch valve allows real-time flame modulation at the work site — no need to adjust the regulator.\n• Piezoelectric auto-ignition provides reliable, battery-free spark ignition.\n• Stainless steel dual-head nozzles ensure heat resistance and consistent flame quality at temperatures up to 1350°C.\n• CGA 600 (1"-20 UNEF) connection fits standard MAPP, MAP-Pro, and propane cylinders.',
+        features: [
+          'Dual-head nozzle — wider flame for larger joints, fewer repositioning steps',
+          'On-torch valve — precise flame control at the work site',
+          '1.5m (150cm) hose — extended reach for confined spaces and elevated work',
+          'Piezoelectric auto-ignition — battery-free, instant spark',
+          'Handles pipes up to 35mm — the highest capacity in the hose torch range',
+          'Stainless steel nozzles for durability and consistent performance',
+          'Compatible with MAPP, MAP-Pro, and Propane via CGA 600 connection'
+        ],
+        availableModels: { headers: ['Model', 'Description'], rows: [
+          ['T-C2A-2F', 'Hose Torch with Valve, Dual Head, 1.5m Hose']
+        ] },
+        specs: [
+          { label: 'Torch Type', value: 'Air-Fuel (Oxygen-Free) Hose Torch Dual-Head' },
+          { label: 'Fuel Compatibility', value: 'MAPP / MAP-Pro / Propane' },
+          { label: 'Ignition Type', value: 'Piezoelectric Auto-Ignition' },
+          { label: 'Maximum Pipe Diameter', value: '≤35mm' },
+          { label: 'Connection Interface', value: 'CGA 600 (1"-20 UNEF)' },
+          { label: 'Nozzle Material', value: 'Stainless Steel' },
+          { label: 'Maximum Flame Temperature', value: '1350°C' },
+          { label: 'Hose Length', value: '150cm (1.5m)' },
+          { label: 'Valve', value: 'On-Torch Valve' },
+          { label: 'Head Type', value: 'Dual Head' },
+          { label: 'Packing', value: '10 pcs/ctn' },
+          { label: 'Supplier', value: 'JINCOOL (金冷)' }
+        ],
+        faq: [
+          { question: 'What makes this the most versatile model?', answer: 'The T-C2A-2F combines three features: 1.5m hose with valve control + dual-head nozzle. It offers the reach of a hose torch with the wide-flame efficiency of a dual-head design.' },
+          { question: 'When should I choose this over the T-CA-FB?', answer: 'Choose T-C2A-2F for larger pipe joints (up to 35mm) where you need wider flame coverage. Choose T-CA-FB for smaller joints (up to 28mm) where single-head precision is sufficient.' },
+          { question: 'What is the maximum pipe diameter?', answer: 'Up to 35mm — the highest capacity in the hose torch range.' },
+          { question: 'Does this torch have valve control?', answer: 'Yes, the integrated on-torch valve allows precise flame modulation without reaching the regulator.' }
+        ]
+      },
+    ],
   },
   {
     id: 'compressors',
