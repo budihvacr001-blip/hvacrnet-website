@@ -80,6 +80,21 @@ export default function Products() {
     setActiveThirdCategory(newState.activeThirdCategory)
   }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
 
+  // Scroll to a specific product when arriving via #product-<id> hash
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash.startsWith('#product-')) {
+      const id = hash.slice('#product-'.length)
+      setTimeout(() => {
+        const el = document.getElementById(`product-${id}`)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          setHighlightedProductId(id)
+        }
+      }, 120)
+    }
+  }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
+
   const allProducts = useMemo(() => {
     return categories.flatMap((cat) => cat.products)
   }, [])
@@ -644,6 +659,10 @@ export default function Products() {
                                     // Nested overview nodes that belong under this third
                                     const nestedOverviews = (sub.subCategories || [])
                                       .filter(o => o.isOverview && o.belongsToThird === third.id)
+                                    // Products that live directly under this shared third category
+                                    const thirdProducts = cat.products.filter(p =>
+                                      p.thirdCategoryId === third.id && isProductPublished(p)
+                                    )
                                     return (
                                       <div key={third.id} className="space-y-1">
                                         <Link
@@ -676,6 +695,26 @@ export default function Products() {
                                             <span className="flex-1">{ov.name}</span>
                                           </Link>
                                         ))}
+                                        {thirdProducts.length > 0 && (
+                                          <div className="space-y-1">
+                                            {thirdProducts.map((p, pIndex) => (
+                                              <Link
+                                                key={p.id}
+                                                to={`/products/${cat.id}/${sub.id}/${third.id}#product-${p.id}`}
+                                                className={`ml-5 flex w-full items-start gap-2 rounded px-3 py-1.5 text-left text-sm transition-colors ${
+                                                  highlightedProductId === p.id
+                                                    ? 'font-semibold text-accent'
+                                                    : 'text-gray-600 hover:bg-navy/5'
+                                                }`}
+                                              >
+                                                <span className="shrink-0 text-xs text-gray-400 tabular-nums">
+                                                  {String(pIndex + 1).padStart(2, '0')}
+                                                </span>
+                                                <span className="flex-1 line-clamp-2">{p.name}</span>
+                                              </Link>
+                                            ))}
+                                          </div>
+                                        )}
                                       </div>
                                     )
                                   })}
