@@ -82,20 +82,6 @@ export default function Products() {
     setActiveThirdCategory(newState.activeThirdCategory)
   }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
 
-  // Auto-expand the active shared-container third when arriving via deep link
-  useEffect(() => {
-    if (!params.thirdCategorySlug) return
-    const cat = categories.find(c => c.id === params.categorySlug)
-    const sub = cat?.subCategories.find(s => s.id === params.subCategorySlug)
-    const third = sub?.subCategories?.find(t => t.id === params.thirdCategorySlug)
-    if (!third || third.isOverview) return
-    const overviews = (sub?.subCategories || []).filter(o => o.isOverview && o.belongsToThird === third.id)
-    const prods = (cat?.products || []).filter(p => p.thirdCategoryId === third.id && p.published !== false)
-    if (overviews.length > 0 || prods.length > 1) {
-      setExpandedThirds(prev => ({ ...prev, [`${params.categorySlug}-${params.subCategorySlug}-${params.thirdCategorySlug}`]: true }))
-    }
-  }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
-
   // Scroll to a specific product when arriving via #product-<id> hash
   useEffect(() => {
     const hash = window.location.hash
@@ -697,55 +683,48 @@ export default function Products() {
                                     // parent-level listing as parallel sub-directories (01/02 style).
                                     const isSharedThird = nestedOverviews.length > 0 || thirdProducts.length > 1
                                     const thirdKey = `${cat.id}-${sub.id}-${third.id}`
-                                    // Shared-container third catalogs: expand/collapse is fully controlled by
-                                    // expandedThirds (click the directory row to toggle). Never force-expand at parent level.
-                                    const showDetails = isSharedThird && !!expandedThirds[thirdKey]
-                                    const toggleThird = () => {
-                                      setExpandedThirds(prev => ({
-                                        ...prev,
-                                        [thirdKey]: !prev[thirdKey]
-                                      }))
-                                    }
+                                    const isThirdFamilyActive =
+                                      activeThirdCategory === third.id ||
+                                      nestedOverviews.some(o => o.id === activeThirdCategory) ||
+                                      thirdProducts.some(p => p.id === highlightedProductId)
+                                    // Shared-container third catalogs are inline-expandable (chevron) OR auto-expanded
+                                    // when this third family is active (user clicked into it). Never force-expand at parent level.
+                                    const showDetails = isSharedThird && (isThirdFamilyActive || !!expandedThirds[thirdKey])
                                     return (
                                       <div key={third.id} className="space-y-1">
-                                        {!isSharedThird && (
-                                          <Link
-                                            to={`/products/${cat.id}/${sub.id}/${third.id}`}
-                                            className={`flex flex-1 items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
-                                              activeThirdCategory === third.id
+                                        <div className="flex items-center">
+                                        <Link
+                                          to={`/products/${cat.id}/${sub.id}/${third.id}`}
+                                          className={`flex flex-1 items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
+                                            third.isOverview
+                                              ? 'font-bold text-gray-900 hover:bg-navy/5'
+                                              : activeThirdCategory === third.id
                                               ? 'font-semibold text-accent'
                                               : 'text-gray-700 hover:bg-navy/5'
-                                            }`}
-                                          >
-                                            {showSequence && (
-                                              <span className="shrink-0 text-xs text-gray-400 tabular-nums">
-                                                {String(sequenceNumber).padStart(2, '0')}
-                                              </span>
-                                            )}
-                                            <span className="flex-1">{third.name}</span>
-                                          </Link>
-                                        )}
+                                          }`}
+                                        >
+                                          {showSequence && (
+                                            <span className="shrink-0 text-xs text-gray-400 tabular-nums">
+                                              {String(sequenceNumber).padStart(2, '0')}
+                                            </span>
+                                          )}
+                                          <span className="flex-1">{third.name}</span>
+                                        </Link>
                                         {isSharedThird && (
-                                          <div className="flex items-center">
-                                            <Link
-                                              to={`/products/${cat.id}/${sub.id}/${third.id}`}
-                                              onClick={toggleThird}
-                                              className={`flex flex-1 items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
-                                                activeThirdCategory === third.id
-                                                ? 'font-semibold text-accent'
-                                                : 'text-gray-700 hover:bg-navy/5'
-                                              }`}
-                                            >
-                                              <ChevronRight className={`h-3 w-3 shrink-0 transition-transform ${expandedThirds[thirdKey] ? 'rotate-90' : ''}`} />
-                                              {showSequence && (
-                                                <span className="shrink-0 text-xs text-gray-400 tabular-nums">
-                                                  {String(sequenceNumber).padStart(2, '0')}
-                                                </span>
-                                              )}
-                                              <span className="flex-1">{third.name}</span>
-                                            </Link>
-                                          </div>
+                                          <button
+                                            onClick={() => {
+                                              setExpandedThirds(prev => ({
+                                                ...prev,
+                                                [thirdKey]: !prev[thirdKey]
+                                              }))
+                                            }}
+                                            className="p-1 text-gray-400 hover:text-gray-600"
+                                            aria-label={`Toggle ${third.name} sub-items`}
+                                          >
+                                            <ChevronRight className={`h-3 w-3 transition-transform ${expandedThirds[thirdKey] ? 'rotate-90' : ''}`} />
+                                          </button>
                                         )}
+                                        </div>
                                         {showDetails && (
                                           <>
                                         {nestedOverviews.map((ov) => (
