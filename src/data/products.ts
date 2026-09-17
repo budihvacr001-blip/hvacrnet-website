@@ -2124,7 +2124,7 @@ export const categories: Category[] = [
         id: 'rod-r25', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-rods', images: ['/images/brazing-rod-r2-5.png'],
         metaTitle: 'BCuP-2 Phosphorus Copper Brazing Rod (Round, 2.5mm) | HVACR',
         metaDescription: 'BCuP-2 phosphorus-copper round brazing rod, 2.5mm diameter, 500mm length, self-fluxing for copper-to-copper, 790–850°C brazing temp, 1KG pack. No flux needed.',
-        name: 'Phosphorus-Copper Round Brazing Rod — BCuP-2 (BCu93P), Self-Fluxing on Copper (JINCOOL-R2.5)',
+        name: 'Round Brazing Rod',
         shortDesc: 'JINCOOL-R2.5 is a phosphorus-copper round brazing rod compliant with BCu93P (GB/T 6418) and equivalent to AWS BCuP-2 (AWS A5.8) classification. With a 2.5mm round cross-section and 500mm length, it is self-fluxing on copper-to-copper joints — no additional flux required — and brazes at 790–850°C. Each 1KG pack delivers consistent, reliable performance for HVAC and refrigeration pipe brazing.',
         description: '• Phosphorus-copper (CuP) brazing rod classified as BCu93P per GB/T 6418, equivalent to AWS A5.8 BCuP-2.\n• Self-fluxing on copper-to-copper brazing — phosphorus content acts as an intrinsic flux, eliminating the need for separate brazing flux on clean copper joints.\n• Round rod form (φ2.5mm) provides smooth, consistent rod feed during manual brazing operations.\n• 500mm rod length offers optimal handling balance for extended brazing sessions.\n• Solidus temperature of 710°C and liquidus temperature of 793°C, with recommended brazing temperature range of 790–850°C.\n• 6.8–7.5% phosphorus content ensures proper fluidity and joint penetration on copper-to-copper assemblies.',
         features: [
@@ -2164,7 +2164,7 @@ export const categories: Category[] = [
         id: 'rod-f13', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-rods', images: ['/images/brazing-rod-f1-3.png'],
         metaTitle: 'BCuP-2 Phosphorus Copper Flat Brazing Rod (1.3×3.2mm) | HVACR',
         metaDescription: 'BCuP-2 phosphorus-copper flat brazing rod, 1.3×3.2mm cross-section, 400mm length, self-fluxing for copper-to-copper, 790–850°C brazing temp, 1KG pack.',
-        name: 'Phosphorus-Copper Flat Brazing Rod — BCuP-2 (BCu93P), Flat Form (JINCOOL-F1.3)',
+        name: 'Flat Brazing Rod',
         shortDesc: 'JINCOOL-F1.3 is a phosphorus-copper flat brazing rod equivalent to AWS BCuP-2 classification, featuring a 1.3×3.2mm rectangular cross-section and 400mm length. The flat form factor provides a wider contact surface for controlled rod distribution in capillary joints. Self-fluxing on copper-to-copper brazing at 790–850°C with no additional flux required.',
         description: '• Phosphorus-copper flat brazing rod classified as BCu93P (GB/T 6418), equivalent to AWS A5.8 BCuP-2.\n• Flat rod form (1.3×3.2mm) provides a wider contact area compared to round rods, enabling more controlled rod distribution into capillary joints.\n• Self-fluxing on copper-to-copper joints — phosphorus acts as an intrinsic flux, eliminating the need for separate brazing flux.\n• Solidus temperature of 710°C and liquidus temperature of 793°C, with recommended brazing temperature range of 790–850°C.\n• 400mm rod length is optimized for the flat cross-section, providing comfortable handling and precise feed control.\n• 6.8–7.5% phosphorus content ensures consistent fluidity and joint quality.',
         features: [
@@ -2204,7 +2204,7 @@ export const categories: Category[] = [
         id: 'rod-f13-pro', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-rods', images: ['/images/brazing-rod-f1-3.png'],
         metaTitle: 'BCuP-2 Phosphorus Copper Flat Brazing Rod Pro (1.3×3.2mm) | HVACR',
         metaDescription: 'BCuP-2 Pro flat brazing rod, 1.3×3.2mm cross-section, 450mm length, self-fluxing for copper-to-copper, 790–850°C brazing temp, 1KG pack. Extended length.',
-        name: 'Phosphorus-Copper Flat Brazing Rod Pro — BCuP-2 (BCu93P), Extended Length (JINCOOL-F1.3-Pro)',
+        name: 'Flat Brazing Rod Pro',
         shortDesc: 'JINCOOL-F1.3-Pro is the professional-grade variant of the flat phosphorus-copper brazing rod, featuring the same 1.3×3.2mm cross-section as the standard F1.3 but with an extended 450mm length for improved reach and efficiency. Equivalent to AWS BCuP-2, it is self-fluxing on copper-to-copper joints and brazes at 790–850°C.',
         description: '• Professional-grade phosphorus-copper flat brazing rod, classified as BCu93P (GB/T 6418), equivalent to AWS A5.8 BCuP-2.\n• Extended 450mm length (50mm longer than the standard F1.3) provides additional reach for deep-access brazing joints and reduces the frequency of rod changes during continuous work.\n• Flat rod form (1.3×3.2mm) ensures controlled rod distribution into capillary joints.\n• Self-fluxing on copper-to-copper — phosphorus acts as an intrinsic flux, no separate brazing flux needed.\n• Solidus temperature of 710°C and liquidus temperature of 793°C, with recommended brazing temperature range of 790–850°C.\n• 6.8–7.5% phosphorus content for consistent joint quality.',
         features: [
