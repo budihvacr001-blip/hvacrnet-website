@@ -36,13 +36,15 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - sitemap.xml 在构建时由 `scripts/generate-sitemap.mjs` 自动生成，读取 `src/data/products.ts` 中的分类和产品数据
 - 每个产品页/类目页的 title 和 meta description 由 Products.tsx 动态生成，格式：`产品名 - 类目 | HVACR NET HVAC/R Parts Supplier from China`
 - 产品数据中的 `metaTitle` 和 `metaDescription` 字段用于产品详情页的 SEO
+- `Product` 接口含可选 `keywords` 字段：存储产品 SEO 关键词（`|` 分隔），由 `Products.tsx` 详情页传入 `SEO` 组件、输出 `<meta name="keywords">`（仅 head，不影响页面视觉）。Brazing Torches 6 款产品已配 10 个/款
 - Valves 下的二级目录顺序（侧边栏序号动态按非 overview 项 index 生成）：01 Solenoid → 02 Ball Valves → 03 Thermostatic Expansion Valve → 04 Sight Glasses → 05+ 其余
 - 一级目录可见顺序（动态序号）：01 Copper Tubes、02 Insulation Tubes、03 Valves、04 Filter Driers、05 Tools & Equipment（等）。空目录/无发布产品的一级目录前台侧边栏不显示，但会显示在 `/admin` 后台页
 - Tools & Equipment 一级目录（`tools`）：二级 `welding-gas-equipment`（Welding & Gas Equipment，container），三级 `brazing-torches`（Brazing Torches，6 个产品 torch-jc3/torch-ta/torch-tb/torch-t2b/torch-tca-fb/torch-tc2a-2f，实拍图 `/images/brazing-torch-*.png`）与 `brazing-rods`（Brazing Rods，3 个产品 rod-r25/rod-f13/rod-f13-pro，实拍图 `/images/brazing-rod-r2-5.png` 与 `brazing-rod-f1-3.png`，F1.3 与 F1.3-Pro 共用同一张图）
 - 焊枪与焊条产品的 Technical Parameters 表格中不含 Supplier 行（供应商信息不落入产品规格表）
 - `src/pages/Admin.tsx` 后台页：展示完整目录树（含空目录/未发布产品），每节点显示序号、published 数量、类型（container/overview），SEO noindex，路由 `/admin`；不会进入 sitemap
 - 该二级目录 SEO 内容来自 `assets/# 热力膨胀阀_SEO内容_5Products.txt`（4 个正式产品 + 内部对比表；对比总表/TQR/SEO Keywords 标注 `INTERNAL — DO NOT UPLOAD`，未上线）
-- Brazing Torches 下含一个 Category Overview 子项 `brazing-torches-overview`（isOverview，侧边栏"Category Overview"，CSR 渲染、不入 sitemap）。其 comparison 用 `brazingTorchesComparison`（6 行，对应 torch-jc3/ta/tb/t2b/tca-fb/tc2a-2f），通过 `comparisonMap['welding-gas-equipment']` 匹配。由于 6 款 torch 产品共享同一 `thirdCategoryId: 'brazing-torches'`（与 ball-valves 每品独立 third 不同），`CategoryLanding.getProductLink` 做了增强：某 thirdCategoryId 下存在多个产品时，产品名列链接到 `/products/tools/welding-gas-equipment/brazing-torches#product-<id>`（不含则链接 `#<thirdCategoryId>`）
+- Brazing Torches 下含一个 Category Overview 子项 `brazing-torches-overview`（isOverview，侧边栏"Category Overview"，CSR 渲染、不入 sitemap）。其 comparison 用 `brazingTorchesComparison`（6 行，对应 torch-jc3/ta/tb/t2b/tca-fb/tc2a-2f），通过 `comparisonMap['welding-gas-equipment']` 匹配。其 meta 简介已改为商业同义词导向（propane torch / gas torch / blowtorch）。6 款 torch 产品的 Product Description 首句均已嵌入商业同义词（propane torch / gas torch / blowtorch）。由于 6 款 torch 产品共享同一 `thirdCategoryId: 'brazing-torches'`（与 ball-valves 每品独立 third 不同），`CategoryLanding.getProductLink` 做了增强：某 thirdCategoryId 下存在多个产品时，产品名列链接到 `/products/tools/welding-gas-equipment/brazing-torches#product-<id>`（不含则链接 `#<thirdCategoryId>`）
+- Brazing Rods（`brazing-rods`）当前**没有** Category Overview 页（无 `brazing-rods-overview` isOverview 节点），因此页面中不存在 "Brazing Filler Metals" 字样；若需焊条总览页需另行新建
 - Thermostatic Expansion Valve 下含一个 Category Overview 子项 `thermal-expansion-valves-overview`（isOverview，侧边栏"Category Overview"人，CSR 渲染、不入 sitemap，与 ball-valves-overview 一致），内容来自该二级目录的 categoryPage 内容：自定义 metaTitle/metaDescription "Refrigeration Thermostatic Expansion Valves | Types & Selection Guide" + `txvComparison` 对比表（4 行 TRF/TER/TF/TF-Core，产品名列链接到 `/products/valves/thermal-expansion-valves#<thirdCategoryId>`，与 ball-valves-overview 一致，靠 comparison 页的 getProductLink 逐行映射 products 生成）。overview 的自定义 meta 由 `CategoryLandingContent` 的可选字段 metaTitle/metaDescription 提供，`CategoryLanding` 优先使用；howToChoose/FAQ 为空时不渲染该区块
 - `categoryPositioning` 对象提供各类目的全球定位语，用于类目页的 meta description
 - 约定（所有分类 overview 通用）：每个有 comparison 对比表的 Category Overview，产品名列必须通过 `getProductLink`（comparison 页逐行映射传入的 `products`）链接到产品（`/<category>/<subCategory>#<thirdCategoryId>`）；新目录 overview 渲染时要把 `products` 传成 `categoryProducts`，切勿传空数组，否则产品名列变纯文本
@@ -60,6 +62,7 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 
 ## 常见问题和预防
 - 产品图片暂用占位图，后续替换
+- Brazing Rods 3 个产品（rod-r25/rod-f13/rod-f13-pro）的正文/features 已把学术关键词 "filler metal" 统一替换为 "rod"（如 rod feed/rod distribution），FAQ 保留原 "filler metal" 表述（用户认可）
 - TXV 系列（tx-1~tx-4）图片已替换为实物图：tx-1 TRF `tx-trf-01.png`、tx-2 TER `tx-ter-01.png`、tx-3 TF 内平衡 `tx-tf-01.png` + 外平衡 `tx-tfw-02.png`（两张）、tx-4 TF-Core `tx-core-01.png`（均位于 `public/images/`）
 - 询盘表单改用 web3forms：前端 fetch `https://api.web3forms.com/submit`(JSON)，access_key=`b6cec139-6ea9-4c1c-ad3a-f7bf908421a8`、subject/from_name 固定；成功绿色提示+重置，失败红色提示，无后端
 - Contact 侧边栏：Get in Touch（Email/WeChat/WhatsApp/Address，高度等齐）+ Follow Us（Instagram→instagram.com/hvacr_net、TikTok→www.tiktok.com/@kongheng66）+ 20+ Years 徽章

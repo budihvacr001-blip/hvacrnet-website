@@ -319,6 +319,7 @@ export default function Products() {
       <SEO
         title={seoTitle}
         description={seoDescription}
+        keywords={currentThirdCategory && !currentThirdCategory.isOverview ? (filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)?.keywords ?? undefined) : undefined}
         url={seoUrl}
         ogType={currentThirdCategory && !currentThirdCategory.isOverview ? 'product' : 'website'}
         ogImage={(() => {

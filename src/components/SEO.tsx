@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 interface SEOProps {
   title: string;
   description: string;
+  keywords?: string;
   url?: string;
   ogImage?: string;
   ogType?: string;
@@ -16,6 +17,7 @@ const BASE_URL = 'https://www.hvacrnet.com';
 export default function SEO({ 
   title, 
   description, 
+  keywords,
   url,
   ogImage, 
   ogType = 'website',
@@ -33,6 +35,7 @@ export default function SEO({
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={fullUrl} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
 
