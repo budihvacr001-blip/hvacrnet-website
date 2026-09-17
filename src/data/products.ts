@@ -2037,7 +2037,7 @@ export const categories: Category[] = [
         ]
       },
       {
-        id: 'torch-tca-fb', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tca-fb.svg'],
+        id: 'torch-tca-fb', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-tca-fb-01.png', '/images/brazing-torch-tca-fb-02.png', '/images/brazing-torch-tca-fb-03.png', '/images/brazing-torch-tca-fb-04.png', '/images/brazing-torch-tca-fb-05.png', '/images/brazing-torch-tca-fb-06.png'],
         metaTitle: 'Hose Brazing Torch with Valve (1.5m, Piezo, 28mm) | HVACR',
         metaDescription: 'Air-fuel hose brazing torch with on-torch valve, 1.5m hose, piezoelectric ignition, 1350°C, pipes up to 28mm. Single head. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
         name: 'Hose Brazing Torch with On-Torch Valve — Single Head, 1.5m Hose (T-CA-FB Series)',
