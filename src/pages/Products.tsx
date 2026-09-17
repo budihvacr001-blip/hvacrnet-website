@@ -71,6 +71,7 @@ export default function Products() {
   const [highlightedProductId, setHighlightedProductId] = useState<string | null>(null)
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
   const [expandedSubCategories, setExpandedSubCategories] = useState<Record<string, boolean>>({})
+  const [expandedThirds, setExpandedThirds] = useState<Record<string, boolean>>({})
 
   // Sync state when URL params change (e.g., user clicks navigation)
   useEffect(() => {
@@ -667,16 +668,20 @@ export default function Products() {
                                     // when this third is itself active (user clicked into it), keeping
                                     // parent-level listing as parallel sub-directories (01/02 style).
                                     const isSharedThird = nestedOverviews.length > 0 || thirdProducts.length > 1
+                                    const thirdKey = `${cat.id}-${sub.id}-${third.id}`
                                     const isThirdFamilyActive =
                                       activeThirdCategory === third.id ||
                                       nestedOverviews.some(o => o.id === activeThirdCategory) ||
                                       thirdProducts.some(p => p.id === highlightedProductId)
-                                    const showDetails = isSharedThird && isThirdFamilyActive
+                                    // Shared-container third catalogs are inline-expandable (chevron) OR auto-expanded
+                                    // when this third family is active (user clicked into it). Never force-expand at parent level.
+                                    const showDetails = isSharedThird && (isThirdFamilyActive || !!expandedThirds[thirdKey])
                                     return (
                                       <div key={third.id} className="space-y-1">
+                                        <div className="flex items-center">
                                         <Link
                                           to={`/products/${cat.id}/${sub.id}/${third.id}`}
-                                          className={`flex w-full items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
+                                          className={`flex flex-1 items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
                                             third.isOverview
                                               ? 'font-bold text-gray-900 hover:bg-navy/5'
                                               : activeThirdCategory === third.id
@@ -691,6 +696,21 @@ export default function Products() {
                                           )}
                                           <span className="flex-1">{third.name}</span>
                                         </Link>
+                                        {isSharedThird && (
+                                          <button
+                                            onClick={() => {
+                                              setExpandedThirds(prev => ({
+                                                ...prev,
+                                                [thirdKey]: !prev[thirdKey]
+                                              }))
+                                            }}
+                                            className="p-1 text-gray-400 hover:text-gray-600"
+                                            aria-label={`Toggle ${third.name} sub-items`}
+                                          >
+                                            <ChevronRight className={`h-3 w-3 transition-transform ${expandedThirds[thirdKey] ? 'rotate-90' : ''}`} />
+                                          </button>
+                                        )}
+                                        </div>
                                         {showDetails && (
                                           <>
                                         {nestedOverviews.map((ov) => (
