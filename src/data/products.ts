@@ -1912,8 +1912,7 @@ export const categories: Category[] = [
           { label: 'Maximum Flame Temperature', value: '1350°C' },
           { label: 'Hose Length', value: '150cm (1.5m)' },
           { label: 'Packing', value: '15 pcs/ctn' },
-          { label: 'Supplier', value: 'JINCOOL (金冷)' }
-        ],
+          ],
         faq: [
           { question: 'What makes this a "heavy-duty" torch?', answer: 'The JC-3 features a reinforced brass nozzle and handles pipes up to 40mm — the largest capacity in this range. It is designed for continuous, demanding jobsite conditions.' },
           { question: 'Do I need oxygen with this torch?', answer: 'No. This is an air-fuel (oxygen-free) torch that draws oxygen from ambient air. Compatible with MAPP, MAP-Pro, and Propane via CGA 600 connection.' },
@@ -1951,8 +1950,7 @@ export const categories: Category[] = [
           { label: 'Hose Length', value: 'N/A (Direct-Mount)' },
           { label: 'Special Feature', value: '360° Swivel Tip' },
           { label: 'Packing', value: '10 pcs/ctn' },
-          { label: 'Supplier', value: 'JINCOOL (金冷)' }
-        ],
+          ],
         faq: [
           { question: 'What is the 360° swivel tip?', answer: 'The torch head rotates 360 degrees, preventing hose twist during use and allowing you to maintain a comfortable grip while directing the flame at any angle.' },
           { question: 'What is the maximum pipe diameter?', answer: 'Up to 12mm — ideal for small-diameter copper tubing commonly used in residential HVAC and refrigeration systems.' },
@@ -1989,8 +1987,7 @@ export const categories: Category[] = [
           { label: 'Maximum Flame Temperature', value: '1350°C' },
           { label: 'Hose Length', value: 'N/A (Direct-Mount)' },
           { label: 'Packing', value: '10 pcs/ctn' },
-          { label: 'Supplier', value: 'JINCOOL (金冷)' }
-        ],
+          ],
         faq: [
           { question: 'What does "manual ignition" mean?', answer: 'The T-B requires an external flame source (lighter, match) to ignite. It does not have piezoelectric auto-ignition. This makes it the most budget-friendly option in the range.' },
           { question: 'Why choose manual over auto-ignition?', answer: 'Manual ignition models are typically more affordable and have fewer mechanical parts that can fail. Ideal for budget-conscious buyers or occasional use.' },
@@ -2027,8 +2024,7 @@ export const categories: Category[] = [
           { label: 'Hose Length', value: 'N/A (Direct-Mount)' },
           { label: 'Special Feature', value: 'Dual-Head Nozzle' },
           { label: 'Packing', value: '10 pcs/ctn' },
-          { label: 'Supplier', value: 'JINCOOL (金冷)' }
-        ],
+          ],
         faq: [
           { question: 'What does "dual head" mean?', answer: 'The T-2B has two nozzle tips that produce a wider, more uniform flame pattern — ideal for brazing larger pipe joints without repositioning the torch.' },
           { question: 'What is the maximum pipe diameter?', answer: 'Up to 35mm — covers the majority of mid-size commercial HVAC brazing applications.' },
@@ -2067,8 +2063,7 @@ export const categories: Category[] = [
           { label: 'Valve', value: 'On-Torch Valve' },
           { label: 'Head Type', value: 'Single Head' },
           { label: 'Packing', value: '10 pcs/ctn' },
-          { label: 'Supplier', value: 'JINCOOL (金冷)' }
-        ],
+          ],
         faq: [
           { question: 'What does "with valve" mean?', answer: 'The T-CA-FB has an integrated on-torch valve, allowing you to control the flame directly at the torch without reaching back to the regulator. This provides precise flame modulation at the work site.' },
           { question: 'Is this single-head or dual-head?', answer: 'Single-head. For dual-head with hose and valve, see the T-C2A-2F model.' },
@@ -2107,13 +2102,132 @@ export const categories: Category[] = [
           { label: 'Valve', value: 'On-Torch Valve' },
           { label: 'Head Type', value: 'Dual Head' },
           { label: 'Packing', value: '10 pcs/ctn' },
-          { label: 'Supplier', value: 'JINCOOL (金冷)' }
-        ],
+          ],
         faq: [
           { question: 'What makes this the most versatile model?', answer: 'The T-C2A-2F combines three features: 1.5m hose with valve control + dual-head nozzle. It offers the reach of a hose torch with the wide-flame efficiency of a dual-head design.' },
           { question: 'When should I choose this over the T-CA-FB?', answer: 'Choose T-C2A-2F for larger pipe joints (up to 35mm) where you need wider flame coverage. Choose T-CA-FB for smaller joints (up to 28mm) where single-head precision is sufficient.' },
           { question: 'What is the maximum pipe diameter?', answer: 'Up to 35mm — the highest capacity in the hose torch range.' },
           { question: 'Does this torch have valve control?', answer: 'Yes, the integrated on-torch valve allows precise flame modulation without reaching the regulator.' }
+        ]
+      },
+      {
+        id: 'rod-r25', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-rods', images: ['/images/brazing-rod-r2-5.png'],
+        metaTitle: 'BCuP-2 Phosphorus Copper Brazing Rod (Round, 2.5mm) | HVACR',
+        metaDescription: 'BCuP-2 phosphorus-copper round brazing rod, 2.5mm diameter, 500mm length, self-fluxing for copper-to-copper, 790–850°C brazing temp, 1KG pack. No flux needed.',
+        name: 'Phosphorus-Copper Round Brazing Rod — BCuP-2 (BCu93P), Self-Fluxing on Copper (JINCOOL-R2.5)',
+        shortDesc: 'JINCOOL-R2.5 is a phosphorus-copper round brazing rod compliant with BCu93P (GB/T 6418) and equivalent to AWS BCuP-2 (AWS A5.8) classification. With a 2.5mm round cross-section and 500mm length, it is self-fluxing on copper-to-copper joints — no additional flux required — and brazes at 790–850°C. Each 1KG pack delivers consistent, reliable performance for HVAC and refrigeration pipe brazing.',
+        description: '• Phosphorus-copper (CuP) brazing rod classified as BCu93P per GB/T 6418, equivalent to AWS A5.8 BCuP-2.\n• Self-fluxing on copper-to-copper brazing — phosphorus content acts as an intrinsic flux, eliminating the need for separate brazing flux on clean copper joints.\n• Round rod form (φ2.5mm) provides smooth, consistent filler metal feed during manual brazing operations.\n• 500mm rod length offers optimal handling balance for extended brazing sessions.\n• Solidus temperature of 710°C and liquidus temperature of 793°C, with recommended brazing temperature range of 790–850°C.\n• 6.8–7.5% phosphorus content ensures proper fluidity and joint penetration on copper-to-copper assemblies.',
+        features: [
+          'Self-fluxing on copper-to-copper — no additional flux required, reducing cleanup time',
+          'BCuP-2 / BCu93P classification — industry-standard for HVAC copper brazing',
+          'Round rod form for smooth, controlled filler metal deposition',
+          '500mm length — optimal for ergonomic handling during extended brazing work',
+          'Silver-free (0% Ag) — cost-effective alternative to silver-bearing rods for copper-only joints',
+          'Consistent phosphorus content (6.8–7.5%) ensures reliable joint quality',
+          '1KG net weight per pack — convenient for both field service and workshop use'
+        ],
+        availableModels: { headers: ['Model', 'Rod Form', 'Cross-section', 'Length'], rows: [
+          ['JINCOOL-R2.5', 'Round Rod', 'φ2.5mm', '500mm']
+        ] },
+        specs: [
+          { label: 'AWS Classification', value: 'BCuP-2 (AWS A5.8)' },
+          { label: 'GB/T Classification', value: 'BCu93P (GB/T 6418)' },
+          { label: 'Silver (Ag) Content', value: '0%' },
+          { label: 'Phosphorus (P) Content', value: '6.8–7.5%' },
+          { label: 'Solidus Temperature', value: '710°C' },
+          { label: 'Liquidus Temperature', value: '793°C' },
+          { label: 'Brazing Temperature Range', value: '790–850°C' },
+          { label: 'Flux Requirement', value: 'No (self-fluxing on Cu-to-Cu)' },
+          { label: 'Rod Form', value: 'Round' },
+          { label: 'Cross-section', value: 'φ2.5mm' },
+          { label: 'Length', value: '500mm' },
+          { label: 'Net Weight', value: '1KG' }
+        ],
+        faq: [
+          { question: 'What is the difference between round and flat brazing rods?', answer: 'Round rods (φ2.5mm) provide smooth, consistent filler metal feed for general-purpose brazing. Flat rods have a wider contact surface for controlled filler metal distribution into capillary joints.' },
+          { question: 'Do I need flux when using this rod?', answer: 'For copper-to-copper joints, no flux is required. The phosphorus content (6.8–7.5%) acts as an intrinsic flux. For copper-to-brass or copper-to-steel, external flux is still required.' },
+          { question: 'What temperature should I use?', answer: 'Recommended brazing temperature range is 790–850°C. The rod becomes fully liquid at 793°C (liquidus temperature).' },
+          { question: 'Is this rod silver-free?', answer: 'Yes, 0% Ag. This makes it a cost-effective alternative to silver-bearing rods for copper-to-copper applications.' }
+        ]
+      },
+      {
+        id: 'rod-f13', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-rods', images: ['/images/brazing-rod-f1-3.png'],
+        metaTitle: 'BCuP-2 Phosphorus Copper Flat Brazing Rod (1.3×3.2mm) | HVACR',
+        metaDescription: 'BCuP-2 phosphorus-copper flat brazing rod, 1.3×3.2mm cross-section, 400mm length, self-fluxing for copper-to-copper, 790–850°C brazing temp, 1KG pack.',
+        name: 'Phosphorus-Copper Flat Brazing Rod — BCuP-2 (BCu93P), Flat Form (JINCOOL-F1.3)',
+        shortDesc: 'JINCOOL-F1.3 is a phosphorus-copper flat brazing rod equivalent to AWS BCuP-2 classification, featuring a 1.3×3.2mm rectangular cross-section and 400mm length. The flat form factor provides a wider contact surface for controlled filler metal distribution in capillary joints. Self-fluxing on copper-to-copper brazing at 790–850°C with no additional flux required.',
+        description: '• Phosphorus-copper flat brazing rod classified as BCu93P (GB/T 6418), equivalent to AWS A5.8 BCuP-2.\n• Flat rod form (1.3×3.2mm) provides a wider contact area compared to round rods, enabling more controlled filler metal distribution into capillary joints.\n• Self-fluxing on copper-to-copper joints — phosphorus acts as an intrinsic flux, eliminating the need for separate brazing flux.\n• Solidus temperature of 710°C and liquidus temperature of 793°C, with recommended brazing temperature range of 790–850°C.\n• 400mm rod length is optimized for the flat cross-section, providing comfortable handling and precise feed control.\n• 6.8–7.5% phosphorus content ensures consistent fluidity and joint quality.',
+        features: [
+          'Flat rod form — wider contact surface for controlled filler metal flow into capillary joints',
+          'Self-fluxing on copper-to-copper — no additional flux required',
+          'BCuP-2 / BCu93P classification — industry-standard for HVAC copper brazing',
+          '1.3×3.2mm cross-section — precise filler metal delivery for tight-tolerance joints',
+          'Silver-free (0% Ag) — cost-effective for copper-only applications',
+          '400mm length optimized for flat rod handling',
+          '1KG net weight per pack'
+        ],
+        availableModels: { headers: ['Model', 'Rod Form', 'Cross-section', 'Length'], rows: [
+          ['JINCOOL-F1.3', 'Flat Rod', '1.3×3.2mm', '400mm']
+        ] },
+        specs: [
+          { label: 'AWS Classification', value: 'BCuP-2 (AWS A5.8)' },
+          { label: 'GB/T Classification', value: 'BCu93P (GB/T 6418)' },
+          { label: 'Silver (Ag) Content', value: '0%' },
+          { label: 'Phosphorus (P) Content', value: '6.8–7.5%' },
+          { label: 'Solidus Temperature', value: '710°C' },
+          { label: 'Liquidus Temperature', value: '793°C' },
+          { label: 'Brazing Temperature Range', value: '790–850°C' },
+          { label: 'Flux Requirement', value: 'No (self-fluxing on Cu-to-Cu)' },
+          { label: 'Rod Form', value: 'Flat' },
+          { label: 'Cross-section', value: '1.3×3.2mm' },
+          { label: 'Length', value: '400mm' },
+          { label: 'Net Weight', value: '1KG' }
+        ],
+        faq: [
+          { question: 'What is the advantage of flat rod over round rod?', answer: 'Flat rod (1.3×3.2mm) has a wider contact surface, enabling more controlled filler metal distribution into capillary joints — preferred for precision work on tight-tolerance fittings.' },
+          { question: 'Do I need flux?', answer: 'For copper-to-copper joints, no flux is required (self-fluxing). For copper-to-brass or copper-to-steel, external flux is still required.' },
+          { question: 'What is the cross-section size?', answer: '1.3×3.2mm rectangular cross-section, optimized for controlled filler metal delivery.' },
+          { question: 'How is this different from the Pro version?', answer: 'The standard F1.3 is 400mm long. The Pro version (F1.3-Pro) is 450mm — 50mm longer for extended reach and fewer rod changes.' }
+        ]
+      },
+      {
+        id: 'rod-f13-pro', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-rods', images: ['/images/brazing-rod-f1-3.png'],
+        metaTitle: 'BCuP-2 Phosphorus Copper Flat Brazing Rod Pro (1.3×3.2mm) | HVACR',
+        metaDescription: 'BCuP-2 Pro flat brazing rod, 1.3×3.2mm cross-section, 450mm length, self-fluxing for copper-to-copper, 790–850°C brazing temp, 1KG pack. Extended length.',
+        name: 'Phosphorus-Copper Flat Brazing Rod Pro — BCuP-2 (BCu93P), Extended Length (JINCOOL-F1.3-Pro)',
+        shortDesc: 'JINCOOL-F1.3-Pro is the professional-grade variant of the flat phosphorus-copper brazing rod, featuring the same 1.3×3.2mm cross-section as the standard F1.3 but with an extended 450mm length for improved reach and efficiency. Equivalent to AWS BCuP-2, it is self-fluxing on copper-to-copper joints and brazes at 790–850°C.',
+        description: '• Professional-grade phosphorus-copper flat brazing rod, classified as BCu93P (GB/T 6418), equivalent to AWS A5.8 BCuP-2.\n• Extended 450mm length (50mm longer than the standard F1.3) provides additional reach for deep-access brazing joints and reduces the frequency of rod changes during continuous work.\n• Flat rod form (1.3×3.2mm) ensures controlled filler metal distribution into capillary joints.\n• Self-fluxing on copper-to-copper — phosphorus acts as an intrinsic flux, no separate brazing flux needed.\n• Solidus temperature of 710°C and liquidus temperature of 793°C, with recommended brazing temperature range of 790–850°C.\n• 6.8–7.5% phosphorus content for consistent joint quality.',
+        features: [
+          'Extended 450mm length — 50mm longer than standard F1.3 for deeper reach and fewer rod changes',
+          'Flat rod form — wider contact surface for controlled filler metal flow',
+          'Self-fluxing on copper-to-copper — no additional flux required',
+          'BCuP-2 / BCu93P classification — industry-standard for HVAC copper brazing',
+          'Pro-grade consistency for professional HVAC technicians',
+          'Silver-free (0% Ag) — cost-effective for copper-only applications',
+          '1KG net weight per pack'
+        ],
+        availableModels: { headers: ['Model', 'Rod Form', 'Cross-section', 'Length'], rows: [
+          ['JINCOOL-F1.3-Pro', 'Flat Rod (Pro)', '1.3×3.2mm', '450mm']
+        ] },
+        specs: [
+          { label: 'AWS Classification', value: 'BCuP-2 (AWS A5.8)' },
+          { label: 'GB/T Classification', value: 'BCu93P (GB/T 6418)' },
+          { label: 'Silver (Ag) Content', value: '0%' },
+          { label: 'Phosphorus (P) Content', value: '6.8–7.5%' },
+          { label: 'Solidus Temperature', value: '710°C' },
+          { label: 'Liquidus Temperature', value: '793°C' },
+          { label: 'Brazing Temperature Range', value: '790–850°C' },
+          { label: 'Flux Requirement', value: 'No (self-fluxing on Cu-to-Cu)' },
+          { label: 'Rod Form', value: 'Flat (Pro)' },
+          { label: 'Cross-section', value: '1.3×3.2mm' },
+          { label: 'Length', value: '450mm' },
+          { label: 'Net Weight', value: '1KG' }
+        ],
+        faq: [
+          { question: 'What makes this the "Pro" version?', answer: 'Extended 450mm length — 50mm longer than the standard F1.3. This provides additional reach for deep-access brazing joints and reduces the frequency of rod changes during continuous work.' },
+          { question: 'Is the cross-section the same as standard F1.3?', answer: 'Yes, same 1.3×3.2mm flat cross-section. Only the length is different (450mm vs 400mm).' },
+          { question: 'Do I need flux?', answer: 'For copper-to-copper joints, no flux is required (self-fluxing). For copper-to-brass or copper-to-steel, external flux is still required.' },
+          { question: 'When should I choose Pro over standard?', answer: 'Choose Pro for deep-access joints, continuous production work, or when you want to minimize rod changes. Choose standard for general-purpose brazing.' }
         ]
       },
     ],
