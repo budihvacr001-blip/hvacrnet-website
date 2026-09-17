@@ -1870,16 +1870,19 @@ export const categories: Category[] = [
   },
   {
     id: 'tools',
-    name: 'Tools',
+    name: 'Tools & Equipment',
     icon: 'Hammer',
     subCategories: [
-      { id: 'refrigeration-tools', name: 'Refrigeration Tools' },
+      {
+        id: 'welding-gas-equipment',
+        name: 'Welding & Gas Equipment',
+        subCategories: [
+          { id: 'brazing-torches', name: 'Brazing Torches' },
+          { id: 'brazing-rods', name: 'Brazing Rods' },
+        ],
+      },
     ],
-    products: [
-      { id: 't-1', categoryId: 'tools', subCategoryId: 'refrigeration-tools', name: 'Tube Cutter', shortDesc: 'Precision copper tube cutters.', description: 'Ratcheting and rotary tube cutters for clean, burr-free cuts on copper tubes.', specs: [{ label: 'Range', value: '3-35mm / 3-42mm' }], applications: 'AC installation, pipe fitting' },
-      { id: 't-2', categoryId: 'tools', subCategoryId: 'refrigeration-tools', name: 'Flaring Tool', shortDesc: 'Flare tools for creating pipe flare connections.', description: 'Precision flaring tool sets for creating proper flare connections on copper tubes.', specs: [{ label: 'Range', value: '1/4" - 1-1/8"' }, { label: 'Type', value: 'Eccentric / Concentric' }], applications: 'AC installation, flare fitting preparation' },
-      { id: 't-3', categoryId: 'tools', subCategoryId: 'refrigeration-tools', name: 'Vacuum Pump', shortDesc: 'Vacuum pumps for system evacuation.', description: 'Two-stage rotary vane vacuum pumps for efficient system evacuation before charging.', specs: [{ label: 'CFM', value: '3 / 6 / 12 CFM' }, { label: 'Vacuum', value: '25 micron' }], applications: 'System evacuation, dehydration' },
-    ],
+    products: [],
   },
   {
     id: 'compressors',
