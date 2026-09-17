@@ -1999,7 +1999,7 @@ export const categories: Category[] = [
         ]
       },
       {
-        id: 'torch-t2b', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-t2b.svg'],
+        id: 'torch-t2b', categoryId: 'tools', subCategoryId: 'welding-gas-equipment', thirdCategoryId: 'brazing-torches', images: ['/images/brazing-torch-t2b-01.png', '/images/brazing-torch-t2b-02.png', '/images/brazing-torch-t2b-03.png', '/images/brazing-torch-t2b-04.png', '/images/brazing-torch-t2b-05.png'],
         metaTitle: 'Direct-Mount Dual-Head Brazing Torch (Piezo, 35mm) | HVACR',
         metaDescription: 'Dual-head direct-mount brazing torch, wider flame pattern, piezoelectric ignition, 1350°C, pipes up to 35mm. CGA 600. 10 pcs/ctn. MOQ 1 pc.',
         name: 'Direct-Mount Dual-Head Brazing Torch — Wide Flame, Piezoelectric Auto-Ignition (T-2B Series)',
