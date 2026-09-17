@@ -695,6 +695,11 @@ export default function Products() {
                                         <div className="flex items-center">
                                         <Link
                                           to={`/products/${cat.id}/${sub.id}/${third.id}`}
+                                          onClick={() => {
+                                            if (isSharedThird && !expandedThirds[thirdKey]) {
+                                              setExpandedThirds(prev => ({ ...prev, [thirdKey]: true }))
+                                            }
+                                          }}
                                           className={`flex flex-1 items-start gap-2 rounded px-3 py-2 text-left text-sm transition-colors ${
                                             third.isOverview
                                               ? 'font-bold text-gray-900 hover:bg-navy/5'
