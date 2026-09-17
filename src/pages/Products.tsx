@@ -663,6 +663,15 @@ export default function Products() {
                                     const thirdProducts = cat.products.filter(p =>
                                       p.thirdCategoryId === third.id && isProductPublished(p)
                                     )
+                                    // Shared-container third catalogs: only expand their Overview + products
+                                    // when this third is itself active (user clicked into it), keeping
+                                    // parent-level listing as parallel sub-directories (01/02 style).
+                                    const isSharedThird = nestedOverviews.length > 0 || thirdProducts.length > 1
+                                    const isThirdFamilyActive =
+                                      activeThirdCategory === third.id ||
+                                      nestedOverviews.some(o => o.id === activeThirdCategory) ||
+                                      thirdProducts.some(p => p.id === highlightedProductId)
+                                    const showDetails = isSharedThird && isThirdFamilyActive
                                     return (
                                       <div key={third.id} className="space-y-1">
                                         <Link
@@ -682,6 +691,8 @@ export default function Products() {
                                           )}
                                           <span className="flex-1">{third.name}</span>
                                         </Link>
+                                        {showDetails && (
+                                          <>
                                         {nestedOverviews.map((ov) => (
                                           <Link
                                             key={ov.id}
@@ -714,6 +725,8 @@ export default function Products() {
                                               </Link>
                                             ))}
                                           </div>
+                                        )}
+                                          </>
                                         )}
                                       </div>
                                     )
