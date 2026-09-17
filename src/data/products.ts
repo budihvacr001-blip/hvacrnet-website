@@ -1877,6 +1877,7 @@ export const categories: Category[] = [
         id: 'welding-gas-equipment',
         name: 'Welding & Gas Equipment',
         subCategories: [
+          { id: 'brazing-torches-overview', name: 'Category Overview', isOverview: true },
           { id: 'brazing-torches', name: 'Brazing Torches' },
           { id: 'brazing-rods', name: 'Brazing Rods' },
         ],
@@ -2301,6 +2302,21 @@ export const ballValvesComparison = {
   ],
 };
 
+// Brazing Torches Comparison Table Data
+export const brazingTorchesComparison = {
+  title: 'Brazing Torch Series Comparison',
+  subtitle: 'Six brazing torch options compared by torch type, ignition, pipe capacity, hose length, nozzle material, and key advantage.',
+  headers: ['#', 'Product', 'Model', 'Torch Type', 'Ignition', 'Max Pipe', 'Hose Length', 'Nozzle Material', 'Key Advantage'],
+  rows: [
+    ['1', 'Heavy-Duty Hose Torch', 'JC-3', 'Hose', 'Piezo Auto', '≤40mm', '150cm', 'Brass', 'Largest pipe capacity, brass nozzle'],
+    ['2', 'Direct-Mount Torch (360° Swivel)', 'T-A', 'Direct-Mount', 'Piezo Auto', '≤12mm', 'N/A', 'Stainless Steel', '360° swivel tip, ultra-compact'],
+    ['3', 'Direct-Mount Torch (Manual)', 'T-B', 'Direct-Mount', 'Manual', '≤12mm', 'N/A', 'Stainless Steel', 'Budget-friendly, manual ignition'],
+    ['4', 'Direct-Mount Dual-Head Torch', 'T-2B', 'Direct-Mount Dual', 'Piezo Auto', '≤35mm', 'N/A', 'Stainless Steel', 'Wide flame, dual-head direct-mount'],
+    ['5', 'Hose Torch with Valve', 'T-CA-FB', 'Hose', 'Piezo Auto', '≤28mm', '150cm', 'Stainless Steel', 'On-torch valve, single-head hose'],
+    ['6', 'Hose Torch Dual Head', 'T-C2A-2F', 'Hose Dual', 'Piezo Auto', '≤35mm', '150cm', 'Stainless Steel', 'Hose + valve + dual-head combo'],
+  ],
+};
+
 // Category Landing Page Content
 export interface CategoryLandingContent {
   categoryId: string;
@@ -2414,6 +2430,21 @@ export const categoryLandingContent: CategoryLandingContent[] = [
     metaDescription: 'Compare 5 types of thermostatic expansion valves—heavy-duty, universal, replaceable orifice, bi-directional, and valve cores. Select by refrigerant, capacity, and connection type.',
     h1: 'Refrigeration Thermostatic Expansion Valves',
     introduction: `Five TXV series covering 0.18–52 TR for R22, R404A/R507, R134a, and R410A refrigerants. From heavy-duty industrial valves (TRF) to replaceable-orifice service valves (TF) and bi-directional heat pump valves (TQR). ODF solder and SAE flare connections, internal or external equalization.`,
+    howToChoose: [],
+    faq: [],
+    relatedCategories: [
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+    ],
+  },
+  {
+    categoryId: 'tools',
+    subCategoryId: 'welding-gas-equipment',
+    metaTitle: 'Brazing Torches for HVAC & Refrigeration | Types & Selection Guide',
+    metaDescription: 'Compare 6 brazing torch types — hose torch, direct-mount, dual-head, manual and piezo ignition. Select by pipe size, nozzle type, and fuel compatibility.',
+    h1: 'Brazing Torches for HVAC & Refrigeration',
+    introduction: 'Six brazing torch options for copper pipe and HVAC applications — from compact direct-mount models to heavy-duty hose torches, all compatible with MAPP/MAP-Pro/Propane via CGA 600 connection and rated to 1350°C.',
     howToChoose: [],
     faq: [],
     relatedCategories: [

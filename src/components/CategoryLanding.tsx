@@ -88,7 +88,10 @@ export default function CategoryLanding({
     if (rowIdx < products.length) {
       const product = products[rowIdx]
       if (product.thirdCategoryId) {
-        return `/products/${categorySlug}/${subCategorySlug || ''}#${product.thirdCategoryId}`
+        const sharedThird = products.filter(p => p.thirdCategoryId === product.thirdCategoryId).length > 1
+        return sharedThird
+          ? `/products/${categorySlug}/${subCategorySlug || ''}/${product.thirdCategoryId}#product-${product.id}`
+          : `/products/${categorySlug}/${subCategorySlug || ''}#${product.thirdCategoryId}`
       }
       if (product.subCategoryId) {
         return `/products/${categorySlug}/${product.subCategoryId}#product-${product.id}`
