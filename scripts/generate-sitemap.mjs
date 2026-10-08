@@ -2,7 +2,7 @@ import { writeFileSync, statSync } from 'fs'
 import { execSync } from 'child_process'
 import { categories } from '../src/data/products.ts'
 
-const BASE_URL = 'https://www.hvacrnet.com'
+const BASE_URL = 'https://hvacrnet.com'
 const DIST_DIR = new URL('../dist/', import.meta.url).pathname
 
 // Minimum published products required for a category to appear in sitemap
