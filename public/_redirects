@@ -1,0 +1,8 @@
+# 301 redirect: old /contact-form -> /contact
+/contact-form /contact 301
+
+# 301 redirect: www -> non-www
+https://www.hvacrnet.com/* https://hvacrnet.com/:splat 301!
+
+# SPA fallback (keep at the end)
+/* /index.html 200
