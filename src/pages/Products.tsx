@@ -179,7 +179,7 @@ export default function Products() {
   // Focus product from #product-<id> hash: when a specific product is requested via the
   // shared third category's product links, render only that product in the main content.
   const focusedProductId = useMemo(() => {
-    const hash = window.location.hash
+    const hash = typeof window !== 'undefined' ? window.location.hash : ''
     return hash.startsWith('#product-') ? hash.slice('#product-'.length) : null
   }, [location.hash])
 

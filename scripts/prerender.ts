@@ -118,6 +118,7 @@ async function main() {
   
   const urls = getSitemapUrls()
   const template = getIndexTemplate()
+  let failures = 0
   
   console.log(`[SSG] Found ${urls.length} URLs to pre-render`)
   
@@ -140,10 +141,15 @@ async function main() {
       writeFileSync(outputPath, html)
       console.log(`[SSG] Pre-rendered: ${url}`)
     } catch (error: any) {
-      console.log(`[SSG] Failed to pre-render ${url}: ${error.message}`)
+      failures++
+      console.error(`[SSG] Failed to pre-render ${url}: ${error.message}`)
     }
   }
   
+  if (failures > 0) {
+    console.error(`[SSG] Pre-rendering failed for ${failures} route(s)`)
+    process.exit(1)
+  }
   console.log('[SSG] Done')
 }
 
