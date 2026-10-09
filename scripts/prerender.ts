@@ -103,10 +103,10 @@ function prerenderRoute(pathname: string, template: string) {
     html = html.replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${metaDesc}"`)
   }
   
-  // 注入 canonical link
+  // 注入 canonical link（整条替换，避免残留模板原标签的多余闭合符）
   const canonicalLink = linkTags.find(l => l.includes('canonical'))
   if (canonicalLink) {
-    html = html.replace(/<link rel="canonical" href=".*?"/, canonicalLink)
+    html = html.replace(/<link rel="canonical"[^>]*>/, canonicalLink)
   }
   
   return html
