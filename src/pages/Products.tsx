@@ -306,7 +306,7 @@ export default function Products() {
         '@type': 'ListItem',
         position: i + 1,
         name: item.name,
-        item: `https://www.hvacrnet.com${item.url}`,
+        item: `https://hvacrnet.com${item.url}`,
       })),
     }
   })()
@@ -323,7 +323,7 @@ export default function Products() {
       description: product.shortDesc,
       brand: { '@type': 'Brand', name: 'HVACR NET' },
       category: currentCategory?.name || 'HVACR Parts',
-      ...(product.images?.[0] ? { image: `https://www.hvacrnet.com${product.images[0]}` } : {}),
+      ...(product.images?.[0] ? { image: `https://hvacrnet.com${product.images[0]}` } : {}),
       offers: {
         '@type': 'Offer',
         businessFunction: 'http://purl.org/goodrelations/v1#Sell',
@@ -384,7 +384,7 @@ export default function Products() {
         ogImage={(() => {
           if (currentThirdCategory && !currentThirdCategory.isOverview) {
             const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-            if (product?.images?.[0]) return `https://www.hvacrnet.com${product.images[0]}`
+            if (product?.images?.[0]) return `https://hvacrnet.com${product.images[0]}`
           }
           return undefined
         })()}
@@ -408,7 +408,7 @@ export default function Products() {
         if (isCategoryUnpublished || isSubCategoryUnpublished || isThirdCategoryUnpublished || isProductUnpublished) {
           return (
             <div className="mx-auto max-w-7xl px-4 py-20 text-center">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">404</h1>
+              <p className="text-4xl font-bold text-gray-900 mb-4">404</p>
               <p className="text-xl text-gray-600 mb-8">This page is not available or has been unpublished.</p>
               <Link to="/products" className="inline-block bg-navy text-white px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors">
                 Back to Products

@@ -4,7 +4,7 @@ import { ChevronRight, ArrowRight, CheckCircle } from 'lucide-react'
 import { type CategoryLandingContent, type Product } from '../data/products'
 import DataTable from './DataTable'
 
-const SITE_URL = 'https://www.hvacrnet.com'
+const SITE_URL = 'https://hvacrnet.com'
 
 interface Props {
   content: CategoryLandingContent

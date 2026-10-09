@@ -84,8 +84,8 @@ export default function Markets() {
         {/* Page Header */}
         <section className="bg-navy py-16">
           <div className="mx-auto max-w-4xl px-4 text-center">
-            <h1 className="text-sm font-semibold uppercase tracking-widest text-accent">Global Reach</h1>
-            <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Markets We Serve</h2>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent">Global Reach</p>
+            <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Markets We Serve</h1>
           </div>
         </section>
 

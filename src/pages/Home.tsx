@@ -15,13 +15,13 @@ export default function Home() {
     '@type': 'Organization',
     name: 'Ningbo HVACR Net Refrigeration Equipment Co., Ltd.',
     alternateName: 'HVACR NET',
-    url: 'https://www.hvacrnet.com',
-    logo: 'https://www.hvacrnet.com/logo.png',
+    url: 'https://hvacrnet.com',
+    logo: 'https://hvacrnet.com/logo.png',
     description: 'Professional HVACR parts supplier with 20 years of trade expertise. One-stop sourcing for copper tubes, fittings, valves, insulation, and more from Ningbo, China.',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      url: 'https://www.hvacrnet.com/contact',
+      url: 'https://hvacrnet.com/contact',
       availableLanguage: ['English', 'Chinese'],
     },
     sameAs: [],
@@ -42,9 +42,9 @@ export default function Home() {
           <div className="animate-fade-in-up relative mx-auto inline-block">
             <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl" />
           </div>
-          <p className="animate-fade-in-up animate-delay-200 mt-1.5 text-base text-[#1a3a5c] sm:text-lg lg:text-xl">
+          <h1 className="animate-fade-in-up animate-delay-200 mt-1.5 text-base text-[#1a3a5c] sm:text-lg lg:text-xl">
             Your One-Stop HVACR Parts Supplier from China
-          </p>
+          </h1>
           <div className="animate-fade-in-up animate-delay-300 mt-6 flex justify-center">
             <Link
               to="/products"

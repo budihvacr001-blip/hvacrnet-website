@@ -54,7 +54,7 @@ function generateHtml(title, description, canonical, bodyContent) {
 function generateCategoryLandingHtml(categoryName, categorySlug) {
   const title = `${categoryName} - HVACR NET HVAC/R Parts Supplier from China`
   const description = `Browse our complete range of ${categoryName} products. HVACR NET - Your trusted partner for HVAC/R components from China.`
-  const canonical = `https://www.hvacrnet.com/products/${categorySlug}`
+  const canonical = `https://hvacrnet.com/products/${categorySlug}`
   
   const bodyContent = `
     <div class="ssg-content">
@@ -69,7 +69,7 @@ function generateCategoryLandingHtml(categoryName, categorySlug) {
 function generateProductHtml(productName, categorySlug, productId, metaTitle, metaDescription) {
   const title = metaTitle || `${productName} - HVACR NET`
   const description = metaDescription || productName
-  const canonical = `https://www.hvacrnet.com/products/${categorySlug}/${productId}`
+  const canonical = `https://hvacrnet.com/products/${categorySlug}/${productId}`
   
   const bodyContent = `
     <div class="ssg-content">
@@ -87,31 +87,31 @@ const pages = [
   { path: 'index.html', html: generateHtml(
     'HVACR NET - Your One-Stop HVACR Parts Supplier from China',
     'HVACR NET is a professional HVAC/R parts supplier from China, offering copper tubes, fittings, valves, refrigeration components and more.',
-    'https://www.hvacrnet.com/',
+    'https://hvacrnet.com/',
     '<div class="ssg-content"><h1>HVACR NET</h1><p>Your One-Stop HVACR Parts Supplier from China</p></div>'
   )},
   { path: 'about.html', html: generateHtml(
     'About HVACR NET - 20 Years of HVAC/R Export Experience',
     'Learn about HVACR NET, a professional HVAC/R parts exporter from Ningbo, China with 20 years of international trade experience.',
-    'https://www.hvacrnet.com/about',
+    'https://hvacrnet.com/about',
     '<div class="ssg-content"><h1>About HVACR NET</h1><p>20 Years of HVAC/R Export Experience</p></div>'
   )},
   { path: 'markets.html', html: generateHtml(
     'Global Markets - HVACR NET Export Coverage',
     'HVACR NET exports HVAC/R parts to 50+ countries across Europe, Americas, Middle East, Asia and more.',
-    'https://www.hvacrnet.com/markets',
+    'https://hvacrnet.com/markets',
     '<div class="ssg-content"><h1>Global Markets</h1><p>Exporting to 50+ Countries Worldwide</p></div>'
   )},
   { path: 'contact.html', html: generateHtml(
     'Contact HVACR NET - Request a Quote',
     'Contact HVACR NET for HVAC/R parts inquiries. Email: info@hvacrnet.com | WhatsApp: +86-135-6789-0123',
-    'https://www.hvacrnet.com/contact',
+    'https://hvacrnet.com/contact',
     '<div class="ssg-content"><h1>Contact Us</h1><p>Request a Quote Today</p></div>'
   )},
   { path: 'products/index.html', html: generateHtml(
     'Products - HVACR NET HVAC/R Parts Catalog',
     'Browse our complete catalog of HVAC/R parts including copper tubes, fittings, valves, refrigeration components and more.',
-    'https://www.hvacrnet.com/products',
+    'https://hvacrnet.com/products',
     '<div class="ssg-content"><h1>Products</h1><p>Browse by Category</p></div>'
   )}
 ]

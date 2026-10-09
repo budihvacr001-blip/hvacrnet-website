@@ -13,7 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const projectRoot = join(__dirname, '..')
 
 // IndexNow 配置
-const INDEXNOW_HOST = 'www.hvacrnet.com'
+const INDEXNOW_HOST = 'hvacrnet.com'
 const INDEXNOW_KEY_FILE = join(projectRoot, 'public', 'indexnow-key.txt')
 const INDEXNOW_API = 'https://api.indexnow.org/indexnow'
 

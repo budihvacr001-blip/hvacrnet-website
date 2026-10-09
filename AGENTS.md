@@ -51,8 +51,9 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - `categoryPositioning` 对象提供各类目的全球定位语，用于类目页的 meta description
 - 约定（所有分类 overview 通用）：每个有 comparison 对比表的 Category Overview，产品名列必须通过 `getProductLink`（comparison 页逐行映射传入的 `products`）链接到产品（`/<category>/<subCategory>#<thirdCategoryId>`）；新目录 overview 渲染时要把 `products` 传成 `categoryProducts`，切勿传空数组，否则产品名列变纯文本
 - **同子目录下多个三级 overview 的区分**：`brazing-torches-overview` 与 `brazing-rods-overview` 共享 `subCategoryId: 'welding-gas-equipment'`，因此内容查找和对比表都不能只按 subCategoryId 匹配。`CategoryLandingContent` 提供可选 `overviewId`（放该三级 overview 的 id），Products.tsx 的 landingContent 查找优先用 `overviewId === activeThirdCategory`；comparisonMap 也以 `activeThirdCategory` 优先（`'brazing-torches-overview'`→`brazingTorchesComparison`、`'brazing-rods-overview'`→`brazingRodsComparison`）再 fallback 到 subCategory/map。传入 CategoryLanding 的 `categoryProducts` 在 overview 节点（`belongsToThird`）时按该 third 过滤（`p.thirdCategoryId === belongsToThird`），保证对比表 rowIdx 能正确映射到对应产品。weld-gas 下其他只有单个三级 overview 的目录（ball-valves/TXV/Sight Glasses）不设 overviewId、继续按 subCategoryId 匹配
-- canonical 标签由 `CanonicalUpdater` 组件和 `SEO` 组件共同管理，统一指向 `https://www.hvacrnet.com`
-- 301 重定向：`hvacrnet.com` → `www.hvacrnet.com`（通过 server.js 中间件实现，读取 `X-Forwarded-Host` 头）
+- canonical 标签由 `CanonicalUpdater` 组件和 `SEO` 组件共同管理，全站统一使用**非 www 域名** `https://hvacrnet.com`，每页 canonical 自引用自身绝对路径（`https://hvacrnet.com<当前路径>`）. 相关常量：`src/components/SEO.tsx`(BASE_URL)、`src/hooks/useCanonical.ts`(BASE_URL)、`src/components/CategoryLanding.tsx`(SITE_URL)、Home/Products 的 jsonld url、`index.html` og/twitter/canonical、`scripts/ssg.mjs`、`scripts/indexnow-submit.mjs`(INDEXNOW_HOST) 均统一为非 www. `scripts/generate-sitemap.mjs` 已是非 www
+- 301 重定向：`www.hvacrnet.com` → `https://hvacrnet.com`（server.js 中间件读取 `X-Forwarded-Host` 头判定来源 host，全站只有非 www 一个可访问版本）
+- 每页有且仅有一个 h1（页面核心标题）：Home hero、About/Markets 主标题、Contact Us、Products/CategoryLanding 类目标题；eyebrow 标签（Who We Are/Global Reach 等）用 `p` 渲染；Products 404 文案用 `p` 避免与主 h1 并存
 
 ## 用户偏好与长期约束
 - 英文为主，预留阿拉伯语切换框架

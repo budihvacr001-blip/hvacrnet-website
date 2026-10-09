@@ -12,7 +12,7 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const BASE_URL = 'https://www.hvacrnet.com';
+const BASE_URL = 'https://hvacrnet.com';
 
 export default function SEO({ 
   title, 

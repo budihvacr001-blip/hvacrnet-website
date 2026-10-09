@@ -9,12 +9,12 @@ const __dirname = path.dirname(__filename)
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// 301 redirect: hvacrnet.com -> www.hvacrnet.com
+// 301 redirect: www.hvacrnet.com -> hvacrnet.com
 app.use((req, res, next) => {
   const rawHost = (req.headers['x-forwarded-host'] || req.headers.host || '').toLowerCase()
   const host = rawHost.replace(/:\d+$/, '')
-  if (host === 'hvacrnet.com') {
-    return res.redirect(301, `https://www.hvacrnet.com${req.url}`)
+  if (host === 'www.hvacrnet.com') {
+    return res.redirect(301, `https://hvacrnet.com${req.url}`)
   }
   next()
 })

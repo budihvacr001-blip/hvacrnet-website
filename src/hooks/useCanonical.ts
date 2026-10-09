@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const BASE_URL = 'https://www.hvacrnet.com'
+const BASE_URL = 'https://hvacrnet.com'
 
 export function useCanonical() {
   const { pathname } = useLocation()
