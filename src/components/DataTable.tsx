@@ -13,7 +13,7 @@ interface DataTableProps {
 }
 
 // Long content column keywords (case-insensitive match)
-const LONG_CONTENT_KEYWORDS = ['voltage', 'connection', 'structure', 'refrigerant']
+const LONG_CONTENT_KEYWORDS = ['voltage', 'connection', 'structure', 'refrigerant', 'configuration']
 
 // Check if a header matches a column role
 const getColRole = (header: string | undefined): 'number' | 'product' | 'models' | 'long' | 'default' => {
@@ -144,7 +144,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
       number: 4,
       product: 18,
       models: 13,
-      long: 9,
+      long: 12,
     }
 
     // First pass: assign fixed widths
