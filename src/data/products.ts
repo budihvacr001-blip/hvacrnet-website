@@ -775,7 +775,17 @@ export const categories: Category[] = [
           { id: 'oil-level-g-thread', name: 'Oil Level Sight Glass – G Thread' },
         ],
       },
-      { id: 'safety-valves', name: 'Safety Valves' },
+      {
+        id: 'safety-valves',
+        name: 'Safety Valves',
+        subCategories: [
+          { id: 'fs-inline-npt', name: 'Inline Spring-Loaded Safety Valve — NPT Inlet & NPT Outlet (FS)' },
+          { id: 'fs-inline-npt-flare', name: 'Inline Safety Valve — NPT Inlet & SAE Flare Outlet (FS)' },
+          { id: 'fl-angle-npt-flare', name: 'Angle-Type Safety Valve — NPT Inlet & SAE Flare Outlet (FL)' },
+          { id: 'fl-angle-npt-g', name: 'Angle-Type Safety Valve — NPT Inlet & G-Thread Outlet (FL)' },
+          { id: 'hs-2f-dual-outlet', name: 'Two-Outlet Pressure Relief Valve — One Inlet, Twin Discharge Ports (HS-2F)' },
+        ],
+      },
       { id: 'check-valves', name: 'Check Valves' },
       { id: 'stop-valves', name: 'Stop Valves' },
       { id: '4-way-reversing-valves', name: '4-Way Reversing Valves' },
@@ -1630,7 +1640,179 @@ export const categories: Category[] = [
           { label: 'Installation', value: 'Field-replaceable with standard tools' }
         ],
         applications: 'Service technicians, OEMs, refrigeration and air conditioning maintenance'
-      }
+      },
+      { id: 'sv-1', categoryId: 'valves', subCategoryId: 'safety-valves', thirdCategoryId: 'fs-inline-npt', images: ['/images/safety-valve-fs-inline-npt.png'], metaTitle: 'NPT Safety Valve | Inline Spring-Loaded, 3/4"-1" | HVACR NET', metaDescription: 'Inline spring-loaded refrigeration safety valve, NPT inlet & NPT outlet, 3/4"-1", set pressure 2.0-3.4 MPa, brass body. 2 models. MOQ 1 pc.', name: 'Inline Spring-Loaded Safety Valve — NPT Inlet & NPT Outlet (FS Series)', shortDesc: 'A straight, full in-line spring-loaded safety valve built to protect larger refrigeration and air-conditioning pressure vessels from overpressure. It opens automatically the moment internal thrust exceeds the spring force, then re-seats as pressure falls. Two models cover DN20-DN25 with 3/4" and 1" NPT connections, brass bodies, and five standard set pressures from 2.0 to 3.4 MPa.', description: "• Spring direct-loaded safety valve for civil and industrial refrigeration and air-conditioning regulatory equipment.\n• Used to protect evaporators, condensers, positive-displacement compressors, liquid receivers, liquid energy storage tanks, heat exchangers, oil separators, pipelines and simple unfired pressure vessels.\n• Under set conditions the valve opens when the thrust exceeds the reaction force of the spring acting on the closure, discharging the overpressure fluid.\n• Straight in-line body with threaded NPT inlet and NPT outlet for simple pipe installation.\n• Hongsen standard set pressures apply; set pressure can be customized against customer requirements.\n• Connection size is selected by equipment volume — valves of 3/4\"-1\" NPT are specified for vessels of roughly 500 L and above.", features: [
+        "Spring direct-loaded operation — opens automatically at the factory-set pressure.",
+        "Spring force returns the closure as pressure falls, restoring the seal after venting.",
+        "Factory set and lead-sealed; the setting is protected against accidental change.",
+        "Five standard set pressures: 2.0, 2.4, 2.8, 3.1 and 3.4 MPa; customization applicable.",
+        "Forged and precision-machined brass valve body with hex flats for wrench installation.",
+        "Straight in-line configuration with matched NPT inlet and outlet.",
+        "Compatible with CFC, HCFC and HFC refrigerants across −50 °C to +150 °C."
+      ], availableModels: { headers: ["Model", "Nominal Diameter DN", "Throat Diameter (Flow Aperture)", "Inlet", "Outlet"], rows: [
+        ["DN25 FS-A8N8", "DN25", "Φ18 mm", "1\" NPT", "1\" NPT"],
+        ["DN20 FS-A6N6", "DN20", "Φ11 mm", "3/4\" NPT", "3/4\" NPT"]
+      ] }, specs: [
+        { label: "Series Code", value: "FS" },
+        { label: "Valve Type", value: "Spring Direct-Loaded Safety Valve" },
+        { label: "Configuration", value: "Inline (Straight)" },
+        { label: "Set Pressure", value: "2.0 / 2.4 / 2.8 / 3.1 / 3.4 MPa (standard); customizable" },
+        { label: "Refrigerant Compatibility", value: "CFC, HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−50 °C ~ +150 °C" },
+        { label: "Connection", value: "Male NPT Inlet, Female NPT Outlet" },
+        { label: "Connection Size", value: "3/4\" NPT, 1\" NPT" },
+        { label: "Nominal Diameter", value: "DN20, DN25" },
+        { label: "Throat (Flow Aperture)", value: "Φ11, Φ18 mm" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Sealing Method", value: "Spring-loaded closure on valve seat" },
+        { label: "Setting Protection", value: "Factory lead seal" },
+        { label: "Mounting Direction", value: "Inline in protected pressure line" }
+      ], faq: [
+        { question: "What does an NPT safety valve do in a refrigeration system?", answer: "It protects pressure vessels and components from overpressure. When internal pressure reaches the set value, the spring-loaded closure opens and discharges refrigerant; once pressure falls, spring force re-seats the valve. The NPT/NPT inline design is made for larger vessels (DN20-DN25)." },
+        { question: "How do I choose the set pressure?", answer: "Select a set pressure above the normal operating pressure but at or below the design pressure of the protected equipment. Five standard settings from 2.0 to 3.4 MPa are available, and the valve can be factory-customized to your required value." },
+        { question: "How are the NPT connections sealed?", answer: "NPT is a tapered pipe thread that seals on the threads themselves. Apply PTFE tape or approved thread sealant to the male NPT threads before tightening to ensure a leak-free joint." },
+        { question: "Which connection size fits my vessel volume?", answer: "Per the Hongsen standard, vessels under 50 L use 3/8\"-1/8\" NPT, 50-500 L use 1/2\"-1/4\" NPT, 500-1,000 L use 3/4\"-1/4\" NPT, and vessels of 1,000 L and above use 1\"-11.5 NPT. This series covers the 3/4\" and 1\" end of that range." }
+      ] },
+      { id: 'sv-2', categoryId: 'valves', subCategoryId: 'safety-valves', thirdCategoryId: 'fs-inline-npt-flare', images: ['/images/safety-valve-fs-inline-npt-flare.png'], metaTitle: 'Refrigeration Safety Valve | NPT-SAE Flare | HVACR NET', metaDescription: 'Inline refrigeration safety valve, NPT inlet & SAE flare outlet, 1/4"-1/2", set pressure 2.0-3.4 MPa, brass, CFC/HCFC/HFC. 4 models. MOQ 1 pc.', name: 'Inline Safety Valve — NPT Inlet & SAE Flare Outlet (FS Series)', shortDesc: 'A compact straight safety valve that combines a threaded NPT inlet with a 45° SAE flare outlet, giving service teams a metal-to-metal flare joint that can be disconnected without cutting or brazing. Four models span DN8-DN15 with inlets from 1/4" to 1/2" NPT. Like the rest of the FS range, each valve is spring direct-loaded, factory set and lead-sealed, with five standard set pressures from 2.0 to 3.4 MPa.', description: "• Spring direct-loaded safety valve for refrigeration and air-conditioning equipment such as evaporators, condensers, liquid receivers, heat exchangers and oil separators.\n• Opens automatically when pressure thrust exceeds the reaction force of the spring on the closure, venting overpressure fluid.\n• Straight inline body with male NPT inlet for threaded mounting and SAE 45° flare outlet for the discharge connection.\n• SAE flare connection seals on the mating 45° cone rather than on the threads, allowing repeated disassembly for service.\n• Hongsen standard set pressures of 2.0-3.4 MPa apply; set pressure is customizable on request.\n• Suited to smaller vessels and lines — 1/4\"-1/2\" connections match equipment volumes from below 50 L up to around 500 L.", features: [
+        "Spring direct-loaded — automatic opening at the set pressure and re-seating as pressure falls.",
+        "Combination NPT inlet and SAE 45° flare outlet.",
+        "Flare outlet seals on a 45° metal cone; no thread sealant needed on the flare joint.",
+        "Factory set and lead-sealed to protect the calibration.",
+        "Five standard set pressures: 2.0, 2.4, 2.8, 3.1, 3.4 MPa; customization applicable.",
+        "Precision-machined brass body with hex flats for secure wrench tightening.",
+        "Compact inline size for small vessels and crowded equipment panels.",
+        "Works with CFC, HCFC and HFC refrigerants from −50 °C to +150 °C."
+      ], availableModels: { headers: ["Model", "Nominal Diameter DN", "Throat Diameter (Flow Aperture)", "Inlet", "Outlet"], rows: [
+        ["DN15 FS-A4B5", "DN15", "Φ7.5 mm", "1/2\" NPT", "5/8\" SAE"],
+        ["DN15 FS-A4B4", "DN15", "Φ7.5 mm", "1/2\" NPT", "1/2\" SAE"],
+        ["DN10 FS-A3B3", "DN10", "Φ7 mm", "3/8\" NPT", "3/8\" SAE"],
+        ["DN8 FS-A2B3", "DN8", "Φ6 mm", "1/4\" NPT", "3/8\" SAE"]
+      ] }, specs: [
+        { label: "Series Code", value: "FS" },
+        { label: "Valve Type", value: "Spring Direct-Loaded Safety Valve" },
+        { label: "Configuration", value: "Inline (Straight)" },
+        { label: "Set Pressure", value: "2.0 / 2.4 / 2.8 / 3.1 / 3.4 MPa (standard); customizable" },
+        { label: "Refrigerant Compatibility", value: "CFC, HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−50 °C ~ +150 °C" },
+        { label: "Connection", value: "Male NPT Inlet, SAE 45° Flare Outlet" },
+        { label: "Connection Size", value: "1/4\" ~ 1/2\" NPT inlet; 3/8\" ~ 5/8\" SAE outlet" },
+        { label: "Nominal Diameter", value: "DN8, DN10, DN15" },
+        { label: "Throat (Flow Aperture)", value: "Φ6, Φ7, Φ7.5 mm" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Sealing Method", value: "Spring-loaded seat; 45° flare cone at outlet" },
+        { label: "Setting Protection", value: "Factory lead seal" },
+        { label: "Mounting Direction", value: "Inline in protected pressure line" }
+      ], faq: [
+        { question: "Why choose an SAE flare outlet instead of NPT?", answer: "An SAE 45° flare seals on a metal cone and can be disconnected and reconnected repeatedly with a wrench, making field service easier. NPT seals on tapered threads and is better suited to a permanent joint. This valve gives you both — an NPT inlet and a flare outlet." },
+        { question: "How do I read the model code FS-A4B5?", answer: "\"A4\" indicates a 1/2\" NPT inlet and \"B5\" indicates a 5/8\" SAE flare outlet. A = NPT inlet, B = SAE flare outlet, with the number encoding the size." },
+        { question: "Can the set pressure be customized?", answer: "Yes. Five standard settings — 2.0, 2.4, 2.8, 3.1 and 3.4 MPa — are available, and the valve can be factory-set to a customer-specified pressure. Every valve is lead-sealed after setting." },
+        { question: "Which refrigerants is this safety valve compatible with?", answer: "The FS series is rated for CFC, HCFC and HFC refrigerants and operates at medium temperatures from −50 °C to +150 °C, covering standard air-conditioning and commercial refrigeration duties." }
+      ] },
+      { id: 'sv-3', categoryId: 'valves', subCategoryId: 'safety-valves', thirdCategoryId: 'fl-angle-npt-flare', images: ['/images/safety-valve-fl-angle-npt-flare.png'], metaTitle: 'Angle Safety Valve | NPT Inlet, SAE Flare Outlet | HVACR NET', metaDescription: 'Angle refrigeration safety valve, NPT inlet & SAE flare outlet, 1/4"-1/2", set pressure 2.0-3.4 MPa, brass body. 5 models. MOQ 1 pc.', name: 'Angle-Type Safety Valve — NPT Inlet & SAE Flare Outlet (FL Series)', shortDesc: 'A 90° angle-body safety valve that routes discharged refrigerant out to the side, saving vertical space and simplifying piping on compact chillers and packaged units. Five models cover DN8-DN15 with NPT inlets from 1/4" to 1/2" and SAE flare outlets from 3/8" to 5/8". Each valve is spring direct-loaded, factory set and lead-sealed, with five standard set pressures between 2.0 and 3.4 MPa and custom settings available.', description: "• Spring direct-loaded angle safety valve for civil and industrial refrigeration and air-conditioning regulatory equipment.\n• Protects evaporators, condensers, compressors, liquid receivers, heat exchangers, oil separators, pipelines and pressure vessels from overpressure.\n• The valve opens when pressure thrust exceeds the spring reaction force on the closure; spring force re-seats it after venting.\n• Angle (90°) body with a male NPT inlet at the bottom and an SAE 45° flare outlet at the side.\n• SAE flare joint seals on a 45° metal cone and can be removed and refitted during servicing.\n• Hongsen standard set pressures apply; customer-specific set pressure can be produced on request.", features: [
+        "Spring direct-loaded operation with automatic opening and re-seating.",
+        "90° angle body places the outlet to the side — compact installation where inline valves will not fit.",
+        "Male NPT inlet combined with SAE 45° flare outlet.",
+        "Factory set and lead-sealed to lock the calibration.",
+        "Five standard set pressures: 2.0, 2.4, 2.8, 3.1, 3.4 MPa; customization applicable.",
+        "Forged and machined brass body with hex flats and a protected spring bonnet.",
+        "Flare cone sealing — no sealant required on the outlet joint.",
+        "Compatible with CFC, HCFC and HFC refrigerants, −50 °C to +150 °C."
+      ], availableModels: { headers: ["Model", "Nominal Diameter DN", "Throat Diameter (Flow Aperture)", "Inlet", "Outlet"], rows: [
+        ["DN15 FL-A4B5", "DN15", "Φ7.5 mm", "1/2\" NPT", "5/8\" SAE"],
+        ["DN15 FL-A4B4", "DN15", "Φ7.5 mm", "1/2\" NPT", "1/2\" SAE"],
+        ["DN10 FL-A3B4", "DN10", "Φ7 mm", "3/8\" NPT", "1/2\" SAE"],
+        ["DN10 FL-A3B3", "DN10", "Φ7 mm", "3/8\" NPT", "3/8\" SAE"],
+        ["DN8 FL-A2B3", "DN8", "Φ6 mm", "1/4\" NPT", "3/8\" SAE"]
+      ] }, specs: [
+        { label: "Series Code", value: "FL" },
+        { label: "Valve Type", value: "Spring Direct-Loaded Safety Valve" },
+        { label: "Configuration", value: "Angle (90°)" },
+        { label: "Set Pressure", value: "2.0 / 2.4 / 2.8 / 3.1 / 3.4 MPa (standard); customizable" },
+        { label: "Refrigerant Compatibility", value: "CFC, HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−50 °C ~ +150 °C" },
+        { label: "Connection", value: "Male NPT Inlet, SAE 45° Flare Side Outlet" },
+        { label: "Connection Size", value: "1/4\" ~ 1/2\" NPT inlet; 3/8\" ~ 5/8\" SAE outlet" },
+        { label: "Nominal Diameter", value: "DN8, DN10, DN15" },
+        { label: "Throat (Flow Aperture)", value: "Φ6, Φ7, Φ7.5 mm" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Sealing Method", value: "Spring-loaded seat; 45° flare cone at outlet" },
+        { label: "Setting Protection", value: "Factory lead seal" },
+        { label: "Mounting Direction", value: "NPT inlet vertical; side discharge outlet" }
+      ], faq: [
+        { question: "When should I use an angle safety valve instead of an inline one?", answer: "Use the angle (FL) design where vertical space is limited or the discharge pipe runs to the side. The 90° body turns the outlet sideways, making piping simpler on packaged units and compact chillers; the valve action and set-pressure options are the same as the inline FS." },
+        { question: "How does the SAE flare outlet seal?", answer: "The flare nut squeezes a 45° male cone against a matching seat, creating a metal-to-metal seal. The threads only provide clamping force — they do not carry the seal — so no PTFE tape is used on a flare joint." },
+        { question: "What set pressures are available?", answer: "Five standard settings — 2.0, 2.4, 2.8, 3.1 and 3.4 MPa — are listed in the catalog, and custom set pressure can be produced against your equipment requirements. The valve is lead-sealed after setting." },
+        { question: "Where is this valve installed?", answer: "On the pressure side of protected refrigeration equipment — receivers, condensers, compressors and other vessels — with the NPT inlet connected to the vessel and the SAE side outlet running to the discharge line." }
+      ] },
+      { id: 'sv-4', categoryId: 'valves', subCategoryId: 'safety-valves', thirdCategoryId: 'fl-angle-npt-g', images: ['/images/safety-valve-fl-angle-npt-g.png'], metaTitle: 'Angle Safety Valve | NPT Inlet, G-Thread Outlet | HVACR NET', metaDescription: 'Angle refrigeration safety valve, NPT inlet & parallel G-thread outlet, 3/8"-1/2", set pressure 2.0-3.4 MPa, brass. 2 models. MOQ 1 pc.', name: 'Angle-Type Safety Valve — NPT Inlet & G-Thread Outlet (FL Series)', shortDesc: 'An angle-body safety valve made for systems that use parallel G (BSPP) pipe threads on the discharge side. It keeps the familiar spring direct-loaded action and lead-sealed factory setting, while a male NPT inlet at the bottom feeds a G-thread side outlet. Two models cover DN10-DN15 with 3/8" and 1/2" NPT inlets and G1/2 outlets, for export equipment built around European-style parallel pipe threads.', description: "• Spring direct-loaded angle safety valve for refrigeration and air-conditioning pressure equipment.\n• Protects receivers, condensers, compressors, heat exchangers, oil separators and connected pressure vessels from overpressure.\n• Opens automatically when the pressure thrust exceeds the spring reaction force and re-seats as pressure returns to normal.\n• Angle body with male NPT bottom inlet and parallel G-thread side outlet.\n• G-thread (BSPP, G1/2) is a straight parallel pipe thread typically sealed with a bonded washer or external gasket rather than on the threads.\n• Hongsen standard set pressures of 2.0-3.4 MPa apply; set pressure is customizable on request.", features: [
+        "Spring direct-loaded action — automatic opening and re-seating.",
+        "90° angle body with side-facing discharge outlet.",
+        "Male NPT inlet combined with parallel G-thread (BSPP) outlet.",
+        "Five standard set pressures: 2.0, 2.4, 2.8, 3.1, 3.4 MPa; customization applicable.",
+        "Factory set and lead-sealed to preserve calibration.",
+        "Forged, precision-machined brass body with protected spring bonnet.",
+        "Designed for equipment built around G1/2 parallel pipe connections.",
+        "Compatible with CFC, HCFC and HFC refrigerants, −50 °C to +150 °C."
+      ], availableModels: { headers: ["Model", "Nominal Diameter DN", "Throat Diameter (Flow Aperture)", "Inlet", "Outlet"], rows: [
+        ["DN15 FL-A4G4", "DN15", "Φ7.5 mm", "1/2\" NPT", "G1/2"],
+        ["DN10 FL-A3G4", "DN10", "Φ7.5 mm", "3/8\" NPT", "G1/2"]
+      ] }, specs: [
+        { label: "Series Code", value: "FL" },
+        { label: "Valve Type", value: "Spring Direct-Loaded Safety Valve" },
+        { label: "Configuration", value: "Angle (90°)" },
+        { label: "Set Pressure", value: "2.0 / 2.4 / 2.8 / 3.1 / 3.4 MPa (standard); customizable" },
+        { label: "Refrigerant Compatibility", value: "CFC, HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−50 °C ~ +150 °C" },
+        { label: "Connection", value: "Male NPT Inlet, G-Thread (BSPP) Side Outlet" },
+        { label: "Connection Size", value: "3/8\", 1/2\" NPT inlet; G1/2 outlet" },
+        { label: "Nominal Diameter", value: "DN10, DN15" },
+        { label: "Throat (Flow Aperture)", value: "Φ7.5 mm" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Sealing Method", value: "Spring-loaded seat; G-thread sealed by gasket/bonded washer" },
+        { label: "Setting Protection", value: "Factory lead seal" },
+        { label: "Mounting Direction", value: "NPT inlet vertical; side G-thread outlet" }
+      ], faq: [
+        { question: "What is a G-thread outlet?", answer: "G denotes a parallel (straight) BSPP pipe thread common on European and export equipment, such as G1/2. Unlike tapered NPT, a parallel thread does not seal on the threads — it normally seals against a gasket or bonded washer at the fitting face." },
+        { question: "What is the difference between G-thread and NPT?", answer: "NPT is a tapered thread that seals as the threads wedge together; G (BSPP) is parallel and seals on a gasket face. The two threads also differ in pitch and flank angle, so they are not interchangeable — this valve bridges them with an NPT inlet and a G1/2 outlet." },
+        { question: "Can the set pressure be ordered to a custom value?", answer: "Yes. The catalog lists 2.0, 2.4, 2.8, 3.1 and 3.4 MPa standard settings, and the factory can set a customer-specified pressure. Each valve is lead-sealed after setting to prevent accidental adjustment." },
+        { question: "What does the model code FL-A3G4 mean?", answer: "\"FL\" is the angle body, \"A3\" is a 3/8\" NPT inlet, and \"G4\" is a G1/2 parallel-thread outlet. A = NPT inlet and G = G-thread outlet in the Hongsen coding." }
+      ] },
+      { id: 'sv-5', categoryId: 'valves', subCategoryId: 'safety-valves', thirdCategoryId: 'hs-2f-dual-outlet', images: ['/images/safety-valve-hs-2f-dual-outlet.png'], metaTitle: 'Dual Outlet Relief Valve | NPT, 1/4"-1-1/4" | HVACR NET', metaDescription: 'Two-outlet refrigeration pressure relief valve, one NPT inlet & twin discharge ports, 1/4"-1-1/4", 42 bar MWP, −40 to 150°C. 6 models. MOQ 1 pc.', name: 'Two-Outlet Pressure Relief Valve — One Inlet, Twin Discharge Ports (HS-2F Series)', shortDesc: 'A manifold-style pressure relief valve with a single NPT inlet and two parallel discharge ports, allowing vented refrigerant to leave through twin outlets on larger receivers and pressure vessels. Six models cover NPT 1/4" through 1-1/4", DN8-DN32, with a maximum working pressure of 4.2 MPa and a maximum compression pressure of 6.3 MPa. The brass valve is rated for the main HCFC, HFC and HFO refrigerants from −40 °C to +150 °C.', description: "• Two-outlet pressure relief valve designed for overpressure protection of refrigeration and air-conditioning equipment.\n• One NPT inlet at the bottom feeds two parallel NPT discharge ports at the top, giving a twin-outlet venting arrangement.\n• Rated maximum working pressure of 4.2 MPa (42 bar); maximum compression pressure 6.3 MPa.\n• Applicable medium temperature range −40 °C to +150 °C.\n• Applicable refrigerants: R22, R134a, R410A, R507A, R448A, R449A and R404A.\n• Six models with NPT connections from 1/4\" to 1-1/4\", covering DN8 through DN32.", features: [
+        "One NPT inlet and two parallel discharge ports on a single valve body.",
+        "Six connection sizes: NPT 1/4\", 3/8\", 1/2\", 3/4\", 1\" and 1-1/4\".",
+        "Maximum working pressure 4.2 MPa (42 bar).",
+        "Maximum compression pressure 6.3 MPa.",
+        "Wide refrigerant coverage including R22, R134a, R410A, R507A, R448A, R449A and R404A.",
+        "Operating range −40 °C to +150 °C.",
+        "Brass valve body with machined hex sections and twin-port manifold.",
+        "Each size has documented inlet (Ø0) and outlet (Ø1) bore dimensions for installation checks."
+      ], availableModels: { headers: ["Model", "NPT Connection", "Nominal Diameter DN", "Inlet Bore Ø0", "Outlet Bore Ø1", "Valve Body (hex)"], rows: [
+        ["HS-2F-NPT1/4", "NPT 1/4\"", "DN8", "Ø8.5 mm", "Ø8.5 mm", "□22"],
+        ["HS-2F-NPT3/8", "NPT 3/8\"", "DN10", "Ø11 mm", "Ø11.5 mm", "□22"],
+        ["HS-2F-NPT1/2", "NPT 1/2\"", "DN15", "Ø13 mm", "Ø13 mm", "□22"],
+        ["HS-2F-NPT3/4", "NPT 3/4\"", "DN20", "Ø19 mm", "Ø19 mm", "□30"],
+        ["HS-2F-NPT1", "NPT 1\"", "DN25", "Ø24 mm", "Ø25 mm", "□36"],
+        ["HS-2F-NPT1-1/4", "NPT 1-1/4\"", "DN32", "Ø27 mm", "Ø27 mm", "□36"]
+      ] }, specs: [
+        { label: "Series Code", value: "HS-2F" },
+        { label: "Valve Type", value: "Two-Outlet Pressure Relief Valve" },
+        { label: "Configuration", value: "One Inlet, Twin Parallel Discharge Ports" },
+        { label: "Maximum Working Pressure (MWP)", value: "4.2 MPa (42 bar)" },
+        { label: "Maximum Compression Pressure", value: "6.3 MPa (63 bar)" },
+        { label: "Refrigerant Compatibility", value: "R22, R134a, R410A, R507A, R448A, R449A, R404A" },
+        { label: "Applicable Medium Temperature", value: "−40 °C ~ +150 °C" },
+        { label: "Connection", value: "NPT — one inlet, two outlets" },
+        { label: "Connection Size", value: "NPT 1/4\" ~ 1-1/4\"" },
+        { label: "Nominal Diameter", value: "DN8 ~ DN32" },
+        { label: "Inlet Bore Ø0", value: "Ø8.5 ~ Ø27 mm (by model)" },
+        { label: "Outlet Bore Ø1", value: "Ø8.5 ~ Ø27 mm (by model)" },
+        { label: "Valve Body Material", value: "Brass" }
+      ], faq: [
+        { question: "What is the difference between a pressure relief valve and a safety valve in HVAC?", answer: "Both protect equipment from overpressure. A spring-loaded safety valve typically opens rapidly to full lift for gas or refrigerant discharge, while a relief valve tends to open in proportion to the pressure rise. In practice the terms overlap; the HS-2F is cataloged as a two-outlet pressure relief valve within the safety valve family." },
+        { question: "Why does this valve have two outlets?", answer: "The manifold body splits the discharge flow across two parallel ports, which suits larger vessels and receiver installations that vent through twin lines. Only one inlet connection to the vessel is needed, keeping mounting simple." },
+        { question: "What pressure ratings apply to the HS-2F?", answer: "Maximum working pressure is 4.2 MPa (42 bar) and maximum compression pressure is 6.3 MPa (63 bar). Select the valve so the equipment's normal operating pressure stays below its relief setting and within these ratings." },
+        { question: "Which refrigerants and temperatures is it rated for?", answer: "It covers R22, R134a, R410A, R507A, R448A, R449A and R404A at medium temperatures from −40 °C to +150 °C, spanning legacy HCFC systems and common HFC/HFO refrigerants." }
+      ] }
     ],
   },
   {

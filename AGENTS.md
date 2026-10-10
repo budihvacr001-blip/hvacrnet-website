@@ -37,7 +37,8 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - 每个产品页/类目页的 title 和 meta description 由 Products.tsx 动态生成，格式：`产品名 - 类目 | HVACR NET HVAC/R Parts Supplier from China`
 - 产品数据中的 `metaTitle` 和 `metaDescription` 字段用于产品详情页的 SEO
 - `Product` 接口含可选 `keywords` 字段：存储产品 SEO 关键词（`|` 分隔），由 `Products.tsx` 详情页传入 `SEO` 组件、输出 `<meta name="keywords">`（仅 head，不影响页面视觉）。Brazing Torches 6 款产品已配 10 个/款
-- Valves 下的二级目录顺序（侧边栏序号动态按非 overview 项 index 生成）：01 Solenoid → 02 Ball Valves → 03 Thermostatic Expansion Valve → 04 Sight Glasses → 05+ 其余
+- Valves 下的二级目录顺序（侧边栏序号动态按非 overview 项 index 生成）：01 Solenoid → 02 Ball Valves → 03 Thermostatic Expansion Valve → 04 Sight Glasses → 05 Safety Valves（5 款产品）
+- **Safety Valves（`safety-valves`）二级目录**：5 个三级产品（无 overview），产品 id `sv-1`~`sv-5`：`fs-inline-npt`（FS Inline NPT/NPT）、`fs-inline-npt-flare`（FS Inline NPT/SAE Flare）、`fl-angle-npt-flare`（FL Angle NPT/SAE Flare）、`fl-angle-npt-g`（FL Angle NPT/G-Thread BSPP）、`hs-2f-dual-outlet`（HS-2F 双出口 Relief Valve）。图片暂用占位 `/images/safety-valve-*.png`，后续替换实拍图
 - 一级目录可见顺序（动态序号）：01 Copper Tubes、02 Insulation Tubes、03 Valves、04 Filter Driers、05 Tools & Equipment（等）。空目录/无发布产品的一级目录前台侧边栏不显示，但会显示在 `/admin` 后台页
 - Tools & Equipment 一级目录（`tools`）：二级 `welding-gas-equipment`（Welding & Gas Equipment，container），三级 `brazing-torches`（Brazing Torches，6 个产品 torch-jc3/torch-ta/torch-tb/torch-t2b/torch-tca-fb/torch-tc2a-2f，实拍图 `/images/brazing-torch-*.png`）与 `brazing-rods`（Brazing Rods，3 个产品 rod-r25/rod-f13/rod-f13-pro，实拍图 `/images/brazing-rod-r2-5.png` 与 `brazing-rod-f1-3.png`，F1.3 与 F1.3-Pro 共用同一张图）
 - 焊枪与焊条产品的 Technical Parameters 表格中不含 Supplier 行（供应商信息不落入产品规格表）
