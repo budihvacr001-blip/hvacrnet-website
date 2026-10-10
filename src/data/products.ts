@@ -779,6 +779,7 @@ export const categories: Category[] = [
         id: 'safety-valves',
         name: 'Safety Valves',
         subCategories: [
+          { id: 'safety-valves-overview', name: 'Category Overview', isOverview: true },
           { id: 'fs-inline-npt', name: 'Inline Spring-Loaded Safety Valve — NPT Inlet & NPT Outlet (FS)' },
           { id: 'fs-inline-npt-flare', name: 'Inline Safety Valve — NPT Inlet & SAE Flare Outlet (FS)' },
           { id: 'fl-angle-npt-flare', name: 'Angle-Type Safety Valve — NPT Inlet & SAE Flare Outlet (FL)' },
@@ -2519,6 +2520,19 @@ export const brazingRodsComparison = {
   ],
 };
 
+export const safetyValvesComparison = {
+  title: 'Refrigeration Safety Valve Series Comparison',
+  subtitle: 'Five safety valve series for refrigeration and HVAC systems — 19 models in all. Inline and angle spring-loaded valves cover NPT, SAE flare and G-thread connections, while the two-outlet relief valve protects larger vessels with twin discharge ports.',
+  headers: ['#', 'Product', 'Series', 'Configuration', 'Connection', 'DN Range', 'Set Pressure (MPa)', 'MWP (bar)', 'Refrigerant', 'Temp Range', 'Models'],
+  rows: [
+    ['1', 'Inline Spring-Loaded Safety Valve — NPT/NPT', 'FS', 'Inline', 'NPT Inlet, NPT Outlet', 'DN20~DN25', '2.0~3.4', '—', 'CFC, HCFC, HFC', '−50~150°C', '2'],
+    ['2', 'Inline Safety Valve — NPT/SAE', 'FS', 'Inline', 'NPT Inlet, SAE Flare Outlet', 'DN8~DN15', '2.0~3.4', '—', 'CFC, HCFC, HFC', '−50~150°C', '4'],
+    ['3', 'Angle-Type Safety Valve — NPT/SAE', 'FL', 'Angle (90°)', 'NPT Inlet, SAE Flare Outlet', 'DN8~DN15', '2.0~3.4', '—', 'CFC, HCFC, HFC', '−50~150°C', '5'],
+    ['4', 'Angle-Type Safety Valve — NPT/G', 'FL', 'Angle (90°)', 'NPT Inlet, G-Thread Outlet', 'DN10~DN15', '2.0~3.4', '—', 'CFC, HCFC, HFC', '−50~150°C', '2'],
+    ['5', 'Two-Outlet Pressure Relief Valve', 'HS-2F', 'One Inlet, Twin Outlets', 'NPT Inlet, Twin NPT Outlets', 'DN8~DN32', '—', '42', 'R22, R134a, R410A, R507A, R448A, R449A, R404A', '−40~150°C', '6'],
+  ],
+};
+
 // Category Landing Page Content
 export interface CategoryLandingContent {
   categoryId: string;
@@ -2633,6 +2647,21 @@ export const categoryLandingContent: CategoryLandingContent[] = [
     metaDescription: 'Compare 5 types of thermostatic expansion valves—heavy-duty, universal, replaceable orifice, bi-directional, and valve cores. Select by refrigerant, capacity, and connection type.',
     h1: 'Refrigeration Thermostatic Expansion Valves',
     introduction: `Five TXV series covering 0.18–52 TR for R22, R404A/R507, R134a, and R410A refrigerants. From heavy-duty industrial valves (TRF) to replaceable-orifice service valves (TF) and bi-directional heat pump valves (TQR). ODF solder and SAE flare connections, internal or external equalization.`,
+    howToChoose: [],
+    faq: [],
+    relatedCategories: [
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+    ],
+  },
+  {
+    categoryId: 'valves',
+    subCategoryId: 'safety-valves',
+    metaTitle: 'Refrigeration Safety Valves | Types & Selection Guide',
+    metaDescription: 'Compare 5 types of refrigeration safety valves—inline NPT/SAE, angle SAE/G, and dual-outlet relief. Select by connection, DN size, and set pressure.',
+    h1: 'Refrigeration Safety Valves',
+    introduction: 'Five safety valve series for refrigeration and HVAC systems — 19 models in all. Inline and angle spring-loaded valves cover NPT, SAE flare and G-thread connections, while the two-outlet relief valve protects larger vessels with twin discharge ports.',
     howToChoose: [],
     faq: [],
     relatedCategories: [
