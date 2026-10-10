@@ -10,6 +10,8 @@ interface DataTableProps {
   stickyColIdx?: number
   // Custom cell renderer
   renderCell?: (cell: string, rowIdx: number, colIdx: number) => React.ReactNode
+  // Optional per-header column width overrides (percentage), e.g. { 'Configuration': 16 }
+  headerWidthOverrides?: Record<string, number>
 }
 
 // Long content column keywords (case-insensitive match)
@@ -129,7 +131,7 @@ const atomizeNode = (node: React.ReactNode): React.ReactNode => {
   return node
 }
 
-export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell }: DataTableProps) {
+export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell, headerWidthOverrides }: DataTableProps) {
   const colCount = headers?.length || (keyValue ? 2 : (rows[0]?.length || 1))
 
   // Calculate column widths by column role (sum must = 100%)
@@ -196,6 +198,16 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
       if (currentSum !== 100 && colCount > 0) {
         widths[colCount - 1] += (100 - currentSum)
       }
+    }
+
+    // Apply per-header width overrides after base allocation
+    if (headerWidthOverrides && headers) {
+      headers.forEach((h, i) => {
+        const override = headerWidthOverrides[h]
+        if (override != null && widths[i] != null) {
+          widths[i] = override
+        }
+      })
     }
 
     return widths.map(w => `${w}%`)

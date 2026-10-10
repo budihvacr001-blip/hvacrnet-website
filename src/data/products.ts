@@ -2524,6 +2524,7 @@ export const safetyValvesComparison = {
   title: 'Refrigeration Safety Valve Series Comparison',
   subtitle: 'Five safety valve series for refrigeration and HVAC systems — 19 models in all. Inline and angle spring-loaded valves cover NPT, SAE flare and G-thread connections, while the two-outlet relief valve protects larger vessels with twin discharge ports.',
   headers: ['#', 'Product', 'Series', 'Configuration', 'Connection', 'DN Range', 'Set Pressure (MPa)', 'MWP (bar)', 'Refrigerant', 'Temp Range', 'Models'],
+  headerWidthOverrides: { Configuration: 17 },
   rows: [
     ['1', 'NPT/NPT Safety Valve', 'FS', 'Inline', 'NPT Inlet, NPT Outlet', 'DN20~DN25', '2.0~3.4', '—', 'CFC, HCFC, HFC', '−50~150°C', '2'],
     ['2', 'NPT/SAE Safety Valve', 'FS', 'Inline', 'NPT Inlet, SAE Flare Outlet', 'DN8~DN15', '2.0~3.4', '—', 'CFC, HCFC, HFC', '−50~150°C', '4'],

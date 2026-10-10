@@ -13,6 +13,7 @@ interface Props {
     subtitle: string
     headers: string[]
     rows: string[][]
+    headerWidthOverrides?: Record<string, number>
   }
   products: Product[]
   categoryName: string
@@ -161,6 +162,7 @@ export default function CategoryLanding({
           <DataTable
             headers={comparisonData.headers}
             rows={comparisonData.rows}
+            headerWidthOverrides={comparisonData.headerWidthOverrides}
             stickyColIdx={comparisonData.headers[0] === '#' ? 1 : 0}
             renderCell={(cell, rowIdx, cellIdx) => {
               // Product name column is index 1 if there's a # column, otherwise index 0
