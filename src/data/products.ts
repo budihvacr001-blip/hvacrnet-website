@@ -755,7 +755,7 @@ export const categories: Category[] = [
       },
       {
         id: 'thermal-expansion-valves',
-        name: 'Thermostatic Expansion Valve',
+        name: 'Thermostatic Expansion Valves',
         subCategories: [
           { id: 'thermal-expansion-valves-overview', name: 'Category Overview', isOverview: true },
           { id: 'trf-heavy-duty-txv', name: 'Heavy-Duty TXV — TRF Series (SAE Flare)' },
