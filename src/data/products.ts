@@ -791,6 +791,7 @@ export const categories: Category[] = [
         id: 'check-valves',
         name: 'Check Valves',
         subCategories: [
+          { id: 'check-valves-overview', name: 'Category Overview', isOverview: true },
           { id: 'cv-sae-flare', name: 'SAE Flare Check Valve' },
           { id: 'cv-brazed-odf', name: 'Brazed ODF Check Valve' },
           { id: 'cvr-cvrh-right-angle', name: 'Right-Angle Check Valve' },
@@ -2684,6 +2685,18 @@ export const safetyValvesComparison = {
   ],
 };
 
+export const checkValvesComparison = {
+  title: 'Refrigeration Check Valves',
+  subtitle: 'Four check valve series with 27 models for refrigeration and HVAC systems — from serviceable SAE flare inline valves to space-saving right-angle and ultra-low-cracking-pressure copper diaphragm types.',
+  headers: ['#', 'Product', 'Series', 'Structure', 'Connection', 'Size Range', 'Cracking Pressure', 'Kv (m³/h)', 'MWP (bar)', 'Refrigerant', 'Medium Temp', 'Models'],
+  rows: [
+    ['1', 'Inline Check Valve (SAE Flare)', 'CV', 'Inline, spring-loaded', 'SAE Flare', '1/4"~3/4"', 'Not listed', '0.56~5.5', '46', 'HCFC, HFC', '−50~+140°C', '5'],
+    ['2', 'Inline Check Valve (Brazed ODF)', 'CV', 'Inline, spring-loaded', 'Brazed (ODF)', '1/4"~7/8"', 'Not listed', '0.56~8.5', '46', 'HCFC, HFC', '−50~+140°C', '6'],
+    ['3', 'Right-Angle Check Valve', 'CVR / CVRH', '90° angle, spring-loaded', 'Brazed (ODF)', '7/8"~1-5/8"', '0.3 (CVRH)', '8.5~30', '46', 'HCFC, HFC', '−50~+140°C', '4'],
+    ['4', 'Diaphragm Check Valve', 'CVS', 'Magnetic diaphragm', 'Brazed (ODF)', 'Φ6.4~Φ79.5 mm', '0.02 bar', '0.49~67.8', '45', 'HFC, HCFC', '−40~+130°C', '12'],
+  ],
+};
+
 // Category Landing Page Content
 export interface CategoryLandingContent {
   categoryId: string;
@@ -2813,6 +2826,21 @@ export const categoryLandingContent: CategoryLandingContent[] = [
     metaDescription: 'Compare 5 types of refrigeration safety valves—inline NPT/SAE, angle SAE/G, and dual-outlet relief. Select by connection, DN size, and set pressure.',
     h1: 'Refrigeration Safety Valves',
     introduction: 'Five safety valve series for refrigeration and HVAC systems — 19 models in all. Inline and angle spring-loaded valves cover NPT, SAE flare and G-thread connections, while the two-outlet relief valve protects larger vessels with twin discharge ports.',
+    howToChoose: [],
+    faq: [],
+    relatedCategories: [
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
+    ],
+  },
+  {
+    categoryId: 'valves',
+    subCategoryId: 'check-valves',
+    metaTitle: 'Refrigeration Check Valves | 4 Series & Selection Guide',
+    metaDescription: 'Compare 4 check valve series—SAE flare inline, brazed ODF inline, right-angle, and diaphragm. Select by connection, pressure, cracking pressure, and Kv.',
+    h1: 'Refrigeration Check Valves',
+    introduction: 'Four check valve series with 27 models for refrigeration and HVAC systems — from serviceable SAE flare inline valves to space-saving right-angle and ultra-low-cracking-pressure copper diaphragm types.',
     howToChoose: [],
     faq: [],
     relatedCategories: [

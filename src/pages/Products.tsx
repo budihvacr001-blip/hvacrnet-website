@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import { useNavigate, useParams, useLocation, Link } from 'react-router-dom'
 import { Search, MessageCircle, ChevronRight, Package, Home } from 'lucide-react'
-import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, txvComparison, brazingTorchesComparison, brazingRodsComparison, safetyValvesComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
+import { categories, solenoidValvesComparison, filterDriersComparison, ballValvesComparison, sightGlassesComparison, txvComparison, brazingTorchesComparison, brazingRodsComparison, safetyValvesComparison, checkValvesComparison, categoryLandingContent, isPublished, isProductPublished, MIN_PRODUCTS_TO_SHOW, type Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -910,6 +910,7 @@ export default function Products() {
                 'brazing-torches-overview': brazingTorchesComparison,
                 'brazing-rods-overview': brazingRodsComparison,
                 'safety-valves': safetyValvesComparison,
+                'check-valves': checkValvesComparison,
               };
               const filterDrierMap: Record<string, typeof filterDriersComparison> = {
                 'filter-driers': filterDriersComparison,
