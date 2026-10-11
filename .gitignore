@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .preview
 
+# 临时用户上传截图（非业务素材），避免 git add -A 误提交
+assets/image_*.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
