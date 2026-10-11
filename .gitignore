@@ -26,3 +26,5 @@ assets/image_*.png
 *.njsproj
 *.sln
 *.sw?
+assets/b26*.png
+assets/b267*.png

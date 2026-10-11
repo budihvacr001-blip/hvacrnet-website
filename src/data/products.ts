@@ -225,6 +225,7 @@ export const sightGlassesComparison = {
   title: "Refrigeration Sight Glasses",
   subtitle: "Five sight glass series for refrigeration and HVAC systems — from brazed ODF to SAE flare, NPT threaded, and oil level indicators.",
   headers: ["#", "Product", "Function", "Connection", "Port Range", "Moisture Indicator", "MWP", "Temp Range", "Models"],
+  colConfig: { 4: { minWidthClass: "min-w-[7rem]", nowrap: true } },
   rows: [
     ["1", "Moisture Indicator Sight Glass (Brazed ODF)", "Moisture & Flow Indicator", "Brazed (ODF)", "1/4\"–1-1/8\"", "Yes", "45 bar", "-40~+80°C", "7"],
     ["2", "Moisture Indicator Sight Glass (SAE Flare)", "Moisture & Flow Indicator", "SAE Flare (UNF)", "1/4\"–3/4\"", "Yes", "45 bar", "-40~+80°C", "5"],
