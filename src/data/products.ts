@@ -2625,7 +2625,7 @@ export const filterDriersComparison = {
   // Widen Filter Media (~2x), keep Series/Port Size/Connection on a single line.
   colConfig: {
     2: { nowrap: true },
-    4: { minWidthClass: 'min-w-[16rem]' },
+    4: { minWidthClass: 'min-w-[8rem]' },
     6: { nowrap: true },
     7: { minWidthClass: 'min-w-[8rem]', nowrap: true },
   },
