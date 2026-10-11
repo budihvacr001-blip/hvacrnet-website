@@ -2622,8 +2622,9 @@ export const filterDriersComparison = {
   title: 'Refrigeration Filter Driers',
   subtitle: '5 filter drier variants across 2 series (BFK bidirectional, DFS unidirectional), covering port sizes 1/4" to 2-5/8". Configurations include solid core and replaceable core, SAE flare and brazed ODF connections.',
   headers: ['#', 'Product', 'Series', 'Core Type', 'Filter Media', 'Flow', 'Connection', 'Port Size', 'MWP (bar)', 'Temp Range', 'Models'],
-  // Widen Filter Media (~2x), keep Port Size and Connection on a single line.
+  // Widen Filter Media (~2x), keep Series/Port Size/Connection on a single line.
   colConfig: {
+    2: { nowrap: true },
     4: { minWidthClass: 'min-w-[16rem]' },
     6: { nowrap: true },
     7: { minWidthClass: 'min-w-[8rem]', nowrap: true },
