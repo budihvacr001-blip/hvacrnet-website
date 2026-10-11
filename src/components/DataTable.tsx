@@ -230,7 +230,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
               {headers.map((h, i) => (
                 <th
                   key={i}
-                  className={`px-3.5 py-2 font-semibold align-middle leading-snug whitespace-normal overflow-wrap-normal ${getAlignClass(h)} ${getColMinWidthClass(h)} ${getColConfig(colConfig, i).minWidthClass ?? ''}`}
+                  className={`px-3.5 py-2 font-semibold align-middle leading-snug overflow-wrap-normal ${getColConfig(colConfig, i).nowrap ? 'whitespace-nowrap' : 'whitespace-normal'} ${getAlignClass(h)} ${getColMinWidthClass(h)} ${getColConfig(colConfig, i).minWidthClass ?? ''}`}
                 >
                   {atomizeText(h)}
                 </th>
