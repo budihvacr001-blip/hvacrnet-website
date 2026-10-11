@@ -2651,6 +2651,7 @@ export const ballValvesComparison = {
     ['4', 'CO₂ Ball Valve (Full Bore)', 'QF-CO2', 'Manual', 'Full', 'Brazed (ODF)', '1/2"~2-1/8"', '10~200', '120', 'CO₂ (R744)', '−50~+150°C', '8'],
     ['5', 'Threaded Ball Valve (NPT)', 'GFM-S', 'Manual', 'N/A', 'NPT Threaded', 'NPT 1/4~1', 'N/A', '120', 'R22, R134a, R404A, R407C, R410A', '−40~+120°C', '5'],
   ],
+  colConfig: { 6: { minWidthClass: 'min-w-[7rem]', nowrap: true } },
 };
 
 // Brazing Torches Comparison Table Data
