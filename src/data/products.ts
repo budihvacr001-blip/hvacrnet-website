@@ -787,7 +787,16 @@ export const categories: Category[] = [
           { id: 'hs-2f-dual-outlet', name: 'Dual Outlet Relief Valve' },
         ],
       },
-      { id: 'check-valves', name: 'Check Valves' },
+      {
+        id: 'check-valves',
+        name: 'Check Valves',
+        subCategories: [
+          { id: 'cv-sae-flare', name: 'SAE Flare Check Valve' },
+          { id: 'cv-brazed-odf', name: 'Brazed ODF Check Valve (CV)' },
+          { id: 'cvr-cvrh-right-angle', name: 'Right-Angle Check Valve' },
+          { id: 'cvs-diaphragm', name: 'Diaphragm Check Valve (CVS)' },
+        ],
+      },
       { id: 'stop-valves', name: 'Stop Valves' },
       { id: '4-way-reversing-valves', name: '4-Way Reversing Valves' },
     ],
@@ -1813,6 +1822,147 @@ export const categories: Category[] = [
         { question: "Why does this valve have two outlets?", answer: "The manifold body splits the discharge flow across two parallel ports, which suits larger vessels and receiver installations that vent through twin lines. Only one inlet connection to the vessel is needed, keeping mounting simple." },
         { question: "What pressure ratings apply to the HS-2F?", answer: "Maximum working pressure is 4.2 MPa (42 bar) and maximum compression pressure is 6.3 MPa (63 bar). Select the valve so the equipment's normal operating pressure stays below its relief setting and within these ratings." },
         { question: "Which refrigerants and temperatures is it rated for?", answer: "It covers R22, R134a, R410A, R507A, R448A, R449A and R404A at medium temperatures from −40 °C to +150 °C, spanning legacy HCFC systems and common HFC/HFO refrigerants." }
+      ] },
+      { id: 'cv-1', categoryId: 'valves', subCategoryId: 'check-valves', thirdCategoryId: 'cv-sae-flare', images: ['/images/check-valve-cv-sae-01.png'], metaTitle: 'SAE Flare Check Valve | Inline, 1/4"-3/4" | HVACR NET', metaDescription: 'Inline spring check valve with SAE flare connections, 1/4"-3/4", 46 bar, for refrigeration & HVAC. 5 models. MOQ 1 pc.', name: 'SAE Flare Check Valve', shortDesc: 'The SAE flare version of the spring-loaded inline check valve, the CV Series offers five models covering 1/4" to 3/4" SAE connections with Kv values from 0.56 to 5.5 m³/h. A built-in damper piston and a flow-direction arrow allow it to protect liquid, suction, and hot-gas lines from refrigerant reverse flow while remaining easy to disconnect for service.', description: "• Spring-loaded inline check valve designed for liquid, suction-gas, and hot-gas piping in freezing, cold storage, and air conditioning units.\n• Ensures a single correct flow direction and prevents refrigerant back flow, including migration from a high-temperature evaporator to a low-temperature one.\n• SAE flare connections allow the valve to be installed and removed without brazing, simplifying field service and maintenance.\n• Built-in damper piston lets the valve be installed on lines subject to pressure pulsation, such as compressor discharge lines.\n• The valve seat and seals provide reliable, tight shut-off in the reverse direction.\n• Both flare and brazed versions are available within the CV range; this product covers the flare models.", features: [
+        "Spring-loaded inline design guarantees one-way flow and prevents reversal.",
+        "SAE flare connections — no brazing required, easy to disconnect for service.",
+        "Built-in damper piston handles pressure pulsation on compressor lines.",
+        "Precision brass body with corrosion resistance for refrigeration environments.",
+        "Flow-direction arrow stamped on the body for correct installation.",
+        "Tight valve seat and seal for dependable reverse shut-off.",
+        "Five models covering 1/4\" to 3/4\" SAE.",
+        "Prevents cross-evaporator refrigerant migration."
+      ], availableModels: { headers: ["Model", "Connection Size", "Kv (m³/h)"], rows: [
+        ["CV-6", "1/4\" SAE", "0.56"],
+        ["CV-10", "3/8\" SAE", "1.43"],
+        ["CV-12", "1/2\" SAE", "2.05"],
+        ["CV-16", "5/8\" SAE", "3.60"],
+        ["CV-19", "3/4\" SAE", "5.5"]
+      ] }, specs: [
+        { label: "Series Code", value: "CV" },
+        { label: "MWP (Maximum Working Pressure)", value: "46 bar (4.6 MPa)" },
+        { label: "Connection Type", value: "SAE Flare" },
+        { label: "Connection Size", value: "1/4\" ~ 3/4\" SAE" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−50 °C ~ +140 °C" },
+        { label: "Cracking Pressure", value: "Not listed (spring-loaded)" },
+        { label: "Kv Value", value: "0.56 ~ 5.5 m³/h" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Configuration", value: "Inline (straight-through)" },
+        { label: "Flow Direction Marking", value: "Arrow on body" },
+        { label: "Built-in Damper Piston", value: "Yes" }
+      ], faq: [
+        { question: "What does a refrigeration check valve do?", answer: "It allows refrigerant to flow in only one direction and closes automatically on reverse flow, preventing back flow and migration between evaporators or into the compressor." },
+        { question: "How do I know which way to install the flare check valve?", answer: "Install it in the direction of the arrow stamped on the brass body. The arrow points along the permitted flow direction, so the valve opens with forward flow and seals against reverse flow." },
+        { question: "SAE flare vs brazed ODF check valve — which should I choose?", answer: "Choose the SAE flare model where you want easy, no-brazing removal for service. Choose the brazed ODF model for a permanent, leak-free joint in new installations or high-vibration lines." }
+      ] },
+      { id: 'cv-2', categoryId: 'valves', subCategoryId: 'check-valves', thirdCategoryId: 'cv-brazed-odf', images: ['/images/check-valve-cv-brazed-01.png'], metaTitle: 'Brazed ODF Check Valve | Inline, 1/4"-7/8" | HVACR NET', metaDescription: 'Inline spring check valve with brazed ODF connections, 1/4"-7/8", 46 bar, leak-free joint. 6 models for refrigeration. MOQ 1 pc.', name: 'Brazed ODF Check Valve', shortDesc: 'The brazed ODF version of the spring-loaded inline check valve, the CV Series offers six models that extend beyond the flare range, covering 1/4" to 7/8" ODF with Kv values from 0.56 to 8.5 m³/h. The brazed joint gives a permanent, leak-free seal, while the built-in damper piston makes the valve suitable for compressor discharge lines and other pulsating circuits.', description: "• Spring-loaded inline check valve for liquid, suction-gas, and hot-gas piping in freezing, cold storage, and air conditioning systems.\n• Maintains one direction of flow and prevents refrigerant reverse flow between evaporators and compressors.\n• Brazed ODF connections provide a permanent, leak-free joint suited to new installations and high-vibration environments.\n• Built-in damper piston allows mounting on piping with pressure pulsation, including compressor discharge lines.\n• Available in larger ODF sizes than the flare version, up to 7/8\".\n• The valve seat and seals deliver reliable reverse shut-off.", features: [
+        "Spring-loaded inline construction ensures one-way flow.",
+        "Brazed ODF joint for a permanent, leak-free seal.",
+        "Wider size range than the flare models — up to 7/8\" ODF.",
+        "Built-in damper piston withstands pressure pulsation.",
+        "Precision brass body resistant to refrigeration environments.",
+        "Flow-direction arrow stamped on the body.",
+        "Tight seat and seal for dependable reverse closure.",
+        "Prevents high-to-low temperature evaporator migration."
+      ], availableModels: { headers: ["Model", "Connection Size", "Kv (m³/h)"], rows: [
+        ["CV-6T", "1/4\" ODF", "0.56"],
+        ["CV-10GT", "φ10 ODF", "1.43"],
+        ["CV-12T", "1/2\" ODF", "2.05"],
+        ["CV-16T", "5/8\" ODF", "3.60"],
+        ["CV-19T", "3/4\" ODF", "5.50"],
+        ["CV-22T", "7/8\" ODF", "8.5"]
+      ] }, specs: [
+        { label: "Series Code", value: "CV (T / GT)" },
+        { label: "MWP (Maximum Working Pressure)", value: "46 bar (4.6 MPa)" },
+        { label: "Connection Type", value: "Brazed (ODF)" },
+        { label: "Connection Size", value: "1/4\" ~ 7/8\" ODF" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−50 °C ~ +140 °C" },
+        { label: "Cracking Pressure", value: "Not listed (spring-loaded)" },
+        { label: "Kv Value", value: "0.56 ~ 8.5 m³/h" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Configuration", value: "Inline (straight-through)" },
+        { label: "Flow Direction Marking", value: "Arrow on body" },
+        { label: "Built-in Damper Piston", value: "Yes" }
+      ], faq: [
+        { question: "How do I install a brazed ODF check valve?", answer: "Braze the valve into the line with the body arrow pointing in the direction of flow. Use proper heat-sinking and purge the system with inert gas to protect internal seals during brazing." },
+        { question: "What does the \"GT\" in CV-10GT mean?", answer: "The CV-10GT is a straight-through brazed model supplied with a φ10 mm ODF tube — a separate 10 mm connection rather than the standard 3/8\" ODF (9.5 mm)." },
+        { question: "When should I use a brazed check valve instead of a flare one?", answer: "Use brazed ODF for permanent installations and high-vibration lines where the highest leak integrity is required. Use flare where future disassembly for service is more important." }
+      ] },
+      { id: 'cv-3', categoryId: 'valves', subCategoryId: 'check-valves', thirdCategoryId: 'cvr-cvrh-right-angle', images: ['/images/check-valve-cvr-01.png'], metaTitle: 'Right-Angle Check Valve | ODF, 7/8"-1-5/8" | HVACR NET', metaDescription: '90° right-angle check valve, brazed ODF, 7/8"-1-5/8", 46 bar, space-saving corner fit. 4 models. MOQ 1 pc.', name: 'Right-Angle Check Valve', shortDesc: 'A 90° check valve for corner installations where an inline valve will not fit, the CVR / CVRH Series offers four models from 7/8" to 1-5/8" ODF with Kv values from 8.5 to 30 m³/h. The CVRH models use a reinforced spring with a 0.3 bar cracking pressure, designed for refrigeration units running compressors in parallel, while the brazed joint keeps the installation leak-free.', description: "• Manually acting, spring-loaded right-angle check valve for 90° flow on liquid and hot-gas piping in refrigeration and air conditioning systems.\n• Turns the flow through 90°, enabling compact installation at pipe corners and saving space versus an inline valve.\n• CVRH models feature a reinforced spring (ΔP = 0.3 bar) for refrigeration units with parallel compressors.\n• Built-in damper piston allows the valve to be used where pressure pulsation occurs.\n• The valve seat and seals provide reliable reverse shut-off.\n• Brazed ODF connections deliver a permanent, leak-free joint.", features: [
+        "90° right-angle flow for easy, space-saving corner installation.",
+        "Brazed ODF joint for permanent, leak-free sealing.",
+        "CVRH reinforced spring rated at 0.3 bar cracking pressure.",
+        "Suited to parallel-compressor refrigeration systems.",
+        "Built-in damper piston handles pressure pulsation.",
+        "Precision brass body for refrigeration environments.",
+        "Tight valve seat and reliable seals.",
+        "Four models from 7/8\" to 1-5/8\" ODF."
+      ], availableModels: { headers: ["Model", "Connection Size", "Cracking Pressure", "Kv (m³/h)"], rows: [
+        ["CVR-22", "7/8\" ODF", "Not listed", "8.50"],
+        ["CVRH-28", "1-1/8\" ODF", "0.3 bar", "19"],
+        ["CVRH-35", "1-3/8\" ODF", "0.3 bar", "29.0"],
+        ["CVRH-42", "1-5/8\" ODF", "0.3 bar", "30.0"]
+      ] }, specs: [
+        { label: "Series Code", value: "CVR / CVRH" },
+        { label: "MWP (Maximum Working Pressure)", value: "46 bar (4.6 MPa)" },
+        { label: "Connection Type", value: "Brazed (ODF)" },
+        { label: "Connection Size", value: "7/8\" ~ 1-5/8\" ODF" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−50 °C ~ +140 °C" },
+        { label: "Cracking Pressure — CVR-22", value: "Not listed" },
+        { label: "Cracking Pressure — CVRH", value: "0.3 bar (reinforced spring)" },
+        { label: "Kv Value", value: "8.5 ~ 30 m³/h" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Configuration", value: "Right angle (90°)" },
+        { label: "Built-in Damper Piston", value: "Yes" }
+      ], faq: [
+        { question: "When should I use a right-angle check valve instead of an inline one?", answer: "Use a right-angle (CVR / CVRH) valve when the pipe changes direction by 90° or space is too tight for an inline valve. It turns the flow at the corner while still preventing reverse flow." },
+        { question: "What is the reinforced spring on the CVRH for?", answer: "The CVRH reinforced spring gives a 0.3 bar cracking pressure and is intended for refrigeration units with parallel compressors, helping to maintain correct flow direction under those operating conditions." },
+        { question: "Does the 0.3 bar cracking pressure affect the system?", answer: "It is a slightly higher opening pressure than a standard spring, chosen for reliable operation in parallel-compressor circuits. The associated pressure drop remains small relative to the valve's Kv and the system design." }
+      ] },
+      { id: 'cv-4', categoryId: 'valves', subCategoryId: 'check-valves', thirdCategoryId: 'cvs-diaphragm', images: ['/images/check-valve-cvs-01.png'], metaTitle: 'Diaphragm Check Valve | Copper, Φ6.4-Φ79.5 | HVACR NET', metaDescription: 'Magnetic diaphragm check valve, full copper tube body, Φ6.4-Φ79.5 mm ODF, 45 bar, any mounting angle. 12 models. MOQ 1 pc.', name: 'Diaphragm Check Valve (CVS)', shortDesc: 'A magnetic diaphragm check valve with a full copper tube body and metal-to-metal sealing, the CVS Series offers twelve models for measured tube sizes from Φ6.4 to Φ79.5 mm ODF with Kv values from 0.49 to 67.8 m³/h. An ultra-low 0.02 bar cracking pressure, an integral filter screen, and freedom from mounting-angle restrictions make it ideal for compressor discharge lines with minimal pressure loss.', description: "• Diaphragm check valve using a magnetic diaphragm design with metal-to-metal sealing, intended for compressor exhaust (discharge) pipelines.\n• Internal guiding and a self-sealing structure allow the valve to close automatically regardless of installation angle or reverse pressure.\n• Full copper tube body eliminates the risk of external leakage.\n• A filter screen is built into the body, giving the valve the function of both a check valve and a filter.\n• Extremely low flow resistance and large flow capacity keep system efficiency loss negligible.\n• Ultra-low cracking pressure (0.02 bar / 0.002 MPa) enables the valve to open with minimal pressure differential.", features: [
+        "Magnetic composite diaphragm with metal-to-metal sealing.",
+        "Full copper tube body eliminates potential external leaks.",
+        "No required installation angle — mount in any orientation.",
+        "Ultra-low cracking pressure of 0.02 bar (0.002 MPa).",
+        "Built-in filter screen provides check-valve and filter function.",
+        "Very low reverse leakage.",
+        "Low flow resistance and large flow for high system efficiency.",
+        "Twelve models covering Φ6.4 to Φ79.5 mm ODF."
+      ], availableModels: { headers: ["Model", "Connection Size (ΦA, measured ODF)", "Kv (m³/h)"], rows: [
+        ["CVS-6", "Φ6.4 mm ODF", "0.49"],
+        ["CVS-10", "Φ9.7 mm ODF", "1.19"],
+        ["CVS-12", "Φ12.8 mm ODF", "1.86"],
+        ["CVS-16", "Φ16 mm ODF", "3.48"],
+        ["CVS-19", "Φ19.1 mm ODF", "5.61"],
+        ["CVS-22", "Φ22.3 mm ODF", "7.74"],
+        ["CVS-28", "Φ28.7 mm ODF", "13.38"],
+        ["CVS-35", "Φ35 mm ODF", "23.28"],
+        ["CVS-42", "Φ41.4 mm ODF", "27.42"],
+        ["CVS-54", "Φ54.1 mm ODF", "46.44"],
+        ["CVS-67", "Φ66.8 mm ODF", "67.8"],
+        ["CVS-79", "Φ79.5 mm ODF", "67.80"]
+      ] }, specs: [
+        { label: "Series Code", value: "CVS" },
+        { label: "MWP (Maximum Working Pressure)", value: "45 bar (4.5 MPa)" },
+        { label: "Connection Type", value: "Brazed (ODF)" },
+        { label: "Connection Size (measured ΦA)", value: "Φ6.4 ~ Φ79.5 mm ODF" },
+        { label: "Refrigerant Compatibility", value: "HFC, HCFC" },
+        { label: "Medium Temperature Range", value: "−40 °C ~ +130 °C" },
+        { label: "Working (Ambient) Temperature", value: "−30 °C ~ +120 °C" },
+        { label: "Cracking Pressure", value: "0.02 bar (0.002 MPa)" },
+        { label: "Kv Value", value: "0.49 ~ 67.8 m³/h" },
+        { label: "Sealing", value: "Magnetic diaphragm, metal-to-metal" },
+        { label: "Valve Body Material", value: "Copper tube body" },
+        { label: "Built-in Filter Screen", value: "Yes" },
+        { label: "Mounting Angle", value: "Any orientation" }
+      ], faq: [
+        { question: "What is the advantage of a diaphragm check valve?", answer: "The magnetic diaphragm provides metal-to-metal sealing with very low reverse leakage, opens at an ultra-low 0.02 bar cracking pressure, and closes automatically regardless of mounting angle or reverse pressure." },
+        { question: "Can the CVS be installed at any angle?", answer: "Yes. Its internal guide and self-sealing design mean the valve closes correctly independent of installation angle, unlike gravity- or orientation-dependent check valves." },
+        { question: "Why is the connection size given as a Φ mm value?", answer: "The CVS table specifies the measured outside diameter of the brazed copper tube (ΦA), e.g. Φ6.4 or Φ79.5 mm. Matching the measured tube diameter ensures the correct joint rather than relying on a nominal inch label." },
+        { question: "Does the CVS include filtration?", answer: "Yes. A filter screen is built into the body, so the valve performs both a check-valve function and a filter function, with low flow resistance." }
       ] }
     ],
   },
