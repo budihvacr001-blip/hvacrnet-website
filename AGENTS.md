@@ -73,3 +73,21 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - Contact 侧边栏：Get in Touch（Email/WeChat/WhatsApp/Address，高度等齐）+ Follow Us（Instagram→instagram.com/hvacr_net、TikTok→www.tiktok.com/@kongheng66）+ 20+ Years 徽章
 - WeChat 二维码缩略图 `public/images/wechat-qr.jpg`（3.5rem，hover scale(3)+box-shadow，点击全屏 modal）
 - **env 陷阱：依赖(node_modules)在 pipeline/worktree 中会被清空，`pnpm run dev` 报 `vite: not found` 导致预览/test_run 服务探活失败；用 `pnpm install` 恢复后再验证**
+
+## 发布到正式站 SOP（强制）
+
+官网为静态站，正式发布链路固定为三段：本地工作区 → GitHub main → Cloudflare Pages 自动构建 → https://hvacrnet.com 。Cloudflare 只从 GitHub main 构建。内部预览（*.coze.site 等）不是正式站，绝不允许仅凭预览或"部署命令返回成功"就声称已上线。
+
+任何需要正式上线的改动（新增/修改产品、页面、导航等），必须按顺序完成并逐项核验：
+
+1. 本地完成修改并 `git add` + `git commit`。
+2. `git push origin main` 推送到 GitHub（被拒绝需先 pull/rebase，禁止强推掩盖问题）。
+3. 推送后必须执行 `git rev-parse origin/main` 并与本地 `git rev-parse HEAD` 比对：两个 hash 必须完全一致，不一致即视为发布失败，需重试推送。
+4. 确认 Cloudflare Pages 最新一次部署对应的 commit hash 为本次 hash 且状态 success（通过 Cloudflare API 查询 deployments）。
+5. 线上验证（必须以 hvacrnet.com 实际返回为准）：
+   - 新增产品/分类：curl 对应正式 URL 确认可访问；
+   - 确认 https://hvacrnet.com/sitemap.xml 已包含新 URL；
+   - 涉及导航/计数的，确认菜单与数量已更新。
+6. 只有第 3、4、5 步全部核验通过，才能在汇报中写"已部署到正式站"；否则必须如实说明卡在哪一步。
+
+注意：deploy / repo push 等命令即使返回成功，也不代表代码已到 GitHub 或已上线；唯一可信标准是 origin/main 的实际 hash 与线上实际内容。
