@@ -27,6 +27,18 @@ const getColConfig = (
 // Long content column keywords (case-insensitive match)
 const LONG_CONTENT_KEYWORDS = ['voltage', 'connection', 'structure', 'refrigerant', 'configuration']
 
+// Numeric / short-spec column keywords (case-insensitive match): these columns render
+// sequence numbers or short numeric specs and are horizontally centered (header synced).
+const NUMERIC_COL_KEYWORDS = ['size', 'port', 'mwp', 'kv', 'temp', 'range', 'pressure', 'weight', 'count', 'model', 'bar', 'mm']
+
+// Check if a header is a numeric / short-spec column (centered) vs a long-text column (left).
+const shouldCenterCol = (header: string | undefined): boolean => {
+  if (!header) return false
+  const h = header.toLowerCase().trim()
+  if (h === '#') return true
+  return NUMERIC_COL_KEYWORDS.some(kw => h.includes(kw))
+}
+
 // Check if a header matches a column role
 const getColRole = (header: string | undefined): 'number' | 'product' | 'models' | 'long' | 'default' => {
   if (!header) return 'default'
@@ -37,6 +49,10 @@ const getColRole = (header: string | undefined): 'number' | 'product' | 'models'
   if (LONG_CONTENT_KEYWORDS.some(kw => h.includes(kw))) return 'long'
   return 'default'
 }
+
+// Horizontal alignment class for a column (th/td), based on numeric vs long-text role.
+const getAlignClass = (header: string | undefined): string =>
+  shouldCenterCol(header) ? 'text-center' : 'text-left'
 
 // Minimum widths for narrow columns so columns stay visually distinguishable.
 // Applied as min-width on <th>/<td> via CSS class; table-layout is auto, so these
@@ -214,7 +230,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
               {headers.map((h, i) => (
                 <th
                   key={i}
-                  className={`px-3 py-2 text-left font-semibold align-top leading-snug whitespace-normal overflow-wrap-normal ${getColMinWidthClass(h)} ${getColConfig(colConfig, i).minWidthClass ?? ''}`}
+                  className={`px-3.5 py-2 font-semibold align-middle leading-snug whitespace-normal overflow-wrap-normal ${getAlignClass(h)} ${getColMinWidthClass(h)} ${getColConfig(colConfig, i).minWidthClass ?? ''}`}
                 >
                   {atomizeText(h)}
                 </th>
@@ -236,7 +252,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                 return (
                   <td
                     key={cellIdx}
-                    className={`px-3 py-2 align-top overflow-wrap-normal ${colConf.minWidthClass ?? ''} ${
+                    className={`px-3.5 py-2 align-middle overflow-wrap-normal ${getAlignClass(headers?.[cellIdx])} ${colConf.minWidthClass ?? ''} ${
                       isStickyCol ? 'font-medium' : ''
                     } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal leading-snug'} ${
                       isLongContent ? 'text-[9.5px] md:text-[10.5px]' : ''

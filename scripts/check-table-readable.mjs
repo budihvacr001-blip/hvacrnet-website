@@ -40,10 +40,11 @@ if (/table-fixed/.test(codeNoComments)) {
 }
 
 // 3. Cell padding must guarantee >=16px visual gap between adjacent columns.
-//    Each cell pads left+right; two adjacent cells contribute 2 * padX. Require px-3 (12px).
-const px3Count = (codeNoComments.match(/px-3\s+py-2/g) || []).length
-if (px3Count < 2) {
-  failures.push(`DataTable cell padding below px-3 (12px) — adjacent column gap would be < 16px (found ${px3Count} px-3 py-2 cell classes)`)
+//    Each cell pads left+right; two adjacent cells contribute 2 * padX. Require
+//    px-3.5 (14px) or px-3 (12px) cell padding.
+const padCount = (codeNoComments.match(/px-3(?:\.[05])?\s+py-2/g) || []).length
+if (padCount < 2) {
+  failures.push(`DataTable cell padding below px-3.5/px-3 — adjacent column gap would be < 16px (found ${padCount} px-3*.5 py-2 cell classes)`)
 }
 
 if (failures.length > 0) {
