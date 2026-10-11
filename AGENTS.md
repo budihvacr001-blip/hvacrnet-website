@@ -74,6 +74,7 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - Contact 侧边栏：Get in Touch（Email/WeChat/WhatsApp/Address，高度等齐）+ Follow Us（Instagram→instagram.com/hvacr_net、TikTok→www.tiktok.com/@kongheng66）+ 20+ Years 徽章
 - WeChat 二维码缩略图 `public/images/wechat-qr.jpg`（3.5rem，hover scale(3)+box-shadow，点击全屏 modal）
 - **env 陷阱：依赖(node_modules)在 pipeline/worktree 中会被清空，`pnpm run dev` 报 `vite: not found` 导致预览/test_run 服务探活失败；用 `pnpm install` 恢复后再验证**
+- **产品详情分条渲染（`src/components/ProductModal.tsx` 内 `ProductDescription`）**：产品 `description` 若每一行都以 `•`/`-`/`*` 开头 → 渲染为 `<ul><li>` 竖排列表（橙色圆点、悬垂缩进、`space-y-2`=8px 间距、不加序号）；否则（纯文本段落，如铜材/保温类多段描述）→ 按行渲染为多个 `<p>` 段落。**严禁用 `description.split('\n\n')` 拆段再塞进单个 `<p>`**——数据里分条用单换行 `\n`，空行拆分必然失效导致多条黏成一坨。新增产品 description 分条请统一用 `\n` + 行首 `• ` 书写
 
 ## 发布到正式站 SOP（强制）
 

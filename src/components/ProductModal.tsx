@@ -87,11 +87,7 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
           <h2 className="text-2xl font-bold text-navy">{product.name}</h2>
 
           {/* Description */}
-          <div className="mt-3 leading-relaxed text-gray-700">
-            {product.description.split('\n\n').map((para, i) => (
-              <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
-            ))}
-          </div>
+          <ProductDescription content={product.description} />
 
           {/* Key Features */}
           {product.features && product.features.length > 0 && (
@@ -238,6 +234,33 @@ function ProductFAQSection({ product }: { product: Product }) {
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+function ProductDescription({ content }: { content: string }) {
+  const items = content
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+  const bulletLike = items.every((l) => l.startsWith('•') || l.startsWith('-') || l.startsWith('*'))
+  const padded = (l: string) => l.replace(/^[•\-*\s]+/, '')
+  return (
+    <div className="mt-3 leading-relaxed text-gray-700">
+      {bulletLike ? (
+        <ul className="space-y-2">
+          {items.map((item, i) => (
+            <li key={i} className="flex items-start">
+              <span className="mr-2 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#e8722a]" />
+              <span>{padded(item)}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        items.map((para, i) => (
+          <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
+        ))
+      )}
     </div>
   )
 }
