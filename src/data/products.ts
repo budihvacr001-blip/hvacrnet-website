@@ -2627,7 +2627,7 @@ export const filterDriersComparison = {
     2: { nowrap: true },
     4: { minWidthClass: 'min-w-[8rem]' },
     6: { nowrap: true },
-    7: { minWidthClass: 'min-w-[8rem]', nowrap: true },
+    7: { minWidthClass: 'min-w-[10.4rem]', nowrap: true },
   },
   rows: [
     ['1', 'Bidirectional Filter Drier, SAE Flare', 'BFK', 'Solid Core', '80% Mol. Sieve\n+ 20% Alumina', 'Bidirectional', 'SAE Flare', '3/8"~3/4"', '45', '−40~+120°C', '10'],
