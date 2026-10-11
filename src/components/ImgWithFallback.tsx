@@ -20,9 +20,10 @@ interface ImgWithFallbackProps {
   style?: React.CSSProperties;
   loading?: 'eager' | 'lazy';
   draggable?: boolean;
+  onDoubleClick?: React.MouseEventHandler<HTMLImageElement>;
 }
 
-export default function ImgWithFallback({ src, alt, className, style, loading, draggable }: ImgWithFallbackProps) {
+export default function ImgWithFallback({ src, alt, className, style, loading, draggable, onDoubleClick }: ImgWithFallbackProps) {
   const [error, setError] = useState(false);
   return (
     <img
@@ -33,6 +34,7 @@ export default function ImgWithFallback({ src, alt, className, style, loading, d
       loading={loading ?? 'lazy'}
       draggable={draggable}
       onError={() => setError(true)}
+      onDoubleClick={onDoubleClick}
     />
   );
 }
