@@ -56,15 +56,16 @@ const atomizeText = (text: string): React.ReactNode => {
   
   const str = String(text)
 
-  // Explicit line breaks: render each line atomized, joined by <br/>
+  // Explicit multi-line content (e.g. "X + Y" compound filter media ratios):
+  // render each line as a block-level element so the break always holds regardless
+  // of any white-space wrapping rules — no reliance on <br> or word-break.
   if (str.includes('\n')) {
     return (
       <>
         {str.split('\n').map((line, i) => (
-          <React.Fragment key={i}>
-            {i > 0 && <br />}
+          <span key={i} className="block whitespace-normal">
             {atomizeText(line)}
-          </React.Fragment>
+          </span>
         ))}
       </>
     )
