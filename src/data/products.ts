@@ -2622,14 +2622,15 @@ export const filterDriersComparison = {
   title: 'Refrigeration Filter Driers',
   subtitle: '5 filter drier variants across 2 series (BFK bidirectional, DFS unidirectional), covering port sizes 1/4" to 2-5/8". Configurations include solid core and replaceable core, SAE flare and brazed ODF connections.',
   headers: ['#', 'Product', 'Series', 'Core Type', 'Filter Media', 'Flow', 'Connection', 'Port Size', 'MWP (bar)', 'Temp Range', 'Models'],
-  // Widen Filter Media (~2x) and Port Size, keeping all content on a single line each.
+  // Widen Filter Media (~2x), keep Port Size and Connection on a single line.
   colConfig: {
-    4: { minWidthClass: 'min-w-[16rem]', nowrap: true },
+    4: { minWidthClass: 'min-w-[16rem]' },
+    6: { nowrap: true },
     7: { minWidthClass: 'min-w-[8rem]', nowrap: true },
   },
   rows: [
-    ['1', 'Bidirectional Filter Drier, SAE Flare', 'BFK', 'Solid Core', '80% Mol. Sieve + 20% Alumina', 'Bidirectional', 'SAE Flare', '3/8"~3/4"', '45', '−40~+120°C', '10'],
-    ['2', 'Bidirectional Filter Drier, Brazed ODF', 'BFK', 'Solid Core', '80% Mol. Sieve + 20% Alumina', 'Bidirectional', 'Brazed ODF', '3/8"~1-1/8"', '45', '−40~+120°C', '12'],
+    ['1', 'Bidirectional Filter Drier, SAE Flare', 'BFK', 'Solid Core', '80% Mol. Sieve\n+ 20% Alumina', 'Bidirectional', 'SAE Flare', '3/8"~3/4"', '45', '−40~+120°C', '10'],
+    ['2', 'Bidirectional Filter Drier, Brazed ODF', 'BFK', 'Solid Core', '80% Mol. Sieve\n+ 20% Alumina', 'Bidirectional', 'Brazed ODF', '3/8"~1-1/8"', '45', '−40~+120°C', '12'],
     ['3', 'Unidirectional Filter Drier, SAE Flare', 'DFS', 'Solid Core', '100% 3A Mol. Sieve', 'Unidirectional', 'SAE Flare', '1/4"~3/4"', '45', '−40~+120°C', '13'],
     ['4', 'Unidirectional Filter Drier, Brazed ODF', 'DFS', 'Solid Core', '100% 3A Mol. Sieve', 'Unidirectional', 'Brazed ODF', '1/4"~1-1/8"', '45', '−40~+120°C', '15'],
     ['5', 'Replaceable Core Filter Drier, Brazed ODF', 'DFS-R', 'Replaceable', '100% 3A Mol. Sieve', 'Unidirectional', 'Brazed ODF', '5/8"~2-5/8"', '42', '−35~+70°C', '19'],

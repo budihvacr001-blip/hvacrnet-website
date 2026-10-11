@@ -55,6 +55,20 @@ const atomizeText = (text: string): React.ReactNode => {
   if (!text) return null
   
   const str = String(text)
+
+  // Explicit line breaks: render each line atomized, joined by <br/>
+  if (str.includes('\n')) {
+    return (
+      <>
+        {str.split('\n').map((line, i) => (
+          <React.Fragment key={i}>
+            {i > 0 && <br />}
+            {atomizeText(line)}
+          </React.Fragment>
+        ))}
+      </>
+    )
+  }
   
   // Split by delimiters (spaces, commas, slashes) while keeping the delimiters
   const parts = str.split(/([\s,/]+)/)
