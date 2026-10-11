@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ImageLightbox from './ImageLightbox';
+import ImgWithFallback from './ImgWithFallback';
 
 export interface Product {
   id: string;
@@ -41,7 +42,7 @@ export default function ProductCard({ product, onInquire, onViewDetail }: Produc
             className="cursor-zoom-in"
             aria-label="View image enlarged"
           >
-            <img src={mainImage} alt={product.name} className="max-w-full max-h-64 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
+            <ImgWithFallback src={mainImage} alt={product.name} className="max-w-full max-h-64 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
           </button>
         ) : (
           <div className="text-gray-400 text-sm">No Image</div>

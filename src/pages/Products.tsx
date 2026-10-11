@@ -7,6 +7,7 @@ import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
 import SEO from '../components/SEO'
 import CategoryLanding from '../components/CategoryLanding'
+import ImgWithFallback from '../components/ImgWithFallback'
 
 // Category positioning statements for global audience
 const categoryPositioning: Record<string, string> = {
@@ -959,7 +960,7 @@ export default function Products() {
                         {(() => {
                           const img = getCategoryImage(cat.id)
                           if (img) {
-                            return <img src={img} alt={cat.name} className="w-full h-full object-contain transition-transform group-hover:scale-105" />
+                            return <ImgWithFallback src={img} alt={cat.name} className="w-full h-full object-contain transition-transform group-hover:scale-105" />
                           }
                           return <Package className="h-12 w-12 text-navy/30 transition-transform group-hover:scale-110" />
                         })()}
@@ -1014,7 +1015,7 @@ export default function Products() {
                       className="group rounded-lg border border-gray-border p-4 transition-all hover:border-accent hover:shadow-md"
                     >
                       {product.images?.[0] && (
-                        <img
+                        <ImgWithFallback
                           src={product.images[0]}
                           alt={`${product.name} - ${product.shortDesc}`}
                           className="w-full h-32 object-contain mb-3"

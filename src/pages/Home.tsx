@@ -40,7 +40,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
           {/* Logo */}
           <div className="animate-fade-in-up relative mx-auto inline-block">
-            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl" />
+            <img src="/logo.png" alt="HVACR NET" className="relative mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
           </div>
           <h1 className="animate-fade-in-up animate-delay-200 mt-1.5 text-base text-[#1a3a5c] sm:text-lg lg:text-xl">
             Your One-Stop HVACR Parts Supplier from China

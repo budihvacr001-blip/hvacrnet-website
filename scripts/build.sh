@@ -17,5 +17,8 @@ npx tsx scripts/generate-sitemap.mjs
 echo "Pre-rendering pages (SSG)..."
 npx tsx scripts/prerender.ts || echo "SSG pre-rendering failed (non-blocking)"
 
+echo "Checking asset references (404 guard)..."
+node scripts/check-assets.mjs || { echo "Asset check FAILED - broken image references found"; exit 1; }
+
 echo "Submitting URLs to IndexNow..."
 node scripts/indexnow-submit.mjs || echo "IndexNow submission failed (non-blocking)"

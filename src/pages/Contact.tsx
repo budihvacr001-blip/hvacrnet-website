@@ -6,6 +6,7 @@ import {
   X,
   ArrowRight,
 } from 'lucide-react'
+import ImgWithFallback from '../components/ImgWithFallback'
 import SEO from '../components/SEO'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -190,10 +191,11 @@ export default function Contact() {
             className="group relative h-14 w-full overflow-hidden rounded-lg border border-gray-200 bg-white sm:h-14 sm:w-14 sm:shrink-0 sm:-mt-7"
             aria-label="View WeChat QR code"
           >
-            <img
-              src="images/wechat-qr.jpg"
+            <ImgWithFallback
+              src="/images/wechat-qr.jpg"
               alt="WeChat QR Code"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[3] group-hover:shadow-xl"
+              loading="eager"
             />
           </button>
         </div>
@@ -518,8 +520,8 @@ export default function Contact() {
             <X className="h-6 w-6" aria-hidden="true" />
           </button>
           <div className="w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
-            <img
-              src="images/wechat-qr.jpg"
+            <ImgWithFallback
+              src="/images/wechat-qr.jpg"
               alt="WeChat QR Code"
               className="aspect-square w-full rounded-xl bg-white object-contain p-2"
             />

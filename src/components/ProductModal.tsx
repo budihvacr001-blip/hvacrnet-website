@@ -4,6 +4,7 @@ import type { Product } from '../data/products'
 import { getProductFAQs } from '../data/faq-constants'
 import DataTable from './DataTable'
 import ImageLightbox from './ImageLightbox'
+import ImgWithFallback from './ImgWithFallback'
 
 interface Props {
   product: Product
@@ -46,7 +47,7 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
               className="cursor-zoom-in"
               aria-label="View image enlarged"
             >
-              <img src={mainImage} alt={product.name} className="max-w-full max-h-80 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
+              <ImgWithFallback src={mainImage} alt={product.name} className="max-w-full max-h-80 object-contain" style={{ imageRendering: 'auto' }} loading="eager" />
             </button>
           ) : (
             <div className="text-center">
@@ -74,7 +75,7 @@ export default function ProductModal({ product, onClose, onInquire }: Props) {
                   mainImage === img ? 'border-[#1a3a5c]' : 'border-gray-200 hover:border-gray-300'
                 }`}
               >
-                <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-contain" loading={idx === 0 ? 'eager' : 'lazy'} />
+                <ImgWithFallback src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-contain" loading={idx === 0 ? 'eager' : 'lazy'} />
               </button>
             ))}
           </div>

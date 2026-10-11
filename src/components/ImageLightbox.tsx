@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import ImgWithFallback from './ImgWithFallback'
 
 interface ImageLightboxProps {
   open: boolean
@@ -269,7 +270,7 @@ export default function ImageLightbox({ open, images, initialIndex, alt, onClose
         onMouseLeave={endDrag}
       >
         {images[index] ? (
-          <img
+          <ImgWithFallback
             src={images[index]}
             alt={alt ? `${alt} ${index + 1}` : `Image ${index + 1}`}
             draggable={false}

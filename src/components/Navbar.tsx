@@ -14,7 +14,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
-          <img src="/logo.png" alt="HVACR NET" className="h-10 w-auto sm:h-12" />
+          <img src="/logo.png" alt="HVACR NET" className="h-10 w-auto sm:h-12" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
         </Link>
 
         {/* Desktop nav - horizontal text links */}
