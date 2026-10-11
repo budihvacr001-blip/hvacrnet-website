@@ -10,7 +10,8 @@ interface DataTableProps {
   stickyColIdx?: number
   // Custom cell renderer
   renderCell?: (cell: string, rowIdx: number, colIdx: number) => React.ReactNode
-  // Optional per-header column width overrides (percentage), e.g. { 'Configuration': 16 }
+  // Optional per-header column width overrides (percentage) — kept for API compat,
+  // no longer applied as fixed widths. Column sizing is auto.
   headerWidthOverrides?: Record<string, number>
 }
 
@@ -26,6 +27,16 @@ const getColRole = (header: string | undefined): 'number' | 'product' | 'models'
   if (h.includes('model')) return 'models'
   if (LONG_CONTENT_KEYWORDS.some(kw => h.includes(kw))) return 'long'
   return 'default'
+}
+
+// Minimum widths for narrow columns so columns stay visually distinguishable.
+// Applied as min-width on <th>/<td> via CSS class; table-layout is auto, so these
+// only set a floor and never truncate content (no mid-word splitting, no fixed colgroup widths).
+const getColMinWidthClass = (header: string | undefined): string => {
+  const role = getColRole(header)
+  if (role === 'number') return 'min-w-[1.5rem]'
+  if (role === 'models' || role === 'product') return 'min-w-[5rem]'
+  return ''
 }
 
 // Atomize text: split into non-breakable atoms separated by breakable delimiters
@@ -131,91 +142,7 @@ const atomizeNode = (node: React.ReactNode): React.ReactNode => {
   return node
 }
 
-export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell, headerWidthOverrides }: DataTableProps) {
-  const colCount = headers?.length || (keyValue ? 2 : (rows[0]?.length || 1))
-
-  // Calculate column widths by column role (sum must = 100%)
-  const getColumnWidths = (): string[] => {
-    if (colCount < 6 || !headers) return []
-
-    const roles = headers.map(h => getColRole(h))
-    const widths: number[] = new Array(colCount).fill(0)
-
-    // Fixed width columns
-    const WIDTHS = {
-      number: 4,
-      product: 18,
-      models: 13,
-      long: 12,
-    }
-
-    // First pass: assign fixed widths
-    let usedWidth = 0
-    let defaultColCount = 0
-
-    roles.forEach((role, i) => {
-      if (role === 'number') {
-        widths[i] = WIDTHS.number
-        usedWidth += WIDTHS.number
-      } else if (role === 'product') {
-        widths[i] = WIDTHS.product
-        usedWidth += WIDTHS.product
-      } else if (role === 'models') {
-        widths[i] = WIDTHS.models
-        usedWidth += WIDTHS.models
-      } else if (role === 'long') {
-        widths[i] = WIDTHS.long
-        usedWidth += WIDTHS.long
-      } else {
-        defaultColCount++
-      }
-    })
-
-    // Second pass: distribute remaining width to default columns
-    const remainingWidth = 100 - usedWidth
-    if (defaultColCount > 0) {
-      const defaultWidth = Math.floor(remainingWidth / defaultColCount)
-      let distributedWidth = 0
-
-      roles.forEach((role, i) => {
-        if (role === 'default') {
-          widths[i] = defaultWidth
-          distributedWidth += defaultWidth
-        }
-      })
-
-      // Add remainder to last default column
-      const remainder = remainingWidth - distributedWidth
-      if (remainder !== 0) {
-        const lastDefaultIdx = roles.lastIndexOf('default')
-        if (lastDefaultIdx >= 0) {
-          widths[lastDefaultIdx] += remainder
-        }
-      }
-    } else {
-      // No default columns, adjust last column to make sum = 100
-      const currentSum = widths.reduce((a, b) => a + b, 0)
-      if (currentSum !== 100 && colCount > 0) {
-        widths[colCount - 1] += (100 - currentSum)
-      }
-    }
-
-    // Apply per-header width overrides after base allocation
-    if (headerWidthOverrides && headers) {
-      headers.forEach((h, i) => {
-        const override = headerWidthOverrides[h]
-        if (override != null && widths[i] != null) {
-          widths[i] = override
-        }
-      })
-    }
-
-    return widths.map(w => `${w}%`)
-  }
-
-  const columnWidths = getColumnWidths()
-  const useFixed = columnWidths.length > 0
-
+export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell }: DataTableProps) {
   // Determine which columns should keep whitespace-nowrap (short data only)
   const isShortDataCol = (cell: string, colIdx: number): boolean => {
     // Row number column
@@ -240,12 +167,12 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
   if (keyValue) {
     return (
       <div className={`overflow-hidden rounded-lg border border-gray-border ${className}`}>
-        <table className="w-full text-[10.5px] md:text-[11.5px] border-collapse">
+        <table className="w-full text-[10.5px] md:text-[11.5px] border-collapse table-auto">
           <tbody>
             {rows.map((row, i) => (
               <tr key={i} className={i % 2 === 0 ? 'bg-gray-bg' : 'bg-white'}>
-                <td className="px-1.5 py-1.5 font-medium text-navy w-1/3 align-top leading-tight overflow-hidden">{atomizeText(row[0])}</td>
-                <td className="px-1.5 py-1.5 text-gray-700 align-top leading-tight whitespace-normal break-all overflow-hidden">{atomizeText(row[1])}</td>
+                <td className="px-3 py-2 font-medium text-navy w-1/3 align-top leading-tight overflow-wrap-normal">{atomizeText(row[0])}</td>
+                <td className="px-3 py-2 text-gray-700 align-top leading-tight overflow-wrap-normal">{atomizeText(row[1])}</td>
               </tr>
             ))}
           </tbody>
@@ -256,19 +183,15 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
 
   return (
     <div className={`overflow-x-auto rounded-lg border border-gray-border ${className}`}>
-      <table className={`w-full text-[10.5px] md:text-[11.5px] border-collapse ${useFixed ? 'table-fixed' : ''} min-w-[1024px]`}>
-        {useFixed && (
-          <colgroup>
-            {columnWidths.map((width, i) => (
-              <col key={i} style={{ width }} />
-            ))}
-          </colgroup>
-        )}
+      <table className="w-full text-[10.5px] md:text-[11.5px] border-collapse table-auto min-w-[640px]">
         {headers && (
           <thead>
             <tr className="bg-navy text-white">
               {headers.map((h, i) => (
-                <th key={i} className="px-2 py-1.5 text-left font-semibold align-top leading-tight whitespace-normal break-all overflow-hidden">
+                <th
+                  key={i}
+                  className={`px-3 py-2 text-left font-semibold align-top leading-snug whitespace-normal overflow-wrap-normal ${getColMinWidthClass(h)}`}
+                >
                   {atomizeText(h)}
                 </th>
               ))}
@@ -288,9 +211,9 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                 return (
                   <td
                     key={cellIdx}
-                    className={`px-2 py-1.5 align-top overflow-hidden ${
+                    className={`px-3 py-2 align-top overflow-wrap-normal ${
                       isStickyCol ? 'font-medium' : ''
-                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal break-all leading-tight'} ${
+                    } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal leading-snug'} ${
                       isLongContent ? 'text-[9.5px] md:text-[10.5px]' : ''
                     } ${
                       isStickyCol ? `sticky left-0 z-10 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.1)] ${rowBgClass}` : ''

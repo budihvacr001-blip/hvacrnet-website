@@ -20,5 +20,8 @@ npx tsx scripts/prerender.ts || echo "SSG pre-rendering failed (non-blocking)"
 echo "Checking asset references (404 guard)..."
 node scripts/check-assets.mjs || { echo "Asset check FAILED - broken image references found"; exit 1; }
 
+echo "Checking table readability guard..."
+node scripts/check-table-readable.mjs || { echo "Table readability check FAILED - see messages above"; exit 1; }
+
 echo "Submitting URLs to IndexNow..."
 node scripts/indexnow-submit.mjs || echo "IndexNow submission failed (non-blocking)"

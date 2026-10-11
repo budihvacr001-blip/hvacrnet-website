@@ -75,6 +75,12 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 - WeChat 二维码缩略图 `public/images/wechat-qr.jpg`（3.5rem，hover scale(3)+box-shadow，点击全屏 modal）
 - **env 陷阱：依赖(node_modules)在 pipeline/worktree 中会被清空，`pnpm run dev` 报 `vite: not found` 导致预览/test_run 服务探活失败；用 `pnpm install` 恢复后再验证**
 - **产品详情分条渲染（`src/components/ProductModal.tsx` 内 `ProductDescription`）**：产品 `description` 若每一行都以 `•`/`-`/`*` 开头 → 渲染为 `<ul><li>` 竖排列表（橙色圆点、悬垂缩进、`space-y-2`=8px 间距、不加序号）；否则（纯文本段落，如铜材/保温类多段描述）→ 按行渲染为多个 `<p>` 段落。**严禁用 `description.split('\n\n')` 拆段再塞进单个 `<p>`**——数据里分条用单换行 `\n`，空行拆分必然失效导致多条黏成一坨。新增产品 description 分条请统一用 `\n` + 行首 `• ` 书写
+- **对比表排版（category overview / 参数表通用约束）**：所有品类对比表、参数表共用 `src/components/DataTable.tsx`，改动该组件即全站生效。硬性约束（由 `scripts/check-table-readable.mjs` 在构建期强制校验，build.sh 中若失败则中止）：
+  - 表格必须 `table-auto` 自适应列宽（禁止 `table-fixed`、禁止固定百分比 colgroup 宽度——会把窄列压死导致内容挤成一团）；
+  - 表头与单元格**禁止 `break-all`**（会断词），统一 `overflow-wrap: normal`，配合 `atomizeText` 只在空格/逗号/斜杠处整词断行，不在单词中间拆；
+  - 单元格 padding 统一 `px-3 py-2`（左右 12px，保证相邻列净距 ≥16px），窄列（`#`/Model/Product）设 `min-w-*` 兜底。
+  - `headerWidthOverrides` prop 保留仅为 API 兼容，已不再应用固定宽度。DataTable 组件源码注释中不要出现 `break-all`/`table-fixed` 字样（构建自检会把注释剥离后检查，但避免误导）。
+  - 校验脚本 `scripts/check-table-readable.mjs`：剥离注释后断言 no `break-all` / no `table-fixed` / 至少 2 处 `px-3 py-2`，违反即退出非 0。
 
 ## 发布到正式站 SOP（强制）
 
