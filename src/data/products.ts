@@ -2622,6 +2622,11 @@ export const filterDriersComparison = {
   title: 'Refrigeration Filter Driers',
   subtitle: '5 filter drier variants across 2 series (BFK bidirectional, DFS unidirectional), covering port sizes 1/4" to 2-5/8". Configurations include solid core and replaceable core, SAE flare and brazed ODF connections.',
   headers: ['#', 'Product', 'Series', 'Core Type', 'Filter Media', 'Flow', 'Connection', 'Port Size', 'MWP (bar)', 'Temp Range', 'Models'],
+  // Widen Filter Media (~2x) and Port Size, keeping all content on a single line each.
+  colConfig: {
+    4: { minWidthClass: 'min-w-[16rem]', nowrap: true },
+    7: { minWidthClass: 'min-w-[8rem]', nowrap: true },
+  },
   rows: [
     ['1', 'Bidirectional Filter Drier, SAE Flare', 'BFK', 'Solid Core', '80% Mol. Sieve + 20% Alumina', 'Bidirectional', 'SAE Flare', '3/8"~3/4"', '45', '−40~+120°C', '10'],
     ['2', 'Bidirectional Filter Drier, Brazed ODF', 'BFK', 'Solid Core', '80% Mol. Sieve + 20% Alumina', 'Bidirectional', 'Brazed ODF', '3/8"~1-1/8"', '45', '−40~+120°C', '12'],

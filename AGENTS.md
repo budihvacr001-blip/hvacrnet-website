@@ -80,6 +80,7 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
   - 表头与单元格**禁止 `break-all`**（会断词），统一 `overflow-wrap: normal`，配合 `atomizeText` 只在空格/逗号/斜杠处整词断行，不在单词中间拆；
   - 单元格 padding 统一 `px-3 py-2`（左右 12px，保证相邻列净距 ≥16px），窄列（`#`/Model/Product）设 `min-w-*` 兜底。
   - `headerWidthOverrides` prop 保留仅为 API 兼容，已不再应用固定宽度。DataTable 组件源码注释中不要出现 `break-all`/`table-fixed` 字样（构建自检会把注释剥离后检查，但避免误导）。
+  - **列级配置（数据驱动）**：DataTable 支持可选 `colConfig`（按列索引 `{ minWidthClass, nowrap }`），用于个别表加宽某列或强制单行，`CategoryLanding` 的 comparisonData 透传。filter-driers 对比表已用：Filter Media 列 `min-w-[16rem]`+nowrap、Port Size 列 `min-w-[8rem]`+nowrap（单词/整行不换行）。不要硬编码列宽到组件本身。
   - 校验脚本 `scripts/check-table-readable.mjs`：剥离注释后断言 no `break-all` / no `table-fixed` / 至少 2 处 `px-3 py-2`，违反即退出非 0。
 
 ## 发布到正式站 SOP（强制）

@@ -14,6 +14,7 @@ interface Props {
     headers: string[]
     rows: string[][]
     headerWidthOverrides?: Record<string, number>
+    colConfig?: Record<number, { minWidthClass?: string; nowrap?: boolean }>
   }
   products: Product[]
   categoryName: string
@@ -163,6 +164,7 @@ export default function CategoryLanding({
             headers={comparisonData.headers}
             rows={comparisonData.rows}
             headerWidthOverrides={comparisonData.headerWidthOverrides}
+            colConfig={comparisonData.colConfig}
             stickyColIdx={comparisonData.headers[0] === '#' ? 1 : 0}
             renderCell={(cell, rowIdx, cellIdx) => {
               // Product name column is index 1 if there's a # column, otherwise index 0

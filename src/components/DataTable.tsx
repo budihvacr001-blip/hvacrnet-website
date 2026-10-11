@@ -13,7 +13,16 @@ interface DataTableProps {
   // Optional per-header column width overrides (percentage) — kept for API compat,
   // no longer applied as fixed widths. Column sizing is auto.
   headerWidthOverrides?: Record<string, number>
+  // Optional per-column config (keyed by column index). Enables data-driven min-width
+  // and single-line (nowrap) control for specific columns without hardcoding.
+  colConfig?: Record<number, { minWidthClass?: string; nowrap?: boolean }>
 }
+
+// Resolve per-column config for a given column index
+const getColConfig = (
+  config: Record<number, { minWidthClass?: string; nowrap?: boolean }> | undefined,
+  idx: number
+): { minWidthClass?: string; nowrap?: boolean } => config?.[idx] ?? {}
 
 // Long content column keywords (case-insensitive match)
 const LONG_CONTENT_KEYWORDS = ['voltage', 'connection', 'structure', 'refrigerant', 'configuration']
@@ -142,7 +151,7 @@ const atomizeNode = (node: React.ReactNode): React.ReactNode => {
   return node
 }
 
-export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell }: DataTableProps) {
+export default function DataTable({ headers, rows, className = '', keyValue = false, stickyColIdx = 0, renderCell, colConfig }: DataTableProps) {
   // Determine which columns should keep whitespace-nowrap (short data only)
   const isShortDataCol = (cell: string, colIdx: number): boolean => {
     // Row number column
@@ -190,7 +199,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
               {headers.map((h, i) => (
                 <th
                   key={i}
-                  className={`px-3 py-2 text-left font-semibold align-top leading-snug whitespace-normal overflow-wrap-normal ${getColMinWidthClass(h)}`}
+                  className={`px-3 py-2 text-left font-semibold align-top leading-snug whitespace-normal overflow-wrap-normal ${getColMinWidthClass(h)} ${getColConfig(colConfig, i).minWidthClass ?? ''}`}
                 >
                   {atomizeText(h)}
                 </th>
@@ -202,7 +211,8 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
           {rows.map((row, rowIdx) => (
             <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               {row.map((cell, cellIdx) => {
-                const nowrap = isShortDataCol(cell, cellIdx)
+                const colConf = getColConfig(colConfig, cellIdx)
+                const nowrap = colConf.nowrap !== undefined ? colConf.nowrap : isShortDataCol(cell, cellIdx)
                 const isStickyCol = cellIdx === stickyColIdx
                 const rowBgClass = rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
                 // Check if cell content is long (>14 chars) for font size reduction
@@ -211,7 +221,7 @@ export default function DataTable({ headers, rows, className = '', keyValue = fa
                 return (
                   <td
                     key={cellIdx}
-                    className={`px-3 py-2 align-top overflow-wrap-normal ${
+                    className={`px-3 py-2 align-top overflow-wrap-normal ${colConf.minWidthClass ?? ''} ${
                       isStickyCol ? 'font-medium' : ''
                     } ${nowrap ? 'whitespace-nowrap' : 'whitespace-normal leading-snug'} ${
                       isLongContent ? 'text-[9.5px] md:text-[10.5px]' : ''
