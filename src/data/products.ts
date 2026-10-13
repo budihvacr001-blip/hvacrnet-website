@@ -799,7 +799,17 @@ export const categories: Category[] = [
           { id: 'cvs-diaphragm', name: 'Diaphragm Check Valve' },
         ],
       },
-      { id: 'stop-valves', name: 'Stop Valves' },
+      {
+        id: 'stop-valves',
+        name: 'Stop Valves',
+        subCategories: [
+          { id: 'km-sae-diaphragm-stop', name: 'Twin-Diaphragm Stop Valve — SAE Flare (KM)' },
+          { id: 'km-odf-diaphragm-stop', name: 'Twin-Diaphragm Stop Valve — ODF Brazed (KM)' },
+          { id: 'hs-l-angle-stop', name: '90° Angle Stop Valve — SAE × NPT (HS-L)' },
+          { id: 'hs-ol-angle-stop', name: 'Oil-Line Angle Stop Valve — SAE Flare (HS-OL)' },
+          { id: 'hs-ol-w-reduced-bore', name: 'Reduced-Bore Angle Stop Valve — SAE Flare (HS-OL-W)' },
+        ],
+      },
       { id: '4-way-reversing-valves', name: '4-Way Reversing Valves' },
     ],
     products: [
@@ -1965,7 +1975,177 @@ export const categories: Category[] = [
         { question: "Can the CVS be installed at any angle?", answer: "Yes. Its internal guide and self-sealing design mean the valve closes correctly independent of installation angle, unlike gravity- or orientation-dependent check valves." },
         { question: "Why is the connection size given as a Φ mm value?", answer: "The CVS table specifies the measured outside diameter of the brazed copper tube (ΦA), e.g. Φ6.4 or Φ79.5 mm. Matching the measured tube diameter ensures the correct joint rather than relying on a nominal inch label." },
         { question: "Does the CVS include filtration?", answer: "Yes. A filter screen is built into the body, so the valve performs both a check-valve function and a filter function, with low flow resistance." }
-      ] }
+      ] },
+      { id: 'st-1', categoryId: 'valves', subCategoryId: 'stop-valves', thirdCategoryId: 'km-sae-diaphragm-stop', images: ['/images/stop-valve-km-sae.png'], metaTitle: 'SAE Flare Diaphragm Stop Valve | 1/4"-3/4" | HVACR NET', metaDescription: 'Twin-diaphragm manual stop valve with SAE flare connections, 1/4"-3/4", 30 bar, for refrigeration & HVAC. 5 models. MOQ 1 pc.', name: 'Twin-Diaphragm Stop Valve — SAE Flare (KM Series)', shortDesc: 'The SAE Flare version of the KM twin-diaphragm manual stop valve, covering 1/4" to 3/4" connections with Kv values from 0.28 to 3.65 m³/h. Twin stainless-steel diaphragms isolate the stem for a leak-free service life, while SAE flare ends install without brazing — making it the go-to valve on serviceable liquid, suction and hot-gas lines.', description: "• Manually operated diaphragm stop valve for liquid, suction-gas and hot-gas piping in freezing, cold storage and air conditioning units.\n• Twin stainless-steel diaphragms fully isolate the media from the stem — no packing, no stem leakage over the valve's service life.\n• SAE flare connections on both ends; no brazing required and the valve can be disconnected and reconnected for service.\n• Full open or half open with just 1½ turns of the red handwheel; a mounting hole allows direct installation on an instrument panel.\n• Special bonnet design prevents water and dust ingress around the stem.\n• Elastic valve-seat sealing achieves tight shut-off with small torque.", features: [
+        "Twin stainless-steel diaphragms guarantee zero stem leakage over service life.",
+        "SAE flare connections — install and remove without brazing.",
+        "Handwheel opens fully in 1½ turns, with tactile end-stop feedback.",
+        "Mounting hole on body for instrument-panel installation.",
+        "Special bonnet keeps water and dust away from the stem.",
+        "Elastic seat seal for tight shut-off with minimal torque.",
+        "Vacuum-rated to −0.1 MPa for system evacuation.",
+        "Five models covering 1/4\" to 3/4\" SAE.",
+        "Works with HCFC and HFC refrigerants."
+      ], availableModels: { headers: ["Model", "Connection Size", "Kv (m³/h)"], rows: [
+        ["KM-1/4 SAE", "1/4\" SAE", "0.28"],
+        ["KM-3/8 SAE", "3/8\" SAE", "0.30"],
+        ["KM-1/2 SAE", "1/2\" SAE", "1.30"],
+        ["KM-5/8 SAE", "5/8\" SAE", "1.80"],
+        ["KM-3/4 SAE", "3/4\" SAE", "3.65"]
+      ] }, specs: [
+        { label: "Series Code", value: "KM" },
+        { label: "Valve Type", value: "Diaphragm stop valve, straight" },
+        { label: "MWP (Maximum Working Pressure)", value: "30 bar (3.0 MPa)" },
+        { label: "Hydrostatic Test Pressure", value: "45 bar (4.5 MPa)" },
+        { label: "Connection Type", value: "SAE Flare" },
+        { label: "Connection Size", value: "1/4\" – 3/4\" SAE" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−25 °C ~ +100 °C" },
+        { label: "Kv Value", value: "0.28 – 3.65 m³/h" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Actuator", value: "Handwheel knob, tool-free" },
+        { label: "Operation", value: "1½ turns full open / half open" },
+        { label: "Charging / Service Port", value: "No" },
+        { label: "Panel Mounting Hole", value: "Yes" },
+        { label: "Flow Direction", value: "Bi-directional" }
+      ], faq: [
+        { question: "How do the twin diaphragms prevent stem leakage?", answer: "Two stainless-steel diaphragms sit between the valve body and the stem bonnet, fully isolating the refrigerant from the stem. Unlike packed glands, there is no wear surface to leak — the stem stays dry for the valve's service life." },
+        { question: "SAE Flare vs ODF Brazed — which KM valve should I choose?", answer: "Choose the SAE Flare model where you need easy removal for service, field adjustment or frequent access. Choose the ODF Brazed model (same diaphragm design, brazed copper tails) for a permanent, leak-free joint in OEM and high-vibration lines." },
+        { question: "Can I use this valve to evacuate the system?", answer: "Yes. The valve is vacuum-rated to −0.1 MPa, so it can remain inline during pump-down and evacuation without leaking." }
+      ] },
+      { id: 'st-2', categoryId: 'valves', subCategoryId: 'stop-valves', thirdCategoryId: 'km-odf-diaphragm-stop', images: ['/images/stop-valve-km-odf.png'], metaTitle: 'ODF Brazed Diaphragm Stop Valve | 1/4"-7/8" | HVACR NET', metaDescription: 'Twin-diaphragm manual stop valve with ODF brazed copper tails, 1/4"-7/8", 30 bar, vacuum-rated, for OEM refrigeration lines. 6 models. MOQ 1 pc.', name: 'Twin-Diaphragm Stop Valve — ODF Brazed (KM Series)', shortDesc: 'The ODF Brazed version of the KM twin-diaphragm manual stop valve, covering 1/4" to 7/8" copper tube sizes with Kv values from 0.28 to 3.65 m³/h. Twin stainless-steel diaphragms deliver a zero-leak stem for life, while brazed ODF copper tails give a permanent, vibration-proof joint — the default pick for OEM refrigeration and cold-room lines.', description: "• Manually operated diaphragm stop valve for liquid, suction-gas and hot-gas piping in freezing, cold storage and air conditioning units.\n• Twin stainless-steel diaphragms fully isolate the media from the stem — no packing, no stem leakage over the valve's service life.\n• ODF (outside diameter) copper tails on both ends for permanent brazed installation; once soldered, the joint is vibration-proof and leak-free.\n• Full open or half open with just 1½ turns of the red handwheel; a mounting hole allows direct installation on an instrument panel.\n• Special bonnet design prevents water and dust ingress around the stem.\n• Elastic valve-seat sealing achieves tight shut-off with small torque.", features: [
+        "Twin stainless-steel diaphragms guarantee zero stem leakage over service life.",
+        "ODF brazed copper tails for permanent, vibration-proof OEM joints.",
+        "Handwheel opens fully in 1½ turns, with tactile end-stop feedback.",
+        "Mounting hole on body for instrument-panel installation.",
+        "Special bonnet keeps water and dust away from the stem.",
+        "Elastic seat seal for tight shut-off with minimal torque.",
+        "Vacuum-rated to −0.1 MPa — stays tight during pump-down and evacuation.",
+        "Six models covering 1/4\" to 7/8\" ODF copper tube.",
+        "Works with HCFC and HFC refrigerants."
+      ], availableModels: { headers: ["Model", "Connection Size (ODF)", "Kv (m³/h)"], rows: [
+        ["KM-1/4 ODF", "1/4\" ODF (6 mm)", "0.28"],
+        ["KM-3/8 ODF", "3/8\" ODF (10 mm)", "0.30"],
+        ["KM-1/2 ODF", "1/2\" ODF (12 mm)", "1.30"],
+        ["KM-5/8 ODF", "5/8\" ODF (16 mm)", "1.80"],
+        ["KM-3/4 ODF", "3/4\" ODF (19 mm)", "3.65"],
+        ["KM-7/8 ODF", "7/8\" ODF (22 mm)", "3.65"]
+      ] }, specs: [
+        { label: "Series Code", value: "KM" },
+        { label: "Valve Type", value: "Diaphragm stop valve, straight" },
+        { label: "MWP (Maximum Working Pressure)", value: "30 bar (3.0 MPa)" },
+        { label: "Hydrostatic Test Pressure", value: "45 bar (4.5 MPa)" },
+        { label: "Connection Type", value: "Brazed (ODF)" },
+        { label: "Connection Size", value: "1/4\" – 7/8\" ODF copper tube" },
+        { label: "Refrigerant Compatibility", value: "HCFC, HFC" },
+        { label: "Medium Temperature Range", value: "−25 °C ~ +100 °C" },
+        { label: "Kv Value", value: "0.28 – 3.65 m³/h" },
+        { label: "Valve Body Material", value: "Brass" },
+        { label: "Actuator", value: "Handwheel knob, tool-free" },
+        { label: "Operation", value: "1½ turns full open / half open" },
+        { label: "Charging / Service Port", value: "No" },
+        { label: "Panel Mounting Hole", value: "Yes" },
+        { label: "Flow Direction", value: "Bi-directional" }
+      ], faq: [] },
+      { id: 'st-3', categoryId: 'valves', subCategoryId: 'stop-valves', thirdCategoryId: 'hs-l-angle-stop', images: ['/images/stop-valve-hs-l-1.png', '/images/stop-valve-hs-l-2.png'], metaTitle: '90° Angle Stop Valve SAE×NPT | 1/4"-3/4" 45 bar | HVACR NET', metaDescription: 'Right-angle stop valve linking SAE flare to male NPT, 45 bar, R410A rated, −40 to 150 °C. 6 models. MOQ 1 pc.', name: '90° Angle Stop Valve — SAE × NPT (HS-L Series)', shortDesc: 'The HS-L right-angle stop valve links an SAE flare port to a male NPT port at 90°, so it threads straight into receiver and oil-separator outlets without adapters. Six models cover 1/4" to 3/4" with Kv from 0.4 to 3.5 m³/h, rated at 45 bar and −40 to 150 °C for R22, R404A, R410A and other HCFC/HFC refrigerants.', description: "• Manually operated 90° angle stop valve for liquid, suction-gas and hot-gas piping in freezing, cold storage and air conditioning units.\n• Upper port is SAE flare; lower port is male NPT — the valve bridges flare copper tubing and threaded equipment ports in one body.\n• Forged brass body, precision-machined for tight tolerances on both connection threads.\n• Two-stage stem sealing with protective cap: the inner seal handles pressure, the outer cap shields the stem from dust and tampering.\n• Vere-line valve port design gives reliable sealing at rated pressure.\n• Wide medium temperature range of −40 to 150 °C covers low-temperature cold rooms and high-side discharge lines.", features: [
+        "90° angle body — installs in tight corners, receiver and oil-separator ports.",
+        "SAE flare × male NPT connections — no adapter fittings required.",
+        "Forged brass body for corrosion resistance in refrigeration environments.",
+        "Two-stage stem sealing with protective cap prevents leakage and tampering.",
+        "Vere-line valve port design for reliable sealing.",
+        "45 bar (4.5 MPa) MWP, rated for R410A systems.",
+        "Wide temperature range −40 °C to +150 °C.",
+        "Six models covering 1/4\" to 3/4\".",
+        "Minimum bore from ø4.8 mm — sized for typical receiver and oil-line flow.",
+        "Works with R22, R407C, R134a, R404A/R507, R410A."
+      ], availableModels: { headers: ["Model", "Min. Bore", "Upper / Lower Connection", "Kv (m³/h)"], rows: [
+        ["HS-L-022", "ø4.8 mm", "1/4\" SAE / NPT 1/4", "0.4"],
+        ["HS-L-032", "ø5.5 mm", "3/8\" SAE / NPT 1/4", "0.5"],
+        ["HS-L-023", "ø4.8 mm", "1/4\" SAE / NPT 3/8", "0.4"],
+        ["HS-L-033", "ø7.0 mm", "3/8\" SAE / NPT 3/8", "0.8"],
+        ["HS-L-044", "ø8.5 mm", "1/2\" SAE / NPT 1/2", "1.3"],
+        ["HS-L-066", "ø11.5 mm", "3/4\" SAE / NPT 3/4", "3.5"]
+      ] }, specs: [
+        { label: "Series Code", value: "HS-L" },
+        { label: "Valve Type", value: "90° angle stop valve" },
+        { label: "MWP (Maximum Working Pressure)", value: "45 bar (4.5 MPa)" },
+        { label: "Connection Type", value: "SAE Flare (upper) × Male NPT (lower)" },
+        { label: "Connection Size", value: "1/4\" – 3/4\"" },
+        { label: "Min. Bore", value: "ø4.8 – ø11.5 mm" },
+        { label: "Refrigerant Compatibility", value: "R22, R407C, R134a, R404A/R507, R410A" },
+        { label: "Medium Temperature Range", value: "−40 °C ~ +150 °C" },
+        { label: "Kv Value", value: "0.4 – 3.5 m³/h" },
+        { label: "Valve Body Material", value: "Forged Brass" },
+        { label: "Actuator", value: "Stem with protective cap (wrench-operated)" },
+        { label: "Charging / Service Port", value: "No" },
+        { label: "Flow Direction", value: "Bi-directional" }
+      ], faq: [
+        { question: "What's the advantage of the SAE × NPT combination?", answer: "Most receivers and oil separators on compressors have female NPT ports; the HS-L upper SAE flare mates to your copper tubing while the lower male NPT threads directly into the equipment — one valve, zero adapters, zero extra leak points." },
+        { question: "How does the two-stage stem seal work?", answer: "The inner seal (sealing ring + washer) handles the system pressure on the stem; the outer protective cap adds a second barrier and prevents dust ingress and accidental operation. Together they deliver reliable shut-off even at 45 bar." },
+        { question: "Is this valve suitable for R410A systems?", answer: "Yes. The HS-L is rated at 45 bar (4.5 MPa) and −40 to 150 °C, which covers R410A high-side pressures and temperatures." }
+      ] },
+      { id: 'st-4', categoryId: 'valves', subCategoryId: 'stop-valves', thirdCategoryId: 'hs-ol-angle-stop', images: ['/images/stop-valve-hs-ol.png'], metaTitle: 'Oil-Line Angle Stop Valve SAE Flare | 45 bar R410A | HVACR NET', metaDescription: 'Forged-brass 90° oil-line angle valve with SAE flare both ends, 45 bar, R410A rated, −40 to 150 °C. 3 models. MOQ 1 pc.', name: 'Forged-Brass Oil-Line Angle Stop Valve — SAE Flare (HS-OL Series)', shortDesc: 'The HS-OL is a 90° angle stop valve with SAE flare connections on both ends — designed specifically for oil-separator and receiver service lines where you need to isolate, drain or replace components without cutting pipe. Three models cover 1/4" to 3/8" with Kv from 0.4 to 0.5 m³/h, rated at 45 bar and −40 to 150 °C.', description: "• Manually operated 90° angle stop valve for oil-line, liquid and hot-gas piping in freezing, cold storage and air conditioning units.\n• SAE flare connections on both upper and lower ports — fully serviceable; the valve can be disconnected from the line without cutting or brazing.\n• Forged brass body for high strength and corrosion resistance in refrigeration environments.\n• Two-stage stem sealing with protective cap: the inner seal handles system pressure, the outer cap shields the stem from dust and tampering.\n• 90° angle body fits compact spaces beside receivers and oil separators.\n• Wide medium temperature range of −40 to 150 °C covers low-temperature cold rooms and high-side discharge lines.", features: [
+        "90° angle body — installs in tight corners beside receivers and oil separators.",
+        "SAE flare both ends — fully serviceable, no cutting or brazing to remove.",
+        "Forged brass body for strength and corrosion resistance.",
+        "Two-stage stem sealing with protective cap prevents leakage and tampering.",
+        "45 bar (4.5 MPa) MWP, rated for R410A systems.",
+        "Wide temperature range −40 °C to +150 °C.",
+        "Three models covering 1/4\" to 3/8\".",
+        "Minimum bore ø4.8 – ø5.5 mm — sized for typical oil-line flow.",
+        "Works with R22, R407C, R134a, R404A/R507, R410A."
+      ], availableModels: { headers: ["Model", "Min. Bore", "Upper / Lower Connection", "Kv (m³/h)"], rows: [
+        ["HS-OL-022", "ø4.8 mm", "1/4\" SAE / 1/4\" SAE", "0.4"],
+        ["HS-OL-023", "ø4.8 mm", "1/4\" SAE / 3/8\" SAE", "0.4"],
+        ["HS-OL-033", "ø5.5 mm", "3/8\" SAE / 3/8\" SAE", "0.5"]
+      ] }, specs: [
+        { label: "Series Code", value: "HS-OL" },
+        { label: "Valve Type", value: "90° angle stop valve, oil-line" },
+        { label: "MWP (Maximum Working Pressure)", value: "45 bar (4.5 MPa)" },
+        { label: "Connection Type", value: "SAE Flare (both ends)" },
+        { label: "Connection Size", value: "1/4\" – 3/8\" SAE" },
+        { label: "Min. Bore", value: "ø4.8 – ø5.5 mm" },
+        { label: "Refrigerant Compatibility", value: "R22, R407C, R134a, R404A/R507, R410A" },
+        { label: "Medium Temperature Range", value: "−40 °C ~ +150 °C" },
+        { label: "Kv Value", value: "0.4 – 0.5 m³/h" },
+        { label: "Valve Body Material", value: "Forged Brass" },
+        { label: "Actuator", value: "Stem with protective cap (wrench-operated)" },
+        { label: "Charging / Service Port", value: "No" },
+        { label: "Flow Direction", value: "Bi-directional" }
+      ], faq: [
+        { question: "When should I choose HS-OL over HS-L?", answer: "Choose HS-OL when both sides of the connection are SAE flare copper tubing — typically on oil-line service valves where you want to isolate and remove the valve without adapters. Choose HS-L when one side must thread into an NPT equipment port (receiver, oil separator)." },
+        { question: "What does \"oil-line\" mean in this context?", answer: "Oil-line valves sit on the oil return path between the oil separator and the compressor crankcase. They need to be serviceable (so you can drain oil or replace the separator) and compact — the HS-OL's 90° angle body and dual SAE flare fit this role perfectly." },
+        { question: "Is this valve suitable for R410A systems?", answer: "Yes. The HS-OL is rated at 45 bar (4.5 MPa) and −40 to 150 °C, which covers R410A high-side pressures and temperatures." }
+      ] },
+      { id: 'st-5', categoryId: 'valves', subCategoryId: 'stop-valves', thirdCategoryId: 'hs-ol-w-reduced-bore', images: ['/images/stop-valve-hs-ol-w.png'], metaTitle: 'Reduced-Bore Angle Stop Valve SAE Flare | ø3.5+ | HVACR NET', metaDescription: 'Reduced-bore 90° oil-line angle valve with SAE flare both ends, min. bore from ø3.5 mm, 45 bar R410A rated. 3 models. MOQ 1 pc.', name: 'Reduced-Bore Angle Stop Valve — SAE Flare (HS-OL-W Series)', shortDesc: 'The HS-OL-W is a reduced-bore 90° angle stop valve with SAE flare connections on both ends — designed for compact, low-flow oil-return and control lines where a smaller throat is preferred. Three models cover 1/4" to 3/8" with minimum bore from ø3.5 mm and Kv from 0.3 to 0.5 m³/h, rated at 45 bar and −40 to 150 °C.', description: "• Manually operated 90° angle stop valve with reduced bore, for oil-line, liquid and control piping in freezing, cold storage and air conditioning units.\n• SAE flare connections on both upper and lower ports — fully serviceable; the valve can be disconnected from the line without cutting or brazing.\n• Reduced bore (minimum from ø3.5 mm) throttles flow for low-volume oil-return and control applications.\n• Forged brass body for high strength and corrosion resistance in refrigeration environments.\n• Two-stage stem sealing with protective cap: the inner seal handles system pressure, the outer cap shields the stem from dust and tampering.\n• Compact 90° angle body fits tight spaces beside receivers, oil separators and control panels.", features: [
+        "Reduced bore from ø3.5 mm — designed for low-flow oil-return and control lines.",
+        "90° angle body — installs in tight corners beside receivers and oil separators.",
+        "SAE flare both ends — fully serviceable, no cutting or brazing to remove.",
+        "Forged brass body for strength and corrosion resistance.",
+        "Two-stage stem sealing with protective cap prevents leakage and tampering.",
+        "45 bar (4.5 MPa) MWP, rated for R410A systems.",
+        "Wide temperature range −40 °C to +150 °C.",
+        "Three models covering 1/4\" to 3/8\".",
+        "Works with R22, R407C, R134a, R404A/R507, R410A."
+      ], availableModels: { headers: ["Model", "Min. Bore", "Upper / Lower Connection", "Kv (m³/h)"], rows: [
+        ["HS-OL-W022", "ø3.5 mm", "1/4\" SAE / 1/4\" SAE", "0.3"],
+        ["HS-OL-W032", "ø4.8 mm", "3/8\" SAE / 1/4\" SAE", "0.4"],
+        ["HS-OL-W033", "ø5.5 mm", "3/8\" SAE / 3/8\" SAE", "0.5"]
+      ] }, specs: [
+        { label: "Series Code", value: "HS-OL-W" },
+        { label: "Valve Type", value: "90° angle stop valve, reduced-bore, oil-line" },
+        { label: "MWP (Maximum Working Pressure)", value: "45 bar (4.5 MPa)" },
+        { label: "Connection Type", value: "SAE Flare (both ends)" },
+        { label: "Connection Size", value: "1/4\" – 3/8\" SAE" },
+        { label: "Min. Bore", value: "ø3.5 – ø5.5 mm" },
+        { label: "Refrigerant Compatibility", value: "R22, R407C, R134a, R404A/R507, R410A" },
+        { label: "Medium Temperature Range", value: "−40 °C ~ +150 °C" },
+        { label: "Kv Value", value: "0.3 – 0.5 m³/h" },
+        { label: "Valve Body Material", value: "Forged Brass" },
+        { label: "Actuator", value: "Stem with protective cap (wrench-operated)" },
+        { label: "Charging / Service Port", value: "No" },
+        { label: "Flow Direction", value: "Bi-directional" }
+      ], faq: [] }
     ],
   },
   {
