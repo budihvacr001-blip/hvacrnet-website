@@ -713,7 +713,6 @@ export const categories: Category[] = [
           '/images/high-density-b1-05.jpg',
         ],
       },
-      { id: 'im-3', categoryId: 'insulation-materials', subCategoryId: 'insulation-sheets', name: 'Insulation Sheet / Roll', shortDesc: 'Flexible insulation sheets for duct and equipment wrapping.', description: 'Flexible insulation sheets and rolls for large-area thermal insulation of ducts, tanks, and equipment.', specs: [{ label: 'Thickness', value: '5mm - 50mm' }, { label: 'Size', value: '1m x 2m / roll' }, { label: 'Material', value: 'NBR/PVC or PE' }], applications: 'Duct insulation, tank insulation, equipment wrapping' },
     ],
   },
   {
