@@ -227,14 +227,28 @@ export default function Products() {
   // Check if the selected subCategory itself is an overview (for filter-driers)
   const isSubCategoryOverview = currentSubCategory?.isOverview === true
 
+  // Detail product for 3-segment routes (category→subCategory→thirdCategory)
+  const thirdDetailProduct =
+    currentThirdCategory && !currentThirdCategory.isOverview
+      ? filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory) ?? null
+      : null
+
+  // 2-segment URL with exactly one published product → single-product detail state
+  const isSingleProductSub =
+    !activeThirdCategory &&
+    !!currentSubCategory &&
+    !isSubCategoryOverview &&
+    filteredProducts.length === 1
+
+  const detailProduct = thirdDetailProduct ?? (isSingleProductSub ? filteredProducts[0] : null)
+
   // Dynamic SEO title and description — template rules:
   // Title: {metaTitle} | HVACR NET; fallback: {name} | HVACR NET Supplier
   // Description: metaDescription; fallback: shortDesc first 150 chars
   const BRAND = 'HVACR NET'
   const seoTitle = (() => {
-    if (currentThirdCategory && !currentThirdCategory.isOverview) {
-      const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-      const base = product?.metaTitle || currentThirdCategory.name
+    if (detailProduct) {
+      const base = detailProduct.metaTitle || detailProduct.name
       const trimmed = base.length > 50 ? base.slice(0, 47).trim() + '...' : base
       return `${trimmed} | ${BRAND}`
     }
@@ -252,14 +266,13 @@ export default function Products() {
   })()
 
   const seoDescription = (() => {
-    if (currentThirdCategory && !currentThirdCategory.isOverview) {
-      const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-      if (product?.metaDescription) {
-        return product.metaDescription.length > 155 ? product.metaDescription.slice(0, 152).trim() + '...' : product.metaDescription
+    if (detailProduct) {
+      if (detailProduct.metaDescription) {
+        return detailProduct.metaDescription.length > 155 ? detailProduct.metaDescription.slice(0, 152).trim() + '...' : detailProduct.metaDescription
       }
       // Fallback: shortDesc first 150 chars
-      if (product?.shortDesc) {
-        return product.shortDesc.length > 150 ? product.shortDesc.slice(0, 147).trim() + '...' : product.shortDesc
+      if (detailProduct.shortDesc) {
+        return detailProduct.shortDesc.length > 150 ? detailProduct.shortDesc.slice(0, 147).trim() + '...' : detailProduct.shortDesc
       }
     }
     if (currentSubCategory && !isSubCategoryOverview && currentCategory) {
@@ -296,9 +309,8 @@ export default function Products() {
     if (currentSubCategory && !isSubCategoryOverview) {
       items.push({ name: currentSubCategory.name, url: `/products/${currentCategory?.id}/${currentSubCategory.id}` })
     }
-    if (currentThirdCategory && !currentThirdCategory.isOverview) {
-      const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-      items.push({ name: product?.name || currentThirdCategory.name, url: seoUrl })
+    if (detailProduct) {
+      items.push({ name: detailProduct.name, url: seoUrl })
     }
     return {
       '@context': 'https://schema.org',
@@ -314,9 +326,8 @@ export default function Products() {
 
   // Product schema for individual product view
   const productDetailSchema = (() => {
-    if (!currentThirdCategory || currentThirdCategory.isOverview) return null
-    const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-    if (!product) return null
+    if (!detailProduct) return null
+    const product = detailProduct
     return {
       '@context': 'https://schema.org',
       '@type': 'Product',
@@ -343,9 +354,8 @@ export default function Products() {
 
   // FAQPage schema - always output for product pages (universal + category FAQs)
   const faqPageSchema = (() => {
-    if (!currentThirdCategory || currentThirdCategory.isOverview) return null
-    const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-    if (!product) return null
+    if (!detailProduct) return null
+    const product = detailProduct
     const faqs = getProductFAQs(product.categoryId, product.subCategoryId, product.faqSelection, product.faq)
     if (faqs.length === 0) return null
     return {
@@ -379,16 +389,10 @@ export default function Products() {
       <SEO
         title={seoTitle}
         description={seoDescription}
-        keywords={currentThirdCategory && !currentThirdCategory.isOverview ? (filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)?.keywords ?? undefined) : undefined}
+        keywords={detailProduct ? (detailProduct.keywords ?? undefined) : undefined}
         url={seoUrl}
-        ogType={currentThirdCategory && !currentThirdCategory.isOverview ? 'product' : 'website'}
-        ogImage={(() => {
-          if (currentThirdCategory && !currentThirdCategory.isOverview) {
-            const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
-            if (product?.images?.[0]) return `https://hvacrnet.com${product.images[0]}`
-          }
-          return undefined
-        })()}
+        ogType={detailProduct ? 'product' : 'website'}
+        ogImage={detailProduct?.images?.[0] ? `https://hvacrnet.com${detailProduct.images[0]}` : undefined}
         structuredData={schemas.length > 0 ? schemas : undefined}
         noindex={(() => {
           // Add noindex for unpublished content
@@ -492,6 +496,12 @@ export default function Products() {
                 <li className="flex items-center gap-1.5">
                   <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
                   <span className="text-navy font-medium">{currentThirdCategory.name}</span>
+                </li>
+              )}
+              {isSingleProductSub && detailProduct && (
+                <li className="flex items-center gap-1.5">
+                  <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
+                  <span className="text-navy font-medium">{detailProduct.name}</span>
                 </li>
               )}
             </ol>
@@ -867,7 +877,9 @@ export default function Products() {
             {activeCategory && currentCategory && (
               <div className="mb-6 overflow-hidden rounded-lg bg-gradient-to-r from-navy to-navy/80 p-6 sm:p-8">
                 <h2 className="text-2xl font-bold text-white">
-                  {currentThirdCategory
+                  {detailProduct
+                    ? detailProduct.name
+                    : currentThirdCategory
                     ? currentThirdCategory.name
                     : activeSubCategory !== 'all' && currentSubCategory
                     ? currentSubCategory.name
@@ -876,6 +888,8 @@ export default function Products() {
                 <p className="mt-1 text-white/70">
                   {(currentThirdCategory?.isOverview || isSubCategoryOverview)
                     ? 'Product comparison overview'
+                    : detailProduct
+                    ? detailProduct.shortDesc
                     : `${filteredProducts.length} product${filteredProducts.length !== 1 ? 's' : ''} available`}
                 </p>
               </div>
