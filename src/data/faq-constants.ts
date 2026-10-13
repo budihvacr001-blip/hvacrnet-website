@@ -125,9 +125,10 @@ export function getProductFAQs(
   faqSelection?: FAQItem | null,
   productFaqs?: FAQItem[] | null
 ): FAQItem[] {
-  // Priority 1: product-specific FAQs (multiple) take precedence
+  // Priority 1: product-specific FAQs (multiple) take precedence — model-specific only,
+  // no universal FAQs appended (universal preserved only as fallback safety net below).
   if (productFaqs && productFaqs.length > 0) {
-    return [...productFaqs, ...UNIVERSAL_FAQS]
+    return [...productFaqs]
   }
   // Priority 2: fallback to category selection FAQ + universal
   const categoryFAQ = getCategoryFAQ(categoryId, subCategoryId, faqSelection ?? undefined)

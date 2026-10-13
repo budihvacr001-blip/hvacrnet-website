@@ -2785,12 +2785,13 @@ export const categories: Category[] = [
   },
 ]
 
-// Attach product-level FAQ seed (product.faq keeps precedence if already authored inline).
-// Only injects products without an inline faq array; never overrides existing authored FAQ.
+// Attach product-level FAQ seed. Rule: for every product that has an entry in the seed,
+// the seed array becomes its faq (overriding any inline faq). Products absent from the
+// seed keep their inline faq untouched (e.g. welding torches/rods hold their authored FAQs).
 for (const cat of categories) {
   for (const p of cat.products) {
     const seeded = PRODUCT_FAQ_SEED[p.id]
-    if (seeded && (!p.faq || p.faq.length === 0)) {
+    if (seeded) {
       p.faq = seeded
     }
   }
