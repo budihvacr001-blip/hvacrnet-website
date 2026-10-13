@@ -803,6 +803,7 @@ export const categories: Category[] = [
         id: 'stop-valves',
         name: 'Stop Valves',
         subCategories: [
+          { id: 'stop-valves-overview', name: 'Category Overview', isOverview: true },
           { id: 'km-sae-diaphragm-stop', name: 'Twin-Diaphragm Stop Valve — SAE Flare (KM)' },
           { id: 'km-odf-diaphragm-stop', name: 'Twin-Diaphragm Stop Valve — ODF Brazed (KM)' },
           { id: 'hs-l-angle-stop', name: '90° Angle Stop Valve — SAE × NPT (HS-L)' },
@@ -2886,6 +2887,19 @@ export const checkValvesComparison = {
   ],
 };
 
+export const stopValvesComparison = {
+  title: 'Refrigeration Stop Valves',
+  subtitle: 'Five stop valve series with 23 models for refrigeration and HVAC systems — from twin-diaphragm manual stop valves with SAE flare or brazed ODF connections, to 90° angle valves for receiver, oil-separator and control-line service, rated up to 45 bar and −40 to 150 °C.',
+  headers: ['#', 'Product', 'Series', 'Structure', 'Connection', 'Size Range', 'Min. Bore', 'Kv (m³/h)', 'MWP (bar)', 'Medium Temp Range', 'Models'],
+  rows: [
+    ['1', 'Twin-Diaphragm Stop Valve — SAE Flare', 'KM', 'Diaphragm, straight', 'SAE Flare', '1/4"–3/4"', '—', '0.28–3.65', '30', '−25–+100 °C', '5'],
+    ['2', 'Twin-Diaphragm Stop Valve — ODF Brazed', 'KM', 'Diaphragm, straight', 'ODF Brazed', '1/4"–7/8"', '—', '0.28–3.65', '30', '−25–+100 °C', '6'],
+    ['3', '90° Angle Stop Valve — SAE × NPT', 'HS-L', '90° angle', 'SAE × NPT', '1/4"–3/4"', 'ø4.8–ø11.5 mm', '0.4–3.5', '45', '−40–+150 °C', '6'],
+    ['4', 'Forged-Brass Oil-Line Angle Stop Valve — SAE Flare', 'HS-OL', '90° angle, oil-line', 'SAE Flare', '1/4"–3/8"', 'ø4.8–ø5.5 mm', '0.4–0.5', '45', '−40–+150 °C', '3'],
+    ['5', 'Reduced-Bore Angle Stop Valve — SAE Flare', 'HS-OL-W', '90° angle, reduced-bore', 'SAE Flare', '1/4"–3/8"', 'ø3.5–ø5.5 mm', '0.3–0.5', '45', '−40–+150 °C', '3'],
+  ],
+};
+
 // Category Landing Page Content
 export interface CategoryLandingContent {
   categoryId: string;
@@ -2948,6 +2962,21 @@ export const categoryLandingContent: CategoryLandingContent[] = [
       { name: 'Solenoid Valves', slug: 'solenoid-valves' },
       { name: 'Filter Driers', slug: 'filter-driers' },
       { name: 'Sight Glasses', slug: 'sight-glasses' },
+    ],
+  },
+  {
+    categoryId: 'valves',
+    subCategoryId: 'stop-valves',
+    metaTitle: 'Refrigeration Stop Valves | 5 Series & Selection Guide',
+    metaDescription: 'Compare 5 stop valve series — twin-diaphragm SAE flare & ODF brazed, 90° angle SAE×NPT, oil-line angle, reduced-bore angle. Select by connection, Kv, MWP.',
+    h1: 'Refrigeration Stop Valves',
+    introduction: 'Five stop valve series with 23 models for refrigeration and HVAC systems — from twin-diaphragm manual stop valves with SAE flare or brazed ODF connections, to 90° angle valves for receiver, oil-separator and control-line service, rated up to 45 bar and −40 to 150 °C.',
+    howToChoose: [],
+    faq: [],
+    relatedCategories: [
+      { name: 'Sight Glasses', slug: 'sight-glasses' },
+      { name: 'Ball Valves', slug: 'ball-valves' },
+      { name: 'Solenoid Valves', slug: 'solenoid-valves' },
     ],
   },
   {
