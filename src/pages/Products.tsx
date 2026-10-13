@@ -346,7 +346,7 @@ export default function Products() {
     if (!currentThirdCategory || currentThirdCategory.isOverview) return null
     const product = filteredProducts.find((p) => p.thirdCategoryId === activeThirdCategory)
     if (!product) return null
-    const faqs = getProductFAQs(product.categoryId, product.subCategoryId, product.faqSelection)
+    const faqs = getProductFAQs(product.categoryId, product.subCategoryId, product.faqSelection, product.faq)
     if (faqs.length === 0) return null
     return {
       '@context': 'https://schema.org',

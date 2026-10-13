@@ -25,6 +25,9 @@ const isProductContentComplete = (product) => {
   // 3. Has description: description non-empty and at least 100 characters
   if (!product.description || product.description.trim().length < 100) return false
   
+  // 4. Has product-level FAQ: non-empty faq array with at least 3 entries
+  if (!product.faq || product.faq.length < 3) return false
+  
   return true
 }
 

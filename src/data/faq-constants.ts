@@ -122,11 +122,15 @@ export function getCategoryFAQ(
 export function getProductFAQs(
   categoryId: string,
   subCategoryId?: string,
-  faqSelection?: FAQItem
+  faqSelection?: FAQItem | null,
+  productFaqs?: FAQItem[] | null
 ): FAQItem[] {
-  const categoryFAQ = getCategoryFAQ(categoryId, subCategoryId, faqSelection)
-  if (categoryFAQ) {
-    return [categoryFAQ, ...UNIVERSAL_FAQS]
+  // Priority 1: product-specific FAQs (multiple) take precedence
+  if (productFaqs && productFaqs.length > 0) {
+    return [...productFaqs, ...UNIVERSAL_FAQS]
   }
+  // Priority 2: fallback to category selection FAQ + universal
+  const categoryFAQ = getCategoryFAQ(categoryId, subCategoryId, faqSelection ?? undefined)
+  if (categoryFAQ) return [categoryFAQ, ...UNIVERSAL_FAQS]
   return [...UNIVERSAL_FAQS]
 }

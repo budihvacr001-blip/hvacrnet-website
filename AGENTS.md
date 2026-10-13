@@ -92,6 +92,8 @@ HVACR NET 外贸企业官网，面向海外空调制冷配件采购商，纯英�
 
 任何需要正式上线的改动（新增/修改产品、页面、导航等），必须按顺序完成并逐项核验：
 
+> **产品级 FAQ 门禁（发布前必检硬规则）**：任何标记为发布（`published !== false`）的产品，必须在其 SEO 文档基础上配置至少 3 条产品专属 FAQ（写入产品 `faq: ProductFAQ[]`）。上架新产品时，必须同步把该产品 SEO 文档里的 FAQ 写入 `faq[]`，否则不得标记发布、不得通过发布核验。禁止让产品页只回退显示品类通用问题。`scripts/generate-sitemap.mjs` 的 `isProductContentComplete` 已把 FAQ 完整度（`faq` 非空且 ≥3 条）纳入发布判定——不满足即不生成三级深链。
+
 1. 本地完成修改并 `git add` + `git commit`。
 2. `git push origin main` 推送到 GitHub（被拒绝需先 pull/rebase，禁止强推掩盖问题）。
 3. 推送后必须执行 `git rev-parse origin/main` 并与本地 `git rev-parse HEAD` 比对：两个 hash 必须完全一致，不一致即视为发布失败，需重试推送。

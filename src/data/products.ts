@@ -1,3 +1,5 @@
+import { PRODUCT_FAQ_SEED } from './product-faq-seed'
+
 export interface ThirdCategory {
   id: string
   name: string
@@ -2782,6 +2784,42 @@ export const categories: Category[] = [
     ],
   },
 ]
+
+// Attach product-level FAQ seed (product.faq keeps precedence if already authored inline).
+// Only injects products without an inline faq array; never overrides existing authored FAQ.
+for (const cat of categories) {
+  for (const p of cat.products) {
+    const seeded = PRODUCT_FAQ_SEED[p.id]
+    if (seeded && (!p.faq || p.faq.length === 0)) {
+      p.faq = seeded
+    }
+  }
+}
+
+// Build-time assertion: every product listed in the seed must end up with >= 3 FAQs.
+const SEED_IDS = Object.keys(PRODUCT_FAQ_SEED)
+const byId = new Map<string, Product>()
+for (const cat of categories) for (const p of cat.products) byId.set(p.id, p)
+const missingInData: string[] = []
+for (const id of SEED_IDS) {
+  const p = byId.get(id)
+  if (!p) missingInData.push(id)
+}
+const tooShort: string[] = []
+for (const id of SEED_IDS) {
+  const p = byId.get(id)
+  if (p && p.published !== false && (!p.faq || p.faq.length < 3)) tooShort.push(id)
+}
+if (SEED_IDS.length !== 52) {
+  throw new Error(`PRODUCT_FAQ_SEED count = ${SEED_IDS.length} (expected 52)`)
+}
+if (missingInData.length) {
+  throw new Error(`FAQ seed ids missing from products data: ${missingInData.join(', ')}`)
+}
+if (tooShort.length) {
+  throw new Error(`Seeded products with faq.length < 3: ${tooShort.join(', ')}`)
+}
+console.info(`[products] Seeded product-level FAQ for ${SEED_IDS.length} products (all >= 3 each)`)
 
 // Solenoid Valves Comparison Table Data
 export const solenoidValvesComparison = {

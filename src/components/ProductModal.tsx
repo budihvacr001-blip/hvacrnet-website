@@ -203,7 +203,8 @@ function ProductFAQSection({ product }: { product: Product }) {
   const faqs = getProductFAQs(
     product.categoryId,
     product.subCategoryId,
-    product.faqSelection
+    product.faqSelection,
+    product.faq
   )
 
   if (faqs.length === 0) return null
