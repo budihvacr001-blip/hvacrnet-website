@@ -2047,7 +2047,11 @@ export const categories: Category[] = [
         { label: "Charging / Service Port", value: "No" },
         { label: "Panel Mounting Hole", value: "Yes" },
         { label: "Flow Direction", value: "Bi-directional" }
-      ], faq: [] },
+      ], faq: [
+        { question: "Why choose the ODF Brazed version over the SAE Flare KM valve?", answer: "ODF Brazed gives a permanent, vibration-proof joint — the standard for OEM refrigeration lines, cold rooms and any installation where you do not plan to disconnect the valve. Choose SAE Flare when you need tool-free removal for service." },
+        { question: "How do the twin diaphragms keep the stem leak-free?", answer: "Two stainless-steel diaphragms sit between the body and the stem bonnet, fully isolating the refrigerant from the stem. Unlike packed glands there is no wear surface — the stem stays dry for the valve's service life." },
+        { question: "Can the valve stay inline during system evacuation?", answer: "Yes. It is vacuum-rated to −0.1 MPa, so it can remain inline during pump-down and evacuation without leaking." }
+      ] },
       { id: 'st-3', categoryId: 'valves', subCategoryId: 'stop-valves', thirdCategoryId: 'hs-l-angle-stop', images: ['/images/stop-valve-hs-l-1.png', '/images/stop-valve-hs-l-2.png'], metaTitle: '90° Angle Stop Valve SAE×NPT | 1/4"-3/4" 45 bar | HVACR NET', metaDescription: 'Right-angle stop valve linking SAE flare to male NPT, 45 bar, R410A rated, −40 to 150 °C. 6 models. MOQ 1 pc.', name: '90° Angle Stop Valve — SAE × NPT (HS-L Series)', shortDesc: 'The HS-L right-angle stop valve links an SAE flare port to a male NPT port at 90°, so it threads straight into receiver and oil-separator outlets without adapters. Six models cover 1/4" to 3/4" with Kv from 0.4 to 3.5 m³/h, rated at 45 bar and −40 to 150 °C for R22, R404A, R410A and other HCFC/HFC refrigerants.', description: "• Manually operated 90° angle stop valve for liquid, suction-gas and hot-gas piping in freezing, cold storage and air conditioning units.\n• Upper port is SAE flare; lower port is male NPT — the valve bridges flare copper tubing and threaded equipment ports in one body.\n• Forged brass body, precision-machined for tight tolerances on both connection threads.\n• Two-stage stem sealing with protective cap: the inner seal handles pressure, the outer cap shields the stem from dust and tampering.\n• Vere-line valve port design gives reliable sealing at rated pressure.\n• Wide medium temperature range of −40 to 150 °C covers low-temperature cold rooms and high-side discharge lines.", features: [
         "90° angle body — installs in tight corners, receiver and oil-separator ports.",
         "SAE flare × male NPT connections — no adapter fittings required.",
@@ -2146,7 +2150,11 @@ export const categories: Category[] = [
         { label: "Actuator", value: "Stem with protective cap (wrench-operated)" },
         { label: "Charging / Service Port", value: "No" },
         { label: "Flow Direction", value: "Bi-directional" }
-      ], faq: [] }
+      ], faq: [
+        { question: "Why choose a reduced-bore valve?", answer: "Reduced bore throttles flow — ideal for oil-return lines, control lines and any application where you want to limit flow rate without adding a separate orifice. The smaller throat also makes the valve body more compact." },
+        { question: "HS-OL vs HS-OL-W — what's the difference?", answer: "Same 90° angle body, same SAE flare connections, same 45 bar rating. The W version has a smaller minimum bore (from ø3.5 vs ø4.8 mm) and lower Kv — choose W for low-flow oil-return and control lines, choose standard HS-OL for normal oil-line flow." },
+        { question: "Is this valve suitable for R410A systems?", answer: "Yes. The HS-OL-W is rated at 45 bar (4.5 MPa) and −40 to 150 °C, which covers R410A high-side pressures and temperatures." }
+      ] }
     ],
   },
   {
