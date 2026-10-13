@@ -2899,6 +2899,12 @@ export const stopValvesComparison = {
   title: 'Refrigeration Stop Valves',
   subtitle: 'Five stop valve series with 23 models for refrigeration and HVAC systems — from twin-diaphragm manual stop valves with SAE flare or brazed ODF connections, to 90° angle valves for receiver, oil-separator and control-line service, rated up to 45 bar and −40 to 150 °C.',
   headers: ['#', 'Product', 'Series', 'Structure', 'Connection', 'Size Range', 'Min. Bore', 'Kv (m³/h)', 'MWP (bar)', 'Medium Temp Range', 'Models'],
+  // Keep Series / Min. Bore / Medium Temp Range content on a single line (widen as needed).
+  colConfig: {
+    2: { nowrap: true },
+    6: { minWidthClass: 'min-w-[8.5rem]', nowrap: true },
+    9: { minWidthClass: 'min-w-[9rem]', nowrap: true },
+  },
   rows: [
     ['1', 'Twin-Diaphragm Stop Valve — SAE Flare', 'KM', 'Diaphragm, straight', 'SAE Flare', '1/4"–3/4"', '—', '0.28–3.65', '30', '−25–+100 °C', '5'],
     ['2', 'Twin-Diaphragm Stop Valve — ODF Brazed', 'KM', 'Diaphragm, straight', 'ODF Brazed', '1/4"–7/8"', '—', '0.28–3.65', '30', '−25–+100 °C', '6'],
