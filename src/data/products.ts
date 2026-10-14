@@ -773,8 +773,6 @@ export const categories: Category[] = [
           { id: 'moisture-indicator-brazed-odf', name: 'Moisture Indicator – Brazed ODF' },
           { id: 'moisture-indicator-sae-flare', name: 'Moisture Indicator – SAE Flare' },
           { id: 'moisture-indicator-sae-flare-mf', name: 'Moisture Indicator – SAE Flare M/F' },
-          { id: 'moisture-indicator-npt', name: 'Moisture Indicator – NPT Threaded' },
-          { id: 'oil-level-g-thread', name: 'Oil Level Sight Glass – G Thread' },
         ],
       },
       {
@@ -1499,9 +1497,6 @@ export const categories: Category[] = [
         { label: "Mounting", value: "Refrigerant liquid line" },
         { label: "Refrigerant Compatibility", value: "HCFC, HFC" }
       ], applications: 'Refrigeration liquid lines for direct tube-to-tube connection with moisture monitoring' },
-      // Product 4 & 5: Placeholder - pending confirmation from supplier
-      { id: 'sg-4', categoryId: 'valves', subCategoryId: 'sight-glasses', thirdCategoryId: 'moisture-indicator-npt', published: false, images: [], metaTitle: "Moisture Indicator Sight Glass, NPT Threaded | Refrigeration", metaDescription: "NPT threaded moisture indicator sight glass for refrigeration. Content pending supplier confirmation.", name: "Moisture Indicator Sight Glass — NPT Threaded (SGN-NPT Series)", shortDesc: "NPT threaded moisture indicator sight glass. Content pending supplier confirmation.", description: "Pending supplier confirmation.", features: [], availableModels: { headers: ["Model", "Port Size", "Overall Size"], rows: [] }, specs: [], applications: 'Pending supplier confirmation.' },
-      { id: 'sg-5', categoryId: 'valves', subCategoryId: 'sight-glasses', thirdCategoryId: 'oil-level-g-thread', published: false, images: [], metaTitle: "Oil Level Sight Glass, G Thread | Refrigeration", metaDescription: "Oil level sight glass with G thread connection. Content pending supplier confirmation.", name: "Oil Level Sight Glass — G Thread Connection (SGR Series)", shortDesc: "Oil level sight glass with G thread connection. Content pending supplier confirmation.", description: "Pending supplier confirmation.", features: [], availableModels: { headers: ["Model", "Port Size", "Overall Size"], rows: [] }, specs: [], applications: 'Pending supplier confirmation.' },
       {
         id: 'tx-1', categoryId: 'valves', subCategoryId: 'thermal-expansion-valves', thirdCategoryId: 'trf-heavy-duty-txv', images: ['/images/tx-trf-01.png'],
         metaTitle: 'Heavy-Duty Thermostatic Expansion Valve | TRF Series | HVACR NET',
