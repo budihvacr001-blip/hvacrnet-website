@@ -109,6 +109,12 @@ function prerenderRoute(pathname: string, template: string) {
     html = html.replace(/<link rel="canonical"[^>]*>/, canonicalLink)
   }
   
+  // 注入各页 og:url（SSR 已输出每页自己的地址，覆写模板默认的首页 og:url）
+  const ogUrlMeta = metaTags.find(m => /property="og:url"/.test(m))
+  if (ogUrlMeta) {
+    html = html.replace(/<meta\s+property="og:url"[^>]*>/, ogUrlMeta)
+  }
+  
   return html
 }
 

@@ -14,6 +14,12 @@ interface SEOProps {
 
 const BASE_URL = 'https://hvacrnet.com';
 
+// Ensure a path uses the canonical trailing-slash form (root path stays '/')
+function withTrailingSlash(path: string) {
+  if (path === '/' || path.endsWith('/')) return path
+  return `${path}/`
+}
+
 export default function SEO({ 
   title, 
   description, 
@@ -26,7 +32,7 @@ export default function SEO({
 }: SEOProps) {
   const location = useLocation();
   const siteName = 'HVACR NET';
-  const pagePath = url || location.pathname;
+  const pagePath = withTrailingSlash(url || location.pathname);
   const fullUrl = pagePath.startsWith('http') ? pagePath : `${BASE_URL}${pagePath}`;
 
   const schemas = Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : [];

@@ -33,16 +33,17 @@ export default function CategoryLanding({
   subCategorySlug,
 }: Props) {
   const location = useLocation()
-  const currentUrl = `${SITE_URL}${location.pathname}`
+  const withTrailingSlash = (p: string) => p === '/' || p.endsWith('/') ? p : `${p}/`
+  const currentUrl = `${SITE_URL}${withTrailingSlash(location.pathname)}`
 
   // Build breadcrumb
   const breadcrumbs = [
     { name: 'Home', href: '/' },
-    { name: 'Products', href: '/products' },
-    { name: categoryName, href: `/products/${categorySlug}` },
+    { name: 'Products', href: '/products/' },
+    { name: categoryName, href: `/products/${categorySlug}/` },
   ]
   if (subCategoryName && subCategorySlug) {
-    breadcrumbs.push({ name: subCategoryName, href: `/products/${categorySlug}/${subCategorySlug}` })
+    breadcrumbs.push({ name: subCategoryName, href: `/products/${categorySlug}/${subCategorySlug}/` })
   }
 
   // Build BreadcrumbList JSON-LD
@@ -92,11 +93,11 @@ export default function CategoryLanding({
       if (product.thirdCategoryId) {
         const sharedThird = products.filter(p => p.thirdCategoryId === product.thirdCategoryId).length > 1
         return sharedThird
-          ? `/products/${categorySlug}/${subCategorySlug || ''}/${product.thirdCategoryId}#product-${product.id}`
-          : `/products/${categorySlug}/${subCategorySlug || ''}#${product.thirdCategoryId}`
+          ? `/products/${categorySlug}/${subCategorySlug || ''}/${product.thirdCategoryId}/#product-${product.id}`
+          : `/products/${categorySlug}/${subCategorySlug || ''}/#${product.thirdCategoryId}`
       }
       if (product.subCategoryId) {
-        return `/products/${categorySlug}/${product.subCategoryId}#product-${product.id}`
+        return `/products/${categorySlug}/${product.subCategoryId}/#product-${product.id}`
       }
     }
     return null
@@ -260,7 +261,7 @@ export default function CategoryLanding({
             {content.relatedCategories.map((cat) => (
               <Link
                 key={cat.slug}
-                to={`/products/${cat.slug === 'ball-valves' || cat.slug === 'sight-glasses' ? 'valves' : cat.slug === 'filter-driers' ? 'filter-driers' : 'valves'}/${cat.slug}`}
+                to={`/products/${cat.slug === 'ball-valves' || cat.slug === 'sight-glasses' ? 'valves' : cat.slug === 'filter-driers' ? 'filter-driers' : 'valves'}/${cat.slug}/`}
                 className="inline-flex items-center px-4 py-2 bg-gray-100 text-navy rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
               >
                 {cat.name}

@@ -143,14 +143,16 @@ function buildRoutes() {
 
 function generateSitemap(routes) {
   const urls = routes
-    .map(
-      (r) => `  <url>
-    <loc>${BASE_URL}${r.url}</loc>
+    .map((r) => {
+      // Root URL keeps no trailing slash; all other URLs use trailing-slash form
+      const loc = r.url === '/' ? `${BASE_URL}/` : `${BASE_URL}${r.url}/`
+      return `  <url>
+    <loc>${loc}</loc>
     <lastmod>${r.lastmod}</lastmod>
     <changefreq>${r.changefreq}</changefreq>
     <priority>${r.priority}</priority>
   </url>`
-    )
+    })
     .join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>

@@ -7,7 +7,8 @@ export function useCanonical() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    const canonicalUrl = `${BASE_URL}${pathname}`
+    const withSlash = pathname === '/' || pathname.endsWith('/') ? pathname : `${pathname}/`
+    const canonicalUrl = `${BASE_URL}${withSlash}`
     
     // Remove existing canonical link if any
     const existing = document.querySelector('link[rel="canonical"]')

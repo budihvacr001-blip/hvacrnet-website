@@ -21,7 +21,7 @@ export default function Home() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      url: 'https://hvacrnet.com/contact',
+      url: 'https://hvacrnet.com/contact/',
       availableLanguage: ['English', 'Chinese'],
     },
     sameAs: [],
@@ -47,7 +47,7 @@ export default function Home() {
           </h1>
           <div className="animate-fade-in-up animate-delay-300 mt-6 flex justify-center">
             <Link
-              to="/products"
+              to="/products/"
               className="inline-flex items-center gap-2 rounded-md bg-accent px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg"
             >
               Explore Products

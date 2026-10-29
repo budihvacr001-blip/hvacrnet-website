@@ -289,25 +289,25 @@ export default function Products() {
 
   const seoUrl = (() => {
     if (currentThirdCategory && !currentThirdCategory.isOverview) {
-      return `/products/${currentCategory?.id}/${currentSubCategory?.id}/${currentThirdCategory.id}`
+      return `/products/${currentCategory?.id}/${currentSubCategory?.id}/${currentThirdCategory.id}/`
     }
     if (currentSubCategory && !isSubCategoryOverview) {
-      return `/products/${currentCategory?.id}/${currentSubCategory?.id}`
+      return `/products/${currentCategory?.id}/${currentSubCategory?.id}/`
     }
     if (currentCategory) {
-      return `/products/${currentCategory.id}`
+      return `/products/${currentCategory.id}/`
     }
-    return '/products'
+    return '/products/'
   })()
 
   // BreadcrumbList schema
   const breadcrumbSchema = (() => {
-    const items: { name: string; url: string }[] = [{ name: 'Home', url: '/' }, { name: 'Products', url: '/products' }]
+    const items: { name: string; url: string }[] = [{ name: 'Home', url: '/' }, { name: 'Products', url: '/products/' }]
     if (currentCategory) {
-      items.push({ name: currentCategory.name, url: `/products/${currentCategory.id}` })
+      items.push({ name: currentCategory.name, url: `/products/${currentCategory.id}/` })
     }
     if (currentSubCategory && !isSubCategoryOverview) {
-      items.push({ name: currentSubCategory.name, url: `/products/${currentCategory?.id}/${currentSubCategory.id}` })
+      items.push({ name: currentSubCategory.name, url: `/products/${currentCategory?.id}/${currentSubCategory.id}/` })
     }
     if (detailProduct) {
       items.push({ name: detailProduct.name, url: seoUrl })
@@ -479,7 +479,7 @@ export default function Products() {
               {currentCategory && (
                 <li className="flex items-center gap-1.5">
                   <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
-                  <Link to={`/products/${currentCategory.id}`} className="hover:text-navy transition-colors">
+                  <Link to={`/products/${currentCategory.id}/`} className="hover:text-navy transition-colors">
                     {currentCategory.name}
                   </Link>
                 </li>
@@ -487,7 +487,7 @@ export default function Products() {
               {currentSubCategory && !isSubCategoryOverview && (
                 <li className="flex items-center gap-1.5">
                   <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
-                  <Link to={`/products/${currentCategory!.id}/${currentSubCategory.id}`} className="hover:text-navy transition-colors">
+                  <Link to={`/products/${currentCategory!.id}/${currentSubCategory.id}/`} className="hover:text-navy transition-colors">
                     {currentSubCategory.name}
                   </Link>
                 </li>
@@ -556,7 +556,7 @@ export default function Products() {
                   <div key={cat.id}>
                     <div className="flex items-center">
                       <Link
-                        to={`/products/${cat.id}`}
+                        to={`/products/${cat.id}/`}
                         data-active={isActive && activeSubCategory === 'all' ? 'true' : undefined}
                         onClick={() => {
                           setExpandedCategories(prev => ({
@@ -644,7 +644,7 @@ export default function Products() {
                             <div key={sub.id}>
                               <div className="flex items-center">
                                 <Link
-                                  to={`/products/${cat.id}/${sub.id}`}
+                                  to={`/products/${cat.id}/${sub.id}/`}
                                   data-active={activeSubCategory === sub.id && !activeThirdCategory ? 'true' : undefined}
                                   onClick={() => {
                                     setExpandedSubCategories(prev => ({
@@ -737,7 +737,7 @@ export default function Products() {
                                       <div key={third.id} className="space-y-1">
                                         <div className="flex items-center">
                                         <Link
-                                          to={`/products/${cat.id}/${sub.id}/${third.id}`}
+                                          to={`/products/${cat.id}/${sub.id}/${third.id}/`}
                                           data-active={!third.isOverview && activeThirdCategory === third.id ? 'true' : undefined}
                                           onClick={() => {
                                             if (isSharedThird && !expandedThirds[thirdKey]) {
@@ -779,7 +779,7 @@ export default function Products() {
                                         {nestedOverviews.map((ov) => (
                                           <Link
                                             key={ov.id}
-                                            to={`/products/${cat.id}/${sub.id}/${ov.id}`}
+                                            to={`/products/${cat.id}/${sub.id}/${ov.id}/`}
                                             data-active={activeThirdCategory === ov.id ? 'true' : undefined}
                                             className={`ml-5 flex w-full items-start gap-2 rounded px-3 py-1.5 text-left text-sm transition-colors ${
                                               activeThirdCategory === ov.id
@@ -795,7 +795,7 @@ export default function Products() {
                                             {thirdProducts.map((p, pIndex) => (
                                               <Link
                                                 key={p.id}
-                                                to={`/products/${cat.id}/${sub.id}/${third.id}#product-${p.id}`}
+                                                to={`/products/${cat.id}/${sub.id}/${third.id}/#product-${p.id}`}
                                                 data-active={highlightedProductId === p.id ? 'true' : undefined}
                                                 className={`ml-5 flex w-full items-start gap-2 rounded px-3 py-1.5 text-left text-sm transition-colors ${
                                                   highlightedProductId === p.id
@@ -841,7 +841,7 @@ export default function Products() {
                   <>
                     <span>/</span>
                     <Link
-                      to={`/products/${currentCategory.id}`}
+                      to={`/products/${currentCategory.id}/`}
                       className="hover:text-navy"
                     >
                       {currentCategory.name}
@@ -852,7 +852,7 @@ export default function Products() {
                   <>
                     <span>/</span>
                     <Link
-                      to={`/products/${currentCategory!.id}/${currentSubCategory.id}`}
+                      to={`/products/${currentCategory!.id}/${currentSubCategory.id}/`}
                       className="hover:text-navy"
                     >
                       {currentSubCategory.name}
@@ -863,7 +863,7 @@ export default function Products() {
                   <>
                     <span>/</span>
                     <Link
-                      to={`/products/${currentCategory!.id}/${currentSubCategory!.id}/${currentThirdCategory.id}`}
+                      to={`/products/${currentCategory!.id}/${currentSubCategory!.id}/${currentThirdCategory.id}/`}
                       className="hover:text-navy"
                     >
                       {currentThirdCategory.name}
@@ -969,7 +969,7 @@ export default function Products() {
                     return (
                     <Link
                       key={cat.id}
-                      to={`/products/${cat.id}`}
+                      to={`/products/${cat.id}/`}
                       className="group overflow-hidden rounded-lg border border-gray-border bg-white transition-all hover:border-navy hover:shadow-md"
                     >
                       <div className="aspect-video bg-gradient-to-br from-navy/10 to-accent/10 flex items-center justify-center overflow-hidden">
@@ -1027,7 +1027,7 @@ export default function Products() {
                   {relatedProducts.map((product) => (
                     <Link
                       key={product.id}
-                      to={`/products/${product.categoryId}/${product.subCategoryId}/${product.thirdCategoryId}`}
+                      to={`/products/${product.categoryId}/${product.subCategoryId}/${product.thirdCategoryId}/`}
                       className="group rounded-lg border border-gray-border p-4 transition-all hover:border-accent hover:shadow-md"
                     >
                       {product.images?.[0] && (
