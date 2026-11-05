@@ -1,4 +1,4 @@
-# https://www.hvacrnet.com/robots.txt
+# https://hvacrnet.com/robots.txt
 
 # Allow all mainstream crawlers
 User-agent: Googlebot
@@ -16,7 +16,7 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hvacrnet.com/sitemap.xml
+Sitemap: https://hvacrnet.com/sitemap.xml
 
 # Disallow admin or private paths
 Disallow: /api/

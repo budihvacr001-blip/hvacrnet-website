@@ -1006,7 +1006,7 @@ export default function Products() {
                         key={product.id}
                         product={product}
                         onInquire={handleInquire}
-                        onViewDetail={setSelectedProduct}
+                        detailHref={`/products/${product.categoryId}/${product.subCategoryId}/${product.thirdCategoryId}/#product-${product.id}`}
                       />
                     </div>
                   ))}
