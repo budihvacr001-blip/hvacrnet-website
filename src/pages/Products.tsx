@@ -30,6 +30,14 @@ function getCategoryImage(categoryId: string): string | null {
   return publishedProduct.images[0]
 }
 
+// Build a product detail path by joining only the non-empty hierarchy segments,
+// so two-level categories (e.g. /products/copper-tubes/pancake-coils/) don't yield "undefined".
+function getProductDetailPath(product: Product, withHash = true): string {
+  const segs = [product.categoryId, product.subCategoryId, product.thirdCategoryId].filter(Boolean)
+  const base = `/products/${segs.join('/')}/`
+  return withHash ? `${base}#product-${product.id}` : base
+}
+
 // Helper function to compute initial state from URL params (works in SSR)
 function computeInitialState(params: { categorySlug?: string; subCategorySlug?: string; thirdCategorySlug?: string }) {
   let activeCategory: string | null = null
@@ -1006,7 +1014,7 @@ export default function Products() {
                         key={product.id}
                         product={product}
                         onInquire={handleInquire}
-                        detailHref={`/products/${product.categoryId}/${product.subCategoryId}/${product.thirdCategoryId}/#product-${product.id}`}
+                        detailHref={getProductDetailPath(product)}
                       />
                     </div>
                   ))}
@@ -1027,7 +1035,7 @@ export default function Products() {
                   {relatedProducts.map((product) => (
                     <Link
                       key={product.id}
-                      to={`/products/${product.categoryId}/${product.subCategoryId}/${product.thirdCategoryId}/`}
+                      to={getProductDetailPath(product, false)}
                       className="group rounded-lg border border-gray-border p-4 transition-all hover:border-accent hover:shadow-md"
                     >
                       {product.images?.[0] && (
