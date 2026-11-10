@@ -1010,9 +1010,8 @@ export default function Products() {
                 )}
                 <div className="grid gap-6 grid-cols-1">
                   {focusedProducts.map((product) => (
-                    <div id={`product-${product.id}`}>
+                    <div key={product.id} id={`product-${product.id}`}>
                       <ProductCard
-                        key={product.id}
                         product={product}
                         onInquire={handleInquire}
                         detailHref={getProductDetailPath(product)}
