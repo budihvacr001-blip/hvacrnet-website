@@ -115,7 +115,7 @@ export default function Products() {
         }
       }, 120)
     }
-  }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug])
+  }, [params.categorySlug, params.subCategorySlug, params.thirdCategorySlug, location.hash])
 
   // Scroll the sidebar so the current active item appears near its top (Docusaurus-style)
   useEffect(() => {
