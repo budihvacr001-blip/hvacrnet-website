@@ -2379,15 +2379,153 @@ export const categories: Category[] = [
   },
   {
     id: 'pressure-gauges',
-    name: 'Pressure Gauges',
+    name: 'Gauges & Test Instruments',
     icon: 'Gauge',
     subCategories: [
       { id: 'manifold-gauges', name: 'Manifold Gauges' },
       { id: 'digital-gauges', name: 'Digital Gauges' },
+      { id: 'oil-filled-refrigeration-pressure-gauges', name: 'Oil-filled Refrigeration Pressure Gauges', subCategories: [
+        { id: 'og-242', name: 'Multi-Refrigerant Oil-Filled Gauge — 242# (Y63)' },
+        { id: 'og-128', name: 'R410A Oil-Filled Pressure Gauge — 128# (ZY63)' },
+        { id: 'og-191', name: 'Low-Temperature Oil-Filled Gauge — 191# (ZY63)' },
+      ] },
     ],
     products: [
       { id: 'pg-1', categoryId: 'pressure-gauges', subCategoryId: 'manifold-gauges', name: 'HVAC Manifold Gauge Set', shortDesc: 'Professional gauge sets for system charging and diagnostics.', description: 'Professional manifold gauge sets with R410A/R32 compatibility for system charging, evacuation, and diagnostics.', specs: [{ label: 'Range', value: 'Compound: -30~120psi / High: 0~800psi' }, { label: 'Refrigerant', value: 'R22 / R134a / R410A / R32' }], applications: 'AC installation, maintenance, troubleshooting' },
       { id: 'pg-2', categoryId: 'pressure-gauges', subCategoryId: 'digital-gauges', name: 'Digital Pressure Gauge', shortDesc: 'Digital gauges for precise pressure readings.', description: 'High-accuracy digital pressure gauges with backlight display for precise readings in all lighting conditions.', specs: [{ label: 'Accuracy', value: '±0.5% FS' }, { label: 'Range', value: '0~600psi' }], applications: 'Precision diagnostics, system commissioning' },
+      {
+        id: 'og-242', categoryId: 'pressure-gauges', subCategoryId: 'oil-filled-refrigeration-pressure-gauges', thirdCategoryId: 'og-242', images: ['/images/oil-gauge-242-y63.png'],
+        metaTitle: 'Oil-Filled Refrigeration Pressure Gauge | R22 R134a R404A',
+        metaDescription: 'Oil-filled vibration-proof refrigeration pressure gauge, 2.5" stainless case, 1/4 SAE, Class 1.6, pressure-temperature dial for R22 R134a R404A R407C. 1 model. MOQ 1 pc.',
+        keywords: 'oil filled pressure gauge refrigeration | glycerin filled refrigeration gauge | oil damped refrigeration pressure gauge | multi refrigerant pressure gauge R22 R134a R404A | 2.5 inch stainless pressure gauge | axial back entry pressure gauge flanged | vibration proof refrigeration gauge | air conditioning pressure gauge panel mount | oil filled gauge for freezers cold rooms | R407C pressure temperature gauge',
+        name: 'Multi-Refrigerant Oil-Filled Pressure Gauge',
+        shortDesc: 'A glycerin-filled, vibration-damped refrigeration pressure gauge built for freezers, cold-rooms and air-conditioning units. One gauge reads multiple refrigerants — R22, R134a, R404A and R407C — on a combined pressure–temperature scale, with a 2.5" full stainless case, wide beryllium-bronze Bourdon tube and a flanged edge for axial panel mounting.',
+        description: '• Oil-filled (vacuum) pressure gauge dedicated to refrigeration and air-conditioning use.\n• Designed for installation on freezers, cold storage rooms and packaged air-conditioning units.\n• One gauge covers multiple refrigerants — R22, R134a, R404A, R407C — for convenient, one-model selection.\n• Full stainless steel casing with a wide beryllium-bronze spring tube (Bourdon tube).\n• Axial (back-entry) pressure gauge with a flanged edge for panel mounting.\n• Internal damping oil suppresses pointer flutter from compressor high-frequency vibration.',
+        features: [
+          'Internal fill oil damps high-frequency compressor vibration for a steady reading',
+          'Oil cushion prevents the pointer from jumping during fast pressure changes',
+          'Flanged edge makes panel mounting quick and secure',
+          'Over-pressure limit stop protects the movement',
+          'Reinforced over-pressure measures help keep zero-point accuracy',
+          'Imported rational oil-seal design — no oil leakage worry',
+          'Combined pressure-versus-temperature scale for easy, direct reading',
+          'Extra-long service life in continuous refrigeration duty'
+        ],
+        availableModels: { headers: ['Model', 'Refrigerant', 'Medium Temp Range', 'Connection', 'Dial', 'Accuracy'], rows: [
+          ['242# (Y63)', 'R22, R134a, R404A, R407C', '−5 °C ~ +120 °C', '1/4 SAE', '2.5 in (Φ63.5)', 'Class 1.6']
+        ] },
+        specs: [
+          { label: 'Product Type', value: 'Oil-Filled (Vacuum) Pressure Gauge' },
+          { label: 'Model / Code', value: '242# (Y63)' },
+          { label: 'Applicable Refrigerant', value: 'R22, R134a, R404A, R407C (HCFC & HFC)' },
+          { label: 'Applicable Medium Temperature', value: '−5 °C ~ +120 °C' },
+          { label: 'Connection Size', value: '1/4 SAE' },
+          { label: 'Structure', value: 'Axial, concentrically-embedded, flanged edge (back entry)' },
+          { label: 'Casing Nominal Diameter', value: '2.5 in (Φ63.5)' },
+          { label: 'Accuracy Class', value: '1.6' },
+          { label: 'Case Material', value: 'Full stainless steel' },
+          { label: 'Sensing Element', value: 'Wide beryllium-bronze Bourdon (spring) tube' },
+          { label: 'Dial', value: 'Combined pressure–temperature scale' },
+          { label: 'Damping', value: 'Internal fill oil (vibration / pointer-jump damping)' },
+          { label: 'Mounting', value: 'Panel mount via flanged edge (3 holes, Φ4.2)' },
+          { label: 'Pressure Range (PSI/bar)', value: 'To confirm per production dial (not printed in source)' },
+          ],
+        faq: [
+          { question: 'Which refrigerants can this gauge read?', answer: 'The 242# (Y63) is a multi-refrigerant gauge with a printed pressure–temperature scale for R22, R134a, R404A and R407C, so one model covers most conventional HCFC/HFC systems.' },
+          { question: 'Why is the gauge filled with oil?', answer: 'The internal damping oil absorbs compressor vibration and stops the pointer from jumping or fluttering, giving a stable, easy-to-read value on running equipment and extending gauge life.' },
+          { question: 'How does it mount?', answer: 'It is an axial (back-entry) gauge with a flanged edge and three mounting holes, designed to be bolted flush into an equipment or control panel.' },
+          { question: 'What is its lower temperature limit?', answer: 'This standard model is scaled from −5 °C to +120 °C. For low-temperature freezer service down to −40 °C, select the 191# model instead.' }
+        ]
+      },
+      {
+        id: 'og-128', categoryId: 'pressure-gauges', subCategoryId: 'oil-filled-refrigeration-pressure-gauges', thirdCategoryId: 'og-128', images: ['/images/oil-gauge-128-zy63.png'],
+        metaTitle: 'R410A High-Pressure Oil-Filled Gauge | HVAC Refrigeration',
+        metaDescription: 'R410A high-pressure oil-filled refrigeration gauge, imported high-precision movement, micro-adjustable zero, 2.5" stainless case, 1/4 SAE, −40~120°C. 1 model. MOQ 1 pc.',
+        keywords: 'R410A oil filled pressure gauge | high pressure R410A gauge | high precision refrigeration gauge | oil filled gauge with micro adjustable zero | R410A gauge stainless steel 2.5 inch | high pressure gauge over-pressure protection | VRF air conditioner pressure gauge | R410A high pressure gauge SAE | imported movement pressure gauge | R410A gauge for split air conditioning',
+        name: 'R410A Oil-Filled Pressure Gauge',
+        shortDesc: 'Purpose-built for high-pressure R410A systems, this oil-filled gauge uses an imported high-precision pressure movement with a micro-adjustable zero and a special over-pressure limiting device. The 2.5" stainless, flanged axial gauge covers −40 °C to +120 °C, suiting modern high-pressure split and VRF air-conditioning equipment.',
+        description: '• Oil-filled (vacuum) pressure gauge dedicated to high-pressure R410A refrigeration and air-conditioning systems.\n• Fitted with an imported high-precision pressure gauge movement for accurate, repeatable readings.\n• Special over-pressure limiting device protects the movement against pressure spikes.\n• Micro-adjustable zero device allows field zero correction for sustained accuracy.\n• Full stainless steel casing with a wide beryllium-bronze Bourdon tube and axial flanged mounting.\n• Wide −40 °C to +120 °C medium temperature range.',
+        features: [
+          'Imported high-precision pressure movement — accurate and stable indication',
+          'Special over-pressure limiting device for high-pressure R410A protection',
+          'Micro-adjustable zero for easy, precise on-site calibration',
+          'Internal fill oil damps high-frequency compressor vibration',
+          'Flanged edge for convenient, secure panel mounting',
+          'Full stainless steel case with wide beryllium-bronze spring tube',
+          'Combined pressure-versus-temperature scale for direct reading',
+          'Imported oil-seal design prevents leakage for a long service life'
+        ],
+        availableModels: { headers: ['Model', 'Refrigerant', 'Medium Temp Range', 'Connection', 'Dial', 'Accuracy'], rows: [
+          ['128# (ZY63)', 'R410A', '−40 °C ~ +120 °C', '1/4 SAE', '2.5 in (Φ63.5)', 'Class 1.6']
+        ] },
+        specs: [
+          { label: 'Product Type', value: 'Oil-Filled (Vacuum) Pressure Gauge' },
+          { label: 'Model / Code', value: '128# (ZY63)' },
+          { label: 'Applicable Refrigerant', value: 'R410A (high-pressure HFC)' },
+          { label: 'Applicable Medium Temperature', value: '−40 °C ~ +120 °C' },
+          { label: 'Connection Size', value: '1/4 SAE' },
+          { label: 'Structure', value: 'Axial, concentrically-embedded, flanged edge (back entry)' },
+          { label: 'Casing Nominal Diameter', value: '2.5 in (Φ63.5)' },
+          { label: 'Accuracy Class', value: '1.6' },
+          { label: 'Movement', value: 'Imported high-precision movement; micro-adjustable zero' },
+          { label: 'Over-Pressure Protection', value: 'Special over-pressure limiting device' },
+          { label: 'Case Material', value: 'Full stainless steel' },
+          { label: 'Sensing Element', value: 'Wide beryllium-bronze Bourdon (spring) tube' },
+          { label: 'Damping', value: 'Internal fill oil (vibration / pointer-jump damping)' },
+          { label: 'Mounting', value: 'Panel mount via flanged edge (3 holes, Φ4.2)' },
+          { label: 'Pressure Range (PSI/bar)', value: 'To confirm per production dial (not printed in source)' },
+          ],
+        faq: [
+          { question: 'Can I use a standard R22 gauge for R410A?', answer: 'No. R410A runs at considerably higher pressures. The 128# is purpose-built for R410A with a high-pressure-rated movement and a special over-pressure limiting device, unlike the multi-refrigerant standard gauges.' },
+          { question: 'What makes this model "high precision"?', answer: 'It uses an imported high-precision movement and includes a micro-adjustable zero, so the pointer can be fine-corrected on site to keep readings accurate over time.' },
+          { question: 'What is its temperature range?', answer: 'The 128# covers a wide −40 °C to +120 °C medium temperature range, suitable for both cold and hot-side R410A equipment.' },
+          { question: 'How is it protected against pressure spikes?', answer: 'A dedicated over-pressure limiting device stops the movement from being driven past its safe travel during sudden pressure surges.' }
+        ]
+      },
+      {
+        id: 'og-191', categoryId: 'pressure-gauges', subCategoryId: 'oil-filled-refrigeration-pressure-gauges', thirdCategoryId: 'og-191', images: ['/images/oil-gauge-191-zy63.png'],
+        metaTitle: 'Low-Temp Oil-Filled Refrigeration Gauge | −40°C Multi-Gas',
+        metaDescription: 'Oil-filled refrigeration pressure gauge for R22 R134a R404A R407C, wide −40~120°C low-temp scale, 2.5" stainless flanged case, 1/4 SAE, Class 1.6. 1 model. MOQ 1 pc.',
+        keywords: 'low temperature refrigeration pressure gauge | 40 degree freezer pressure gauge | oil filled gauge for cold storage rooms | multi refrigerant low temp gauge | refrigeration gauge extended range | cold room pressure gauge R22 R404A | freezer service pressure gauge axial | oil damped low temp gauge 2.5 inch | refrigeration pressure gauge 120C range | walk in freezer gauge R407C',
+        name: 'Low-Temperature Oil-Filled Pressure Gauge',
+        shortDesc: 'The low-temperature version of the multi-refrigerant gauge, the 191# keeps the same R22/R134a/R404A/R407C pressure–temperature scale but extends the medium range down to −40 °C for freezers and cold storage. It shares the 2.5" full stainless flanged case, wide beryllium-bronze tube and oil-damped, vibration-proof movement.',
+        description: '• Oil-filled (vacuum) pressure gauge for refrigeration and air-conditioning, optimized for low-temperature duty.\n• One gauge covers multiple refrigerants — R22, R134a, R404A, R407C — with an extended −40 °C lower scale.\n• Suited to freezers and cold-storage rooms that operate below the standard −5 °C limit.\n• Full stainless steel casing with a wide beryllium-bronze spring tube.\n• Axial (back-entry) gauge with a flanged edge for panel mounting.\n• Internal damping oil keeps the pointer steady under compressor vibration.',
+        features: [
+          'Extended −40 °C to +120 °C range for freezer and cold-room service',
+          'Multi-refrigerant pressure–temperature scale: R22, R134a, R404A, R407C',
+          'Internal fill oil damps high-frequency vibration and pointer jump',
+          'Over-pressure limit stop with reinforced over-pressure protection',
+          'Flanged edge for fast, secure panel installation',
+          'Full stainless steel case with wide beryllium-bronze Bourdon tube',
+          'Imported rational oil-seal design — no oil leakage',
+          'Combined pressure-versus-temperature dial; extra-long service life'
+        ],
+        availableModels: { headers: ['Model', 'Refrigerant', 'Medium Temp Range', 'Connection', 'Dial', 'Accuracy'], rows: [
+          ['191# (ZY63)', 'R22, R134a, R404A, R407C', '−40 °C ~ +120 °C', '1/4 SAE', '2.5 in (Φ63.5)', 'Class 1.6']
+        ] },
+        specs: [
+          { label: 'Product Type', value: 'Oil-Filled (Vacuum) Pressure Gauge' },
+          { label: 'Model / Code', value: '191# (ZY63)' },
+          { label: 'Applicable Refrigerant', value: 'R22, R134a, R404A, R407C (HCFC & HFC)' },
+          { label: 'Applicable Medium Temperature', value: '−40 °C ~ +120 °C' },
+          { label: 'Connection Size', value: '1/4 SAE' },
+          { label: 'Structure', value: 'Axial, concentrically-embedded, flanged edge (back entry)' },
+          { label: 'Casing Nominal Diameter', value: '2.5 in (Φ63.5)' },
+          { label: 'Accuracy Class', value: '1.6' },
+          { label: 'Case Material', value: 'Full stainless steel' },
+          { label: 'Sensing Element', value: 'Wide beryllium-bronze Bourdon (spring) tube' },
+          { label: 'Dial', value: 'Combined pressure–temperature scale' },
+          { label: 'Damping', value: 'Internal fill oil (vibration / pointer-jump damping)' },
+          { label: 'Mounting', value: 'Panel mount via flanged edge (3 holes, Φ4.2)' },
+          { label: 'Pressure Range (PSI/bar)', value: 'To confirm per production dial (not printed in source)' },
+          ],
+        faq: [
+          { question: 'What is the difference between the 242# and the 191#?', answer: 'Both read R22, R134a, R404A and R407C, but the 242# starts at −5 °C for standard air-conditioning and cool-room duty, while the 191# extends down to −40 °C for freezers and low-temperature cold storage.' },
+          { question: 'Which model should I choose for a walk-in freezer?', answer: 'Choose the 191#. Its −40 °C lower scale matches low-temperature refrigeration where the standard 242# would read below its printed range.' },
+          { question: 'Is this gauge compatible with R410A?', answer: 'No. For R410A high-pressure systems, use the dedicated 128# model. The 191# is for R22, R134a, R404A and R407C.' },
+          { question: 'Does the oil freeze at −40 °C?', answer: 'The gauge is designed and scaled for a −40 °C to +120 °C medium; the damping fill is selected for refrigeration service. Confirm the exact fill specification for extreme continuous low-temperature duty.' }
+        ]
+      },
     ],
   },
   {
