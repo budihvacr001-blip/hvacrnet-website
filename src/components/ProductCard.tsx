@@ -18,10 +18,11 @@ export interface Product {
 interface ProductCardProps {
   product: Product;
   onInquire: (productName: string) => void;
+  onDetails?: (product: Product) => void;
   detailHref: string;
 }
 
-export default function ProductCard({ product, onInquire, detailHref }: ProductCardProps) {
+export default function ProductCard({ product, onInquire, onDetails, detailHref }: ProductCardProps) {
   const [mainImage, setMainImage] = useState(product.images?.[0] || '');
   const images = product.images || [];
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -30,6 +31,12 @@ export default function ProductCard({ product, onInquire, detailHref }: ProductC
   const openLightbox = (idx: number) => {
     setLightboxIndex(idx);
     setLightboxOpen(true);
+  };
+
+  const handleDetails = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!onDetails) return;
+    e.preventDefault();
+    onDetails(product);
   };
 
   return (
@@ -73,7 +80,7 @@ export default function ProductCard({ product, onInquire, detailHref }: ProductC
       {/* Content */}
       <div className="p-4">
         <h3 className="font-semibold text-[#1a3a5c] mb-2">
-          <Link to={detailHref} className="hover:underline">{product.name}</Link>
+          <Link to={detailHref} onClick={handleDetails} className="hover:underline">{product.name}</Link>
         </h3>
         <p className="text-sm text-gray-600 mb-4 line-clamp-4">{product.shortDesc}</p>
         <div className="flex gap-2">
@@ -85,6 +92,7 @@ export default function ProductCard({ product, onInquire, detailHref }: ProductC
           </button>
           <Link
             to={detailHref}
+            onClick={handleDetails}
             className="flex-1 border border-[#1a3a5c] text-[#1a3a5c] text-sm px-4 py-2 rounded hover:bg-[#1a3a5c] hover:text-white transition-colors inline-flex items-center justify-center"
           >
             Details

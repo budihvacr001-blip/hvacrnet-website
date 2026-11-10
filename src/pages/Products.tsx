@@ -1014,6 +1014,7 @@ export default function Products() {
                       <ProductCard
                         product={product}
                         onInquire={handleInquire}
+                        onDetails={(m) => setSelectedProduct(m)}
                         detailHref={getProductDetailPath(product)}
                       />
                     </div>
