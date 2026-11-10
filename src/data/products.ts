@@ -2385,6 +2385,7 @@ export const categories: Category[] = [
       { id: 'manifold-gauges', name: 'Manifold Gauges' },
       { id: 'digital-gauges', name: 'Digital Gauges' },
       { id: 'oil-filled-refrigeration-pressure-gauges', name: 'Oil-filled Refrigeration Pressure Gauges', subCategories: [
+        { id: 'oil-filled-refrigeration-pressure-gauges-overview', name: 'Category Overview', isOverview: true },
         { id: 'og-242', name: 'Multi-Refrigerant Oil-Filled Gauge — 242# (Y63)' },
         { id: 'og-128', name: 'R410A Oil-Filled Pressure Gauge — 128# (ZY63)' },
         { id: 'og-191', name: 'Low-Temperature Oil-Filled Gauge — 191# (ZY63)' },
@@ -3085,6 +3086,22 @@ export const stopValvesComparison = {
   ],
 };
 
+export const oilFilledGaugesComparison = {
+  title: 'Refrigeration Oil-Filled Pressure Gauges',
+  subtitle: 'Three oil-filled, vibration-damped refrigeration pressure gauges in 2.5" stainless flanged cases (1/4 SAE, Class 1.6). The range covers a multi-refrigerant standard gauge, an R410A high-pressure high-precision model and a −40 °C low-temperature freezer gauge, spanning −40 °C to +120 °C across R22, R134a, R404A, R407C and R410A.',
+  headers: ['#', 'Product', 'Series', 'Refrigerant', 'Temp Range', 'Dial', 'Connection', 'Accuracy', 'Structure', 'Models'],
+  colConfig: {
+    2: { nowrap: true },
+    4: { minWidthClass: 'min-w-[8rem]', nowrap: true },
+    5: { nowrap: true },
+  },
+  rows: [
+    ['1', 'Multi-Refrigerant Oil-Filled Pressure Gauge', '242# (Y63)', 'R22, R134a, R404A, R407C', '−5 °C ~ +120 °C', '2.5 in (Φ63.5)', '1/4 SAE', 'Class 1.6', 'Axial flanged, oil-filled', '1'],
+    ['2', 'R410A Oil-Filled Pressure Gauge', '128# (ZY63)', 'R410A', '−40 °C ~ +120 °C', '2.5 in (Φ63.5)', '1/4 SAE', 'Class 1.6', 'Axial flanged, oil-filled', '1'],
+    ['3', 'Low-Temperature Oil-Filled Pressure Gauge', '191# (ZY63)', 'R22, R134a, R404A, R407C', '−40 °C ~ +120 °C', '2.5 in (Φ63.5)', '1/4 SAE', 'Class 1.6', 'Axial flanged, oil-filled', '1'],
+  ],
+};
+
 // Category Landing Page Content
 export interface CategoryLandingContent {
   categoryId: string;
@@ -3163,6 +3180,17 @@ export const categoryLandingContent: CategoryLandingContent[] = [
       { name: 'Ball Valves', slug: 'ball-valves' },
       { name: 'Solenoid Valves', slug: 'solenoid-valves' },
     ],
+  },
+  {
+    categoryId: 'pressure-gauges',
+    subCategoryId: 'oil-filled-refrigeration-pressure-gauges',
+    metaTitle: 'Refrigeration Oil-Filled Gauges | Types & Selection Guide',
+    metaDescription: 'Compare 3 oil-filled refrigeration gauges — standard multi-gas, R410A high-pressure, −40°C freezer. Select by refrigerant and temperature range.',
+    h1: 'Refrigeration Oil-Filled Pressure Gauges',
+    introduction: 'Three oil-filled, vibration-damped refrigeration pressure gauges in 2.5" stainless flanged cases (1/4 SAE, Class 1.6). The range covers a multi-refrigerant standard gauge, an R410A high-pressure high-precision model and a −40 °C low-temperature freezer gauge, spanning −40 °C to +120 °C across R22, R134a, R404A, R407C and R410A.',
+    howToChoose: [],
+    faq: [],
+    relatedCategories: [],
   },
   {
     categoryId: 'filter-driers',
